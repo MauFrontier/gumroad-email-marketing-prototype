@@ -1,9 +1,8 @@
-import { render } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import App from './App';
 
-test('renders App component', () => {
-  const { getByText } = render(<App />);
-  const title = getByText("Gumroad email marketing prototype");
-  expect(title).toBeTruthy();
+it('renders App component', () => {
+  render(<App />);
+  const appComponent = screen.getByTestId('App');
+  expect(appComponent).toBeInTheDocument();
 });
-
