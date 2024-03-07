@@ -1,3 +1,4 @@
+import Button from '../../../shared/ui/Button/Button';
 import Sticker from '../../../shared/ui/Sticker/Sticker';
 
 const triggers = [
@@ -27,11 +28,11 @@ const TriggerSelection = () => {
   return (
     <div data-testid="TriggerSelection">
       {triggers.map(trigger => (
-        <div key={trigger.name}>
+        <Button onClick={() => {}} key={trigger.name}>
           <Sticker uri={trigger.stickerURI} label={trigger.name} />
           <h3>{trigger.name}</h3>
           <p>{trigger.shortDescription}</p>
-        </div>
+        </Button>
       ))}
     </div>
   );
