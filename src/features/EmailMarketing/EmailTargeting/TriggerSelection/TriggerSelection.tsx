@@ -27,11 +27,11 @@ const TriggerSelection = () => {
   return (
     <div data-testid="TriggerSelection">
       {triggers.map(trigger => (
-        <Sticker
-          key={trigger.name}
-          uri={trigger.stickerURI}
-          label={trigger.name}
-        />
+        <div key={trigger.name}>
+          <Sticker uri={trigger.stickerURI} label={trigger.name} />
+          <h3>{trigger.name}</h3>
+          <p>{trigger.shortDescription}</p>
+        </div>
       ))}
     </div>
   );
