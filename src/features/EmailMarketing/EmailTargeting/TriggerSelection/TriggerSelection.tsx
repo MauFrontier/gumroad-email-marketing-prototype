@@ -5,22 +5,22 @@ const triggers = [
   {
     stickerURI: './src/assets/images/stickers/sticker_thumbs-up.svg',
     name: 'Purchase',
-    shortDescription: 'Purchase',
+    shortDescription: 'A customer purchases your product',
   },
   {
     stickerURI: './src/assets/images/stickers/sticker_click.svg',
-    name: 'Cancellation',
-    shortDescription: 'Cancellation',
+    name: 'New Subscriber',
+    shortDescription: 'A user subscribes to your email list',
   },
   {
     stickerURI: './src/assets/images/stickers/sticker_peace.svg',
-    name: 'Refund',
-    shortDescription: 'Refund',
+    name: 'Member cancels',
+    shortDescription: 'A membership product subscriber cancels',
   },
   {
     stickerURI: './src/assets/images/stickers/sticker_talking-mouth.svg',
-    name: 'Refund',
-    shortDescription: 'Refund',
+    name: 'New affiliate',
+    shortDescription: 'A user becomes an affiliate of your products',
   },
 ];
 
