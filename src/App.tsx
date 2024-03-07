@@ -1,10 +1,10 @@
 import './App.css';
-import EmailTargeting from './features/EmailMarketing/EmailTargeting/EmailTargeting';
+import EmailCampaign from './features/EmailMarketing/EmailCampaign/EmailCampaign';
 
 function App() {
   return (
     <div data-testid="App">
-      <EmailTargeting />
+      <EmailCampaign />
     </div>
   );
 }

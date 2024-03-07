@@ -1,9 +1,9 @@
 import TextInput from '../../shared/ui/TextInput/TextInput';
 import TriggerSelection from './TriggerSelection/TriggerSelection';
 
-const EmailTargeting = () => {
+const EmailCampaign = () => {
   return (
-    <div data-testid="EmailTargeting">
+    <div data-testid="EmailCampaign">
       <label htmlFor="name">Name:</label>
       <div>
         <TextInput id="name" />
@@ -13,4 +13,4 @@ const EmailTargeting = () => {
   );
 };
 
-export default EmailTargeting;
+export default EmailCampaign;
