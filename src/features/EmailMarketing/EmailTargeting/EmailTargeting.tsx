@@ -1,4 +1,5 @@
 import TextInput from '../../shared/ui/TextInput/TextInput';
+import TriggerSelection from './TriggerSelection/TriggerSelection';
 
 const EmailTargeting = () => {
   return (
@@ -7,6 +8,7 @@ const EmailTargeting = () => {
       <div>
         <TextInput id="name" />
       </div>
+      <TriggerSelection />
     </div>
   );
 };
