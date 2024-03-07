@@ -1,5 +1,5 @@
 import TextInput from '../../shared/ui/TextInput/TextInput';
-import TriggerSelection from './TriggerSelection/TriggerSelection';
+import TriggerSelection from '../shared/TriggerSelection/TriggerSelection';
 
 const EmailCampaign = () => {
   return (
