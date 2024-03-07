@@ -1,13 +1,10 @@
 import './App.css';
-import TextInput from './features/shared/ui/TextInput';
+import EmailTargeting from './features/EmailMarketing/EmailTargeting/EmailTargeting';
 
 function App() {
   return (
     <div data-testid="App">
-      <label htmlFor="name">Name:</label>
-      <div>
-        <TextInput id="name" />
-      </div>
+      <EmailTargeting />
     </div>
   );
 }
