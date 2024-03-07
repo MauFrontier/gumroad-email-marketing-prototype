@@ -26,10 +26,13 @@ const triggers = [
 const TriggerSelection = () => {
   return (
     <div data-testid="TriggerSelection">
-      <Sticker
-        uri="./src/assets/images/stickers/sticker_thumbs-up.svg"
-        label="Thumbs Up"
-      />
+      {triggers.map(trigger => (
+        <Sticker
+          key={trigger.name}
+          uri={trigger.stickerURI}
+          label={trigger.name}
+        />
+      ))}
     </div>
   );
 };
