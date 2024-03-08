@@ -8,6 +8,6 @@ export default {
   },
   testMatch: ['<rootDir>/src/**/?(*.)+(spec|test).+(ts|tsx|js)'],
   moduleNameMapper: {
-    '\\.(css|svg|png)$': '<rootDir>/src/mocks.tsx',
+    '\\.(css|scss|svg|png)$': '<rootDir>/src/mocks.tsx',
   },
 };
