@@ -1,9 +1,9 @@
-import './App.css';
+import './App.scss';
 import EmailCampaign from './features/EmailMarketing/EmailCampaign/EmailCampaign';
 
 function App() {
   return (
-    <div data-testid="App">
+    <div data-testid="App" className="app">
       <EmailCampaign />
     </div>
   );
