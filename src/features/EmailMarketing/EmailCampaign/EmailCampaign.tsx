@@ -6,7 +6,7 @@ const EmailCampaign = () => {
     <div data-testid="EmailCampaign">
       <label className="mb-2">
         Name
-        <TextInput id="name" />
+        <TextInput placeholder="Name of email campaign" />
       </label>
       <TriggerSelection />
     </div>
