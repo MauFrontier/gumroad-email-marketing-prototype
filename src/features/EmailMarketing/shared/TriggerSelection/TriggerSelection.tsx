@@ -43,6 +43,10 @@ const TriggerSelection = () => {
           </Button>
         ))}
       </div>
+      <label className="mt-4 row">
+        <input type="checkbox" />
+        Also send to past customers
+      </label>
     </div>
   );
 };
