@@ -1,9 +1,9 @@
 import {render, screen} from '@testing-library/react';
-import EmailCampaign from './EmailCampaign';
+import EmailCampaignBuilder from './EmailCampaignBuilder';
 
 describe('EmailCampaign additional tests', () => {
   it('renders component', () => {
-    render(<EmailCampaign />);
+    render(<EmailCampaignBuilder />);
     expect(screen.getByTestId('EmailCampaign')).toBeInTheDocument();
   });
 });

@@ -1,7 +1,7 @@
 import TextInput from '../../shared/ui/TextInput/TextInput';
 import TriggerSelection from '../shared/TriggerSelection/TriggerSelection';
 
-const EmailCampaign = () => {
+const EmailCampaignBuilder = () => {
   return (
     <div data-testid="EmailCampaign">
       <label className="mb-2">
@@ -13,4 +13,4 @@ const EmailCampaign = () => {
   );
 };
 
-export default EmailCampaign;
+export default EmailCampaignBuilder;

@@ -1,10 +1,10 @@
 import './App.scss';
-import EmailCampaign from './features/EmailMarketing/EmailCampaign/EmailCampaign';
+import EmailCampaignBuilder from './features/EmailMarketing/EmailCampaignBuilder/EmailCampaignBuilder';
 
 function App() {
   return (
     <div data-testid="App" className="app">
-      <EmailCampaign />
+      <EmailCampaignBuilder />
     </div>
   );
 }
