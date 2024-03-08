@@ -28,7 +28,7 @@ const triggers = [
 
 const TriggerSelection = () => {
   return (
-    <div data-testid="TriggerSelection" className="trigger-selection">
+    <div data-testid="TriggerSelection" className="trigger-selection my-4">
       <p className="mb-2">Trigger</p>
       <div className="trigger-selection-buttons">
         {triggers.map(trigger => (
