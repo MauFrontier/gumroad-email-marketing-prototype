@@ -16,6 +16,9 @@ button {
   background: $White;
   transition: $transition-regular;
 
+  display: flex;
+  align-items: center;
+
   &:hover {
     box-shadow: $shadow-regular;
     translate: -#{$spacer-2} -#{$spacer-2};
@@ -24,6 +27,11 @@ button {
 
   &.selected {
     box-shadow: $shadow-regular;
+  }
+
+  img {
+    width: $dimension-5;
+    height: $dimension-5;
   }
 }
 
