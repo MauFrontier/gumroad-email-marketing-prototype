@@ -1,4 +1,5 @@
 import TextInput from '../../shared/ui/TextInput/TextInput';
+import TargetingBuilderHeader from '../shared/TargetingBuilderHeader/TargetingBuilderHeader';
 import TriggerSelection from '../shared/TriggerSelection/TriggerSelection';
 
 const EmailCampaignBuilder = () => {
@@ -9,6 +10,7 @@ const EmailCampaignBuilder = () => {
         <TextInput placeholder="Name of email campaign" />
       </label>
       <TriggerSelection />
+      <TargetingBuilderHeader />
     </div>
   );
 };
