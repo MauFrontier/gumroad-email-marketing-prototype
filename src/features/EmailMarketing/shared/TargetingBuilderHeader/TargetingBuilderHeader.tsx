@@ -14,7 +14,7 @@ const TargetingBuilderHeader = () => {
       <Button
         onClick={openGenerateWithAIPanel}
         label="Generate with AI"
-        className="p-4">
+        className="p-3">
         Generate with AI
       </Button>
     </div>
