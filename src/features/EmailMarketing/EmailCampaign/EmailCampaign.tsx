@@ -4,10 +4,10 @@ import TriggerSelection from '../shared/TriggerSelection/TriggerSelection';
 const EmailCampaign = () => {
   return (
     <div data-testid="EmailCampaign">
-      <label htmlFor="name">Name</label>
-      <div>
+      <label className="mb-2">
+        Name
         <TextInput id="name" />
-      </div>
+      </label>
       <TriggerSelection />
     </div>
   );
