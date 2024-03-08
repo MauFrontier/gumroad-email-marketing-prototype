@@ -1,4 +1,5 @@
 import Button from '../../../shared/ui/Button/Button';
+import Icon from '../../../shared/ui/Icon/Icon';
 import './TargetingBuilderHeader.scss';
 
 const openGenerateWithAIPanel = () => {};
@@ -15,6 +16,7 @@ const TargetingBuilderHeader = () => {
         onClick={openGenerateWithAIPanel}
         label="Generate with AI"
         className="p-3">
+        <Icon uri="./src/assets/images/icons/icon_ai.svg" />
         Generate with AI
       </Button>
     </div>
