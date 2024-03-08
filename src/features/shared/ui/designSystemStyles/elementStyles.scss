@@ -79,3 +79,17 @@ input[type='checkbox']:checked::after {
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 }
+
+select {
+  width: 100%;
+  box-sizing: border-box;
+  border: $border-1;
+  border-radius: $border-radius-2;
+  padding: $spacer-4;
+  background: $White url('./src/assets/images/icons/icon_chevron-down.svg')
+    no-repeat right $spacer-4 center; /* Example path to your custom icon */
+  background-size: $dimension-4;
+  -webkit-appearance: none; /* Removes default arrow on WebKit browsers */
+  -moz-appearance: none; /* Removes default arrow on Firefox */
+  appearance: none; /* Standard way to remove default arrow, but not supported everywhere */
+}

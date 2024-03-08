@@ -13,6 +13,16 @@ const EmailCampaignBuilder = () => {
       <TriggerSelection />
       <TargetingBuilderHeader />
       <TargetingBuilder />
+      <label className="mt-4 mb-2">
+        Channel
+        <select>
+          <option>Send email and post to my public profile (?)</option>
+        </select>
+      </label>
+      <label className="mt-4 row">
+        <input type="checkbox" defaultChecked={true} />
+        Allow comments in your posts
+      </label>
     </div>
   );
 };
