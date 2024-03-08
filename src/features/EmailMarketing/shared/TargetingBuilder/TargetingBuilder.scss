@@ -1,4 +1,16 @@
 @import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
 
 div.targeting-builder {
+  button[aria-label='Add Filter Group'] {
+    color: $White;
+    background-color: $Black;
+
+    .plus-circle-icon {
+      fill: $White;
+    }
+
+    &:hover {
+      box-shadow: $spacer-2 $spacer-2 0px 0px $MediumGray;
+    }
+  }
 }
