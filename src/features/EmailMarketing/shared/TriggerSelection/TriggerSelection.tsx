@@ -1,6 +1,8 @@
 import Button from '../../../shared/ui/Button/Button';
 import Sticker from '../../../shared/ui/Sticker/Sticker';
 
+import './TriggerSelection.scss';
+
 const triggers = [
   {
     stickerURI: './src/assets/images/stickers/sticker_thumbs-up.svg',
@@ -26,14 +28,21 @@ const triggers = [
 
 const TriggerSelection = () => {
   return (
-    <div data-testid="TriggerSelection">
-      {triggers.map(trigger => (
-        <Button onClick={() => {}} key={trigger.name}>
-          <Sticker uri={trigger.stickerURI} label={trigger.name} />
-          <h3>{trigger.name}</h3>
-          <p>{trigger.shortDescription}</p>
-        </Button>
-      ))}
+    <div data-testid="TriggerSelection" className="trigger-selection">
+      <p className="mb-2">Trigger</p>
+      <div className="trigger-selection-buttons">
+        {triggers.map(trigger => (
+          <Button onClick={() => {}} key={trigger.name} className="px-3 py-4">
+            <Sticker
+              className="mb-4"
+              uri={trigger.stickerURI}
+              label={trigger.name}
+            />
+            <h3 className="m-2 mt-0">{trigger.name}</h3>
+            <p className="m-2 mt-0">{trigger.shortDescription}</p>
+          </Button>
+        ))}
+      </div>
     </div>
   );
 };

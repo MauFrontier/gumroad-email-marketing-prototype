@@ -1,0 +1,28 @@
+@import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
+
+div.trigger-selection {
+  padding: 1rem 0;
+
+  .trigger-selection-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  button {
+    display: flex;
+    flex: 0 0 calc(25% - 0.75rem);
+    max-width: calc(25% - 0.75rem);
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
