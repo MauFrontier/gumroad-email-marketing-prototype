@@ -49,4 +49,18 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toBeDisabled();
     expect(handleClick).not.toHaveBeenCalled();
   });
+
+  it('can be pressed', async () => {
+    const handleClick = jest.fn();
+    render(
+      <Button pressed label="My new button" onClick={handleClick}>
+        Click me
+      </Button>,
+    );
+
+    const button = screen.getByRole('button');
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute('aria-pressed', 'true');
+  });
 });

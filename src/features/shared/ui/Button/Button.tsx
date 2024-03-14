@@ -2,6 +2,7 @@ type Props = {
   label?: string;
   disabled?: boolean;
   onClick: () => void;
+  pressed?: boolean;
   className?: string;
   children?: React.ReactNode;
 };
@@ -10,6 +11,7 @@ const Button = ({
   label,
   onClick,
   disabled = false,
+  pressed = false,
   className,
   children,
 }: Props) => {
@@ -18,6 +20,7 @@ const Button = ({
       data-testid="Button"
       onClick={onClick}
       aria-label={label}
+      aria-pressed={pressed}
       type="button"
       disabled={disabled}
       className={className}>
