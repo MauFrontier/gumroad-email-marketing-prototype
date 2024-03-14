@@ -14,13 +14,11 @@ export const EmailMarketingStateContext = createContext<{
   dispatch: () => null,
 });
 
-export const EmailMarketingProvider: React.FC<{children: React.ReactNode}> = ({
-  children,
-}) => {
-  const [state, dispatch] = useReducer(
-    emailMarketingReducer,
-    emailMarketingInitialState,
-  );
+export const EmailMarketingProvider: React.FC<{
+  children: React.ReactNode;
+  initialState?: EmailMarketingState;
+}> = ({children, initialState = emailMarketingInitialState}) => {
+  const [state, dispatch] = useReducer(emailMarketingReducer, initialState);
 
   return (
     <EmailMarketingStateContext.Provider value={{state, dispatch}}>
