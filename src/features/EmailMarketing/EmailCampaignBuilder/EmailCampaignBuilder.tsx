@@ -5,15 +5,15 @@ import TriggerSelection from '../shared/TriggerSelection/TriggerSelection';
 
 const EmailCampaignBuilder = () => {
   return (
-    <div data-testid="EmailCampaign">
-      <label className="mb-2">
+    <form aria-label="Email campaign builder">
+      <label>
         Name
         <TextInput placeholder="Name of email campaign" />
       </label>
       <TriggerSelection />
       <TargetingBuilderHeader />
       <TargetingBuilder />
-      <label className="mt-4 mb-2">
+      <label className="mt-4">
         Channel
         <select>
           <option>Send email and post to my public profile (?)</option>
@@ -23,7 +23,7 @@ const EmailCampaignBuilder = () => {
         <input type="checkbox" defaultChecked={true} />
         Allow comments in your posts
       </label>
-    </div>
+    </form>
   );
 };
 
