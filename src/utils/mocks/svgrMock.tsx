@@ -1,2 +1,3 @@
-export default 'div';
-export const ReactComponent = 'svg'; // Mock SVG as a simple "svg" string or a dummy React component
+// src/utils/mocks/svgrMock.tsx
+const SvgrMock = () => null;
+export default SvgrMock;

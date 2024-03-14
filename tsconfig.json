@@ -23,6 +23,5 @@
     "types": ["jest", "node"],
     "esModuleInterop": true
   },
-  "include": ["src"],
-  "references": [{"path": "./tsconfig.node.json"}]
+  "include": ["src"]
 }
