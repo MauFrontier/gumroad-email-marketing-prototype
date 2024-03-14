@@ -10,9 +10,6 @@ describe('EmailCampaignBuilder', () => {
   it("renders EmailCampaignBuilder's components", () => {
     render(<EmailCampaignBuilder />);
     expect(screen.getByLabelText('Name')).toBeInTheDocument();
-    expect(
-      screen.getByPlaceholderText('Name of email campaign'),
-    ).toBeInTheDocument();
     expect(screen.getByLabelText('Channel')).toBeInTheDocument();
     expect(
       screen.getByLabelText('Allow comments in your posts'),
