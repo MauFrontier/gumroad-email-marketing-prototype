@@ -1,8 +1,22 @@
 @import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
 
-div.targeting-builder-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+header[aria-label='Targeting builder header'] {
+  margin-top: $spacer-4;
+  margin-bottom: $spacer-2;
+
+  > [role='toolbar'] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    h4 {
+      font-weight: normal;
+      margin: 0;
+    }
+
+    button {
+      padding: $spacer-3;
+    }
+  }
 }

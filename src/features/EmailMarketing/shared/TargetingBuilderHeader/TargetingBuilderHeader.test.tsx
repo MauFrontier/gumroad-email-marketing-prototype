@@ -4,7 +4,9 @@ import TargetingBuilderHeader from './TargetingBuilderHeader';
 describe('TargetingBuilderHeader', () => {
   it('renders component', () => {
     render(<TargetingBuilderHeader />);
-    expect(screen.getByTestId('TargetingBuilderHeader')).toBeInTheDocument();
+    expect(
+      screen.getByLabelText('Targeting builder header'),
+    ).toBeInTheDocument();
   });
 
   it('renders recipients count', () => {

@@ -2,24 +2,27 @@ import Button from '../../../shared/ui/Button/Button';
 import Icon from '../../../shared/ui/Icon/Icon';
 import './TargetingBuilderHeader.scss';
 
-const openGenerateWithAIPanel = () => {};
-
 const TargetingBuilderHeader = () => {
+  const openGenerateWithAIPanel = () => {};
+
   return (
-    <div
-      data-testid="TargetingBuilderHeader"
-      className="targeting-builder-header mt-4 mb-2">
-      <p className="m-0">
-        Recipients: <strong>102</strong>
-      </p>
-      <Button
-        onClick={openGenerateWithAIPanel}
-        label="Generate with AI"
-        className="p-3">
-        <Icon uri="./src/assets/images/icons/icon_ai.svg" />
-        Generate with AI
-      </Button>
-    </div>
+    <header aria-label="Targeting builder header">
+      <div role="toolbar" aria-label="Recipient and AI generation tools">
+        <h4>
+          Recipients: <strong>102</strong>
+        </h4>
+
+        <div className="button-and-floating-dialog-container">
+          <Button
+            onClick={openGenerateWithAIPanel}
+            label="Generate with AI"
+            aria-controls="generateWithAIForm">
+            <Icon uri="./src/assets/images/icons/icon_ai.svg" />
+            Generate with AI
+          </Button>
+        </div>
+      </div>
+    </header>
   );
 };
 

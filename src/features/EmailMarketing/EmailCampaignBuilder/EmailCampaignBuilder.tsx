@@ -1,6 +1,5 @@
 import TextInput from '../../shared/ui/TextInput/TextInput';
 import TargetingBuilder from '../shared/TargetingBuilder/TargetingBuilder';
-import TargetingBuilderHeader from '../shared/TargetingBuilderHeader/TargetingBuilderHeader';
 import TriggerSelection from '../shared/TriggerSelection/TriggerSelection';
 
 const EmailCampaignBuilder = () => {
@@ -11,7 +10,6 @@ const EmailCampaignBuilder = () => {
         <TextInput placeholder="Name of email campaign" />
       </label>
       <TriggerSelection />
-      <TargetingBuilderHeader />
       <TargetingBuilder />
       <label className="mt-4">
         Channel
