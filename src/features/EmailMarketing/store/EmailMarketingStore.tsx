@@ -3,7 +3,7 @@ import {
   EmailMarketingAction,
   EmailMarketingState,
 } from './emailMarketingStoreTypes';
-import {emailMarketingReducer} from './emailMarketingSlice';
+import {emailMarketingReducer} from './emailMarketingReducer';
 import {emailMarketingInitialState} from './emailMarketingStatePresets';
 
 export const EmailMarketingStateContext = createContext<{

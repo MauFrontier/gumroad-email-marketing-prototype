@@ -5,7 +5,7 @@ import {
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
 } from '../shared/emailMarketingTypes';
-import {emailMarketingReducer} from './emailMarketingSliceReducer';
+import {emailMarketingReducer} from './emailMarketingReducer';
 import {
   initialEmailMarketingState as initialState,
   newDateFilter,
