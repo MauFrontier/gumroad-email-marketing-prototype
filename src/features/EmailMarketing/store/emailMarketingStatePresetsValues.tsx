@@ -9,12 +9,14 @@ import {
   TargetingFilterSubjectQualifier,
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
+  TriggerType,
 } from '../shared/emailMarketingTypes';
 import {EmailMarketingState} from './emailMarketingStoreTypes';
 import mockData_targeting from './defaultTargeting.json';
 
 export const emailMarketingInitialState: EmailMarketingState = {
   targeting: mockData_targeting as Targeting,
+  selectedTrigger: TriggerType.Purchase,
   showGenerateWithAIPanel: false,
   isAILoading: false,
   showAIAccuracyWarning: false,
@@ -75,7 +77,7 @@ export const initialTargeting: Targeting = {
   ],
 };
 
-export const initialEmailMarketingState: EmailMarketingState = {
+export const modifiedEmailMarketingState: EmailMarketingState = {
   ...emailMarketingInitialState,
   targeting: initialTargeting,
 };
