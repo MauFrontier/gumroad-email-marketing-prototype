@@ -91,3 +91,10 @@ export type TargetingFilterGroup = {
 export type Targeting = {
   filterGroups: TargetingFilterGroup[];
 };
+
+export enum TriggerType {
+  Purchase = 'Purchase',
+  NewSubscriber = 'New Subscriber',
+  MemberCancels = 'Member cancels',
+  NewAffiliate = 'New affiliate',
+}

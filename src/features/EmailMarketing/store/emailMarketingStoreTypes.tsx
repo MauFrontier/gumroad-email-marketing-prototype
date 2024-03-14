@@ -7,15 +7,18 @@ import {
   TargetingFilterSubjectQualifier,
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
+  TriggerType,
 } from '../shared/emailMarketingTypes';
 
 export interface EmailMarketingState {
   targeting: Targeting;
+  selectedTrigger: TriggerType;
 }
 
 export enum EmailMarketingActionType {
   SetTargeting = 'SetTargeting',
   AddFilterGroup = 'AddFilterGroup',
+  SelectTrigger = 'SelectTrigger',
 }
 
 export type EmailMarketingAction =
@@ -24,3 +27,4 @@ export type EmailMarketingAction =
       type: EmailMarketingActionType.AddFilterGroup;
       payload: TargetingFilterGroup;
     }
+  | {type: EmailMarketingActionType.SelectTrigger; payload: TriggerType}

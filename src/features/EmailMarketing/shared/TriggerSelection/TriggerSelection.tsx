@@ -1,53 +1,49 @@
 import Button from '../../../shared/ui/Button/Button';
 import Sticker from '../../../shared/ui/Sticker/Sticker';
+import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
+import {useEmailMarketingState} from '../../store/useEmailMarketingState';
+import {TriggerType} from '../emailMarketingTypes';
+import {triggers} from '../triggers';
 
 import './TriggerSelection.scss';
 
-const triggers = [
-  {
-    stickerURI: './src/assets/images/stickers/sticker_thumbs-up.svg',
-    name: 'Purchase',
-    shortDescription: 'A customer purchases your product',
-  },
-  {
-    stickerURI: './src/assets/images/stickers/sticker_click.svg',
-    name: 'New Subscriber',
-    shortDescription: 'A user subscribes to your email list',
-  },
-  {
-    stickerURI: './src/assets/images/stickers/sticker_peace.svg',
-    name: 'Member cancels',
-    shortDescription: 'A membership product subscriber cancels',
-  },
-  {
-    stickerURI: './src/assets/images/stickers/sticker_talking-mouth.svg',
-    name: 'New affiliate',
-    shortDescription: 'A user becomes an affiliate of your products',
-  },
-];
-
 const TriggerSelection = () => {
+  const {state, dispatch} = useEmailMarketingState();
+  const {selectedTrigger} = state;
+
+  const selectTrigger = (trigger: TriggerType) => {
+    if (selectedTrigger === trigger) {
+      return;
+    }
+
+    dispatch({type: EmailMarketingActionType.SelectTrigger, payload: trigger});
+  };
+
   return (
-    <div data-testid="TriggerSelection" className="trigger-selection my-4">
-      <p className="mb-2">Trigger</p>
-      <div className="trigger-selection-buttons">
+    <section role="region" aria-label="Trigger selection">
+      <fieldset>
+        <legend>Trigger</legend>
         {triggers.map(trigger => (
-          <Button onClick={() => {}} key={trigger.name} className="px-3 py-4">
+          <Button
+            onClick={() => selectTrigger(trigger.type)}
+            key={trigger.type}
+            pressed={selectedTrigger === trigger.type}
+            label={trigger.type + ' trigger'}>
             <Sticker
-              className="mb-4"
               uri={trigger.stickerURI}
-              label={trigger.name}
+              label={trigger.type}
+              aria-hidden="true"
             />
-            <h3 className="m-2 mt-0">{trigger.name}</h3>
-            <p className="m-2 mt-0">{trigger.shortDescription}</p>
+            <h3>{trigger.type}</h3>
+            <p>{trigger.shortDescription}</p>
           </Button>
         ))}
-      </div>
-      <label className="mt-4 row">
+      </fieldset>
+      <label className="row">
         <input type="checkbox" />
         Also send to past customers
       </label>
-    </div>
+    </section>
   );
 };
 

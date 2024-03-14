@@ -24,6 +24,17 @@ export const emailMarketingReducer = (
         },
       };
       break;
+    case EmailMarketingActionType.SelectTrigger:
+      return {
+        ...state,
+        selectedTrigger: action.payload,
+      };
+    case EmailMarketingActionType.ToggleShowGenerateWithAIPanel:
+      return {
+        ...state,
+        showGenerateWithAIPanel: !state.showGenerateWithAIPanel,
+      };
+      break;
     default:
       return state;
       break;
