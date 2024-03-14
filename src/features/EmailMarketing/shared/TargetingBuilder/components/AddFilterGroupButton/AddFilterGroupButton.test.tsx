@@ -3,11 +3,20 @@ import AddFilterGroupButton from './AddFilterGroupButton';
 
 describe('AddFilterGroupButton', () => {
   it('renders component', () => {
-    const handleAddFilter = jest.fn();
+    const handleAddFilterGroup = jest.fn();
 
-    render(<AddFilterGroupButton onPress={handleAddFilter} />);
+    render(<AddFilterGroupButton onPress={handleAddFilterGroup} />);
     expect(
       screen.getByLabelText('Add filter group button'),
     ).toBeInTheDocument();
+  });
+
+  it('calls onPress callback', () => {
+    const handleAddFilterGroup = jest.fn();
+
+    render(<AddFilterGroupButton onPress={handleAddFilterGroup} />);
+    screen.getByLabelText('Add filter group button').click();
+
+    expect(handleAddFilterGroup).toHaveBeenCalled();
   });
 });
