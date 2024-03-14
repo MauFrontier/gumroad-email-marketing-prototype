@@ -15,6 +15,7 @@ export const emailMarketingReducer = (
     case EmailMarketingActionType.SetTargeting:
       return {...state, targeting: action.payload};
       break;
+
     default:
       return state;
       break;

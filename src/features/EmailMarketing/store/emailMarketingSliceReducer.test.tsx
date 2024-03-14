@@ -5,7 +5,7 @@ import {
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
 } from '../shared/emailMarketingTypes';
-import {emailMarketingReducer} from './emailMarketingSlice';
+import {emailMarketingReducer} from './emailMarketingSliceReducer';
 import {
   initialEmailMarketingState as initialState,
   newDateFilter,
@@ -29,5 +29,4 @@ describe('emailMarketingReducer', () => {
     const state = emailMarketingReducer(initialState, action);
     expect(state.targeting).toEqual(action.payload);
   });
-
 });
