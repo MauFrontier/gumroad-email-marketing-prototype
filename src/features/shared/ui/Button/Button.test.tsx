@@ -11,6 +11,16 @@ describe('Button', () => {
     expect(screen.getByLabelText('Click me')).toBeInTheDocument();
   });
 
+  it('renders children', () => {
+    render(
+      <Button onClick={jest.fn()} label="My new button">
+        Click me
+      </Button>,
+    );
+
+    expect(screen.getByText('Click me')).toBeInTheDocument();
+  });
+
   it('calls onClick when clicked', async () => {
     const handleClick = jest.fn();
     render(<Button label="Click me" onClick={handleClick} />);
