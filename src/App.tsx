@@ -3,9 +3,9 @@ import EmailCampaignBuilder from './features/EmailMarketing/EmailCampaignBuilder
 
 function App() {
   return (
-    <div data-testid="App" className="app">
-      <EmailCampaignBuilder />
-    </div>
+      <main data-testid="App">
+        <EmailCampaignBuilder />
+      </main>
   );
 }
 
