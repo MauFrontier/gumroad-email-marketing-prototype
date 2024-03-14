@@ -15,7 +15,12 @@ export interface EmailMarketingState {
 
 export enum EmailMarketingActionType {
   SetTargeting = 'SetTargeting',
+  AddFilterGroup = 'AddFilterGroup',
 }
 
 export type EmailMarketingAction =
   | {type: EmailMarketingActionType.SetTargeting; payload: Targeting}
+  | {
+      type: EmailMarketingActionType.AddFilterGroup;
+      payload: TargetingFilterGroup;
+    }

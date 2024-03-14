@@ -1,22 +1,40 @@
-import Button from '../../../shared/ui/Button/Button';
 import './TargetingBuilder.scss';
-import PlusCircleIcon from '@/assets/images/icons/icon_plus-circle-clear.svg?react';
 import TargetingFilterGroup from './components/TargetingFilterGroup/TargetingFilterGroup';
-
-const addFilterGroup = () => {};
+import {useEmailMarketingState} from '../../store/useEmailMarketingState';
+import {defaultFilterGroup} from '../emailMarketingDefaults';
+import {v4 as uuid} from 'uuid';
+import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
+import TargetingBuilderHeader from '../TargetingBuilderHeader/TargetingBuilderHeader';
+import AddFilterGroupButton from './components/AddFilterGroupButton/AddFilterGroupButton';
 
 const TargetingBuilder = () => {
+  const {state, dispatch} = useEmailMarketingState();
+  const {targeting} = state;
+
+  const handleAddFilterGroup = () => {
+    const newFilterGroup = defaultFilterGroup;
+
+    newFilterGroup.id = uuid();
+
+    dispatch({
+      type: EmailMarketingActionType.AddFilterGroup,
+      payload: newFilterGroup,
+    });
+  };
+
   return (
-    <div data-testid="TargetingBuilder" className="targeting-builder mt-4 mb-2">
-      <TargetingFilterGroup />
-      <Button
-        onClick={addFilterGroup}
-        label="Add Filter Group"
-        className="w-full p-3">
-        <PlusCircleIcon className="plus-circle-icon" />
-        Add Filter Group
-      </Button>
-    </div>
+    <section role="region" aria-label="Targeting builder">
+      <TargetingBuilderHeader />
+      {targeting.filterGroups.map((filterGroup, index) => (
+        <div
+          key={filterGroup.id}
+          role="group"
+          aria-label={`Filter Group ${index + 1}`}>
+          <TargetingFilterGroup targetingFilterGroup={filterGroup} />
+        </div>
+      ))}
+      <AddFilterGroupButton onPress={handleAddFilterGroup} />
+    </section>
   );
 };
 

@@ -15,4 +15,9 @@ describe('EmailCampaignBuilder', () => {
       screen.getByLabelText('Allow comments in your posts'),
     ).toBeInTheDocument();
   });
+
+  it('renders targeting builder', () => {
+    render(<EmailCampaignBuilder />);
+    expect(screen.getByLabelText('Targeting builder')).toBeInTheDocument();
+  });
 });

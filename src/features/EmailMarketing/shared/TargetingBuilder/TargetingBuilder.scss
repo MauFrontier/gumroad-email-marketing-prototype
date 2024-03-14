@@ -1,9 +1,14 @@
 @import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
 
-div.targeting-builder {
-  button[aria-label='Add Filter Group'] {
+section[aria-label='Targeting builder'] {
+  margin-top: $spacer-4;
+  margin-bottom: $spacer-2;
+
+  button[aria-label='Add filter group button'] {
     color: $White;
     background-color: $Black;
+    width: 100%;
+    padding: $spacer-3;
 
     .plus-circle-icon {
       fill: $White;
