@@ -8,6 +8,7 @@ label {
   display: flex;
   flex-direction: column;
   gap: $dimension-2;
+  margin-bottom: $spacer-2;
 }
 
 button {
@@ -93,3 +94,10 @@ select {
   -moz-appearance: none; /* Removes default arrow on Firefox */
   appearance: none; /* Standard way to remove default arrow, but not supported everywhere */
 }
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
