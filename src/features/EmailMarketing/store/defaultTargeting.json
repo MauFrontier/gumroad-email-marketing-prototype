@@ -1,0 +1,59 @@
+{
+  "filterGroups": [
+    {
+      "id": "b1a3250e-4277-470f-b2ff-352a759a05a0",
+      "filters": [
+        {
+          "id": "fb478e76-390f-44f4-abdc-891139e79d8c",
+          "subject": "Date",
+          "subjectQualifier": "Purchased",
+          "verb": "is after",
+          "verbQualifier": null,
+          "value": "2019-01-01"
+        },
+        {
+          "id": "dba702ee-8171-43ec-a012-4ff10e2c9d54",
+          "operand": "and",
+          "subject": "Product",
+          "subjectQualifier": null,
+          "verb": "has bought",
+          "verbQualifier": "all",
+          "value": ["brushes", "tutorials"]
+        },
+        {
+          "id": "5605d421-b669-495f-a560-a1ec497eac76",
+          "operand": "and",
+          "subject": "Product",
+          "subjectQualifier": null,
+          "verb": "has not yet bought",
+          "verbQualifier": "any",
+          "value": ["Christmas bundle", "New tutorial"]
+        }
+      ]
+    },
+    {
+      "operand": "and",
+      "id": "f48ba624-3541-4e9c-b2c3-f7ae7c53a046",
+      "filters": [
+        {
+          "id": "b847bfe9-ee12-48e5-b1a2-56555264d0ff",
+
+          "subject": "Payment",
+          "subjectQualifier": null,
+          "verb": "is more than",
+          "verbQualifier": null,
+          "value": "99"
+        },
+        {
+          "id": "9bb98958-ce9c-4f7a-ad03-9d5a38f5fa34",
+          "operand": "or",
+          "subject": "Location",
+          "subjectQualifier": null,
+          "verb": "is",
+          "verbQualifier": null,
+          "value": "CR"
+        }
+      ]
+    }
+  ]
+}
