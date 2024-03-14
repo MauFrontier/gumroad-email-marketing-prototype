@@ -33,4 +33,20 @@ describe('Button', () => {
 
     expect(handleClick).toHaveBeenCalled();
   });
+
+  it('can be disabled', async () => {
+    const handleClick = jest.fn();
+    render(
+      <Button disabled label="My new button" onClick={handleClick}>
+        Click me
+      </Button>,
+    );
+
+    const button = screen.getByRole('button');
+
+    await userEvent.click(button);
+
+    expect(screen.getByRole('button')).toBeDisabled();
+    expect(handleClick).not.toHaveBeenCalled();
+  });
 });
