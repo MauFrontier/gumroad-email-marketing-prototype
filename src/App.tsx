@@ -1,12 +1,12 @@
 import './App.scss';
-import EmailCampaignBuilder from './features/EmailMarketing/EmailCampaignBuilder/EmailCampaignBuilder';
+import WorkflowBuilder from './features/EmailMarketing/WorkflowBuilder/WorkflowBuilder';
 import {EmailMarketingProvider} from './features/EmailMarketing/store/emailMarketingStore';
 
 function App() {
   return (
     <EmailMarketingProvider>
       <main data-testid="App">
-        <EmailCampaignBuilder />
+        <WorkflowBuilder />
       </main>
     </EmailMarketingProvider>
   );

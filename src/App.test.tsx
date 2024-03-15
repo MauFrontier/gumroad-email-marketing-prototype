@@ -7,10 +7,8 @@ it('renders App component', () => {
   expect(appComponent).toBeInTheDocument();
 });
 
-it('renders EmailCampaignBuilder component', () => {
+it('renders WorkflowBuilder component', () => {
   render(<App />);
-  const emailCampaignBuilderComponent = screen.getByLabelText(
-    'Email campaign builder',
-  );
-  expect(emailCampaignBuilderComponent).toBeInTheDocument();
+  const workflowBuilderComponent = screen.getByLabelText('Workflow builder');
+  expect(workflowBuilderComponent).toBeInTheDocument();
 });
