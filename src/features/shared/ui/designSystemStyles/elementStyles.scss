@@ -16,6 +16,7 @@ button {
   border-radius: $border-radius-2;
   background: $White;
   transition: $transition-regular;
+  color: $Black;
 
   display: flex;
   align-items: center;
@@ -28,6 +29,7 @@ button {
   }
 
   &.selected {
+    background-color: $White;
     box-shadow: $shadow-regular;
   }
 
@@ -87,6 +89,7 @@ select {
   border: $border-1;
   border-radius: $border-radius-2;
   padding: $spacer-4;
+  color: $Black;
   background: $White url('./src/assets/images/icons/icon_chevron-down.svg')
     no-repeat right $spacer-4 center; /* Example path to your custom icon */
   background-size: $dimension-4;
