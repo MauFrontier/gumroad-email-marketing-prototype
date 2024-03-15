@@ -33,6 +33,7 @@ section[aria-label='Trigger selection'] {
     text-align: left;
 
     &[aria-pressed='true'] {
+      background-color: $White;
       box-shadow: $shadow-regular;
       translate: -#{$spacer-2} -#{$spacer-2};
     }
