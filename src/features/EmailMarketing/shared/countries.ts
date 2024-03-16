@@ -247,10 +247,10 @@ export const countries: {[key: string]: string} = {
 export const getCountriesArray = () => {
   const countriesArray = [];
 
-  for (const key in countries) {
+  for (const id in countries) {
     countriesArray.push({
-      key: key,
-      name: countries[key],
+      key: id,
+      value: countries[id],
     });
   }
   return countriesArray;
