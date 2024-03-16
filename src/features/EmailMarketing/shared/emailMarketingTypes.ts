@@ -33,7 +33,7 @@ export enum Operand {
   Initial = 'Initial',
 }
 
-export type TargetingFilterValueType = string | number | string[] | boolean;
+export type TargetingFilterValueType = string | number | string[];
 
 export type DateFilter = {
   id: string;
