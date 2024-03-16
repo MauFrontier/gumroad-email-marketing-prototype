@@ -1,0 +1,21 @@
+@import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
+
+[aria-label='Filter operand'] {
+  height: $spacer-9;
+
+  select {
+    width: $dimension-12;
+  }
+
+  div {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  p {
+    margin: 0;
+    width: $dimension-12;
+    text-align: right;
+  }
+}
