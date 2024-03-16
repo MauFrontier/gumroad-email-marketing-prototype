@@ -1,6 +1,7 @@
 @import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
 
 [aria-label='Add filter group button'] {
+  fill: $White;
   height: $dimension-9;
   padding: 0;
 }
