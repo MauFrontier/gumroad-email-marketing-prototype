@@ -157,8 +157,14 @@ export const updateFilterValue = (
 ): TargetingFilter => {
   switch (filter.subject) {
     case TargetingFilterSubject.Date:
-      if (typeof newValue === 'string') {
-        return {...filter, value: newValue};
+      if (filter.verb === TargetingFilterVerb.IsInTheLast) {
+        if (typeof newValue === 'number') {
+          return {...filter, value: newValue};
+        }
+      } else if (typeof newValue === 'string') {
+        if (typeof newValue === 'string') {
+          return {...filter, value: newValue};
+        }
       }
       break;
     case TargetingFilterSubject.Product:
