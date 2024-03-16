@@ -12,7 +12,7 @@ const TargetingBuilder = () => {
   const {targeting} = state;
 
   const handleAddFilterGroup = () => {
-    const newFilterGroup = defaultFilterGroup;
+    const newFilterGroup = {...defaultFilterGroup};
 
     newFilterGroup.id = uuid();
 
