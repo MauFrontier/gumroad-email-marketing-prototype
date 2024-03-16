@@ -29,11 +29,7 @@ const TriggerSelection = () => {
             key={trigger.type}
             pressed={selectedTrigger === trigger.type}
             label={trigger.type + ' trigger'}>
-            <Sticker
-              uri={trigger.stickerURI}
-              label={trigger.type}
-              aria-hidden="true"
-            />
+            <Sticker uri={trigger.stickerURI} label={trigger.type} />
             <h3>{trigger.type}</h3>
             <p>{trigger.shortDescription}</p>
           </Button>
