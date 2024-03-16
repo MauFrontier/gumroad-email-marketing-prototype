@@ -1,5 +1,5 @@
-import Button from '../../../../../shared/ui/Button/Button';
-import Icon from '../../../../../shared/ui/Icon/Icon';
+import Button from '../../../../../../../shared/ui/Button/Button';
+import Icon from '../../../../../../../shared/ui/Icon/Icon';
 import './AddFilterButton.scss';
 
 interface Props {
