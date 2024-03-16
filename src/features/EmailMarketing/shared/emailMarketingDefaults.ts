@@ -9,6 +9,7 @@ import {
   TargetingFilterGroup,
   TargetingFilterSubject,
   TargetingFilterSubjectQualifier,
+  TargetingFilterValueType,
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
 } from './emailMarketingTypes';
@@ -72,4 +73,20 @@ export const getDefaultFilterForSubject = (
     default:
       return {...defaultFilter};
   }
+};
+
+type VerbDefaults = {
+  [K in TargetingFilterVerb]?: TargetingFilterValueType;
+};
+
+export const getDefaultValueForVerb = (
+  verb: TargetingFilterVerb,
+): TargetingFilterValueType => {
+  const defaults: VerbDefaults = {
+    [TargetingFilterVerb.IsInTheLast]: 30,
+    [TargetingFilterVerb.IsBefore]: new Date().toISOString(),
+    [TargetingFilterVerb.IsAfter]: new Date().toISOString(),
+  };
+
+  return defaults[verb] ?? '';
 };
