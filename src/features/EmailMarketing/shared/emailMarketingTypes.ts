@@ -44,7 +44,7 @@ export type DateFilter = {
     | TargetingFilterVerb.IsAfter
     | TargetingFilterVerb.IsBefore
     | TargetingFilterVerb.IsInTheLast;
-  value: string;
+  value: string | number;
 };
 
 export type ProductFilter = {
