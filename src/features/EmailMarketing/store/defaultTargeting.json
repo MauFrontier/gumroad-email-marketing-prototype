@@ -7,50 +7,50 @@
           "id": "fb478e76-390f-44f4-abdc-891139e79d8c",
           "subject": "Date",
           "subjectQualifier": "Purchased",
-          "verb": "is after",
-          "verbQualifier": null,
-          "value": "2019-01-01"
+          "verb": "Is after",
+          "value": "2020-01-01"
         },
         {
           "id": "dba702ee-8171-43ec-a012-4ff10e2c9d54",
-          "operand": "and",
+          "operand": "And",
           "subject": "Product",
-          "subjectQualifier": null,
-          "verb": "has bought",
-          "verbQualifier": "all",
-          "value": ["brushes", "tutorials"]
+          "verb": "Has bought",
+          "verbQualifier": "All",
+          "value": ["Tutorial: Painting 101", "Pro video course"]
         },
         {
           "id": "5605d421-b669-495f-a560-a1ec497eac76",
-          "operand": "and",
+          "operand": "And",
           "subject": "Product",
-          "subjectQualifier": null,
-          "verb": "has not yet bought",
-          "verbQualifier": "any",
-          "value": ["Christmas bundle", "New tutorial"]
+          "verb": "Has not yet bought",
+          "verbQualifier": "Any",
+          "value": ["Christmas bundle", "Tutorial 2024"]
         }
       ]
     },
     {
-      "operand": "and",
+      "operand": "Or",
       "id": "f48ba624-3541-4e9c-b2c3-f7ae7c53a046",
       "filters": [
         {
+          "id": "ef07788a-68de-49df-85cf-49d7e1698a32",
+          "subject": "Date",
+          "subjectQualifier": "Purchased",
+          "verb": "Is in the last",
+          "value": 3
+        },
+        {
           "id": "b847bfe9-ee12-48e5-b1a2-56555264d0ff",
-
+          "operand": "And",
           "subject": "Payment",
-          "subjectQualifier": null,
-          "verb": "is more than",
-          "verbQualifier": null,
+          "verb": "Is more than",
           "value": "99"
         },
         {
           "id": "9bb98958-ce9c-4f7a-ad03-9d5a38f5fa34",
-          "operand": "or",
+          "operand": "And",
           "subject": "Location",
-          "subjectQualifier": null,
-          "verb": "is",
-          "verbQualifier": null,
+          "verb": "Is",
           "value": "CR"
         }
       ]
