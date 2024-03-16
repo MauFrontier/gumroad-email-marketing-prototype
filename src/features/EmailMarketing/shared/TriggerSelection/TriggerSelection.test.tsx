@@ -3,6 +3,7 @@ import TriggerSelection from './TriggerSelection';
 import {emailMarketingInitialState} from '../../store/emailMarketingStatePresets';
 import {renderComponentWithState} from '../../store/emailMarketingStoreUtils';
 import {TriggerType} from '../emailMarketingTypes';
+import userEvent from '@testing-library/user-event';
 
 describe('TriggerSelection', () => {
   it('renders component', () => {
@@ -27,7 +28,7 @@ describe('TriggerSelection', () => {
     expect(newTriggerButton).toBeInTheDocument();
     expect(newTriggerButton).toHaveAttribute('aria-pressed', 'false');
 
-    await newTriggerButton.click();
+    await userEvent.click(newTriggerButton);
 
     expect(initialTriggerButton).toHaveAttribute('aria-pressed', 'false');
     expect(newTriggerButton).toHaveAttribute('aria-pressed', 'true');
