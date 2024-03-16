@@ -17,6 +17,12 @@ header[aria-label='Targeting builder header'] {
 
     button {
       padding: $spacer-3;
+
+      &[aria-pressed='true'] {
+        background-color: $White;
+        box-shadow: $shadow-regular;
+        transform: translate(-#{$spacer-2}, -#{$spacer-2});
+      }
     }
   }
 }
