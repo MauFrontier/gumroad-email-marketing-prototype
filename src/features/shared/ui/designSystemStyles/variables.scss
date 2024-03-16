@@ -26,6 +26,17 @@ $dimension-19: 16rem;
 $dimension-20: 18rem;
 $dimension-21: 20rem;
 
+$font-size-base: $dimension-4;
+$font-size-xxs: $font-size-base * 0.75;
+$font-size-xs: $font-size-base * 0.8;
+$font-size-sm: $font-size-base * 0.9;
+
+$font-size-md: $font-size-base * 1.1;
+$font-size-lg: $font-size-base * 1.25;
+$font-size-xl: $font-size-base * 1.5;
+$font-size-2xl: $font-size-base * 1.75;
+$font-size-3xl: $font-size-base * 2;
+
 $spacer-1: $dimension-1;
 $spacer-2: $dimension-2;
 $spacer-3: $dimension-3;
