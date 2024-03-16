@@ -1,4 +1,5 @@
 import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import AddFilterGroupButton from './AddFilterGroupButton';
 
 describe('AddFilterGroupButton', () => {
@@ -11,11 +12,11 @@ describe('AddFilterGroupButton', () => {
     ).toBeInTheDocument();
   });
 
-  it('calls onPress callback', () => {
+  it('calls onPress callback', async () => {
     const handleAddFilterGroup = jest.fn();
 
     render(<AddFilterGroupButton onPress={handleAddFilterGroup} />);
-    screen.getByLabelText('Add filter group button').click();
+    await userEvent.click(screen.getByLabelText('Add filter group button'));
 
     expect(handleAddFilterGroup).toHaveBeenCalled();
   });
