@@ -1,0 +1,36 @@
+@import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
+
+.currency-input-container {
+  display: flex;
+  align-items: center;
+  height: $dimension-9;
+  box-sizing: border-box;
+  border: $border-1;
+  border-radius: $border-radius-2;
+  padding: $spacer-4 0;
+  position: relative;
+
+  [aria-label='Currency amount'] {
+    border: none;
+    outline: none;
+    height: auto;
+    padding: $spacer-4 0 $spacer-4 $spacer-9;
+    flex-grow: 1;
+    background-color: transparent;
+  }
+
+  .currency-label {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    left: $spacer-2;
+    padding: $spacer-3;
+    border: $border-1;
+    border-radius: $dimension-20;
+    width: $dimension-5;
+    height: $dimension-5;
+    pointer-events: none;
+  }
+}
