@@ -1,6 +1,6 @@
 #root {
   margin: 0 auto;
-  font-size: 16px;
+  font-size: $font-size-base;
   color: $Black;
 }
 
@@ -24,7 +24,7 @@ button {
 
   &:hover {
     box-shadow: $shadow-regular;
-    translate: -#{$spacer-2} -#{$spacer-2};
+    transform: translate(-#{$spacer-2}, -#{$spacer-2});
     cursor: pointer;
   }
 
@@ -88,7 +88,7 @@ select {
   box-sizing: border-box;
   border: $border-1;
   border-radius: $border-radius-2;
-  padding: $spacer-4;
+  padding: $spacer-4 $spacer-7 $spacer-4 $spacer-4;
   color: $Black;
   background: $White url('./src/assets/images/icons/icon_chevron-down.svg')
     no-repeat right $spacer-4 center; /* Example path to your custom icon */
