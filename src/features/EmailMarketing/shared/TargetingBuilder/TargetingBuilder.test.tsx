@@ -1,7 +1,7 @@
 import {render, screen} from '@testing-library/react';
 import TargetingBuilder from './TargetingBuilder';
 import {renderComponentWithState} from '../../store/emailMarketingStoreUtils';
-import {emailMarketingInitialState} from '../../store/emailMarketingStatePresets';
+import {emailMarketingInitialState} from '../../store/emailMarketingInitialState';
 
 describe('TargetingBuilder', () => {
   it('renders component', () => {

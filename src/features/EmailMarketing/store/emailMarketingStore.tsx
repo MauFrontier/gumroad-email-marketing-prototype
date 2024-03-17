@@ -4,7 +4,7 @@ import {
   EmailMarketingState,
 } from './emailMarketingStoreTypes';
 import {emailMarketingReducer} from './emailMarketingReducer';
-import {emailMarketingInitialState} from './emailMarketingStatePresets';
+import {emailMarketingInitialState} from './emailMarketingInitialState';
 
 export const EmailMarketingStateContext = createContext<{
   state: EmailMarketingState;

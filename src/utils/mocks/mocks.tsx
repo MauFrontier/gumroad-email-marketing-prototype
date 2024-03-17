@@ -1,3 +1,5 @@
+import {emailMarketingInitialState} from '../../features/EmailMarketing/store/emailMarketingInitialState';
+
 jest.mock('uuid', () => ({
   v4: () => 'EXAMPLE_UUID',
 }));

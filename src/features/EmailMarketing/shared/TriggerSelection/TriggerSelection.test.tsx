@@ -1,6 +1,6 @@
 import {render, screen} from '@testing-library/react';
 import TriggerSelection from './TriggerSelection';
-import {emailMarketingInitialState} from '../../store/emailMarketingStatePresets';
+import {emailMarketingInitialState} from '../../store/emailMarketingInitialState';
 import {renderComponentWithState} from '../../store/emailMarketingStoreUtils';
 import {TriggerType} from '../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';

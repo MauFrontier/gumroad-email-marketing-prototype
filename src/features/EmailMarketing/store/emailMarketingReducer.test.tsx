@@ -8,11 +8,11 @@ import {
 } from '../shared/emailMarketingTypes';
 import {emailMarketingReducer} from './emailMarketingReducer';
 import {
-  modifiedEmailMarketingState as initialState,
-  newDateFilter,
-  newFilterGroup1,
-  newTargeting,
-} from './emailMarketingStatePresets';
+  modifiedEmailMarketingStateForTests as initialState,
+  newDateFilterForTests,
+  newFilterGroupForTests1,
+  newTargetingForTests,
+} from './emailMarketingMockStateForTests';
 import {
   EmailMarketingAction,
   EmailMarketingActionType,
@@ -20,11 +20,11 @@ import {
 
 describe('emailMarketingReducer', () => {
   it('handles SetTargeting action', () => {
-    expect(initialState.targeting).not.toEqual(newTargeting);
+    expect(initialState.targeting).not.toEqual(newTargetingForTests);
 
     const action: EmailMarketingAction = {
       type: EmailMarketingActionType.SetTargeting,
-      payload: newTargeting,
+      payload: newTargetingForTests,
     };
 
     const state = emailMarketingReducer(initialState, action);
@@ -33,16 +33,18 @@ describe('emailMarketingReducer', () => {
 
   it('handles AddFilterGroup action', () => {
     expect(initialState.targeting.filterGroups).not.toContainEqual(
-      newFilterGroup1,
+      newFilterGroupForTests1,
     );
 
     const action: EmailMarketingAction = {
       type: EmailMarketingActionType.AddFilterGroup,
-      payload: newFilterGroup1,
+      payload: newFilterGroupForTests1,
     };
 
     const state = emailMarketingReducer(initialState, action);
-    expect(state.targeting.filterGroups).toContainEqual(newFilterGroup1);
+    expect(state.targeting.filterGroups).toContainEqual(
+      newFilterGroupForTests1,
+    );
   });
 
   it('handles SelectTrigger action', () => {
