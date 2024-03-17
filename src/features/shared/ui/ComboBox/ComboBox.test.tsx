@@ -1,4 +1,4 @@
-import {render, screen, fireEvent} from '@testing-library/react';
+import {render, screen, fireEvent, act} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ComboBox from './ComboBox';
 
@@ -105,7 +105,9 @@ describe('ComboBox', () => {
     );
 
     const input = screen.getByLabelText('Tags input');
-    input.focus();
+    act(() => {
+      input.focus();
+    });
 
     fireEvent.keyDown(input, {key: 'ArrowDown'});
     fireEvent.keyDown(input, {key: 'Enter'});
