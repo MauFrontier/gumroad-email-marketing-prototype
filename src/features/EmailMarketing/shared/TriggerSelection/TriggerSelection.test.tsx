@@ -4,6 +4,8 @@ import {emailMarketingInitialState} from '../../store/emailMarketingStatePresets
 import {renderComponentWithState} from '../../store/emailMarketingStoreUtils';
 import {TriggerType} from '../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
+import {mockDispatch} from '../../../../utils/mocks/mocks';
+import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
 
 describe('TriggerSelection', () => {
   it('renders component', () => {
@@ -30,7 +32,9 @@ describe('TriggerSelection', () => {
 
     await userEvent.click(newTriggerButton);
 
-    expect(initialTriggerButton).toHaveAttribute('aria-pressed', 'false');
-    expect(newTriggerButton).toHaveAttribute('aria-pressed', 'true');
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SelectTrigger,
+      payload: newTrigger,
+    });
   });
 });
