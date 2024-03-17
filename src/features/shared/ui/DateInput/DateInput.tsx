@@ -1,5 +1,6 @@
 import React from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
+import {formatDateForDisplay} from '../../../EmailMarketing/shared/formatUtils';
 
 interface DatePickerProps {
   value?: string;
@@ -14,9 +15,7 @@ const DatePicker: React.FC<DatePickerProps> = ({value, onChange, label}) => {
     onChange(event.target.value);
   };
 
-  const safeValue = value
-    ? value.split('T')[0]
-    : new Date().toISOString().split('T')[0];
+  const safeValue = formatDateForDisplay(value || new Date().toISOString());
 
   return (
     <input
