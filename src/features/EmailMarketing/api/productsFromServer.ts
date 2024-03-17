@@ -1,0 +1,42 @@
+export default [
+  {
+    key: 'brush-pack-1',
+    value: 'Brush pack 1',
+  },
+  {
+    key: 'christmas-bundle',
+    value: 'Christmas bundle',
+  },
+  {
+    key: 'illustration-tutorial',
+    value: 'Illustration Tutorial',
+  },
+  {
+    key: 'pro-video-course',
+    value: 'Pro video course',
+  },
+  {
+    key: 'tutorial-painting-101',
+    value: 'Tutorial: Painting 101',
+  },
+  {
+    key: 'premiere-pro-templates',
+    value: 'Premiere Pro templates',
+  },
+  {
+    key: 'skateboarding-course',
+    value: 'Skateboarding course',
+  },
+  {
+    key: 'tutorial-2024',
+    value: 'Tutorial 2024',
+  },
+  {
+    key: 'brush-pack-2024',
+    value: 'Brush pack 2024',
+  },
+  {
+    key: 'lut-pack-2023',
+    value: 'LUT pack 2023',
+  },
+];
