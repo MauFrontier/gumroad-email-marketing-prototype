@@ -1,5 +1,4 @@
 import React from 'react';
-import 'react-datepicker/dist/react-datepicker.css';
 import {formatDateForDisplay} from '../../../EmailMarketing/shared/formatUtils';
 
 interface DatePickerProps {
