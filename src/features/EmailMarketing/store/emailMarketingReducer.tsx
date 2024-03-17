@@ -61,6 +61,28 @@ export const emailMarketingReducer = (
         },
       };
       break;
+    case EmailMarketingActionType.DeleteFilter:
+      return {
+        ...state,
+        targeting: {
+          ...state.targeting,
+          filterGroups: state.targeting.filterGroups.map(group => ({
+            ...group,
+            filters: group.filters.filter((filter, index) => {
+              const isTargetFilter = filter.id === action.payload;
+              if (isTargetFilter && group.filters.length >= 2 && index === 0) {
+                group.filters[index + 1] = {
+                  ...group.filters[index + 1],
+                  operand: Operand.Initial,
+                };
+              }
+
+              return !isTargetFilter;
+            }),
+          })),
+        },
+      };
+      break;
     case EmailMarketingActionType.SelectTrigger:
       return {
         ...state,

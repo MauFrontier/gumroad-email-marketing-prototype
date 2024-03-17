@@ -103,6 +103,24 @@ describe('emailMarketingReducer', () => {
     expect(updatedFilters).toContainEqual(newDateFilterForTests);
   });
 
+  it('handles DeleteFilter action', () => {
+    const filterToBeDeleted = initialState.targeting.filterGroups[0].filters[0];
+
+    expect(initialState.targeting.filterGroups[0].filters).toContainEqual(
+      filterToBeDeleted,
+    );
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.DeleteFilter,
+      payload: filterToBeDeleted.id,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    const updatedFilters = state.targeting.filterGroups[0].filters;
+    expect(updatedFilters).not.toContainEqual(filterToBeDeleted);
+  });
+
+
   it('handles SelectTrigger action', () => {
     const originalTrigger = initialState.selectedTrigger;
     const newTrigger = TriggerType.NewAffiliate;
