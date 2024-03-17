@@ -1,7 +1,7 @@
 @import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
 
-[aria-label='Filter operand'] {
-  height: $spacer-9;
+[aria-label='Operand'] {
+  height: $dimension-9;
 
   select {
     width: $dimension-12;
