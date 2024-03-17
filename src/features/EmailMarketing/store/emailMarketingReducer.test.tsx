@@ -47,6 +47,62 @@ describe('emailMarketingReducer', () => {
     );
   });
 
+  it('handles DeleteFilterGroup action', () => {
+    const filterGroupToBeDeleted = initialState.targeting.filterGroups[0];
+
+    expect(initialState.targeting.filterGroups).toContainEqual(
+      filterGroupToBeDeleted,
+    );
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.DeleteFilterGroup,
+      payload: filterGroupToBeDeleted.id,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    const updatedFilterGroups = state.targeting.filterGroups;
+    expect(updatedFilterGroups).not.toContainEqual(filterGroupToBeDeleted);
+  });
+
+  it('handles SetFilterGroupOperand action', () => {
+    const filterGroupToBeUpdated = initialState.targeting.filterGroups[0];
+    const newOperand = Operand.Or;
+
+    expect(filterGroupToBeUpdated.operand).not.toEqual(newOperand);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetFilterGroupOperand,
+      payload: {
+        filterGroupId: filterGroupToBeUpdated.id,
+        operand: newOperand,
+      },
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    const updatedFilterGroup = state.targeting.filterGroups.find(
+      filterGroup => filterGroup.id === filterGroupToBeUpdated.id,
+    );
+    expect(updatedFilterGroup?.operand).toEqual(newOperand);
+  });
+
+  it('handles AddFilter action', () => {
+    expect(initialState.targeting.filterGroups[0].filters).not.toContainEqual(
+      newDateFilterForTests,
+    );
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.AddFilter,
+      payload: {
+        filterGroupId: initialState.targeting.filterGroups[0].id,
+        filter: newDateFilterForTests,
+      },
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    const updatedFilters = state.targeting.filterGroups[0].filters;
+    expect(updatedFilters).toContainEqual(newDateFilterForTests);
+  });
+
   it('handles SelectTrigger action', () => {
     const originalTrigger = initialState.selectedTrigger;
     const newTrigger = TriggerType.NewAffiliate;

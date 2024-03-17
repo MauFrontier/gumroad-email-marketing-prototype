@@ -1,8 +1,25 @@
 @import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
 
-div.TargetingFilterGroup {
-  padding: $spacer-4;
-  background-color: $White;
-  border: $border-1;
-  border-radius: $border-radius-2;
+[aria-label='Filter group'] {
+  margin-top: $spacer-4;
+  margin-bottom: $spacer-4;
+
+  > [aria-label='Filter group filters'] {
+    padding: $spacer-4;
+    background-color: $White;
+    border: $border-1;
+    border-radius: $border-radius-2;
+    display: flex;
+    flex-direction: column;
+    gap: $spacer-4;
+  }
+
+  [role='toolbar'] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacer-4;
+    margin-top: $spacer-4;
+    margin-bottom: $spacer-4;
+  }
 }
