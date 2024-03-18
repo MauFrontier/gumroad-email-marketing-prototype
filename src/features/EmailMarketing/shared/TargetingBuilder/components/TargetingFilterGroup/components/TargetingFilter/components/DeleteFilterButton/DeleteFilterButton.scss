@@ -3,5 +3,5 @@
 [aria-label='Delete filter button'] {
   width: $dimension-9;
   height: $dimension-9;
-  padding: $spacer-4;
+  min-width: $dimension-9;
 }
