@@ -41,6 +41,8 @@ export type DateFilter = {
   subject: TargetingFilterSubject.Date;
   subjectQualifier: TargetingFilterSubjectQualifier;
   verb:
+    | TargetingFilterVerb.Is
+    | TargetingFilterVerb.IsNot
     | TargetingFilterVerb.IsAfter
     | TargetingFilterVerb.IsBefore
     | TargetingFilterVerb.IsInTheLast;

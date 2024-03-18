@@ -28,6 +28,8 @@ export const getVerbOptions = (
   switch (subject) {
     case TargetingFilterSubject.Date:
       return [
+        {key: TargetingFilterVerb.Is, value: TargetingFilterVerb.Is},
+        {key: TargetingFilterVerb.IsNot, value: TargetingFilterVerb.IsNot},
         {key: TargetingFilterVerb.IsAfter, value: TargetingFilterVerb.IsAfter},
         {
           key: TargetingFilterVerb.IsBefore,
