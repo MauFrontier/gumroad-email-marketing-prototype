@@ -13,7 +13,6 @@ export const SubmitAIPrompt = async (
   prompt: string,
 ): Promise<string | null> => {
   try {
-    console.log('submitting prompt:', prompt);
     const completion = await openai.chat.completions.create({
       messages: [
         {
@@ -28,7 +27,6 @@ export const SubmitAIPrompt = async (
       response_format: {type: 'json_object'},
       model: 'gpt-4-1106-preview',
     });
-    console.log('returned:', completion.choices[0].message.content);
     return completion.choices[0].message.content;
   } catch (error) {
     console.error('ChatGPT API error:', error);
