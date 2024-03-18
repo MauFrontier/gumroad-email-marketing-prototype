@@ -99,6 +99,26 @@ export const emailMarketingReducer = (
         },
       };
       break;
+    case EmailMarketingActionType.SetFilterSubject:
+      return {
+        ...state,
+        targeting: {
+          ...state.targeting,
+          filterGroups: state.targeting.filterGroups.map(filterGroup => ({
+            ...filterGroup,
+            filters: filterGroup.filters.map(filter =>
+              filter.id === action.payload.filterId
+                ? {
+                    ...getDefaultFilterForSubject(action.payload.subject),
+                    id: filter.id,
+                  }
+                : filter,
+            ),
+          })),
+        },
+      };
+      break;
+
     case EmailMarketingActionType.SelectTrigger:
       return {
         ...state,

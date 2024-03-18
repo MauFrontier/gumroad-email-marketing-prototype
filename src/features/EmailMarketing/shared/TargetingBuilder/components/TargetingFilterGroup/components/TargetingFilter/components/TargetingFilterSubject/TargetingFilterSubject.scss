@@ -1,0 +1,18 @@
+@import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
+
+[aria-label='Filter subject'] {
+  position: relative;
+
+  .TargetingFilterSubjectIcon {
+    position: absolute;
+    left: -$dimension-1;
+    top: -$dimension-1;
+    height: $dimension-5;
+    padding: $spacer-4;
+    pointer-events: none;
+  }
+
+  select {
+    padding-left: $spacer-8;
+  }
+}

@@ -1,6 +1,9 @@
 import {render, screen, within} from '@testing-library/react';
 import TargetingFilter from './TargetingFilter';
-import {Operand} from '../../../../../emailMarketingTypes';
+import {
+  Operand,
+  TargetingFilterSubject,
+} from '../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 import {mockDispatch} from '../../../../../../../../utils/mocks/mocks';
 import {EmailMarketingActionType} from '../../../../../../store/emailMarketingStoreTypes';
@@ -37,6 +40,32 @@ describe('TargetingFilter', () => {
       payload: {
         filterId: dateFilterForTests.id,
         operand: Operand.Or,
+      },
+    });
+  });
+
+  it('renders Subject picker', () => {
+    render(<TargetingFilter targetingFilter={dateFilterForTests} />);
+
+    expect(screen.getByLabelText('Filter subject')).toBeInTheDocument();
+  });
+
+  it('dispatches SetFilterSubject action when subject changes', async () => {
+    render(<TargetingFilter targetingFilter={dateFilterForTests} />);
+
+    expect(screen.getByLabelText('Filter subject')).toBeInTheDocument();
+
+    const subjectContainer = screen.getByLabelText('Filter subject');
+    const selectElement = within(subjectContainer).getByRole('combobox');
+    const option = screen.getByText('Date');
+
+    await userEvent.selectOptions(selectElement, option);
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetFilterSubject,
+      payload: {
+        filterId: dateFilterForTests.id,
+        subject: TargetingFilterSubject.Date,
       },
     });
   });

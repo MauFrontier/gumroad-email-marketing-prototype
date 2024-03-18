@@ -142,6 +142,26 @@ describe('emailMarketingReducer', () => {
     expect(updatedFilter?.operand).toEqual(newOperand);
   });
 
+  it('handles SetFilterSubject action', () => {
+    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[0];
+    const newSubject = TargetingFilterSubject.Location;
+
+    expect(filterToBeUpdated.subject).not.toEqual(newSubject);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetFilterSubject,
+      payload: {
+        filterId: filterToBeUpdated.id,
+        subject: newSubject,
+      },
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+      filter => filter.id === filterToBeUpdated.id,
+    );
+    expect(updatedFilter?.subject).toEqual(newSubject);
+  });
 
   it('handles SelectTrigger action', () => {
     const originalTrigger = initialState.selectedTrigger;
