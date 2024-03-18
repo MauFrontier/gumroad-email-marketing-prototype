@@ -25,9 +25,7 @@ const Icon = React.memo(
 
     return (
       <div
-        className={`icon-wrapper ${className} icon-${size}
-      
-      `}
+        className={`icon-wrapper ${className} icon-${size}`}
         aria-hidden={ariaHidden}
         aria-label={label}>
         <IconElement />
