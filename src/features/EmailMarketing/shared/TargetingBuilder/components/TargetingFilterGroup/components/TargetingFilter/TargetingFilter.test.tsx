@@ -13,6 +13,7 @@ import {EmailMarketingActionType} from '../../../../../../store/emailMarketingSt
 import {
   dateFilterForTests,
   locationFilterForTests,
+  paymentFilterForTests,
   productFilterForTests,
 } from '../../../../../../store/emailMarketingMockStateForTests';
 
@@ -268,6 +269,27 @@ describe('TargetingFilter', () => {
       payload: {
         filterId: productFilterForTests.id,
         verbQualifier: TargetingFilterVerbQualifier.All,
+      },
+    });
+  });
+
+  it('renders Value field', () => {
+    render(<TargetingFilter targetingFilter={dateFilterForTests} />);
+
+    expect(screen.getByLabelText('Filter value')).toBeInTheDocument();
+  });
+
+  it('dispatches SetFilterValue', async () => {
+    render(<TargetingFilter targetingFilter={paymentFilterForTests} />);
+
+    const valueField = screen.getByLabelText('Currency amount input');
+    await userEvent.type(valueField, '0');
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetFilterValue,
+      payload: {
+        filterId: paymentFilterForTests.id,
+        value: paymentFilterForTests.value * 10,
       },
     });
   });

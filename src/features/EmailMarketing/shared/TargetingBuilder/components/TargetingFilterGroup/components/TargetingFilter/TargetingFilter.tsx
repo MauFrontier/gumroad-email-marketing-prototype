@@ -5,6 +5,7 @@ import {
   TargetingFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
   TargetingFilterVerbQualifier as TargetingFilterVerbQualifierEnum,
   TargetingFilterVerb as TargetingFilterVerbEnum,
+  TargetingFilterValueType,
 } from '../../../../../emailMarketingTypes';
 
 import Operand from '../Operand/Operand';
@@ -14,6 +15,7 @@ import './TargetingFilter.scss';
 import TargetingFilterVerb from './components/TargetingFilterVerb/TargetingFilterVerb';
 import TargetingFilterVerbQualifier from './components/TargetingFilterVerbQualifier/TargetingFilterVerbQualifier';
 import DeleteFilterButton from './components/DeleteFilterButton/DeleteFilterButton';
+import TargetingFilterValue from './components/TargetingFilterValue/TargetingFilterValue';
 import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
 import {EmailMarketingActionType} from '../../../../../../store/emailMarketingStoreTypes';
 import {getDefaultValueForVerb} from '../../../../../emailMarketingDefaults';
@@ -93,6 +95,16 @@ const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
     });
   };
 
+  const handleValueChange = (newValue: TargetingFilterValueType) => {
+    dispatch({
+      type: EmailMarketingActionType.SetFilterValue,
+      payload: {
+        filterId: targetingFilter.id,
+        value: newValue,
+      },
+    });
+  };
+
   const handleDeleteFilter = () => {
     dispatch({
       type: EmailMarketingActionType.DeleteFilter,
@@ -131,6 +143,12 @@ const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
               value={targetingFilter.verbQualifier}
             />
           )}
+          <TargetingFilterValue
+            subject={targetingFilter.subject}
+            verb={targetingFilter.verb}
+            value={targetingFilter.value}
+            onChange={handleValueChange}
+          />
         </div>
         <DeleteFilterButton onPress={() => handleDeleteFilter()} />
       </div>

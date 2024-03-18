@@ -241,6 +241,26 @@ describe('emailMarketingReducer', () => {
     }
   });
 
+  it('handles SetFilterValue action', () => {
+    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[0];
+    const newValue = '2020-01-01';
+
+    expect(filterToBeUpdated.value).not.toEqual(newValue);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetFilterValue,
+      payload: {
+        filterId: filterToBeUpdated.id,
+        value: newValue,
+      },
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+      filter => filter.id === filterToBeUpdated.id,
+    );
+    expect(updatedFilter?.value).toEqual(newValue);
+  });
 
   it('handles SelectTrigger action', () => {
     const originalTrigger = initialState.selectedTrigger;
