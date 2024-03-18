@@ -22,6 +22,7 @@ export enum EmailMarketingActionType {
   SetFilterGroupOperand = 'SetFilterGroupOperand',
   AddFilter = 'AddFilter',
   DeleteFilter = 'DeleteFilter',
+  SetFilterOperand = 'SetFilterOperand',
   SelectTrigger = 'SelectTrigger',
 }
 
@@ -44,4 +45,11 @@ export type EmailMarketingAction =
       payload: {filterGroupId: string; filter: TargetingFilter};
     }
   | {type: EmailMarketingActionType.DeleteFilter; payload: string}
+  | {
+      type: EmailMarketingActionType.SetFilterOperand;
+      payload: {
+        filterId: string;
+        operand: Operand;
+      };
+    }
   | {type: EmailMarketingActionType.SelectTrigger; payload: TriggerType}

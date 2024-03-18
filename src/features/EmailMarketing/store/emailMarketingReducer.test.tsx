@@ -120,6 +120,28 @@ describe('emailMarketingReducer', () => {
     expect(updatedFilters).not.toContainEqual(filterToBeDeleted);
   });
 
+  it('handles SetFilterOperand action', () => {
+    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[1];
+    const newOperand = Operand.Or;
+
+    expect(filterToBeUpdated.operand).not.toEqual(newOperand);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetFilterOperand,
+      payload: {
+        filterId: filterToBeUpdated.id,
+        operand: newOperand,
+      },
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+
+    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+      filter => filter.id === filterToBeUpdated.id,
+    );
+    expect(updatedFilter?.operand).toEqual(newOperand);
+  });
+
 
   it('handles SelectTrigger action', () => {
     const originalTrigger = initialState.selectedTrigger;
