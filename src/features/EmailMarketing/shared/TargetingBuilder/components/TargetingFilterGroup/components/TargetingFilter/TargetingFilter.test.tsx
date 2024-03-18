@@ -45,6 +45,25 @@ describe('TargetingFilter', () => {
     });
   });
 
+  it('renders Delete filter button', () => {
+    render(<TargetingFilter targetingFilter={dateFilterForTests} />);
+
+    expect(screen.getByLabelText('Delete filter button')).toBeInTheDocument();
+  });
+
+  it('dispatches DeleteFilter action when Delete filter button is clicked', async () => {
+    render(<TargetingFilter targetingFilter={dateFilterForTests} />);
+
+    const deleteFilterButton = screen.getByLabelText('Delete filter button');
+
+    await userEvent.click(deleteFilterButton);
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.DeleteFilter,
+      payload: dateFilterForTests.id,
+    });
+  });
+
   it('renders Subject picker', () => {
     render(<TargetingFilter targetingFilter={dateFilterForTests} />);
 
@@ -68,25 +87,6 @@ describe('TargetingFilter', () => {
         filterId: dateFilterForTests.id,
         subject: TargetingFilterSubject.Date,
       },
-    });
-  });
-
-  it('renders Delete filter button', () => {
-    render(<TargetingFilter targetingFilter={dateFilterForTests} />);
-
-    expect(screen.getByLabelText('Delete filter button')).toBeInTheDocument();
-  });
-
-  it('dispatches DeleteFilter action when Delete filter button is clicked', async () => {
-    render(<TargetingFilter targetingFilter={dateFilterForTests} />);
-
-    const deleteFilterButton = screen.getByLabelText('Delete filter button');
-
-    await userEvent.click(deleteFilterButton);
-
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: EmailMarketingActionType.DeleteFilter,
-      payload: dateFilterForTests.id,
     });
   });
 
