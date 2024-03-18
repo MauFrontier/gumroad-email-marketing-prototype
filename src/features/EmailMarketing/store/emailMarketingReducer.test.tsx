@@ -192,6 +192,27 @@ describe('emailMarketingReducer', () => {
     }
   });
 
+  it('handles SetFilterVerb action', () => {
+    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[0];
+    const newVerb = TargetingFilterVerb.IsInTheLast;
+
+    expect(filterToBeUpdated.verb).not.toEqual(newVerb);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetFilterVerb,
+      payload: {
+        filterId: filterToBeUpdated.id,
+        verb: newVerb,
+      },
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+      filter => filter.id === filterToBeUpdated.id,
+    );
+    expect(updatedFilter?.verb).toEqual(newVerb);
+  });
+
 
   it('handles SelectTrigger action', () => {
     const originalTrigger = initialState.selectedTrigger;

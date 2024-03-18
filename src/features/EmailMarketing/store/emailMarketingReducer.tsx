@@ -138,6 +138,24 @@ export const emailMarketingReducer = (
         },
       };
       break;
+    case EmailMarketingActionType.SetFilterVerb:
+      {
+        return {
+          ...state,
+          targeting: {
+            ...state.targeting,
+            filterGroups: state.targeting.filterGroups.map(filterGroup => ({
+              ...filterGroup,
+              filters: filterGroup.filters.map(filter =>
+                filter.id === action.payload.filterId
+                  ? updateFilterVerb(filter, action.payload.verb)
+                  : filter,
+              ),
+            })),
+          },
+        };
+      }
+      break;
     case EmailMarketingActionType.SelectTrigger:
       return {
         ...state,

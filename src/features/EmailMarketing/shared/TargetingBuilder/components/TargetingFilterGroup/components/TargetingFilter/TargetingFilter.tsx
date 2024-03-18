@@ -3,15 +3,19 @@ import {
   TargetingFilter as TargetingFilterType,
   TargetingFilterSubject as TargetingFilterSubjectEnum,
   TargetingFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
+  TargetingFilterVerb as TargetingFilterVerbEnum,
 } from '../../../../../emailMarketingTypes';
 
 import Operand from '../Operand/Operand';
 import TargetingFilterSubject from './components/TargetingFilterSubject/TargetingFilterSubject';
 import TargetingFilterSubjectQualifier from './components/TargetingFilterSubjectQualifier/TargetingFilterSubjectQualifier';
 import './TargetingFilter.scss';
+import TargetingFilterVerb from './components/TargetingFilterVerb/TargetingFilterVerb';
 import DeleteFilterButton from './components/DeleteFilterButton/DeleteFilterButton';
 import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
 import {EmailMarketingActionType} from '../../../../../../store/emailMarketingStoreTypes';
+import {getDefaultValueForVerb} from '../../../../../emailMarketingDefaults';
+import {shouldResetValue} from '../../../../../targetingUtils';
 
 type TargetingFilterProps = {
   targetingFilter: TargetingFilterType;
@@ -52,6 +56,29 @@ const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
     });
   };
 
+  const handleVerbChange = (newVerb: TargetingFilterVerbEnum) => {
+    const oldVerb = targetingFilter.verb;
+
+    dispatch({
+      type: EmailMarketingActionType.SetFilterVerb,
+      payload: {
+        filterId: targetingFilter.id,
+        verb: newVerb,
+      },
+    });
+
+    if (shouldResetValue(oldVerb, newVerb)) {
+      const newValue = getDefaultValueForVerb(newVerb);
+      dispatch({
+        type: EmailMarketingActionType.SetFilterValue,
+        payload: {
+          filterId: targetingFilter.id,
+          value: newValue,
+        },
+      });
+    }
+  };
+
   const handleDeleteFilter = () => {
     dispatch({
       type: EmailMarketingActionType.DeleteFilter,
@@ -78,6 +105,11 @@ const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
               value={targetingFilter.subjectQualifier}
             />
           )}
+          <TargetingFilterVerb
+            subject={targetingFilter.subject}
+            value={targetingFilter.verb}
+            onChange={handleVerbChange}
+          />
         </div>
         <DeleteFilterButton onPress={() => handleDeleteFilter()} />
       </div>

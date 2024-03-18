@@ -74,6 +74,21 @@ export const getVerbOptions = (
   }
 };
 
+export const shouldResetValue = (
+  oldVerb: TargetingFilterVerb,
+  newVerb: TargetingFilterVerb,
+) =>
+  (oldVerb === TargetingFilterVerb.IsInTheLast &&
+    (newVerb === TargetingFilterVerb.Is ||
+      newVerb === TargetingFilterVerb.IsNot ||
+      newVerb === TargetingFilterVerb.IsBefore ||
+      newVerb === TargetingFilterVerb.IsAfter)) ||
+  ((oldVerb === TargetingFilterVerb.IsBefore ||
+    oldVerb === TargetingFilterVerb.Is ||
+    oldVerb === TargetingFilterVerb.IsNot ||
+    oldVerb === TargetingFilterVerb.IsAfter) &&
+    newVerb === TargetingFilterVerb.IsInTheLast);
+
 export const getVerbQualifierOptions = (
   subject: TargetingFilterSubject,
 ): KeyValuePair[] => {

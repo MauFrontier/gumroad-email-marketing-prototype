@@ -4,6 +4,7 @@ import {
   Operand,
   TargetingFilterSubject,
   TargetingFilterSubjectQualifier,
+  TargetingFilterVerb,
 } from '../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 import {mockDispatch} from '../../../../../../../../utils/mocks/mocks';
@@ -132,5 +133,105 @@ describe('TargetingFilter', () => {
         subjectQualifier: TargetingFilterSubjectQualifier.Purchased,
       },
     });
+  });
+
+  it('renders Verb picker', () => {
+    render(<TargetingFilter targetingFilter={dateFilterForTests} />);
+
+    expect(screen.getByLabelText('Filter verb')).toBeInTheDocument();
+  });
+
+  it('dispatches SetFilterVerb action when verb changes', async () => {
+    render(<TargetingFilter targetingFilter={dateFilterForTests} />);
+
+    const verbContainer = screen.getByLabelText('Filter verb');
+    const selectElement = within(verbContainer).getByRole('combobox');
+    const option = screen.getByText(TargetingFilterVerb.Is);
+
+    await userEvent.selectOptions(selectElement, option);
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetFilterVerb,
+      payload: {
+        filterId: dateFilterForTests.id,
+        verb: TargetingFilterVerb.Is,
+      },
+    });
+  });
+
+  it('resets the value if verb changes from Is || IsBefore || IsAfter || IsNot to IsInTheLast', async () => {
+    render(<TargetingFilter targetingFilter={dateFilterForTests} />);
+
+    const verbContainer = screen.getByLabelText('Filter verb');
+    const selectElement = within(verbContainer).getByRole('combobox');
+    const optionIsInTheLast = screen.getByText(TargetingFilterVerb.IsInTheLast);
+
+    await userEvent.selectOptions(selectElement, optionIsInTheLast);
+
+    expect(mockDispatch.mock.calls[mockDispatch.mock.calls.length - 2]).toEqual(
+      [
+        {
+          type: EmailMarketingActionType.SetFilterVerb,
+          payload: {
+            filterId: dateFilterForTests.id,
+            verb: TargetingFilterVerb.IsInTheLast,
+          },
+        },
+      ],
+    );
+
+    expect(mockDispatch.mock.calls[mockDispatch.mock.calls.length - 1]).toEqual(
+      [
+        {
+          type: EmailMarketingActionType.SetFilterValue,
+          payload: {
+            filterId: dateFilterForTests.id,
+            value: expect.any(Number),
+          },
+        },
+      ],
+    );
+  });
+
+  it('resets the value if verb changes from IsInTheLast to Is || IsBefore || IsAfter || IsNot', async () => {
+    render(
+      <TargetingFilter
+        targetingFilter={{
+          ...dateFilterForTests,
+          verb: TargetingFilterVerb.IsInTheLast,
+          value: 100,
+        }}
+      />,
+    );
+
+    const verbContainer = screen.getByLabelText('Filter verb');
+    const selectElement = within(verbContainer).getByRole('combobox');
+    const optionIs = screen.getByText(TargetingFilterVerb.Is);
+
+    await userEvent.selectOptions(selectElement, optionIs);
+
+    expect(mockDispatch.mock.calls[mockDispatch.mock.calls.length - 2]).toEqual(
+      [
+        {
+          type: EmailMarketingActionType.SetFilterVerb,
+          payload: {
+            filterId: dateFilterForTests.id,
+            verb: TargetingFilterVerb.Is,
+          },
+        },
+      ],
+    );
+
+    expect(mockDispatch.mock.calls[mockDispatch.mock.calls.length - 1]).toEqual(
+      [
+        {
+          type: EmailMarketingActionType.SetFilterValue,
+          payload: {
+            filterId: dateFilterForTests.id,
+            value: expect.any(String),
+          },
+        },
+      ],
+    );
   });
 });
