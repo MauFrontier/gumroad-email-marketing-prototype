@@ -163,6 +163,36 @@ describe('emailMarketingReducer', () => {
     expect(updatedFilter?.subject).toEqual(newSubject);
   });
 
+  it('handles SetFilterSubjectQualifier action', () => {
+    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[0];
+    const newSubjectQualifier = TargetingFilterSubjectQualifier.Purchased;
+
+    expect(filterToBeUpdated.subject).toEqual(TargetingFilterSubject.Date);
+
+    if (filterToBeUpdated.subject === TargetingFilterSubject.Date) {
+      expect(filterToBeUpdated.subjectQualifier).not.toEqual(
+        newSubjectQualifier,
+      );
+    }
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetFilterSubjectQualifier,
+      payload: {
+        filterId: filterToBeUpdated.id,
+        subjectQualifier: newSubjectQualifier,
+      },
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+      filter => filter.id === filterToBeUpdated.id,
+    );
+    if (updatedFilter?.subject === TargetingFilterSubject.Date) {
+      expect(updatedFilter?.subjectQualifier).toEqual(newSubjectQualifier);
+    }
+  });
+
+
   it('handles SelectTrigger action', () => {
     const originalTrigger = initialState.selectedTrigger;
     const newTrigger = TriggerType.NewAffiliate;

@@ -88,4 +88,48 @@ describe('TargetingFilter', () => {
       payload: dateFilterForTests.id,
     });
   });
+
+  it('renders Subject Qualifier picker if filter includes it', () => {
+    render(
+      <TargetingFilter
+        targetingFilter={{
+          ...dateFilterForTests,
+          subject: TargetingFilterSubject.Date,
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByLabelText('Filter subject qualifier'),
+    ).toBeInTheDocument();
+  });
+
+  it('dispatches SetFilterSubjectQualifier action when subject qualifier changes', async () => {
+    render(
+      <TargetingFilter
+        targetingFilter={{
+          ...dateFilterForTests,
+          subject: TargetingFilterSubject.Date,
+        }}
+      />,
+    );
+
+    const subjectQualifierContainer = screen.getByLabelText(
+      'Filter subject qualifier',
+    );
+    const selectElement = within(subjectQualifierContainer).getByRole(
+      'combobox',
+    );
+    const option = screen.getByText('Purchased');
+
+    await userEvent.selectOptions(selectElement, option);
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetFilterSubjectQualifier,
+      payload: {
+        filterId: dateFilterForTests.id,
+        subjectQualifier: 'Purchased',
+      },
+    });
+  });
 });

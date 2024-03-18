@@ -24,6 +24,7 @@ export enum EmailMarketingActionType {
   DeleteFilter = 'DeleteFilter',
   SetFilterOperand = 'SetFilterOperand',
   SetFilterSubject = 'SetFilterSubject',
+  SetFilterSubjectQualifier = 'SetFilterSubjectQualifier',
   SelectTrigger = 'SelectTrigger',
 }
 
@@ -58,6 +59,13 @@ export type EmailMarketingAction =
       payload: {
         filterId: string;
         subject: TargetingFilterSubject;
+      };
+    }
+  | {
+      type: EmailMarketingActionType.SetFilterSubjectQualifier;
+      payload: {
+        filterId: string;
+        subjectQualifier: TargetingFilterSubjectQualifier;
       };
     }
   | {type: EmailMarketingActionType.SelectTrigger; payload: TriggerType}

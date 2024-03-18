@@ -2,10 +2,12 @@ import {
   Operand as OperandEnum,
   TargetingFilter as TargetingFilterType,
   TargetingFilterSubject as TargetingFilterSubjectEnum,
+  TargetingFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
 } from '../../../../../emailMarketingTypes';
 
 import Operand from '../Operand/Operand';
 import TargetingFilterSubject from './components/TargetingFilterSubject/TargetingFilterSubject';
+import TargetingFilterSubjectQualifier from './components/TargetingFilterSubjectQualifier/TargetingFilterSubjectQualifier';
 import './TargetingFilter.scss';
 import DeleteFilterButton from './components/DeleteFilterButton/DeleteFilterButton';
 import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
@@ -38,6 +40,18 @@ const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
     });
   };
 
+  const handleSubjectQualifierChange = (
+    newValue: TargetingFilterSubjectQualifierEnum,
+  ) => {
+    dispatch({
+      type: EmailMarketingActionType.SetFilterSubjectQualifier,
+      payload: {
+        filterId: targetingFilter.id,
+        subjectQualifier: newValue,
+      },
+    });
+  };
+
   const handleDeleteFilter = () => {
     dispatch({
       type: EmailMarketingActionType.DeleteFilter,
@@ -57,6 +71,13 @@ const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
             value={targetingFilter.subject}
             onChange={handleSubjectChange}
           />
+          {'subjectQualifier' in targetingFilter && (
+            <TargetingFilterSubjectQualifier
+              subject={targetingFilter.subject}
+              onChange={handleSubjectQualifierChange}
+              value={targetingFilter.subjectQualifier}
+            />
+          )}
         </div>
         <DeleteFilterButton onPress={() => handleDeleteFilter()} />
       </div>
