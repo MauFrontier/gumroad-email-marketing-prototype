@@ -1,4 +1,5 @@
 import Icon from '../../../../../../../../../shared/ui/Icon/Icon';
+import {IconType} from '../../../../../../../../../shared/ui/Icon/iconLibrary';
 import Select from '../../../../../../../../../shared/ui/Select/Select';
 import {TargetingFilterSubject as TargetingFilterSubjectEnum} from '../../../../../../../emailMarketingTypes';
 import './TargetingFilterSubject.scss';
@@ -37,29 +38,13 @@ const TargetingFilterSubject = ({value, onChange}: Props) => {
   return (
     <div aria-label="Filter subject">
       {value && value === TargetingFilterSubjectEnum.Product ? (
-        <Icon
-          uri="./src/assets/images/icons/icon_archive.svg"
-          label="Product"
-          className="TargetingFilterSubjectIcon"
-        />
+        <Icon type={IconType.Archive} />
       ) : value === TargetingFilterSubjectEnum.Payment ? (
-        <Icon
-          uri="./src/assets/images/icons/icon_credit-card.svg"
-          label="Payment"
-          className="TargetingFilterSubjectIcon"
-        />
+        <Icon type={IconType.CreditCard} />
       ) : value === TargetingFilterSubjectEnum.Location ? (
-        <Icon
-          uri="./src/assets/images/icons/icon_globe.svg"
-          label="Location"
-          className="TargetingFilterSubjectIcon"
-        />
+        <Icon type={IconType.Globe} />
       ) : value === TargetingFilterSubjectEnum.Date ? (
-        <Icon
-          uri="./src/assets/images/icons/icon_calendar.svg"
-          label="Date"
-          className="TargetingFilterSubjectIcon"
-        />
+        <Icon type={IconType.Calendar} />
       ) : null}
 
       <Select

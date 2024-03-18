@@ -1,6 +1,7 @@
 import Button from '../../../../../shared/ui/Button/Button';
-import PlusCircleIcon from '@/assets/images/icons/icon_plus-circle-clear.svg?react';
 import './AddFilterGroupButton.scss';
+import Icon from '../../../../../shared/ui/Icon/Icon';
+import {IconType} from '../../../../../shared/ui/Icon/iconLibrary';
 
 interface Props {
   onPress: () => void;
@@ -9,7 +10,7 @@ interface Props {
 const AddFilterGroupButton = ({onPress}: Props) => {
   return (
     <Button onClick={onPress} label="Add filter group button">
-      <PlusCircleIcon className="plus-circle-icon" aria-hidden="true" />
+      <Icon type={IconType.PlusCircleClear} />
       Add Filter Group
     </Button>
   );

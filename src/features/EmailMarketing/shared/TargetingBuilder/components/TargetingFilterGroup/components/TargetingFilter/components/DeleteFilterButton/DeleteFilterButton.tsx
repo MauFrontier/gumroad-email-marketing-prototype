@@ -1,5 +1,6 @@
 import Button from '../../../../../../../../../shared/ui/Button/Button';
 import Icon from '../../../../../../../../../shared/ui/Icon/Icon';
+import {IconType} from '../../../../../../../../../shared/ui/Icon/iconLibrary';
 import './DeleteFilterButton.scss';
 
 interface Props {
@@ -9,10 +10,7 @@ interface Props {
 const DeleteFilterButton = ({onPress}: Props) => {
   return (
     <Button label="Delete filter button" onClick={onPress}>
-      <Icon
-        uri="./src/assets/images/icons/icon_trash.svg"
-        label="Delete icon"
-      />
+      <Icon type={IconType.Trash} />
     </Button>
   );
 };

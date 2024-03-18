@@ -30,7 +30,7 @@ const TargetingBuilderHeader = () => {
             label="Generate with AI"
             pressed={showGenerateWithAIPanel}
             aria-controls="generateWithAIForm">
-            <Icon uri="./src/assets/images/icons/icon_ai.svg" />
+            <Icon type={IconType.Ai} size={5} />
             Generate with AI
           </Button>
 

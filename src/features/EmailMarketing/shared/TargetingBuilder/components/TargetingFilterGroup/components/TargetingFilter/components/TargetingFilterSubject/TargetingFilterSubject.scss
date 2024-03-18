@@ -3,7 +3,7 @@
 [aria-label='Filter subject'] {
   position: relative;
 
-  .TargetingFilterSubjectIcon {
+  [aria-label='Icon'] {
     position: absolute;
     left: -$dimension-1;
     top: -$dimension-1;
