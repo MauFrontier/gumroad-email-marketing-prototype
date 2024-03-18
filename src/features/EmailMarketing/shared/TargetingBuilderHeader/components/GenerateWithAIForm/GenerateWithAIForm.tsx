@@ -1,13 +1,13 @@
 import {useEffect, useRef, useState} from 'react';
-import {SubmitAIPrompt} from '../../../shared/ai/ChatGPTService'; // Adjust the path as necessary
-import {useEmailMarketingState} from '../../store/useEmailMarketingState';
+import {SubmitAIPrompt} from '../../../../../shared/ai/ChatGPTService'; // Adjust the path as necessary
+import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
 
 import PlusCircleIcon from '@/assets/images/icons/icon_ai.svg?react';
 
 import './GenerateWithAIForm.scss';
-import Button from '../../../shared/ui/Button/Button';
-import Icon from '../../../shared/ui/Icon/Icon';
-import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
+import Button from '../../../../../shared/ui/Button/Button';
+import Icon from '../../../../../shared/ui/Icon/Icon';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
 
 interface Props {
   isFloatingDialog?: boolean;
