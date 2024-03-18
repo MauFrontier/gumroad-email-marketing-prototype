@@ -33,7 +33,7 @@ describe('ComboBox', () => {
       />,
     );
 
-    const input = screen.getByLabelText('Tags input');
+    const input = screen.getByLabelText('ComboBox input');
     await userEvent.click(input);
     expect(screen.getByText('Option 1')).toBeInTheDocument();
   });
@@ -49,7 +49,7 @@ describe('ComboBox', () => {
       />,
     );
 
-    const input = screen.getByLabelText('Tags input');
+    const input = screen.getByLabelText('ComboBox input');
     await userEvent.click(input);
     await userEvent.click(screen.getByText('Option 2'));
 
@@ -66,7 +66,7 @@ describe('ComboBox', () => {
       />,
     );
 
-    const input = screen.getByLabelText('Tags input');
+    const input = screen.getByLabelText('ComboBox input');
     await userEvent.type(input, 'Option 3');
 
     expect(screen.queryByText('Option 1')).not.toBeInTheDocument();
@@ -84,7 +84,7 @@ describe('ComboBox', () => {
       />,
     );
 
-    const input = screen.getByLabelText('Tags input');
+    const input = screen.getByLabelText('ComboBox input');
     await userEvent.click(input);
     expect(screen.queryByText('Option 1')).toBeInTheDocument();
 
@@ -104,7 +104,7 @@ describe('ComboBox', () => {
       />,
     );
 
-    const input = screen.getByLabelText('Tags input');
+    const input = screen.getByLabelText('ComboBox input');
     act(() => {
       input.focus();
     });

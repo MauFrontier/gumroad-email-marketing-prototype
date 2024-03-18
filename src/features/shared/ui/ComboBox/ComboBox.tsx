@@ -165,7 +165,7 @@ const ComboBox = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
-          aria-label="Tags input"
+          aria-label="ComboBox input"
         />
       </div>
       {shouldDisplaySuggestions && filteredSuggestions.length > 0 && (
