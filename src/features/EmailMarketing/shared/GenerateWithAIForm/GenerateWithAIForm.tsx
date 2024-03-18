@@ -52,6 +52,10 @@ const GenerateWithAIForm = ({
     });
   };
 
+  const clearPrompt = () => {
+    dispatch({type: EmailMarketingActionType.SetPrompt, payload: ''});
+  };
+
   const handleSendPrompt = async () => {
     if (isAILoading) {
       return;
@@ -96,6 +100,7 @@ const GenerateWithAIForm = ({
       console.error('Failed to fetch from ChatGPT:', error);
     } finally {
       dispatch({type: EmailMarketingActionType.SetIsAILoading, payload: false});
+      clearPrompt();
       hideDialog && hideDialog();
     }
   };

@@ -182,4 +182,22 @@ describe('GenerateWithAIForm', () => {
       expect(hideDialog).toHaveBeenCalled();
     });
   });
+
+  it('should clear the prompt after a result from the API is received', async () => {
+    renderComponentWithState(<GenerateWithAIForm visible={true} />, {
+      ...emailMarketingInitialState,
+      prompt: 'test prompt',
+    });
+
+    const button = screen.getByLabelText('Generate with AI button');
+
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SetPrompt',
+        payload: '',
+      });
+    });
+  });
 });
