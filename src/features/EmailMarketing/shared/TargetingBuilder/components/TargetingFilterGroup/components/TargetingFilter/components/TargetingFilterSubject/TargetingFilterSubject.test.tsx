@@ -37,7 +37,7 @@ describe('TargetingFilterSubject', () => {
     );
     const subject = screen.getByLabelText('Filter subject');
     const selectElement = within(subject).getByRole('combobox');
-    const option = screen.getByText('Date');
+    const option = screen.getByText(TargetingFilterSubjectEnum.Date);
 
     await userEvent.selectOptions(selectElement, option);
 
@@ -54,7 +54,7 @@ describe('TargetingFilterSubject', () => {
     );
     const subject = screen.getByLabelText('Filter subject');
     const selectElement = within(subject).getByRole('combobox');
-    const option = screen.getByText('Payment');
+    const option = screen.getByText(TargetingFilterSubjectEnum.Payment);
 
     await userEvent.selectOptions(selectElement, option);
 
