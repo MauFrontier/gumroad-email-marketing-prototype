@@ -5,11 +5,16 @@ import {
   TargetingFilterSubject,
   TargetingFilterSubjectQualifier,
   TargetingFilterVerb,
+  TargetingFilterVerbQualifier,
 } from '../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 import {mockDispatch} from '../../../../../../../../utils/mocks/mocks';
 import {EmailMarketingActionType} from '../../../../../../store/emailMarketingStoreTypes';
-import {dateFilterForTests} from '../../../../../../store/emailMarketingMockStateForTests';
+import {
+  dateFilterForTests,
+  locationFilterForTests,
+  productFilterForTests,
+} from '../../../../../../store/emailMarketingMockStateForTests';
 
 describe('TargetingFilter', () => {
   it('renders component', () => {
@@ -233,5 +238,37 @@ describe('TargetingFilter', () => {
         },
       ],
     );
+  });
+
+  it('renders Verb Qualifier picker if filter includes it', () => {
+    render(<TargetingFilter targetingFilter={productFilterForTests} />);
+
+    expect(screen.getByLabelText('Filter verb qualifier')).toBeInTheDocument();
+  });
+
+  it("doesn't render Verb Qualifier picker if filter doesn't include it", () => {
+    render(<TargetingFilter targetingFilter={locationFilterForTests} />);
+
+    expect(screen.queryByLabelText('Filter verb qualifier')).toBeNull();
+  });
+
+  it('dispatches SetFilterVerbQualifier action when verb qualifier changes', async () => {
+    render(<TargetingFilter targetingFilter={productFilterForTests} />);
+
+    const verbQualifierContainer = screen.getByLabelText(
+      'Filter verb qualifier',
+    );
+    const selectElement = within(verbQualifierContainer).getByRole('combobox');
+    const option = screen.getByText(TargetingFilterVerbQualifier.All);
+
+    await userEvent.selectOptions(selectElement, option);
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetFilterVerbQualifier,
+      payload: {
+        filterId: productFilterForTests.id,
+        verbQualifier: TargetingFilterVerbQualifier.All,
+      },
+    });
   });
 });

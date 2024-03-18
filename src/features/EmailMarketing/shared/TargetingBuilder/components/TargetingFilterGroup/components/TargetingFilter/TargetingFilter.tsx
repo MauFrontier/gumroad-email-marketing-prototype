@@ -3,6 +3,7 @@ import {
   TargetingFilter as TargetingFilterType,
   TargetingFilterSubject as TargetingFilterSubjectEnum,
   TargetingFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
+  TargetingFilterVerbQualifier as TargetingFilterVerbQualifierEnum,
   TargetingFilterVerb as TargetingFilterVerbEnum,
 } from '../../../../../emailMarketingTypes';
 
@@ -11,6 +12,7 @@ import TargetingFilterSubject from './components/TargetingFilterSubject/Targetin
 import TargetingFilterSubjectQualifier from './components/TargetingFilterSubjectQualifier/TargetingFilterSubjectQualifier';
 import './TargetingFilter.scss';
 import TargetingFilterVerb from './components/TargetingFilterVerb/TargetingFilterVerb';
+import TargetingFilterVerbQualifier from './components/TargetingFilterVerbQualifier/TargetingFilterVerbQualifier';
 import DeleteFilterButton from './components/DeleteFilterButton/DeleteFilterButton';
 import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
 import {EmailMarketingActionType} from '../../../../../../store/emailMarketingStoreTypes';
@@ -79,6 +81,18 @@ const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
     }
   };
 
+  const handleVerbQualifierChange = (
+    newValue: TargetingFilterVerbQualifierEnum,
+  ) => {
+    dispatch({
+      type: EmailMarketingActionType.SetFilterVerbQualifier,
+      payload: {
+        filterId: targetingFilter.id,
+        verbQualifier: newValue,
+      },
+    });
+  };
+
   const handleDeleteFilter = () => {
     dispatch({
       type: EmailMarketingActionType.DeleteFilter,
@@ -110,6 +124,13 @@ const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
             value={targetingFilter.verb}
             onChange={handleVerbChange}
           />
+          {'verbQualifier' in targetingFilter && (
+            <TargetingFilterVerbQualifier
+              subject={targetingFilter.subject}
+              onChange={handleVerbQualifierChange}
+              value={targetingFilter.verbQualifier}
+            />
+          )}
         </div>
         <DeleteFilterButton onPress={() => handleDeleteFilter()} />
       </div>

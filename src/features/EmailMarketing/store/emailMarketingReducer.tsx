@@ -156,6 +156,22 @@ export const emailMarketingReducer = (
         };
       }
       break;
+    case EmailMarketingActionType.SetFilterVerbQualifier:
+      return {
+        ...state,
+        targeting: {
+          ...state.targeting,
+          filterGroups: state.targeting.filterGroups.map(filterGroup => ({
+            ...filterGroup,
+            filters: filterGroup.filters.map(filter =>
+              filter.id === action.payload.filterId
+                ? {...filter, verbQualifier: action.payload.verbQualifier}
+                : filter,
+            ),
+          })),
+        },
+      };
+      break;
     case EmailMarketingActionType.SelectTrigger:
       return {
         ...state,
