@@ -13,6 +13,10 @@ import {
 export interface EmailMarketingState {
   targeting: Targeting;
   selectedTrigger: TriggerType;
+  showGenerateWithAIPanel: boolean;
+  prompt: string;
+  isAILoading: boolean;
+  aiErrors: string[];
 }
 
 export enum EmailMarketingActionType {
@@ -29,6 +33,10 @@ export enum EmailMarketingActionType {
   SetFilterVerbQualifier = 'SetFilterVerbQualifier',
   SetFilterValue = 'SetFilterValue',
   SelectTrigger = 'SelectTrigger',
+  ToggleShowGenerateWithAIPanel = 'ToggleGenerateWithAIPanel',
+  SetPrompt = 'SetPrompt',
+  SetIsAILoading = 'SetIsAILoading',
+  SetAIErrors = 'SetAIErrors',
 }
 
 export type EmailMarketingAction =
@@ -93,3 +101,8 @@ export type EmailMarketingAction =
       };
     }
   | {type: EmailMarketingActionType.SelectTrigger; payload: TriggerType}
+  | {type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel}
+  | {type: EmailMarketingActionType.SetPrompt; payload: string}
+  | {type: EmailMarketingActionType.SetIsAILoading; payload: boolean}
+  | {type: EmailMarketingActionType.SetShowAIAccuracyWarning; payload: boolean}
+  | {type: EmailMarketingActionType.SetAIErrors; payload: string[]}

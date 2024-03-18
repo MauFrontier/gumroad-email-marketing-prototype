@@ -104,3 +104,15 @@ fieldset {
   border: none;
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+img.spinner {
+  animation: spin 2s linear infinite;
+}

@@ -275,4 +275,53 @@ describe('emailMarketingReducer', () => {
     const state = emailMarketingReducer(initialState, action);
     expect(state.selectedTrigger).toEqual(newTrigger);
   });
+
+  it('handles ToggleGenerateWithAIPanel action', () => {
+    const initialShowGenerateWithAIPanel = initialState.showGenerateWithAIPanel;
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.showGenerateWithAIPanel).toBe(!initialShowGenerateWithAIPanel);
+  });
+
+  it('handles SetIsAILoading action', () => {
+    const initialIsAILoading = initialState.isAILoading;
+    expect(initialIsAILoading).toBe(false);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetIsAILoading,
+      payload: true,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.isAILoading).toBe(true);
+  });
+
+  it('handles SetShowAIAccuracyWarning action', () => {
+    const initialShowAIAccuracyWarning = initialState.showAIAccuracyWarning;
+    expect(initialShowAIAccuracyWarning).toBe(false);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetShowAIAccuracyWarning,
+      payload: true,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.showAIAccuracyWarning).toBe(true);
+  });
+  it('handles SetAIErrors action', () => {
+    const initialAIErrors = initialState.aiErrors;
+    expect(initialAIErrors).toEqual([]);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetAIErrors,
+      payload: ['error1', 'error2'],
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.aiErrors).toEqual(['error1', 'error2']);
+  });
 });

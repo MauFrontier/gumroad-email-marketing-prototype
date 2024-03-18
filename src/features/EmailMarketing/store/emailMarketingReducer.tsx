@@ -202,6 +202,26 @@ export const emailMarketingReducer = (
         showGenerateWithAIPanel: !state.showGenerateWithAIPanel,
       };
       break;
+    case EmailMarketingActionType.SetPrompt:
+      return {
+        ...state,
+        prompt: action.payload,
+      };
+    case EmailMarketingActionType.SetIsAILoading:
+      return {...state, isAILoading: action.payload};
+      break;
+    case EmailMarketingActionType.SetShowAIAccuracyWarning:
+      return {
+        ...state,
+        showAIAccuracyWarning: action.payload,
+      };
+      break;
+    case EmailMarketingActionType.SetAIErrors:
+      return {
+        ...state,
+        aiErrors: action.payload,
+      };
+      break;
     default:
       return state;
       break;
