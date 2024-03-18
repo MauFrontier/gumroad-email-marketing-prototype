@@ -13,7 +13,7 @@ import {
 import {emailMarketingInitialState} from './emailMarketingInitialState';
 import {EmailMarketingState} from './emailMarketingStoreTypes';
 
-export const initialDateFilterForTests: DateFilter = {
+export const dateFilterForTests: DateFilter = {
   id: 'id_initialDateFilter',
   subject: TargetingFilterSubject.Date,
   subjectQualifier: TargetingFilterSubjectQualifier.Joined,
@@ -21,14 +21,14 @@ export const initialDateFilterForTests: DateFilter = {
   value: '2022-01-01T00:00:00.000Z',
 };
 
-export const initialPaymentFilterForTests: PaymentFilter = {
+export const paymentFilterForTests: PaymentFilter = {
   id: 'id_initialPaymentFilter',
   subject: TargetingFilterSubject.Payment,
   verb: TargetingFilterVerb.IsLessThan,
   value: 10,
 };
 
-export const initialProductFilterForTests: ProductFilter = {
+export const productFilterForTests: ProductFilter = {
   id: 'id_initialProductFilter',
   subject: TargetingFilterSubject.Product,
   verb: TargetingFilterVerb.HasBought,
@@ -36,39 +36,39 @@ export const initialProductFilterForTests: ProductFilter = {
   value: ['Christmas bundle'],
 };
 
-export const initialLocationFilterForTests: LocationFilter = {
+export const locationFilterForTests: LocationFilter = {
   id: 'id_initialLocationFilter',
   subject: TargetingFilterSubject.Location,
   verb: TargetingFilterVerb.IsNot,
   value: 'US',
 };
 
-export const initialFilterGroupForTests1 = {
+export const filterGroupForTests1 = {
   id: 'id_group1',
   filters: [
-    initialDateFilterForTests,
-    {...initialProductFilterForTests, operand: Operand.And},
+    dateFilterForTests,
+    {...productFilterForTests, operand: Operand.And},
   ],
 };
 
-export const initialFilterGroupForTests2 = {
+export const filterGroupForTests2 = {
   id: 'id_group2',
   filters: [
-    initialPaymentFilterForTests,
-    {...initialLocationFilterForTests, operand: Operand.Or},
+    paymentFilterForTests,
+    {...locationFilterForTests, operand: Operand.Or},
   ],
 };
 
-export const initialTargetingForTests: Targeting = {
+export const targetingForTests: Targeting = {
   filterGroups: [
-    initialFilterGroupForTests1,
-    {...initialFilterGroupForTests2, operand: Operand.Or},
+    filterGroupForTests1,
+    {...filterGroupForTests2, operand: Operand.Or},
   ],
 };
 
-export const modifiedEmailMarketingStateForTests: EmailMarketingState = {
+export const emailMarketingStateForTests: EmailMarketingState = {
   ...emailMarketingInitialState,
-  targeting: initialTargetingForTests,
+  targeting: targetingForTests,
 };
 
 export const newDateFilterForTests: DateFilter = {

@@ -8,7 +8,7 @@ import {
 } from '../shared/emailMarketingTypes';
 import {emailMarketingReducer} from './emailMarketingReducer';
 import {
-  modifiedEmailMarketingStateForTests as initialState,
+  emailMarketingStateForTests as initialState,
   newDateFilterForTests,
   newFilterGroupForTests1,
   newTargetingForTests,
