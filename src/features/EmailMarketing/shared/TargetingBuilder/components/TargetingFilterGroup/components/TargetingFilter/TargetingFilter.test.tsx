@@ -3,6 +3,7 @@ import TargetingFilter from './TargetingFilter';
 import {
   Operand,
   TargetingFilterSubject,
+  TargetingFilterSubjectQualifier,
 } from '../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 import {mockDispatch} from '../../../../../../../../utils/mocks/mocks';
@@ -33,7 +34,7 @@ describe('TargetingFilter', () => {
     const operandContainer = screen.getByLabelText('Operand');
     const selectElement = within(operandContainer).getByRole('combobox');
 
-    await userEvent.selectOptions(selectElement, ['Or']);
+    await userEvent.selectOptions(selectElement, [Operand.Or]);
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: EmailMarketingActionType.SetFilterOperand,
@@ -57,7 +58,7 @@ describe('TargetingFilter', () => {
 
     const subjectContainer = screen.getByLabelText('Filter subject');
     const selectElement = within(subjectContainer).getByRole('combobox');
-    const option = screen.getByText('Date');
+    const option = screen.getByText(TargetingFilterSubject.Date);
 
     await userEvent.selectOptions(selectElement, option);
 
@@ -120,7 +121,7 @@ describe('TargetingFilter', () => {
     const selectElement = within(subjectQualifierContainer).getByRole(
       'combobox',
     );
-    const option = screen.getByText('Purchased');
+    const option = screen.getByText(TargetingFilterSubjectQualifier.Purchased);
 
     await userEvent.selectOptions(selectElement, option);
 
@@ -128,7 +129,7 @@ describe('TargetingFilter', () => {
       type: EmailMarketingActionType.SetFilterSubjectQualifier,
       payload: {
         filterId: dateFilterForTests.id,
-        subjectQualifier: 'Purchased',
+        subjectQualifier: TargetingFilterSubjectQualifier.Purchased,
       },
     });
   });
