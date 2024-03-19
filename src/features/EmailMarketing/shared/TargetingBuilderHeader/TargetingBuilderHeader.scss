@@ -17,6 +17,7 @@ header[aria-label='Targeting builder header'] {
 
     button[aria-label='Generate with AI'] {
       padding: $spacer-3;
+      font-size: small;
 
       &[aria-pressed='true'] {
         background-color: $White;
