@@ -5,6 +5,8 @@ section[aria-label='Targeting builder'] {
   margin-bottom: $spacer-2;
 
   .loading {
-    opacity: 0.4;
+    opacity: $opacity-disabled;
+  }
+
   }
 }
