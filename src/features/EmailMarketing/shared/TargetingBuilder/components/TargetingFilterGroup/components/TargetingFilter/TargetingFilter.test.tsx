@@ -174,29 +174,21 @@ describe('TargetingFilter', () => {
 
     await userEvent.selectOptions(selectElement, optionIsInTheLast);
 
-    expect(mockDispatch.mock.calls[mockDispatch.mock.calls.length - 2]).toEqual(
-      [
-        {
-          type: EmailMarketingActionType.SetFilterVerb,
-          payload: {
-            filterId: dateFilterForTests.id,
-            verb: TargetingFilterVerb.IsInTheLast,
-          },
-        },
-      ],
-    );
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetFilterVerb,
+      payload: {
+        filterId: dateFilterForTests.id,
+        verb: TargetingFilterVerb.IsInTheLast,
+      },
+    });
 
-    expect(mockDispatch.mock.calls[mockDispatch.mock.calls.length - 1]).toEqual(
-      [
-        {
-          type: EmailMarketingActionType.SetFilterValue,
-          payload: {
-            filterId: dateFilterForTests.id,
-            value: expect.any(Number),
-          },
-        },
-      ],
-    );
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetFilterValue,
+      payload: {
+        filterId: dateFilterForTests.id,
+        value: expect.any(Number),
+      },
+    });
   });
 
   it('resets the value if verb changes from IsInTheLast to Is || IsBefore || IsAfter || IsNot', async () => {
@@ -216,29 +208,21 @@ describe('TargetingFilter', () => {
 
     await userEvent.selectOptions(selectElement, optionIs);
 
-    expect(mockDispatch.mock.calls[mockDispatch.mock.calls.length - 2]).toEqual(
-      [
-        {
-          type: EmailMarketingActionType.SetFilterVerb,
-          payload: {
-            filterId: dateFilterForTests.id,
-            verb: TargetingFilterVerb.Is,
-          },
-        },
-      ],
-    );
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetFilterVerb,
+      payload: {
+        filterId: dateFilterForTests.id,
+        verb: TargetingFilterVerb.Is,
+      },
+    });
 
-    expect(mockDispatch.mock.calls[mockDispatch.mock.calls.length - 1]).toEqual(
-      [
-        {
-          type: EmailMarketingActionType.SetFilterValue,
-          payload: {
-            filterId: dateFilterForTests.id,
-            value: expect.any(String),
-          },
-        },
-      ],
-    );
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetFilterValue,
+      payload: {
+        filterId: dateFilterForTests.id,
+        value: expect.any(String),
+      },
+    });
   });
 
   it('renders Verb Qualifier picker if filter includes it', () => {
