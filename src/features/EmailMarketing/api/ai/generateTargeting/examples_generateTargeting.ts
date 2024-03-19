@@ -86,6 +86,37 @@ export const examples = `
   "errors": []
 }
 
+* Prompt: Bought 5 days ago //Assuming today is 2024-02-15
+  
+  {
+    "result": "success",
+    "payload": {
+      "filterGroups": [
+        {
+          "id": "87f6e7ee-ecec-403c-b410-5d6b58ded299",
+          "filters": [
+            {
+              "id": "384b5104-4622-4914-a33a-21f37304e6b1",
+              "subject": "Date",
+              "subjectQualifier": "Purchased",
+              "verb": "IsAfter",
+              "value": "2024-02-09"
+            }
+             {
+              "operand": "And",
+              "id": "834b5104-4622-4914-a33a-21f37304e6b2",
+              "subject": "Date",
+              "subjectQualifier": "Purchased",
+              "verb": "IsBefore",
+              "value": "2024-02-11"
+            }
+          ]
+        }
+      ]
+    },
+    "errors": []
+  }
+
 * Prompt: purchased between jan 1st and jan 25th, but did not purchase on jan 10th
   
   {
