@@ -1,0 +1,9 @@
+@import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
+
+.button {
+  display: flex;
+  flex-direction: row;
+  gap: $spacer-2;
+  align-items: center;
+  justify-content: center;
+}

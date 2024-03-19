@@ -1,3 +1,5 @@
+import './Button.scss';
+
 type Props = {
   label?: string;
   disabled?: boolean;
@@ -23,7 +25,7 @@ const Button = ({
       aria-pressed={pressed}
       type="button"
       disabled={disabled}
-      className={className}>
+      className={'button ' + className}>
       {children}
     </button>
   );
