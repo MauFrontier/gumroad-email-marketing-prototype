@@ -29,8 +29,12 @@ const TargetingBuilder = () => {
         <div
           key={filterGroup.id}
           role="group"
+          className={state.isAILoading ? 'loading' : ''}
           aria-label={`Filter Group ${index + 1}`}>
-          <TargetingFilterGroup targetingFilterGroup={filterGroup} />
+          <TargetingFilterGroup
+            targetingFilterGroup={filterGroup}
+            disabled={state.isAILoading}
+          />
         </div>
       ))}
       <AddFilterGroupButton onPress={handleAddFilterGroup} />

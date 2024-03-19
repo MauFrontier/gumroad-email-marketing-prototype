@@ -34,10 +34,10 @@ describe('Button', () => {
     expect(handleClick).toHaveBeenCalled();
   });
 
-  it('can be disabled', async () => {
+  it('disables the button when disabled prop is passed', async () => {
     const handleClick = jest.fn();
     render(
-      <Button disabled label="My new button" onClick={handleClick}>
+      <Button label="My new button" onClick={handleClick} disabled={true}>
         Click me
       </Button>,
     );
@@ -48,6 +48,22 @@ describe('Button', () => {
 
     expect(screen.getByRole('button')).toBeDisabled();
     expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  it('does not disable the button by default when the disabled prop is not present', async () => {
+    const handleClick = jest.fn();
+    render(
+      <Button label="My new button" onClick={handleClick}>
+        Click me
+      </Button>,
+    );
+
+    const button = screen.getByRole('button');
+
+    await userEvent.click(button);
+
+    expect(screen.getByRole('button')).not.toBeDisabled();
+    expect(handleClick).toHaveBeenCalled();
   });
 
   it('can be pressed', async () => {

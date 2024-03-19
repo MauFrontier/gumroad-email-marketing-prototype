@@ -329,4 +329,171 @@ describe('TargetingFilterValue', () => {
     expect(product1).toBeInTheDocument();
     expect(product2).toBeInTheDocument();
   });
+
+  it('disables the input when the subject is Payment and the disabled prop is included', () => {
+    render(
+      <TargetingFilterValue
+        subject={TargetingFilterSubjectEnum.Payment}
+        verb={TargetingFilterVerb.IsMoreThan}
+        value={300}
+        disabled={true}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const inputElement = screen.getByLabelText(
+      'Currency amount input',
+    ) as HTMLInputElement;
+
+    expect(inputElement.disabled).toBe(true);
+  });
+
+  it('is not disabled by default when the subject is Payment and the disabled prop is not included', () => {
+    render(
+      <TargetingFilterValue
+        subject={TargetingFilterSubjectEnum.Payment}
+        verb={TargetingFilterVerb.IsMoreThan}
+        value={300}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const inputElement = screen.getByLabelText(
+      'Currency amount input',
+    ) as HTMLInputElement;
+
+    expect(inputElement.disabled).toBe(false);
+  });
+
+  it('disables the input when the subject is Date and the verb is IsBefore, IsAfter, Is, or IsNot and the disabled prop is included', () => {
+    render(
+      <TargetingFilterValue
+        subject={TargetingFilterSubjectEnum.Date}
+        verb={TargetingFilterVerb.IsBefore}
+        value={'2021-02-03T00:00:00.000Z'}
+        disabled={true}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const dateInputElement = screen
+      .getByLabelText('Filter value')
+      .querySelector('input[type="date"]') as HTMLInputElement;
+
+    expect(dateInputElement.disabled).toBe(true);
+  });
+
+  it('is not disabled by default when the subject is Date and the verb is IsBefore, IsAfter, Is, or IsNot and the disabled prop is not included', () => {
+    render(
+      <TargetingFilterValue
+        subject={TargetingFilterSubjectEnum.Date}
+        verb={TargetingFilterVerb.IsBefore}
+        value={'2021-02-03T00:00:00.000Z'}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const dateInputElement = screen
+      .getByLabelText('Filter value')
+      .querySelector('input[type="date"]') as HTMLInputElement;
+
+    expect(dateInputElement.disabled).toBe(false);
+  });
+
+  it('disables the input when the subject is Date and the verb is IsInTheLast and the disabled prop is included', () => {
+    render(
+      <TargetingFilterValue
+        subject={TargetingFilterSubjectEnum.Date}
+        verb={TargetingFilterVerb.IsInTheLast}
+        value={30}
+        disabled={true}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const inputElement = screen
+      .getByLabelText('Filter value')
+      .querySelector('input[type="number"]') as HTMLInputElement;
+
+    expect(inputElement.disabled).toBe(true);
+  });
+
+  it('is not disabled by default when the subject is Date and the verb is IsInTheLast and the disabled prop is not included', () => {
+    render(
+      <TargetingFilterValue
+        subject={TargetingFilterSubjectEnum.Date}
+        verb={TargetingFilterVerb.IsInTheLast}
+        value={30}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const inputElement = screen
+      .getByLabelText('Filter value')
+      .querySelector('input[type="number"]') as HTMLInputElement;
+
+    expect(inputElement.disabled).toBe(false);
+  });
+
+  it('disables the input when the subject is Location and the disabled prop is included', () => {
+    render(
+      <TargetingFilterValue
+        subject={TargetingFilterSubjectEnum.Location}
+        verb={TargetingFilterVerb.Is}
+        value={'CR'}
+        disabled={true}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const selectElement = screen.getByLabelText('Filter value');
+    const option = selectElement.querySelector('option[value="US"]');
+    expect(option).toBeDisabled();
+  });
+
+  it('is not disabled by default when the subject is Location and the disabled prop is not included', () => {
+    render(
+      <TargetingFilterValue
+        subject={TargetingFilterSubjectEnum.Location}
+        verb={TargetingFilterVerb.Is}
+        value={'CR'}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const selectElement = screen.getByLabelText('Filter value');
+    const option = selectElement.querySelector('option[value="US"]');
+    expect(option).not.toBeDisabled();
+  });
+
+  it('disables the input when the subject is Product and the disabled prop is included', () => {
+    render(
+      <TargetingFilterValue
+        subject={TargetingFilterSubjectEnum.Product}
+        verb={TargetingFilterVerb.HasBought}
+        value={[]}
+        disabled={true}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const input = screen.getByLabelText('ComboBox input');
+
+    expect(input).toBeDisabled();
+  });
+
+  it('is not disabled by default when the subject is Product and the disabled prop is not included', () => {
+    render(
+      <TargetingFilterValue
+        subject={TargetingFilterSubjectEnum.Product}
+        verb={TargetingFilterVerb.HasBought}
+        value={[]}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const input = screen.getByLabelText('ComboBox input');
+
+    expect(input).not.toBeDisabled();
+  });
 });

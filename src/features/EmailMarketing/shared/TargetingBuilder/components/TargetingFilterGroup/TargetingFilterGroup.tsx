@@ -14,9 +14,13 @@ import {defaultFilter} from '../../../emailMarketingDefaults';
 
 type Props = {
   targetingFilterGroup: TargetingFilterGroupType;
+  disabled?: boolean;
 };
 
-const TargetingFilterGroup = ({targetingFilterGroup}: Props) => {
+const TargetingFilterGroup = ({
+  targetingFilterGroup,
+  disabled = false,
+}: Props) => {
   const {dispatch} = useEmailMarketingState();
 
   const operand = targetingFilterGroup.operand;
@@ -58,17 +62,26 @@ const TargetingFilterGroup = ({targetingFilterGroup}: Props) => {
     <div aria-label="Filter group">
       {operand && operand !== OperandEnum.Initial && (
         <div role="toolbar">
-          <Operand value={operand} onChange={handleOperandChange} />
-          <DeleteFilterGroupButton onPress={handleDeleteFilterGroup} />
+          <Operand
+            disabled={disabled}
+            value={operand}
+            label="Filter group operand"
+            onChange={handleOperandChange}
+          />
+          <DeleteFilterGroupButton
+            disabled={disabled}
+            onPress={handleDeleteFilterGroup}
+          />
         </div>
       )}
       <div aria-label="Filter group filters">
         {targetingFilterGroup.filters.map((filter, index) => (
           <div key={index}>
-            <TargetingFilter targetingFilter={filter} />
+            <TargetingFilter disabled={disabled} targetingFilter={filter} />
           </div>
         ))}
         <AddFilterButton
+          disabled={disabled}
           onPress={() => handleAddFilter(targetingFilterGroup.id)}
         />
       </div>

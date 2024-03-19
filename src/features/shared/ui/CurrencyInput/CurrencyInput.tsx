@@ -5,12 +5,14 @@ interface CurrencyInputProps {
   value: number;
   label?: string;
   onChange: (value: number) => void;
+  disabled?: boolean;
 }
 
 const CurrencyInput: React.FC<CurrencyInputProps> = ({
   value,
   onChange,
   label,
+  disabled = false,
 }) => {
   const [localValue, setInputValue] = useState(value.toString());
   const [isValid, setIsValid] = useState(true);
@@ -38,6 +40,7 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
         maxLength={10}
         placeholder="0"
         autoComplete="off"
+        disabled={disabled}
         aria-invalid={!isValid}
         aria-label="Currency amount input"
         onChange={handleChange}

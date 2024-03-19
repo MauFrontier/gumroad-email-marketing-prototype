@@ -18,4 +18,22 @@ describe('AddFilterButton', () => {
 
     expect(handleAddFilter).toHaveBeenCalled();
   });
+
+  it('disables button when disabled prop is true', async () => {
+    const handleAddFilter = jest.fn();
+
+    render(<AddFilterButton onPress={handleAddFilter} disabled={true} />);
+    const button = screen.getByLabelText('Add filter button');
+
+    expect(button).toBeDisabled();
+  });
+
+  it('is not disabled by default', async () => {
+    const handleAddFilter = jest.fn();
+
+    render(<AddFilterButton onPress={handleAddFilter} />);
+    const button = screen.getByLabelText('Add filter button');
+
+    expect(button).not.toBeDisabled();
+  });
 });

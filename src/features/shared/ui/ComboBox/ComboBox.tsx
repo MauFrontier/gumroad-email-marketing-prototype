@@ -15,6 +15,7 @@ interface ComboBoxProps {
   onValuesChange: (values: string[]) => void;
   suggestions: KeyValuePair[];
   label?: string;
+  disabled?: boolean;
 }
 
 const ComboBox = ({
@@ -22,6 +23,7 @@ const ComboBox = ({
   onValuesChange,
   suggestions,
   label,
+  disabled = false,
 }: ComboBoxProps) => {
   const [inputValue, setInputValue] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState<
@@ -33,7 +35,7 @@ const ComboBox = ({
     undefined,
   );
   const inputRef = useRef<HTMLInputElement>(null);
-  const comboboxRef = useRef<HTMLDivElement>(null); // Added ref for the combobox container
+  const comboboxRef = useRef<HTMLDivElement>(null);
 
   const showSuggestions = useCallback(() => {
     const eligibleSuggestions = suggestions.filter(
@@ -61,67 +63,78 @@ const ComboBox = ({
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+    if (!disabled) {
+      setInputValue(e.target.value);
+    }
   };
 
   const handleSelect = (suggestion: KeyValuePair) => {
-    onValuesChange([...selectedValues, suggestion.value]);
-    setInputValue('');
-    setActiveDescendant(undefined);
-    setTimeout(() => {
-      inputRef.current?.focus();
-    }, 100);
+    if (!disabled) {
+      onValuesChange([...selectedValues, suggestion.value]);
+      setInputValue('');
+      setActiveDescendant(undefined);
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    }
   };
 
   const handleDelete = (value: string) => {
-    onValuesChange(selectedValues.filter(v => v !== value));
-    inputRef.current?.focus();
+    if (!disabled) {
+      onValuesChange(selectedValues.filter(v => v !== value));
+      inputRef.current?.focus();
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    switch (e.key) {
-      case 'ArrowDown':
-        if (filteredSuggestions.length > 0) {
-          const currentActiveIndex = filteredSuggestions.findIndex(
+    if (!disabled) {
+      switch (e.key) {
+        case 'ArrowDown':
+          if (filteredSuggestions.length > 0) {
+            const currentActiveIndex = filteredSuggestions.findIndex(
+              s => s.key === activeDescendant,
+            );
+            const nextActiveIndex =
+              (currentActiveIndex + 1) % filteredSuggestions.length;
+            setActiveDescendant(filteredSuggestions[nextActiveIndex].key);
+          }
+          break;
+        case 'ArrowUp':
+          if (filteredSuggestions.length > 0) {
+            const currentActiveIndex = filteredSuggestions.findIndex(
+              s => s.key === activeDescendant,
+            );
+            const nextActiveIndex =
+              (currentActiveIndex - 1 + filteredSuggestions.length) %
+              filteredSuggestions.length;
+            setActiveDescendant(filteredSuggestions[nextActiveIndex].key);
+          }
+          break;
+        case 'Enter': {
+          const activeItem = filteredSuggestions.find(
             s => s.key === activeDescendant,
           );
-          const nextActiveIndex =
-            (currentActiveIndex + 1) % filteredSuggestions.length;
-          setActiveDescendant(filteredSuggestions[nextActiveIndex].key);
+          if (activeItem) {
+            handleSelect(activeItem);
+            e.preventDefault();
+          }
+          break;
         }
-        break;
-      case 'ArrowUp':
-        if (filteredSuggestions.length > 0) {
-          const currentActiveIndex = filteredSuggestions.findIndex(
-            s => s.key === activeDescendant,
-          );
-          const nextActiveIndex =
-            (currentActiveIndex - 1 + filteredSuggestions.length) %
-            filteredSuggestions.length;
-          setActiveDescendant(filteredSuggestions[nextActiveIndex].key);
-        }
-        break;
-      case 'Enter': {
-        const activeItem = filteredSuggestions.find(
-          s => s.key === activeDescendant,
-        );
-        if (activeItem) {
-          handleSelect(activeItem);
-          e.preventDefault();
-        }
-        break;
+        case 'Backspace':
+          if (inputValue === '' && selectedValues.length > 0) {
+            const newValues = selectedValues.slice(
+              0,
+              selectedValues.length - 1,
+            );
+            onValuesChange(newValues);
+          }
+          break;
+        case 'Escape':
+          inputRef.current?.blur();
+          break;
+        default:
+          break;
       }
-      case 'Backspace':
-        if (inputValue === '' && selectedValues.length > 0) {
-          const newValues = selectedValues.slice(0, selectedValues.length - 1);
-          onValuesChange(newValues);
-        }
-        break;
-      case 'Escape':
-        inputRef.current?.blur();
-        break;
-      default:
-        break;
     }
   };
 
@@ -158,6 +171,7 @@ const ComboBox = ({
           id="input-field"
           role="textbox"
           aria-autocomplete="list"
+          disabled={disabled}
           aria-controls="suggestions-listbox"
           aria-multiline="false"
           value={inputValue}

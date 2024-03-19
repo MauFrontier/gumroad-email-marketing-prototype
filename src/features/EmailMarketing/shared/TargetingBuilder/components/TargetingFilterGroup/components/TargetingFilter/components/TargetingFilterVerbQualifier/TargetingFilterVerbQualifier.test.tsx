@@ -104,4 +104,31 @@ describe('TargetingFilterVerbQualifier', () => {
 
     expect(option).toBeInTheDocument();
   });
+
+  it('disables the select if the disabled prop is true', () => {
+    render(
+      <TargetingFilterVerbQualifier
+        subject={TargetingFilterSubjectEnum.Product}
+        disabled
+        onChange={jest.fn()}
+      />,
+    );
+
+    const verbQualifier = screen.getByLabelText('Filter verb qualifier');
+    const selectElement = within(verbQualifier).getByRole('combobox');
+    expect(selectElement).toBeDisabled();
+  });
+
+  it('does not disable the select by default if the disabled prop is not present', () => {
+    render(
+      <TargetingFilterVerbQualifier
+        subject={TargetingFilterSubjectEnum.Product}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const verbQualifier = screen.getByLabelText('Filter verb qualifier');
+    const selectElement = within(verbQualifier).getByRole('combobox');
+    expect(selectElement).not.toBeDisabled();
+  });
 });

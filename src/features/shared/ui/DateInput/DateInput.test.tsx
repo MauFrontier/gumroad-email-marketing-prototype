@@ -42,4 +42,33 @@ describe('DateInput', () => {
 
     expect(onChange).toHaveBeenCalledWith('2021-01-02');
   });
+
+  it('disables the input when disabled prop is passed', () => {
+    render(
+      <DateInput
+        value={'2021-01-01T00:00:00.000Z'}
+        onChange={jest.fn()}
+        label="Test DateInput"
+        disabled
+      />,
+    );
+
+    const dateInput = screen.getByLabelText('Test DateInput');
+
+    expect(dateInput).toBeDisabled();
+  });
+
+  it('does not disable the input by default when disabled prop is not passed', () => {
+    render(
+      <DateInput
+        value={'2021-01-01T00:00:00.000Z'}
+        onChange={jest.fn()}
+        label="Test DateInput"
+      />,
+    );
+
+    const dateInput = screen.getByLabelText('Test DateInput');
+
+    expect(dateInput).not.toBeDisabled();
+  });
 });

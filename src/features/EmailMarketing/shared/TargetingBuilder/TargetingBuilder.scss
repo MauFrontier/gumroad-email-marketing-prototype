@@ -4,6 +4,11 @@ section[aria-label='Targeting builder'] {
   margin-top: $spacer-4;
   margin-bottom: $spacer-2;
 
+  .loading {
+    opacity: 0.4;
+  }
+
+
   button[aria-label='Add filter group button'] {
     color: $White;
     background-color: $Black;

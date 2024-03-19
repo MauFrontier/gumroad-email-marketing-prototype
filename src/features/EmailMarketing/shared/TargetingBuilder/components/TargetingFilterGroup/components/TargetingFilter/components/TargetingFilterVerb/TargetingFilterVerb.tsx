@@ -9,9 +9,15 @@ interface Props {
   subject: TargetingFilterSubjectEnum;
   value: TargetingFilterVerbEnum;
   onChange: (value: TargetingFilterVerbEnum) => void;
+  disabled?: boolean;
 }
 
-const TargetingFilterVerb = ({subject, value, onChange}: Props) => {
+const TargetingFilterVerb = ({
+  subject,
+  value,
+  onChange,
+  disabled = false,
+}: Props) => {
   const handleVerbChange = (selectedValue: string) => {
     if (onChange) {
       onChange(selectedValue as TargetingFilterVerbEnum);
@@ -26,7 +32,12 @@ const TargetingFilterVerb = ({subject, value, onChange}: Props) => {
 
   return (
     <div aria-label="Filter verb">
-      <Select value={value} onChange={handleVerbChange} options={verbOptions} />
+      <Select
+        value={value}
+        onChange={handleVerbChange}
+        disabled={disabled}
+        options={verbOptions}
+      />
     </div>
   );
 };

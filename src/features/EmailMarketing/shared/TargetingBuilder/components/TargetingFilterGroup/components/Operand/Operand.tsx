@@ -5,10 +5,12 @@ import './Operand.scss';
 interface Props {
   value?: OperandEnum;
   onChange: (operand: OperandEnum) => void;
+  label?: string;
+  disabled?: boolean;
   className?: string;
 }
 
-const Operand = ({value, onChange, className}: Props) => {
+const Operand = ({value, onChange, disabled, label, className}: Props) => {
   const handleOperandChange = (selectedValue: string) => {
     if (onChange) {
       onChange(selectedValue as OperandEnum);
@@ -22,11 +24,12 @@ const Operand = ({value, onChange, className}: Props) => {
   ];
 
   return (
-    <div aria-label="Operand" className={`${className || ''}`}>
+    <div aria-label={label || 'Operand'} className={`${className || ''}`}>
       {value && value !== OperandEnum.Initial ? (
         <Select
           value={value}
           options={operandOptions}
+          disabled={disabled}
           onChange={handleOperandChange}
         />
       ) : (

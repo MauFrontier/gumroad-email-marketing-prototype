@@ -10,9 +10,15 @@ interface Props {
   subject: TargetingFilterSubjectEnum;
   value?: VerbQualifierEnum;
   onChange?: (value: VerbQualifierEnum) => void;
+  disabled?: boolean;
 }
 
-const TargetingFilterVerbQualifier = ({subject, value, onChange}: Props) => {
+const TargetingFilterVerbQualifier = ({
+  subject,
+  value,
+  onChange,
+  disabled,
+}: Props) => {
   const handleVerbQualifierChange = (selectedValue: string) => {
     if (onChange) {
       onChange(selectedValue as VerbQualifierEnum);
@@ -30,6 +36,7 @@ const TargetingFilterVerbQualifier = ({subject, value, onChange}: Props) => {
       <Select
         value={value || VerbQualifierEnum.Any}
         options={verbQualifierOptions}
+        disabled={disabled}
         onChange={handleVerbQualifierChange}
       />
     </div>

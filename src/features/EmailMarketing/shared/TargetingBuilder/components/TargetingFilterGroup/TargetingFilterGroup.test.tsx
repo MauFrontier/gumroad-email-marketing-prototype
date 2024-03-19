@@ -53,7 +53,7 @@ describe('TargetingFilterGroup', () => {
       />,
     );
 
-    expect(screen.queryAllByLabelText('Operand')).toHaveLength(0);
+    expect(screen.queryAllByLabelText('Filter group operand')).toHaveLength(0);
 
     render(
       <TargetingFilterGroup
@@ -67,14 +67,14 @@ describe('TargetingFilterGroup', () => {
       />,
     );
 
-    expect(screen.queryAllByLabelText('Operand')).toHaveLength(0);
+    expect(screen.queryAllByLabelText('Filter group operand')).toHaveLength(0);
   });
 
   it('displays operand selector with correct value when one is provided', () => {
     render(<TargetingFilterGroup {...baseProps} />);
-    expect(screen.getByLabelText('Operand')).toBeInTheDocument();
+    expect(screen.getByLabelText('Filter group operand')).toBeInTheDocument();
 
-    const operandContainer = screen.getByLabelText('Operand');
+    const operandContainer = screen.getByLabelText('Filter group operand');
     const selectElement = within(operandContainer).getByRole('combobox');
 
     expect(selectElement).toHaveValue(OperandEnum.And);
@@ -136,9 +136,9 @@ describe('TargetingFilterGroup', () => {
 
   it('dispatches SetFilterGroupOperand action', async () => {
     render(<TargetingFilterGroup {...baseProps} />);
-    expect(screen.getByLabelText('Operand')).toBeInTheDocument();
+    expect(screen.getByLabelText('Filter group operand')).toBeInTheDocument();
 
-    const operandContainer = screen.getByLabelText('Operand');
+    const operandContainer = screen.getByLabelText('Filter group operand');
     const selectElement = within(operandContainer).getByRole('combobox');
 
     await userEvent.selectOptions(selectElement, ['Or']);
@@ -150,5 +150,34 @@ describe('TargetingFilterGroup', () => {
         operand: OperandEnum.Or,
       },
     });
+  });
+
+  it('Disables its direct children and at least one filtering input when the disabled prop is included', () => {
+    //I don't want to get this too coupled to its children's implementations,
+    //and they're each getting tested on getting disabled, so we can let
+    //integration tests handle that and not test all of them here.
+    render(
+      <TargetingFilterGroup
+        {...baseProps}
+        targetingFilterGroup={{
+          ...baseProps.targetingFilterGroup,
+          filters: [defaultDateFilter],
+        }}
+        disabled={true}
+      />,
+    );
+
+    const verb = screen.getByLabelText('Filter verb');
+    const verbSelectElement = within(verb).getByRole('combobox');
+    expect(verbSelectElement).toBeDisabled();
+
+    const deleteFilterButton = screen.getByLabelText(
+      'Delete filter group button',
+    );
+    expect(deleteFilterButton).toBeDisabled();
+
+    const operandContainer = screen.getByLabelText('Filter group operand');
+    const operandSelect = within(operandContainer).getByRole('combobox');
+    expect(operandSelect).toBeDisabled();
   });
 });

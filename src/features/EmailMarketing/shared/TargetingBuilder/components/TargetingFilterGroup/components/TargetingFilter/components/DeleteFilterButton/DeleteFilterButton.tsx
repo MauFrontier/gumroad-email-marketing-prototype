@@ -5,11 +5,12 @@ import './DeleteFilterButton.scss';
 
 interface Props {
   onPress: () => void;
+  disabled?: boolean;
 }
 
-const DeleteFilterButton = ({onPress}: Props) => {
+const DeleteFilterButton = ({onPress, disabled = false}: Props) => {
   return (
-    <Button label="Delete filter button" onClick={onPress}>
+    <Button label="Delete filter button" disabled={disabled} onClick={onPress}>
       <Icon type={IconType.Trash} />
     </Button>
   );

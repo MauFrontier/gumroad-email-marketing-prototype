@@ -145,4 +145,19 @@ describe('TargetingFilterVerb', () => {
 
     expect(onChange).toHaveBeenCalledWith(TargetingFilterVerbEnum.IsNot);
   });
+
+  it('disables the verb select when the disabled prop is true', () => {
+    render(
+      <TargetingFilterVerb
+        subject={TargetingFilterSubjectEnum.Product}
+        value={TargetingFilterVerbEnum.Is}
+        disabled={true}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const verb = screen.getByLabelText('Filter verb');
+    const selectElement = within(verb).getByRole('combobox');
+    expect(selectElement).toBeDisabled();
+  });
 });

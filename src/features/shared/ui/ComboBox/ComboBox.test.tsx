@@ -114,4 +114,33 @@ describe('ComboBox', () => {
 
     expect(handleChange).toHaveBeenCalledWith(['Option 1']);
   });
+
+  it('disables input when disabled prop is passed', async () => {
+    render(
+      <ComboBox
+        selectedValues={[]}
+        onValuesChange={jest.fn()}
+        suggestions={mockSuggestions}
+        label="Test ComboBox"
+        disabled
+      />,
+    );
+
+    const input = screen.getByLabelText('ComboBox input');
+    expect(input).toBeDisabled();
+  });
+
+  it('does not disable input by default when disabled prop is not passed', async () => {
+    render(
+      <ComboBox
+        selectedValues={[]}
+        onValuesChange={jest.fn()}
+        suggestions={mockSuggestions}
+        label="Test ComboBox"
+      />,
+    );
+
+    const input = screen.getByLabelText('ComboBox input');
+    expect(input).not.toBeDisabled();
+  });
 });

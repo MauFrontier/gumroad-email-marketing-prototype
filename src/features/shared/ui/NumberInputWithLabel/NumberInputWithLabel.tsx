@@ -1,20 +1,25 @@
 import './NumberInputWithLabel.scss';
 
+type Props = {
+  value: number;
+  onChange: (value: number) => void;
+  label: string;
+  disabled?: boolean;
+};
+
 const NumberInputWithLabel = ({
   value,
   onChange,
   label,
-}: {
-  value: number;
-  onChange: (value: number) => void;
-  label: string;
-}) => {
+  disabled = false,
+}: Props) => {
   return (
     <div className="number-input-with-label">
       <input
         type="number"
         value={value}
         placeholder="0"
+        disabled={disabled}
         onChange={e => onChange?.(parseInt(e.target.value))}
         aria-labelledby="input-label"
       />

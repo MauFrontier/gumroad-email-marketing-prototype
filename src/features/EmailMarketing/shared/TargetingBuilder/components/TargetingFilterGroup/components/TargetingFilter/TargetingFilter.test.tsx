@@ -26,7 +26,7 @@ describe('TargetingFilter', () => {
   it('renders operand picker', () => {
     render(<TargetingFilter targetingFilter={dateFilterForTests} />);
 
-    expect(screen.getByLabelText('Operand')).toBeInTheDocument();
+    expect(screen.getByLabelText('Filter operand')).toBeInTheDocument();
   });
 
   it('dispatches SetFilterOperand action when operand changes', async () => {
@@ -36,9 +36,9 @@ describe('TargetingFilter', () => {
       />,
     );
 
-    expect(screen.getByLabelText('Operand')).toBeInTheDocument();
+    expect(screen.getByLabelText('Filter operand')).toBeInTheDocument();
 
-    const operandContainer = screen.getByLabelText('Operand');
+    const operandContainer = screen.getByLabelText('Filter operand');
     const selectElement = within(operandContainer).getByRole('combobox');
 
     await userEvent.selectOptions(selectElement, [Operand.Or]);
@@ -292,5 +292,50 @@ describe('TargetingFilter', () => {
         value: paymentFilterForTests.value * 10,
       },
     });
+  });
+
+  it('Disables its direct children and at least one filtering input when the disabled prop is included', () => {
+    //I don't want to get this too coupled to its children's implementations,
+    //and they're each getting tested on getting disabled, so we can let
+    //integration tests handle that and not test all of them here.
+    render(
+      <TargetingFilter
+        targetingFilter={{...dateFilterForTests, operand: Operand.And}}
+        disabled={true}
+      />,
+    );
+
+    const verb = screen.getByLabelText('Filter verb');
+    const verbSelectElement = within(verb).getByRole('combobox');
+    expect(verbSelectElement).toBeDisabled();
+
+    const deleteFilterButton = screen.getByLabelText('Delete filter button');
+    expect(deleteFilterButton).toBeDisabled();
+
+    const operandContainer = screen.getByLabelText('Filter operand');
+    const operandSelect = within(operandContainer).getByRole('combobox');
+    expect(operandSelect).toBeDisabled();
+  });
+
+  it('Does not disable its direct children and at least one filtering input when the disabled prop is not included', () => {
+    //I don't want to get this too coupled to its children's implementations,
+    //and they're each getting tested on getting disabled, so we can let
+    //integration tests handle that and not test all of them here.
+    render(
+      <TargetingFilter
+        targetingFilter={{...dateFilterForTests, operand: Operand.And}}
+      />,
+    );
+
+    const verb = screen.getByLabelText('Filter verb');
+    const verbSelectElement = within(verb).getByRole('combobox');
+    expect(verbSelectElement).not.toBeDisabled();
+
+    const deleteFilterButton = screen.getByLabelText('Delete filter button');
+    expect(deleteFilterButton).not.toBeDisabled();
+
+    const operandContainer = screen.getByLabelText('Filter operand');
+    const operandSelect = within(operandContainer).getByRole('combobox');
+    expect(operandSelect).not.toBeDisabled();
   });
 });

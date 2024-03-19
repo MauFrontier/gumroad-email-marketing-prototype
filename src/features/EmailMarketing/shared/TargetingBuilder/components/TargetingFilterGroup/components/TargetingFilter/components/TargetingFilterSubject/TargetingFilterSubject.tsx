@@ -7,9 +7,10 @@ import './TargetingFilterSubject.scss';
 interface Props {
   value: TargetingFilterSubjectEnum;
   onChange: (value: TargetingFilterSubjectEnum) => void;
+  disabled?: boolean;
 }
 
-const TargetingFilterSubject = ({value, onChange}: Props) => {
+const TargetingFilterSubject = ({value, onChange, disabled = false}: Props) => {
   const handleSubjectChange = (selectedValue: string) => {
     if (onChange) {
       onChange(selectedValue as TargetingFilterSubjectEnum);
@@ -51,6 +52,7 @@ const TargetingFilterSubject = ({value, onChange}: Props) => {
         value={value}
         onChange={handleSubjectChange}
         options={subjectOptions}
+        disabled={disabled}
       />
     </div>
   );

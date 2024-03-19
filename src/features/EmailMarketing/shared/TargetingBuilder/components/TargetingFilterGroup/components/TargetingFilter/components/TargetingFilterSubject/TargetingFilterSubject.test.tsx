@@ -60,4 +60,31 @@ describe('TargetingFilterSubject', () => {
 
     expect(onChange).toHaveBeenCalledWith(TargetingFilterSubjectEnum.Payment);
   });
+
+  it('disables Select component when disabled prop is true', () => {
+    render(
+      <TargetingFilterSubject
+        value={TargetingFilterSubjectEnum.Date}
+        onChange={jest.fn()}
+        disabled={true}
+      />,
+    );
+    const subject = screen.getByLabelText('Filter subject');
+    const selectElement = within(subject).getByRole('combobox');
+
+    expect(selectElement).toBeDisabled();
+  });
+
+  it('is not disabled by default', () => {
+    render(
+      <TargetingFilterSubject
+        value={TargetingFilterSubjectEnum.Date}
+        onChange={jest.fn()}
+      />,
+    );
+    const subject = screen.getByLabelText('Filter subject');
+    const selectElement = within(subject).getByRole('combobox');
+
+    expect(selectElement).not.toBeDisabled();
+  });
 });

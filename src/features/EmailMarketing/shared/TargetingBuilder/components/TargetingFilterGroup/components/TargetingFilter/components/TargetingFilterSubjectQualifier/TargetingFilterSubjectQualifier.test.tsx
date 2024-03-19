@@ -71,4 +71,35 @@ describe('TargetingFilterSubjectQualifier', () => {
       screen.queryByLabelText('Filter subject qualifier'),
     ).not.toBeInTheDocument();
   });
+
+  it('disables Select component when disabled prop is true', () => {
+    render(
+      <TargetingFilterSubjectQualifier
+        subject={TargetingFilterSubjectEnum.Date}
+        value={TargetingFilterSubjectQualifierEnum.Purchased}
+        onChange={jest.fn()}
+        disabled={true}
+      />,
+    );
+
+    const subjectQualifier = screen.getByLabelText('Filter subject qualifier');
+    const selectElement = within(subjectQualifier).getByRole('combobox');
+
+    expect(selectElement).toBeDisabled();
+  });
+
+  it('is not disabled by default', () => {
+    render(
+      <TargetingFilterSubjectQualifier
+        subject={TargetingFilterSubjectEnum.Date}
+        value={TargetingFilterSubjectQualifierEnum.Purchased}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const subjectQualifier = screen.getByLabelText('Filter subject qualifier');
+    const selectElement = within(subjectQualifier).getByRole('combobox');
+
+    expect(selectElement).not.toBeDisabled();
+  });
 });

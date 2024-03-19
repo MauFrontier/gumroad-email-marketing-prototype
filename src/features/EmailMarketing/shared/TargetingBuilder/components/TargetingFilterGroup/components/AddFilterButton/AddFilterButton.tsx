@@ -5,11 +5,12 @@ import './AddFilterButton.scss';
 
 interface Props {
   onPress: () => void;
+  disabled?: boolean;
 }
 
-const AddFilterButton = ({onPress}: Props) => {
+const AddFilterButton = ({onPress, disabled}: Props) => {
   return (
-    <Button label="Add filter button" onClick={onPress}>
+    <Button disabled={disabled} label="Add filter button" onClick={onPress}>
       <Icon type={IconType.PlusCircleClear} /> Add filter
     </Button>
   );

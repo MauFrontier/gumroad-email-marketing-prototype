@@ -83,4 +83,31 @@ describe('CurrencyInput', () => {
 
     expect(input).not.toHaveAttribute('aria-invalid', 'true');
   });
+
+  it('disables the input when disabled prop is passed', () => {
+    render(
+      <CurrencyInput
+        value={100}
+        onChange={jest.fn()}
+        label="Currency amount"
+        disabled={true}
+      />,
+    );
+
+    const input = screen.getByLabelText('Currency amount input');
+    expect(input).toBeDisabled();
+  });
+
+  it('does not disable the input when disabled prop is not passed', () => {
+    render(
+      <CurrencyInput
+        value={100}
+        onChange={jest.fn()}
+        label="Currency amount"
+      />,
+    );
+
+    const input = screen.getByLabelText('Currency amount input');
+    expect(input).not.toBeDisabled();
+  });
 });

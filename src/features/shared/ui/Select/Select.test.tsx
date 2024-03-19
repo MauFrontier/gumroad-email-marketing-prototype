@@ -88,4 +88,39 @@ describe('Select', () => {
     expect(onChange).toHaveBeenCalledWith('456');
     expect(onChange).toHaveBeenCalledTimes(1);
   });
+
+  it('disables the select when disabled prop is passed', () => {
+    render(
+      <Select
+        label="Test Select"
+        value="123"
+        options={[]}
+        onChange={jest.fn()}
+        disabled
+      />,
+    );
+
+    const selectElement = screen.getByLabelText(
+      'Test Select',
+    ) as HTMLSelectElement;
+
+    expect(selectElement).toBeDisabled();
+  });
+
+  it('does not disable the select when disabled prop is not passed', () => {
+    render(
+      <Select
+        label="Test Select"
+        value="123"
+        options={[]}
+        onChange={jest.fn()}
+      />,
+    );
+
+    const selectElement = screen.getByLabelText(
+      'Test Select',
+    ) as HTMLSelectElement;
+
+    expect(selectElement).not.toBeDisabled();
+  });
 });

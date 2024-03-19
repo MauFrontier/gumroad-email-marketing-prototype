@@ -5,9 +5,15 @@ interface DatePickerProps {
   value?: string;
   label?: string;
   onChange: (date: string) => void;
+  disabled?: boolean;
 }
 
-const DatePicker: React.FC<DatePickerProps> = ({value, onChange, label}) => {
+const DatePicker: React.FC<DatePickerProps> = ({
+  value,
+  onChange,
+  label,
+  disabled = false,
+}) => {
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -20,6 +26,7 @@ const DatePicker: React.FC<DatePickerProps> = ({value, onChange, label}) => {
     <input
       type="date"
       value={safeValue}
+      disabled={disabled}
       aria-label={label}
       onChange={handleChange}
     />

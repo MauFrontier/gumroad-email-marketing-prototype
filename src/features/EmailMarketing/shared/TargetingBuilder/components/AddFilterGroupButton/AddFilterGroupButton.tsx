@@ -5,11 +5,15 @@ import {IconType} from '../../../../../shared/ui/Icon/iconLibrary';
 
 interface Props {
   onPress: () => void;
+  disabled?: boolean;
 }
 
-const AddFilterGroupButton = ({onPress}: Props) => {
+const AddFilterGroupButton = ({onPress, disabled = false}: Props) => {
   return (
-    <Button onClick={onPress} label="Add filter group button">
+    <Button
+      disabled={disabled || false}
+      onClick={onPress}
+      label="Add filter group button">
       <Icon type={IconType.PlusCircleClear} />
       Add Filter Group
     </Button>

@@ -5,11 +5,15 @@ import './DeleteFilterGroupButton.scss';
 
 interface Props {
   onPress: () => void;
+  disabled?: boolean;
 }
 
-const DeleteFilterGroupButton = ({onPress}: Props) => {
+const DeleteFilterGroupButton = ({onPress, disabled}: Props) => {
   return (
-    <Button label="Delete filter group button" onClick={onPress}>
+    <Button
+      disabled={disabled}
+      label="Delete filter group button"
+      onClick={onPress}>
       <Icon type={IconType.Trash} />
     </Button>
   );

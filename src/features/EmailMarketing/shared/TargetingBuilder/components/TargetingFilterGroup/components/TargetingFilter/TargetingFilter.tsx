@@ -23,9 +23,13 @@ import {shouldResetValue} from '../../../../../targetingUtils';
 
 type TargetingFilterProps = {
   targetingFilter: TargetingFilterType;
+  disabled?: boolean;
 };
 
-const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
+const TargetingFilter = ({
+  targetingFilter,
+  disabled = false,
+}: TargetingFilterProps) => {
   const {dispatch} = useEmailMarketingState();
 
   const handleOperandChange = (newOperand: OperandEnum) => {
@@ -118,29 +122,35 @@ const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
         <Operand
           value={targetingFilter.operand || OperandEnum.Initial}
           onChange={handleOperandChange}
+          label="Filter operand"
+          disabled={disabled}
         />
         <div className="filter-row-content">
           <TargetingFilterSubject
             value={targetingFilter.subject}
             onChange={handleSubjectChange}
+            disabled={disabled}
           />
           {'subjectQualifier' in targetingFilter && (
             <TargetingFilterSubjectQualifier
               subject={targetingFilter.subject}
               onChange={handleSubjectQualifierChange}
               value={targetingFilter.subjectQualifier}
+              disabled={disabled}
             />
           )}
           <TargetingFilterVerb
             subject={targetingFilter.subject}
             value={targetingFilter.verb}
             onChange={handleVerbChange}
+            disabled={disabled}
           />
           {'verbQualifier' in targetingFilter && (
             <TargetingFilterVerbQualifier
               subject={targetingFilter.subject}
               onChange={handleVerbQualifierChange}
               value={targetingFilter.verbQualifier}
+              disabled={disabled}
             />
           )}
           <TargetingFilterValue
@@ -148,9 +158,13 @@ const TargetingFilter = ({targetingFilter}: TargetingFilterProps) => {
             verb={targetingFilter.verb}
             value={targetingFilter.value}
             onChange={handleValueChange}
+            disabled={disabled}
           />
         </div>
-        <DeleteFilterButton onPress={() => handleDeleteFilter()} />
+        <DeleteFilterButton
+          onPress={() => handleDeleteFilter()}
+          disabled={disabled}
+        />
       </div>
     </div>
   );

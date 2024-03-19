@@ -22,10 +22,12 @@ button {
   align-items: center;
   justify-content: center;
 
-  &:hover {
-    box-shadow: $shadow-regular;
-    transform: translate(-#{$spacer-2}, -#{$spacer-2});
-    cursor: pointer;
+  &:not(:disabled) {
+    &:hover {
+      box-shadow: $shadow-regular;
+      transform: translate(-#{$spacer-2}, -#{$spacer-2});
+      cursor: pointer;
+    }
   }
 
   &.selected {

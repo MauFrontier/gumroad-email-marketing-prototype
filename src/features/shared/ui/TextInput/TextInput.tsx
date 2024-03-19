@@ -15,9 +15,9 @@ const TextInput = ({
   label,
   value,
   onChange,
-  invalid,
-  disabled,
-  required,
+  invalid = false,
+  disabled = false,
+  required = false,
 }: Props) => {
   return (
     <input
