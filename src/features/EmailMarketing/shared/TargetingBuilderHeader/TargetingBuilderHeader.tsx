@@ -28,6 +28,7 @@ const TargetingBuilderHeader = () => {
           <Button
             onClick={openGenerateWithAIPanel}
             label="Generate with AI"
+            disabled={state.isAILoading}
             pressed={showGenerateWithAIPanel}
             aria-controls="generateWithAIForm">
             <Icon type={IconType.Ai} size={5} />

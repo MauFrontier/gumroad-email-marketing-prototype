@@ -23,22 +23,27 @@ const TargetingBuilder = () => {
   };
 
   return (
-    <section role="region" aria-label="Targeting builder">
-      <TargetingBuilderHeader />
-      {targeting.filterGroups.map((filterGroup, index) => (
-        <div
-          key={filterGroup.id}
-          role="group"
-          className={state.isAILoading ? 'loading' : ''}
-          aria-label={`Filter Group ${index + 1}`}>
-          <TargetingFilterGroup
-            targetingFilterGroup={filterGroup}
-            disabled={state.isAILoading}
-          />
-        </div>
-      ))}
-      <AddFilterGroupButton onPress={handleAddFilterGroup} />
-    </section>
+    <>
+      <section role="region" aria-label="Targeting builder">
+        <TargetingBuilderHeader />
+        {targeting.filterGroups.map((filterGroup, index) => (
+          <div
+            key={filterGroup.id}
+            role="group"
+            className={state.isAILoading ? 'loading' : ''}
+            aria-label={`Filter Group ${index + 1}`}>
+            <TargetingFilterGroup
+              targetingFilterGroup={filterGroup}
+              disabled={state.isAILoading}
+            />
+          </div>
+        ))}
+        <AddFilterGroupButton
+          disabled={state.isAILoading}
+          onPress={handleAddFilterGroup}
+        />
+      </section>
+    </>
   );
 };
 
