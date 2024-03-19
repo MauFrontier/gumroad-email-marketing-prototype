@@ -3,6 +3,7 @@ import ArchiveIcon from '@/assets/images/icons/icon_archive.svg?react';
 import CalendarIcon from '@/assets/images/icons/icon_calendar.svg?react';
 import CheckIcon from '@/assets/images/icons/icon_check.svg?react';
 import ChevronDownIcon from '@/assets/images/icons/icon_chevron-down.svg?react';
+import CodeIcon from '@/assets/images/icons/icon_code.svg?react';
 import CreditCardIcon from '@/assets/images/icons/icon_credit-card.svg?react';
 import GlobeIcon from '@/assets/images/icons/icon_globe.svg?react';
 import PlusCircleClearIcon from '@/assets/images/icons/icon_plus-circle-clear.svg?react';
@@ -21,6 +22,7 @@ export enum IconType {
   Calendar = 'Calendar',
   Check = 'Check',
   ChevronDown = 'ChevronDown',
+  Code = 'Code',
   CreditCard = 'CreditCard',
   Globe = 'Globe',
   PlusCircleClear = 'PlusCircleClear',
@@ -42,6 +44,7 @@ export const Icons: {
   [IconType.Calendar]: CalendarIcon,
   [IconType.Check]: CheckIcon,
   [IconType.ChevronDown]: ChevronDownIcon,
+  [IconType.Code]: CodeIcon,
   [IconType.CreditCard]: CreditCardIcon,
   [IconType.Globe]: GlobeIcon,
   [IconType.Plus]: PlusIcon,
