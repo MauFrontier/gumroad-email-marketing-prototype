@@ -181,14 +181,64 @@ describe('GenerateWithAIForm', () => {
     });
   });
 
-  //
+  it('should show the AI accuracy warning after a result from the API is received', async () => {
+    renderComponentWithState(<GenerateWithAIForm visible={true} />, {
+      ...emailMarketingInitialState,
+      prompt: 'test prompt',
+    });
 
     const button = screen.getByLabelText('Generate with AI button');
 
     fireEvent.click(button);
 
     await waitFor(() => {
-      expect(hideDialog).toHaveBeenCalled();
+      expect(
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: EmailMarketingActionType.SetShowAIAccuracyWarning,
+          payload: true,
+        }),
+      );
+    });
+  });
+
+  it('should hide the AI accuracy warning after clicking on the Generate with AI button', async () => {
+    renderComponentWithState(<GenerateWithAIForm visible={true} />, {
+      ...emailMarketingInitialState,
+      prompt: 'test prompt',
+    });
+
+    const button = screen.getByLabelText('Generate with AI button');
+
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: EmailMarketingActionType.SetShowAIAccuracyWarning,
+        payload: false,
+      });
+    });
+  });
+
+  it('should reset AI accuracy votes to false when clicking on the Generate with AI button', async () => {
+    renderComponentWithState(<GenerateWithAIForm visible={true} />, {
+      ...emailMarketingInitialState,
+      prompt: 'test prompt',
+      showAIAccuracyWarning: true,
+    });
+
+    const button = screen.getByLabelText('Generate with AI button');
+
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: EmailMarketingActionType.SetVotedAIAccuracyDown,
+        payload: false,
+      });
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: EmailMarketingActionType.SetVotedAIAccuracyUp,
+        payload: false,
+      });
     });
   });
 

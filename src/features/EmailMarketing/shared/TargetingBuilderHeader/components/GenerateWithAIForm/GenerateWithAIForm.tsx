@@ -54,6 +54,18 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
   const resetAIState = () => {
     dispatch({type: EmailMarketingActionType.SetIsAILoading, payload: true});
     dispatch({type: EmailMarketingActionType.SetAIErrors, payload: []});
+    dispatch({
+      type: EmailMarketingActionType.SetShowAIAccuracyWarning,
+      payload: false,
+    });
+    dispatch({
+      type: EmailMarketingActionType.SetVotedAIAccuracyUp,
+      payload: false,
+    });
+    dispatch({
+      type: EmailMarketingActionType.SetVotedAIAccuracyDown,
+      payload: false,
+    });
   };
 
   const handleSendPrompt = async () => {
@@ -103,6 +115,10 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
     } catch (error) {
       console.error('Failed to fetch from ChatGPT:', error);
     } finally {
+      dispatch({
+        type: EmailMarketingActionType.SetShowAIAccuracyWarning,
+        payload: true,
+      });
       dispatch({type: EmailMarketingActionType.SetIsAILoading, payload: false});
       hideGenAIDialog();
     }

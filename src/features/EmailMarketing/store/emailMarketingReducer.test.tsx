@@ -313,6 +313,32 @@ describe('emailMarketingReducer', () => {
     expect(state.showAIAccuracyWarning).toBe(true);
   });
 
+  it('handles SetVotedAIAccuracyUp action', () => {
+    const initialVotedAIAccuracyUp = initialState.votedAIAccuracyUp;
+    expect(initialVotedAIAccuracyUp).toBe(false);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetVotedAIAccuracyUp,
+      payload: true,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.votedAIAccuracyUp).toBe(true);
+  });
+
+  it('handles SetVotedAIAccuracyDown action', () => {
+    const initialVotedAIAccuracyDown = initialState.votedAIAccuracyDown;
+    expect(initialVotedAIAccuracyDown).toBe(false);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetVotedAIAccuracyDown,
+      payload: true,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.votedAIAccuracyDown).toBe(true);
+  });
+
   it('handles SetAIErrors action', () => {
     const initialAIErrors = initialState.aiErrors;
     expect(initialAIErrors).toEqual([]);

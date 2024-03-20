@@ -69,4 +69,23 @@ describe('TargetingBuilder', () => {
     expect(screen.queryByLabelText('AI error warning')).not.toBeInTheDocument();
   });
 
+  it('displays the AI accuracy warning when it is visible', () => {
+    renderComponentWithState(<TargetingBuilder />, {
+      ...emailMarketingInitialState,
+      showAIAccuracyWarning: true,
+    });
+
+    expect(screen.getByLabelText('AI accuracy warning')).toBeInTheDocument();
+  });
+
+  it('does not display the AI accuracy warning when it is not visible', () => {
+    renderComponentWithState(<TargetingBuilder />, {
+      ...emailMarketingInitialState,
+      showAIAccuracyWarning: false,
+    });
+
+    expect(
+      screen.queryByLabelText('AI accuracy warning'),
+    ).not.toBeInTheDocument();
+  });
 });

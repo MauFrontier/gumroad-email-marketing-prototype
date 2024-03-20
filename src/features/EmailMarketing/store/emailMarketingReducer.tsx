@@ -216,6 +216,20 @@ export const emailMarketingReducer = (
         showAIAccuracyWarning: action.payload,
       };
       break;
+    case EmailMarketingActionType.SetVotedAIAccuracyUp:
+      return {
+        ...state,
+        votedAIAccuracyUp: action.payload,
+        votedAIAccuracyDown: action.payload ? false : state.votedAIAccuracyDown,
+      };
+
+    case EmailMarketingActionType.SetVotedAIAccuracyDown:
+      return {
+        ...state,
+        votedAIAccuracyDown: action.payload,
+        votedAIAccuracyUp: action.payload ? false : state.votedAIAccuracyUp,
+      };
+
     case EmailMarketingActionType.SetAIErrors:
       return {
         ...state,

@@ -1,0 +1,34 @@
+@import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
+
+[aria-label='Vote up or down buttons'] {
+  display: flex;
+  flex-direction: row;
+
+  button {
+    width: $dimension-8;
+    height: $dimension-8;
+    min-width: $dimension-8;
+    padding: 0;
+    border: none;
+
+    &:hover {
+      &[aria-label='Vote up button'],
+      &[aria-label='Remove vote up button'] {
+        box-shadow: none;
+        transform: none;
+        transform: scaleX(-1);
+      }
+      &[aria-label='Vote down button'],
+      &[aria-label='Remove vote down button'] {
+        box-shadow: none;
+        transform: none;
+        transform: none;
+      }
+    }
+
+    &[aria-label='Vote up button'],
+    &[aria-label='Remove vote up button'] {
+      transform: scaleX(-1);
+    }
+  }
+}

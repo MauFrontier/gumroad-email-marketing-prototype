@@ -9,6 +9,8 @@ export const emailMarketingInitialState: EmailMarketingState = {
   isAILoading: false,
   showAIAccuracyWarning: false,
   prompt: '',
+  votedAIAccuracyUp: false,
+  votedAIAccuracyDown: false,
   aiErrors: [],
   latestAIPrompt: '',
   latestAIResponse: '',

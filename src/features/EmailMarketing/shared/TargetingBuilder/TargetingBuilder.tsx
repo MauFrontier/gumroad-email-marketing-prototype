@@ -6,6 +6,7 @@ import {v4 as uuid} from 'uuid';
 import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
 import TargetingBuilderHeader from '../TargetingBuilderHeader/TargetingBuilderHeader';
 import AddFilterGroupButton from './components/AddFilterGroupButton/AddFilterGroupButton';
+import AIAccuracyWarning from '../TargetingBuilderHeader/components/AIAccuracyWarning/AIAccuracyWarning';
 import AIErrorWarnings from '../TargetingBuilderHeader/components/AIErrorWarnings/AIErrorWarnings';
 
 const TargetingBuilder = () => {
@@ -24,6 +25,7 @@ const TargetingBuilder = () => {
   };
 
   const aiErrors = state.aiErrors;
+  const showAIAccuracyWarning = state.showAIAccuracyWarning;
 
   return (
     <>
@@ -48,6 +50,7 @@ const TargetingBuilder = () => {
           disabled={state.isAILoading}
           onPress={handleAddFilterGroup}
         />
+        {showAIAccuracyWarning && <AIAccuracyWarning />}
       </section>
     </>
   );

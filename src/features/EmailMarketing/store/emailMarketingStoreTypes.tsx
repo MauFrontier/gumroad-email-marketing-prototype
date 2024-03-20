@@ -17,6 +17,9 @@ export interface EmailMarketingState {
   showGenerateWithAIPanel: boolean;
   prompt: string;
   isAILoading: boolean;
+  showAIAccuracyWarning: boolean;
+  votedAIAccuracyUp: boolean;
+  votedAIAccuracyDown: boolean;
   aiErrors: ErrorWarning[];
 }
 
@@ -37,6 +40,9 @@ export enum EmailMarketingActionType {
   ToggleShowGenerateWithAIPanel = 'ToggleGenerateWithAIPanel',
   SetPrompt = 'SetPrompt',
   SetIsAILoading = 'SetIsAILoading',
+  SetShowAIAccuracyWarning = 'SetShowAIAccuracyWarning',
+  SetVotedAIAccuracyUp = 'SetVotedAIAccuracyUp',
+  SetVotedAIAccuracyDown = 'SetVotedAIAccuracyDown',
   SetAIErrors = 'SetAIErrors',
   SetErrorVisibility = 'SetErrorVisibility',
 }
@@ -107,6 +113,8 @@ export type EmailMarketingAction =
   | {type: EmailMarketingActionType.SetPrompt; payload: string}
   | {type: EmailMarketingActionType.SetIsAILoading; payload: boolean}
   | {type: EmailMarketingActionType.SetShowAIAccuracyWarning; payload: boolean}
+  | {type: EmailMarketingActionType.SetVotedAIAccuracyUp; payload: boolean}
+  | {type: EmailMarketingActionType.SetVotedAIAccuracyDown; payload: boolean}
   | {type: EmailMarketingActionType.SetAIErrors; payload: ErrorWarning[]}
   | {
       type: EmailMarketingActionType.SetErrorVisibility;

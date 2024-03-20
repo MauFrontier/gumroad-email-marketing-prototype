@@ -1,0 +1,5 @@
+@import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
+
+[aria-label='AI accuracy warning'] {
+  margin: $spacer-4 0;
+}
