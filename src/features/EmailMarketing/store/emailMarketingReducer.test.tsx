@@ -17,6 +17,7 @@ import {
   EmailMarketingAction,
   EmailMarketingActionType,
 } from './emailMarketingStoreTypes';
+import {KeyValuePair} from '../../shared/sharedTypes';
 
 describe('emailMarketingReducer', () => {
   it('handles SetTargeting action', () => {
@@ -295,6 +296,24 @@ describe('emailMarketingReducer', () => {
 
     const state = emailMarketingReducer(initialState, action);
     expect(state.selectedTrigger).toEqual(newTrigger);
+  });
+
+  it('handles SetProducts action', () => {
+    const initialProducts = initialState.products;
+    const newProducts: KeyValuePair[] = [
+      {key: 'product1', value: 'Product 1'},
+      {key: 'product2', value: 'Product 2'},
+    ];
+
+    expect(initialProducts).not.toEqual(newProducts);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetProducts,
+      payload: newProducts,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.products).toEqual(newProducts);
   });
 
   it('handles ToggleGenerateWithAIPanel action', () => {

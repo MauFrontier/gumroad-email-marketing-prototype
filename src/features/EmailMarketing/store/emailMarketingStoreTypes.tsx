@@ -1,3 +1,4 @@
+import {KeyValuePair} from '../../shared/sharedTypes';
 import {
   AIResponse,
   ErrorWarning,
@@ -15,6 +16,7 @@ import {
 export interface EmailMarketingState {
   targeting: Targeting;
   selectedTrigger: TriggerType;
+  products: KeyValuePair[];
   showGenerateWithAIPanel: boolean;
   prompt: string;
   isAILoading: boolean;
@@ -41,6 +43,7 @@ export enum EmailMarketingActionType {
   SetFilterVerbQualifier = 'SetFilterVerbQualifier',
   SetFilterValue = 'SetFilterValue',
   SelectTrigger = 'SelectTrigger',
+  SetProducts = 'SetProducts',
   ToggleShowGenerateWithAIPanel = 'ToggleGenerateWithAIPanel',
   SetPrompt = 'SetPrompt',
   SetIsAILoading = 'SetIsAILoading',
@@ -116,6 +119,7 @@ export type EmailMarketingAction =
       };
     }
   | {type: EmailMarketingActionType.SelectTrigger; payload: TriggerType}
+  | {type: EmailMarketingActionType.SetProducts; payload: KeyValuePair[]}
   | {type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel}
   | {type: EmailMarketingActionType.SetPrompt; payload: string}
   | {type: EmailMarketingActionType.SetIsAILoading; payload: boolean}

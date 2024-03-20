@@ -263,6 +263,12 @@ export const emailMarketingReducer = (
         showDevTools: action.payload,
       };
       break;
+    case EmailMarketingActionType.SetProducts:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
     default:
       return state;
       break;
