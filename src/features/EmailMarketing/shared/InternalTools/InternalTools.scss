@@ -1,6 +1,6 @@
 @import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
 
-[aria-label='Developer tools container'] {
+[aria-label='Internal tools container'] {
   border-top: $border-1;
   margin-top: $spacer-10;
   padding-top: $spacer-4;
@@ -22,5 +22,14 @@
       text-align: center;
       font-size: $font-size-2xl;
     }
+  }
+
+  [aria-label='Internal tools'] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $spacer-6;
+    margin-top: $spacer-4;
   }
 }
