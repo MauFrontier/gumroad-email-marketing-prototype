@@ -1,6 +1,7 @@
 import './InternalTools.scss';
 import ExamplePrompts from './components/ExamplePrompts/ExamplePrompts';
 import examplePrompts from './components/ExamplePrompts/examplePromptsList';
+import ProductEditor from './components/ProductEditor/ProductEditor';
 
 const InternalTools = () => {
   return (
@@ -11,6 +12,7 @@ const InternalTools = () => {
       </header>
       <section role="region" aria-label="Internal tools">
         <ExamplePrompts examplePrompts={examplePrompts} />
+        <ProductEditor />
     </div>
   );
 };

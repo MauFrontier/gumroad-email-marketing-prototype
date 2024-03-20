@@ -8,9 +8,10 @@ describe('InternalTools', () => {
     expect(screen.getByLabelText('Internal tools container')).toBeVisible();
   });
 
-  it('renders example prompts', async () => {
+  it('renders example prompts, and product editor', async () => {
     render(<InternalTools />);
 
     expect(screen.getByLabelText('Example prompts')).toBeVisible();
+    expect(screen.getByLabelText('Edit products')).toBeVisible();
   });
 });
