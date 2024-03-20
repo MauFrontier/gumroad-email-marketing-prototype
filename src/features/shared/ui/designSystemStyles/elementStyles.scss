@@ -135,6 +135,17 @@ fieldset {
   border: none;
 }
 
+pre.code-block {
+  padding: $spacer-4;
+  background-color: $White;
+  font-size: $font-size-xs;
+  border-radius: $border-radius-2;
+  border: $border-1;
+  max-height: $dimension-20;
+  overflow: scroll;
+  color: $Black;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
