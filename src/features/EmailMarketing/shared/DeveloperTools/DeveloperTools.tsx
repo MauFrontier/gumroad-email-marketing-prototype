@@ -1,3 +1,4 @@
+import './DeveloperTools.scss';
 
 const DeveloperTools = () => {
   return (
