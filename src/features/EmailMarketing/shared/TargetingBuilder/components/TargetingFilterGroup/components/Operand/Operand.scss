@@ -1,6 +1,6 @@
 @import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
 
-[aria-label='Operand'] {
+.operand {
   height: $dimension-9;
 
   select {

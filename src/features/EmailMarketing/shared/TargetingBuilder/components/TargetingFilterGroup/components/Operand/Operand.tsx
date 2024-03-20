@@ -24,7 +24,7 @@ const Operand = ({value, onChange, disabled, label, className}: Props) => {
   ];
 
   return (
-    <div aria-label={label || 'Operand'} className={`${className || ''}`}>
+    <div aria-label={label || 'Operand'} className={`operand ${className}`}>
       {value && value !== OperandEnum.Initial ? (
         <Select
           value={value}
