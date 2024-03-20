@@ -18,6 +18,10 @@
     box-shadow: $shadow-regular-light;
   }
 
+  &:active {
+    box-shadow: none;
+  }
+
   &[disabled] {
     opacity: $opacity-disabled;
     box-shadow: none;

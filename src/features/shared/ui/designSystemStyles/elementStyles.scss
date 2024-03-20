@@ -29,6 +29,11 @@ button {
     cursor: pointer;
   }
 
+  &:active {
+    box-shadow: none;
+    transform: none;
+  }
+
   &[disabled] {
     opacity: $opacity-disabled;
     box-shadow: none;
@@ -58,6 +63,11 @@ button {
     &[aria-pressed='true'] {
       box-shadow: $shadow-regular-light;
       transform: translate(-#{$spacer-2}, -#{$spacer-2});
+    }
+
+    &:active {
+      box-shadow: none;
+      transform: none;
     }
   }
 }
