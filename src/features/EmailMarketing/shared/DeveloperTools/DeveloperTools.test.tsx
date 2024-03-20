@@ -5,6 +5,6 @@ describe('DeveloperTools', () => {
   it('Renders the component', async () => {
     render(<DeveloperTools />);
 
-    expect(screen.getByLabelText('Developer tools')).toBeVisible();
+    expect(screen.getByLabelText('Developer tools container')).toBeVisible();
   });
 });
