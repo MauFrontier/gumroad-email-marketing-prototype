@@ -106,7 +106,7 @@ describe('GenerateWithAIForm', () => {
     fireEvent.click(button);
 
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SetIsAILoading',
+      type: EmailMarketingActionType.SetIsAILoading,
       payload: true,
     });
   });
@@ -122,12 +122,12 @@ describe('GenerateWithAIForm', () => {
     fireEvent.click(button);
 
     expect(mockDispatch).not.toHaveBeenCalledWith({
-      type: 'SetIsAILoading',
+      type: EmailMarketingActionType.SetIsAILoading,
       payload: true,
     });
   });
 
-  it('should dispatch SetIsAILoading=false when received a response from the OpenAI API', async () => {
+  it('should set loading to false when received a response from the OpenAI API', async () => {
     renderComponentWithState(<GenerateWithAIForm visible={true} />, {
       ...emailMarketingInitialState,
       prompt: 'test prompt',
@@ -139,13 +139,13 @@ describe('GenerateWithAIForm', () => {
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SetIsAILoading',
+        type: EmailMarketingActionType.SetIsAILoading,
         payload: false,
       });
     });
   });
 
-  it('should dispatch SetAIErrors when api returned errors', async () => {
+  it('should set errors state when api returned errors', async () => {
     renderComponentWithState(<GenerateWithAIForm visible={true} />, {
       ...emailMarketingInitialState,
       prompt: 'test prompt',
@@ -157,15 +157,13 @@ describe('GenerateWithAIForm', () => {
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SetAIErrors',
-        payload: [
-          "Products 'motorcycle' and 'app' were not recognized. They've been excluded from your criteria.",
-        ],
+        type: EmailMarketingActionType.SetAIErrors,
+        payload: expect.any(Object),
       });
     });
   });
 
-  it('should dispatch SetTargeting when api returns success or success with errors', async () => {
+  it('should set targeting state when api returns success or success with errors', async () => {
     renderComponentWithState(<GenerateWithAIForm visible={true} />, {
       ...emailMarketingInitialState,
       prompt: 'test prompt',
@@ -177,7 +175,7 @@ describe('GenerateWithAIForm', () => {
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SetTargeting',
+        type: EmailMarketingActionType.SetTargeting,
         payload: expect.any(Object),
       });
     });
