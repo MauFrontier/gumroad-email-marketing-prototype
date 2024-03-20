@@ -19,6 +19,15 @@ const TriggerSelection = () => {
     dispatch({type: EmailMarketingActionType.SelectTrigger, payload: trigger});
   };
 
+  const audienceType =
+    selectedTrigger === TriggerType.NewSubscriber
+      ? 'email subscribers'
+      : selectedTrigger === TriggerType.MemberCancels
+        ? 'members who canceled'
+        : selectedTrigger === TriggerType.NewAffiliate
+          ? 'affiliates'
+          : 'customers';
+
   return (
     <section role="region" aria-label="Trigger selection">
       <fieldset>
@@ -37,7 +46,7 @@ const TriggerSelection = () => {
       </fieldset>
       <label className="row">
         <input type="checkbox" />
-        Also send to past customers
+        Also send to past {audienceType}
       </label>
     </section>
   );

@@ -37,4 +37,43 @@ describe('TriggerSelection', () => {
       payload: newTrigger,
     });
   });
+
+  it('displays the correct audience type for the "send to past ___" checkbox when the Purchase trigger is selected', async () => {
+    renderComponentWithState(<TriggerSelection />, emailMarketingInitialState);
+
+    expect(screen.getByText('Also send to past customers')).toBeInTheDocument();
+  });
+
+  it('displays the correct audience type for the "send to past ___" checkbox when the New Customer trigger is selected', async () => {
+    renderComponentWithState(<TriggerSelection />, {
+      ...emailMarketingInitialState,
+      selectedTrigger: TriggerType.NewSubscriber,
+    });
+
+    expect(
+      screen.getByText('Also send to past email subscribers'),
+    ).toBeInTheDocument();
+  });
+
+  it('displays the correct audience type for the "send to past ___" checkbox when the Member Cancels trigger is selected', async () => {
+    renderComponentWithState(<TriggerSelection />, {
+      ...emailMarketingInitialState,
+      selectedTrigger: TriggerType.MemberCancels,
+    });
+
+    expect(
+      screen.getByText('Also send to past members who canceled'),
+    ).toBeInTheDocument();
+  });
+
+  it('displays the correct audience type for the "send to past ___" checkbox when the New Affiliate trigger is selected', async () => {
+    renderComponentWithState(<TriggerSelection />, {
+      ...emailMarketingInitialState,
+      selectedTrigger: TriggerType.NewAffiliate,
+    });
+
+    expect(
+      screen.getByText('Also send to past affiliates'),
+    ).toBeInTheDocument();
+  });
 });
