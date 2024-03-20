@@ -1,7 +1,10 @@
-import {render, screen, within} from '@testing-library/react';
+import {fireEvent, render, screen, within} from '@testing-library/react';
 import TargetingBuilder from './TargetingBuilder';
 import {renderComponentWithState} from '../../store/emailMarketingStoreUtils';
 import {emailMarketingInitialState} from '../../store/emailMarketingInitialState';
+import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
+import {mockDispatch} from '../../../../utils/mocks/mocks';
+import {Operand} from '../emailMarketingTypes';
 
 describe('TargetingBuilder', () => {
   it('renders component', () => {
@@ -9,14 +12,17 @@ describe('TargetingBuilder', () => {
     expect(screen.getByLabelText('Targeting builder')).toBeInTheDocument();
   });
 
-  it("renders TargetingBuilder's components", () => {
-    render(<TargetingBuilder />);
+  it('renders targeting builder header, filter groups, and Add filter group button', () => {
+    renderComponentWithState(<TargetingBuilder />, emailMarketingInitialState);
+
     expect(
       screen.getByLabelText('Targeting builder header'),
     ).toBeInTheDocument();
     expect(
       screen.getByLabelText('Add filter group button'),
     ).toBeInTheDocument();
+
+    expect(screen.getAllByLabelText('Filter group').length > 0).toBe(true);
   });
 
   it('displays every filter group', () => {
@@ -47,6 +53,22 @@ describe('TargetingBuilder', () => {
     const operand = screen.getByLabelText('Filter group operand');
     const operandSelect = within(operand).getByRole('combobox');
     expect(operandSelect).not.toBeDisabled();
+  });
+
+  it('adds a new filter group when AddFilterGroupButton is clicked', () => {
+    renderComponentWithState(<TargetingBuilder />, emailMarketingInitialState);
+
+    const button = screen.getByLabelText('Add filter group button');
+    fireEvent.click(button);
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.AddFilterGroup,
+      payload: {
+        id: expect.any(String),
+        operand: Operand.And,
+        filters: [],
+      },
+    });
   });
 
   it('displays the error warnings when any are present', () => {
