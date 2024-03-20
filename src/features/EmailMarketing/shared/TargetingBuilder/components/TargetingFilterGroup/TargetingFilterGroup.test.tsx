@@ -120,7 +120,7 @@ describe('TargetingFilterGroup', () => {
     });
   });
 
-  it('dispatches DeleteFilterGroup action', async () => {
+  it('Deletes the filter group', async () => {
     render(<TargetingFilterGroup {...baseProps} />);
     expect(
       screen.getByLabelText('Delete filter group button'),
@@ -134,7 +134,7 @@ describe('TargetingFilterGroup', () => {
     });
   });
 
-  it('dispatches SetFilterGroupOperand action', async () => {
+  it("Sets the filter group's operand", async () => {
     render(<TargetingFilterGroup {...baseProps} />);
     expect(screen.getByLabelText('Filter group operand')).toBeInTheDocument();
 

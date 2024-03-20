@@ -29,7 +29,7 @@ describe('TargetingFilter', () => {
     expect(screen.getByLabelText('Filter operand')).toBeInTheDocument();
   });
 
-  it('dispatches SetFilterOperand action when operand changes', async () => {
+  it("Sets the filter's operand when the operand picker's value changes", async () => {
     render(
       <TargetingFilter
         targetingFilter={{...dateFilterForTests, operand: Operand.And}}
@@ -58,7 +58,7 @@ describe('TargetingFilter', () => {
     expect(screen.getByLabelText('Delete filter button')).toBeInTheDocument();
   });
 
-  it('dispatches DeleteFilter action when Delete filter button is clicked', async () => {
+  it('Deletes the filter when the "Delete filter" button is clicked', async () => {
     render(<TargetingFilter targetingFilter={dateFilterForTests} />);
 
     const deleteFilterButton = screen.getByLabelText('Delete filter button');
@@ -77,7 +77,7 @@ describe('TargetingFilter', () => {
     expect(screen.getByLabelText('Filter subject')).toBeInTheDocument();
   });
 
-  it('dispatches SetFilterSubject action when subject changes', async () => {
+  it("Sets the filter's subject when the Subject picker's value changes", async () => {
     render(<TargetingFilter targetingFilter={dateFilterForTests} />);
 
     expect(screen.getByLabelText('Filter subject')).toBeInTheDocument();
@@ -112,7 +112,7 @@ describe('TargetingFilter', () => {
     ).toBeInTheDocument();
   });
 
-  it('dispatches SetFilterSubjectQualifier action when subject qualifier changes', async () => {
+  it("Sets the FilterSubjectQualifier when subject qualifier picker's value changes", async () => {
     render(
       <TargetingFilter
         targetingFilter={{
@@ -147,7 +147,7 @@ describe('TargetingFilter', () => {
     expect(screen.getByLabelText('Filter verb')).toBeInTheDocument();
   });
 
-  it('dispatches SetFilterVerb action when verb changes', async () => {
+  it("Sets the filter verb when verb picker's value changes", async () => {
     render(<TargetingFilter targetingFilter={dateFilterForTests} />);
 
     const verbContainer = screen.getByLabelText('Filter verb');
@@ -237,7 +237,7 @@ describe('TargetingFilter', () => {
     expect(screen.queryByLabelText('Filter verb qualifier')).toBeNull();
   });
 
-  it('dispatches SetFilterVerbQualifier action when verb qualifier changes', async () => {
+  it("Sets the filter's VerbQualifier when the verb qualifier picker's value changes", async () => {
     render(<TargetingFilter targetingFilter={productFilterForTests} />);
 
     const verbQualifierContainer = screen.getByLabelText(
@@ -263,7 +263,7 @@ describe('TargetingFilter', () => {
     expect(screen.getByLabelText('Filter value')).toBeInTheDocument();
   });
 
-  it('dispatches SetFilterValue', async () => {
+  it("Sets the filter's value when the value field changes", async () => {
     render(<TargetingFilter targetingFilter={paymentFilterForTests} />);
 
     const valueField = screen.getByLabelText('Currency amount input');
