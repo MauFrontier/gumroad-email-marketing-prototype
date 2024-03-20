@@ -1,6 +1,6 @@
 import emailMarketingTypes from './types_generateTargeting.ts';
-import {exampleProducts, examples} from './examples_generateTargeting';
-import products from '../../productsFromServer';
+import {exampleProducts, examples} from './examples_generateTargeting.ts';
+import {KeyValuePair} from '../../../../shared/sharedTypes.ts';
 
 const responseType = `type AIResponse = {
   result: 'success' | 'success with errors' | 'failure';
@@ -8,7 +8,8 @@ const responseType = `type AIResponse = {
   errors: string[];
 };`;
 
-export const basicRules = ` 
+export const getTargetingSystemPrompt = (products: KeyValuePair[]) => {
+  const basicRules = ` 
 You're going to take a user's prompt in natural language and will generate the JSON for email marketing targeting, adhering strictly to these rules:
 
 * The JSON must me 100% compatible with the type structure laid out below.
@@ -30,14 +31,17 @@ You're going to take a user's prompt in natural language and will generate the J
 * Make sure you consider the type structure and use the best possible operands, subjects, subject qualifiers, verbs, verb qualifiers, and verbs to represent what the user is asking for.
 * You will adhere to the ISO 3166-1 standard for countries, but you will not demand that the user uses the standard. If the user uses a non-standard country name, you will infer the correct country from the user's input and not say anything about it.`;
 
-const responseTypeSegment = `* You will return an object in the following structure as a response, with no explanation: ${responseType}`;
+  const responseTypeSegment = `* You will return an object in the following structure as a response, with no explanation: ${responseType}`;
 
-const typesSegment = `* Your response must be a valid JSON object that can be parsed into the following type structure: ${emailMarketingTypes}`;
+  const typesSegment = `* Your response must be a valid JSON object that can be parsed into the following type structure: ${emailMarketingTypes}`;
 
-const examplesSegment = `I will show you some example JSON results. The prompts can take any form, so these are just example responses I'd expect for a few example prompts I came up with. These examples assume that the account has the following example products (but the real user's products will be listed later): ${exampleProducts}
+  const examplesSegment = `I will show you some example JSON results. The prompts can take any form, so these are just example responses I'd expect for a few example prompts I came up with. These examples assume that the account has the following example products (but the real user's products will be listed later): ${exampleProducts}
 
 These are the examples: ${examples}`;
 
-const realProductsSegment = `The example products I mentioned before were simply meant to be referenced in the examples I shared. But when analyzing the user's prompt, you will instead look at the following list of real products in their account: ${products}`;
+  const realProductsSegment = `The example products I mentioned before were simply meant to be referenced in the examples I shared. But when analyzing the user's prompt, you will instead look at the following list of real products in their account: ${JSON.stringify(products)}`;
 
-export const systemPrompt_generateTargeting = `${basicRules} ${responseTypeSegment} ${typesSegment} ${examplesSegment} ${realProductsSegment}`;
+  const finalPrompt = `${basicRules} ${responseTypeSegment} ${typesSegment} ${examplesSegment} ${realProductsSegment}`;
+
+  return finalPrompt;
+};

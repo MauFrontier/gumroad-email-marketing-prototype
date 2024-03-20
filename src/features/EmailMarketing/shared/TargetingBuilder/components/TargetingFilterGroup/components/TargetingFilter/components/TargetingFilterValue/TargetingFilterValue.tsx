@@ -3,7 +3,6 @@ import {
   TargetingFilterVerb as TargetingFilterVerbEnum,
   TargetingFilterValueType,
 } from '../../../../../../../emailMarketingTypes';
-import {getValueOptions} from '../../../../../../../targetingUtils';
 import './TargetingFilterValue.scss';
 import DateInput from '../../../../../../../../../shared/ui/DateInput/DateInput';
 import ComboBox from '../../../../../../../../../shared/ui/ComboBox/ComboBox';
@@ -11,6 +10,8 @@ import {formatDateForDisplay} from '../../../../../../../formatUtils';
 import NumberInputWithLabel from '../../../../../../../../../shared/ui/NumberInputWithLabel/NumberInputWithLabel';
 import CurrencyInput from '../../../../../../../../../shared/ui/CurrencyInput/CurrencyInput';
 import Select from '../../../../../../../../../shared/ui/Select/Select';
+import {getCountriesArray} from '../../../../../../../countries';
+import {useEmailMarketingState} from '../../../../../../../../store/useEmailMarketingState';
 
 interface Props {
   subject: TargetingFilterSubjectEnum;
@@ -27,8 +28,16 @@ const TargetingFilterValue = ({
   onChange,
   disabled = false,
 }: Props) => {
+  const {state} = useEmailMarketingState();
+
+  const options =
+    subject === TargetingFilterSubjectEnum.Location
+      ? getCountriesArray()
+      : subject === TargetingFilterSubjectEnum.Product
+        ? state.products
+        : null;
+
   const stringValue = value !== undefined ? value.toString() : '';
-  const options = getValueOptions(subject);
   const shouldExpand = subject === TargetingFilterSubjectEnum.Product;
 
   const handleOnChange = (newValue: TargetingFilterValueType) => {

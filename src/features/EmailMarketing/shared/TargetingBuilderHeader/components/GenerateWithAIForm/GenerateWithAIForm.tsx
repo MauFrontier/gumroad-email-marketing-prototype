@@ -87,7 +87,7 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
         payload: prompt,
       });
 
-      const apiResponse = await SubmitAIPrompt(prompt);
+      const apiResponse = await SubmitAIPrompt(prompt, state.products);
 
       if (apiResponse !== null) {
         const parsedResponse: AIResponse = JSON.parse(apiResponse);

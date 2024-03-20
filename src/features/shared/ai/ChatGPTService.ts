@@ -1,6 +1,7 @@
 import {OpenAI} from 'openai';
-import {systemPrompt_generateTargeting} from '../../EmailMarketing/api/ai/generateTargeting/systemPrompt_generateTargeting';
+import {getTargetingSystemPrompt} from '../../EmailMarketing/api/ai/generateTargeting/getTargetingSystemPrompt';
 import {VITE_OPENAI_API_KEY} from '../../../constants';
+import {KeyValuePair} from '../sharedTypes';
 
 const apiKey = VITE_OPENAI_API_KEY;
 
@@ -11,13 +12,14 @@ const openai = new OpenAI({
 
 export const SubmitAIPrompt = async (
   prompt: string,
+  products: KeyValuePair[],
 ): Promise<string | null> => {
   try {
     const completion = await openai.chat.completions.create({
       messages: [
         {
           role: 'system',
-          content: systemPrompt_generateTargeting,
+          content: getTargetingSystemPrompt(products),
         },
         {
           role: 'user',

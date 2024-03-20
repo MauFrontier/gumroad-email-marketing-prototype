@@ -6,8 +6,6 @@ import {
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
 } from './emailMarketingTypes';
-import products from '../api/productsFromServer';
-import {getCountriesArray} from './countries';
 import {KeyValuePair} from '../../shared/sharedTypes';
 
 export const getSubjectQualifierOptions = (subject: TargetingFilterSubject) => {
@@ -106,17 +104,6 @@ export const getVerbQualifierOptions = (
       ];
     default:
       return [];
-  }
-};
-
-export const getValueOptions = (subject: TargetingFilterSubject) => {
-  switch (subject) {
-    case TargetingFilterSubject.Product:
-      return products;
-    case TargetingFilterSubject.Location:
-      return getCountriesArray();
-    default:
-      return null;
   }
 };
 
