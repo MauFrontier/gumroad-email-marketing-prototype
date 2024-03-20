@@ -1,4 +1,5 @@
 import TextInput from '../../shared/ui/TextInput/TextInput';
+import InternalTools from '../shared/InternalTools/InternalTools';
 import TargetingBuilder from '../shared/TargetingBuilder/TargetingBuilder';
 import TriggerSelection from '../shared/TriggerSelection/TriggerSelection';
 
@@ -11,6 +12,7 @@ const WorkflowBuilder = () => {
       </label>
       <TriggerSelection />
       <TargetingBuilder />
+      <InternalTools />
     </form>
   );
 };

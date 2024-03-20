@@ -8,6 +8,7 @@ import Icon from '../../../../../shared/ui/Icon/Icon';
 import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
 import {IconType} from '../../../../../shared/ui/Icon/iconLibrary';
 import {v4 as uuid} from 'uuid';
+import {AIResponse} from '../../../emailMarketingTypes';
 
 interface Props {
   isFloatingDialog?: boolean;
@@ -81,10 +82,20 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
     try {
       resetAIState();
 
+      dispatch({
+        type: EmailMarketingActionType.SetLatestAIPrompt,
+        payload: prompt,
+      });
+
       const apiResponse = await SubmitAIPrompt(prompt);
 
       if (apiResponse !== null) {
-        const parsedResponse = JSON.parse(apiResponse);
+        const parsedResponse: AIResponse = JSON.parse(apiResponse);
+
+        dispatch({
+          type: EmailMarketingActionType.SetLatestAIResponse,
+          payload: parsedResponse,
+        });
 
         const result = parsedResponse.result;
         const payload = parsedResponse.payload;
@@ -113,7 +124,12 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
         }
       }
     } catch (error) {
-      console.error('Failed to fetch from ChatGPT:', error);
+      console.error('Failed to fetch from ChatGPT: ', error);
+
+      dispatch({
+        type: EmailMarketingActionType.SetLatestAIResponse,
+        payload: 'Failed to fetch from ChatGPT: ' + error,
+      });
     } finally {
       dispatch({
         type: EmailMarketingActionType.SetShowAIAccuracyWarning,

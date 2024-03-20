@@ -121,10 +121,29 @@ select {
   appearance: none; /* Standard way to remove default arrow, but not supported everywhere */
 }
 
+textarea {
+  padding: $spacer-4;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: $dimension-14;
+  border-radius: $border-radius-2;
+}
+
 fieldset {
   padding: 0;
   margin: 0;
   border: none;
+}
+
+pre.code-block {
+  padding: $spacer-4;
+  background-color: $White;
+  font-size: $font-size-xs;
+  border-radius: $border-radius-2;
+  border: $border-1;
+  max-height: $dimension-20;
+  overflow: scroll;
+  color: $Black;
 }
 
 @keyframes spin {

@@ -334,4 +334,40 @@ describe('GenerateWithAIForm', () => {
       });
     });
   });
+
+  it('should set latest AI prompt when we submit the prompt', async () => {
+    renderComponentWithState(<GenerateWithAIForm visible={true} />, {
+      ...emailMarketingInitialState,
+      prompt: 'test prompt',
+    });
+
+    const button = screen.getByLabelText('Generate with AI button');
+
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: EmailMarketingActionType.SetLatestAIPrompt,
+        payload: 'test prompt',
+      });
+    });
+  });
+
+  it('should set latest AI response after we receive a response from the API', async () => {
+    renderComponentWithState(<GenerateWithAIForm visible={true} />, {
+      ...emailMarketingInitialState,
+      prompt: 'test prompt',
+    });
+
+    const button = screen.getByLabelText('Generate with AI button');
+
+    await fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: EmailMarketingActionType.SetLatestAIResponse,
+        payload: expect.any(Object), //mock data returns a successful object result
+      });
+    });
+  });
 });

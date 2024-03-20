@@ -17,6 +17,7 @@ import {
   EmailMarketingAction,
   EmailMarketingActionType,
 } from './emailMarketingStoreTypes';
+import {KeyValuePair} from '../../shared/sharedTypes';
 
 describe('emailMarketingReducer', () => {
   it('handles SetTargeting action', () => {
@@ -297,6 +298,24 @@ describe('emailMarketingReducer', () => {
     expect(state.selectedTrigger).toEqual(newTrigger);
   });
 
+  it('handles SetProducts action', () => {
+    const initialProducts = initialState.products;
+    const newProducts: KeyValuePair[] = [
+      {key: 'product1', value: 'Product 1'},
+      {key: 'product2', value: 'Product 2'},
+    ];
+
+    expect(initialProducts).not.toEqual(newProducts);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetProducts,
+      payload: newProducts,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.products).toEqual(newProducts);
+  });
+
   it('handles ToggleGenerateWithAIPanel action', () => {
     const initialShowGenerateWithAIPanel = initialState.showGenerateWithAIPanel;
 
@@ -399,5 +418,35 @@ describe('emailMarketingReducer', () => {
 
     expect(stateWithChangedErrorVisibility.aiErrors[0].isVisible).toBe(false);
     expect(stateWithChangedErrorVisibility.aiErrors[1].isVisible).toBe(true);
+  });
+
+  it('handles SetLatestAIPrompt action', () => {
+    const initialLatestAIPrompt = initialState.latestAIPrompt;
+    expect(initialLatestAIPrompt).toBe('');
+
+    const prompt = 'Hello AI, what is your name?';
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetLatestAIPrompt,
+      payload: prompt,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.latestAIPrompt).toBe(prompt);
+  });
+
+  it('handles SetLatestAIResponse action', () => {
+    const initialLatestAIResponse = initialState.latestAIResponse;
+    expect(initialLatestAIResponse).toBe('');
+
+    const response = 'As an AI model, I am responding';
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetLatestAIResponse,
+      payload: response,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.latestAIResponse).toBe(response);
   });
 });

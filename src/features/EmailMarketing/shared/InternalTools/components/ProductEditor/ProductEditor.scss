@@ -1,0 +1,43 @@
+@import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
+
+[aria-label='Edit products'] {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    height: 20rem;
+    transform: translateY($spacer-2);
+
+    &.error {
+      border-color: $Red;
+    }
+    &.success {
+      border-color: $Gum;
+    }
+  }
+
+  button {
+    padding: $spacer-3;
+    z-index: 20;
+
+    &.success {
+      background-color: $Gum;
+    }
+    &.error {
+      background-color: $Red;
+    }
+
+    svg {
+      width: $dimension-5;
+    }
+
+    &:not(.dark) {
+      background-color: $LightGray;
+    }
+  }
+}
+
+[aria-label='Current state'] {
+  width: 100%;
+}

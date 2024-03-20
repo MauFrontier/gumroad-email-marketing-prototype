@@ -245,6 +245,24 @@ export const emailMarketingReducer = (
         ),
       };
       break;
+    case EmailMarketingActionType.SetLatestAIPrompt:
+      return {
+        ...state,
+        latestAIPrompt: action.payload,
+      };
+      break;
+    case EmailMarketingActionType.SetLatestAIResponse:
+      return {
+        ...state,
+        latestAIResponse: action.payload,
+      };
+      break;
+    case EmailMarketingActionType.SetProducts:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
     default:
       return state;
       break;
