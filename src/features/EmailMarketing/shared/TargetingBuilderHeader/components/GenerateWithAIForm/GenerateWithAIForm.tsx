@@ -2,12 +2,11 @@ import {useEffect, useRef, useState} from 'react';
 import {SubmitAIPrompt} from '../../../../../shared/ai/ChatGPTService'; // Adjust the path as necessary
 import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
 
-import PlusCircleIcon from '@/assets/images/icons/icon_ai.svg?react';
-
 import './GenerateWithAIForm.scss';
 import Button from '../../../../../shared/ui/Button/Button';
 import Icon from '../../../../../shared/ui/Icon/Icon';
 import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
+import {IconType} from '../../../../../shared/ui/Icon/iconLibrary';
 
 interface Props {
   isFloatingDialog?: boolean;
@@ -136,17 +135,14 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
             className="dark"
             disabled={isAILoading}>
             {isAILoading ? (
-              <Icon
-                uri="./src/assets/images/icons/icon_spinner.png"
-                label="Loading..."
+              <img
+                src="./src/assets/images/icons/icon_spinner.png"
+                alt="Loading..."
                 className="spinner"
               />
             ) : (
               <>
-                <PlusCircleIcon
-                  className="generate-with-ai-icon"
-                  aria-hidden="true"
-                />
+                <Icon type={IconType.PlusCircleClear} />
                 Generate with AI
               </>
             )}
