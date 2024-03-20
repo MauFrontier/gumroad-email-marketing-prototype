@@ -13,10 +13,6 @@ const TargetingBuilderHeader = () => {
     dispatch({type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel});
   };
 
-  const handleHideGenAIDialog = () => {
-    dispatch({type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel});
-  };
-
   return (
     <header aria-label="Targeting builder header">
       <div role="toolbar" aria-label="Recipient and AI generation tools">
@@ -39,17 +35,13 @@ const TargetingBuilderHeader = () => {
             <GenerateWithAIForm
               isFloatingDialog={true}
               visible={showGenerateWithAIPanel}
-              hideDialog={handleHideGenAIDialog}
             />
           )}
         </div>
       </div>
 
       {showGenerateWithAIPanel && (
-        <GenerateWithAIForm
-          visible={showGenerateWithAIPanel}
-          hideDialog={handleHideGenAIDialog}
-        />
+        <GenerateWithAIForm visible={showGenerateWithAIPanel} />
       )}
     </header>
   );

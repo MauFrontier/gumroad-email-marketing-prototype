@@ -11,15 +11,10 @@ import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTyp
 
 interface Props {
   isFloatingDialog?: boolean;
-  hideDialog?: () => void;
   visible?: boolean;
 }
 
-const GenerateWithAIForm = ({
-  isFloatingDialog,
-  hideDialog,
-  visible = false,
-}: Props) => {
+const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
   const {state, dispatch} = useEmailMarketingState();
 
   const [shouldHighlightPromptError, setShouldHighlightPromptError] =
@@ -41,6 +36,10 @@ const GenerateWithAIForm = ({
       focusTextArea();
     }
   }, [visible]);
+
+  const hideGenAIDialog = () => {
+    dispatch({type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel});
+  };
 
   const handleTextareaChange = (
     event: React.ChangeEvent<HTMLTextAreaElement>,
@@ -98,14 +97,13 @@ const GenerateWithAIForm = ({
       console.error('Failed to fetch from ChatGPT:', error);
     } finally {
       dispatch({type: EmailMarketingActionType.SetIsAILoading, payload: false});
-      clearPrompt();
-      hideDialog && hideDialog();
+      hideGenAIDialog();
     }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Escape') {
-      hideDialog && hideDialog();
+      hideGenAIDialog();
     } else if (event.key === 'Enter' && !event.shiftKey && !event.ctrlKey) {
       event.preventDefault();
       handleSendPrompt();

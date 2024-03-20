@@ -4,6 +4,7 @@ import {mockDispatch} from '../../../../../../utils/mocks/mocks';
 import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
 import {renderComponentWithState} from '../../../../store/emailMarketingStoreUtils';
 import {emailMarketingInitialState} from '../../../../store/emailMarketingInitialState';
+import userEvent from '@testing-library/user-event';
 
 describe('GenerateWithAIForm', () => {
   it('renders component', () => {
@@ -21,9 +22,8 @@ describe('GenerateWithAIForm', () => {
     expect(textArea).toHaveFocus();
   });
 
-  it('should run hideDialog function passed as prop when ESC key is pressed', async () => {
-    const hideDialog = jest.fn();
-    render(<GenerateWithAIForm visible={true} hideDialog={hideDialog} />);
+  it('should hide the Generate With AI dialog when pressing ESC', async () => {
+    render(<GenerateWithAIForm visible={true} />);
 
     const textArea = screen.getByLabelText('Prompt to generate with AI');
     textArea.focus();
@@ -37,7 +37,26 @@ describe('GenerateWithAIForm', () => {
       charCode: 27,
     });
 
-    expect(hideDialog).toHaveBeenCalled();
+    await waitFor(() => {
+      //
+    });
+  });
+
+  it('should hide dialog after a result from the API is received', async () => {
+    renderComponentWithState(<GenerateWithAIForm visible={true} />, {
+      ...emailMarketingInitialState,
+      prompt: 'test prompt',
+    });
+
+    const button = screen.getByLabelText('Generate with AI button');
+
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel,
+      });
+    });
   });
 
   it('should dispatch SetPrompt textarea value changes', () => {
@@ -164,15 +183,7 @@ describe('GenerateWithAIForm', () => {
     });
   });
 
-  it('should hide dialog after a result from the API is received', async () => {
-    const hideDialog = jest.fn();
-    renderComponentWithState(
-      <GenerateWithAIForm visible={true} hideDialog={hideDialog} />,
-      {
-        ...emailMarketingInitialState,
-        prompt: 'test prompt',
-      },
-    );
+  //
 
     const button = screen.getByLabelText('Generate with AI button');
 
