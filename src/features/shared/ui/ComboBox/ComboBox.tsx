@@ -15,6 +15,7 @@ interface ComboBoxProps {
   onValuesChange: (values: string[]) => void;
   suggestions: KeyValuePair[];
   label?: string;
+  placeholder?: string;
   disabled?: boolean;
 }
 
@@ -23,6 +24,7 @@ const ComboBox = ({
   onValuesChange,
   suggestions,
   label,
+  placeholder = 'Select an option...',
   disabled = false,
 }: ComboBoxProps) => {
   const [inputValue, setInputValue] = useState('');
@@ -171,6 +173,7 @@ const ComboBox = ({
           id="input-field"
           role="textbox"
           aria-autocomplete="list"
+          placeholder={selectedValues.length > 0 ? '' : placeholder}
           disabled={disabled}
           aria-controls="suggestions-listbox"
           aria-multiline="false"

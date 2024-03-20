@@ -143,4 +143,34 @@ describe('ComboBox', () => {
     const input = screen.getByLabelText('ComboBox input');
     expect(input).not.toBeDisabled();
   });
+
+  it('displays a placeholder in the text input when there are no options selected', async () => {
+    render(
+      <ComboBox
+        selectedValues={[]}
+        onValuesChange={jest.fn()}
+        suggestions={mockSuggestions}
+        label="Test ComboBox"
+        placeholder="Select an option"
+      />,
+    );
+
+    const input = screen.getByLabelText('ComboBox input');
+    expect(input).toHaveAttribute('placeholder', 'Select an option');
+  });
+
+  it('does not display a placeholder in the text input when there are options selected', async () => {
+    render(
+      <ComboBox
+        selectedValues={['Option 1']}
+        onValuesChange={jest.fn()}
+        suggestions={mockSuggestions}
+        label="Test ComboBox"
+        placeholder="Select an option"
+      />,
+    );
+
+    const input = screen.getByLabelText('ComboBox input');
+    expect(input).not.toHaveAttribute('placeholder', 'Select an option');
+  });
 });
