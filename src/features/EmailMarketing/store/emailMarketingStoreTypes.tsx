@@ -1,4 +1,5 @@
 import {
+  AIResponse,
   ErrorWarning,
   Operand,
   Targeting,
@@ -21,6 +22,8 @@ export interface EmailMarketingState {
   votedAIAccuracyUp: boolean;
   votedAIAccuracyDown: boolean;
   aiErrors: ErrorWarning[];
+  latestAIPrompt: string;
+  latestAIResponse: AIResponse | string;
   showDevTools: boolean;
 }
 
@@ -46,6 +49,8 @@ export enum EmailMarketingActionType {
   SetVotedAIAccuracyDown = 'SetVotedAIAccuracyDown',
   SetAIErrors = 'SetAIErrors',
   SetErrorVisibility = 'SetErrorVisibility',
+  SetLatestAIPrompt = 'SetLatestAIPrompt',
+  SetLatestAIResponse = 'SetLatestAIResponse',
   SetShowDevTools = 'SetShowDevTools',
 }
 
@@ -124,5 +129,10 @@ export type EmailMarketingAction =
         id: string;
         isVisible: boolean;
       };
+    }
+  | {type: EmailMarketingActionType.SetLatestAIPrompt; payload: string}
+  | {
+      type: EmailMarketingActionType.SetLatestAIResponse;
+      payload: AIResponse | string;
     }
   | {type: EmailMarketingActionType.SetShowDevTools; payload: boolean};

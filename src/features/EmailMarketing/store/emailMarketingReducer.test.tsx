@@ -400,6 +400,37 @@ describe('emailMarketingReducer', () => {
     expect(stateWithChangedErrorVisibility.aiErrors[0].isVisible).toBe(false);
     expect(stateWithChangedErrorVisibility.aiErrors[1].isVisible).toBe(true);
   });
+
+  it('handles SetLatestAIPrompt action', () => {
+    const initialLatestAIPrompt = initialState.latestAIPrompt;
+    expect(initialLatestAIPrompt).toBe('');
+
+    const prompt = 'Hello AI, what is your name?';
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetLatestAIPrompt,
+      payload: prompt,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.latestAIPrompt).toBe(prompt);
+  });
+
+  it('handles SetLatestAIResponse action', () => {
+    const initialLatestAIResponse = initialState.latestAIResponse;
+    expect(initialLatestAIResponse).toBe('');
+
+    const response = 'As an AI model, I am responding';
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetLatestAIResponse,
+      payload: response,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.latestAIResponse).toBe(response);
+  });
+
   it('handles SetShowDevTools action', () => {
     const initialShowDevTools = initialState.showDevTools;
     expect(initialShowDevTools).toBe(false);

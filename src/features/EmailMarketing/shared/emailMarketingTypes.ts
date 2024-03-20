@@ -106,3 +106,9 @@ export type ErrorWarning = {
   isVisible: boolean;
   error: string;
 };
+
+export type AIResponse = {
+  result: 'success' | 'success with errors' | 'failure';
+  payload: Targeting;
+  errors: string[];
+};
