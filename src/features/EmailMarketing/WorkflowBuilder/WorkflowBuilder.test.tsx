@@ -7,6 +7,16 @@ describe('WorkflowBuilder', () => {
     expect(screen.getByLabelText('Workflow builder')).toBeInTheDocument();
   });
 
+  it('renders name input', () => {
+    render(<WorkflowBuilder />);
+    expect(screen.getByLabelText('Name')).toBeInTheDocument();
+  });
+
+  it('renders trigger selection', () => {
+    render(<WorkflowBuilder />);
+    expect(screen.getByLabelText('Trigger selection')).toBeInTheDocument();
+  });
+
   it("renders WorkflowBuilder's components", () => {
     render(<WorkflowBuilder />);
     expect(screen.getByLabelText('Name')).toBeInTheDocument();
