@@ -83,7 +83,6 @@ const GenerateWithAIForm = ({
             type: EmailMarketingActionType.SetTargeting,
             payload: payload,
           });
-          console.log('setting targeting:', payload);
         } else {
           console.error('AI request failed - errors:', errors);
         }
@@ -93,7 +92,6 @@ const GenerateWithAIForm = ({
             type: EmailMarketingActionType.SetAIErrors,
             payload: errors,
           });
-          console.log('setting errors:', errors);
         }
       }
     } catch (error) {
