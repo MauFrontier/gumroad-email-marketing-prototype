@@ -257,12 +257,6 @@ export const emailMarketingReducer = (
         latestAIResponse: action.payload,
       };
       break;
-    case EmailMarketingActionType.SetShowDevTools:
-      return {
-        ...state,
-        showDevTools: action.payload,
-      };
-      break;
     case EmailMarketingActionType.SetProducts:
       return {
         ...state,

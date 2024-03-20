@@ -16,5 +16,4 @@ export const emailMarketingInitialState: EmailMarketingState = {
   aiErrors: [],
   latestAIPrompt: '',
   latestAIResponse: '',
-  showDevTools: false,
 };

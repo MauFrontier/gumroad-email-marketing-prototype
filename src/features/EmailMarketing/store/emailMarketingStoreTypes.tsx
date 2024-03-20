@@ -26,7 +26,6 @@ export interface EmailMarketingState {
   aiErrors: ErrorWarning[];
   latestAIPrompt: string;
   latestAIResponse: AIResponse | string;
-  showDevTools: boolean;
 }
 
 export enum EmailMarketingActionType {
@@ -54,7 +53,6 @@ export enum EmailMarketingActionType {
   SetErrorVisibility = 'SetErrorVisibility',
   SetLatestAIPrompt = 'SetLatestAIPrompt',
   SetLatestAIResponse = 'SetLatestAIResponse',
-  SetShowDevTools = 'SetShowDevTools',
 }
 
 export type EmailMarketingAction =
@@ -138,5 +136,4 @@ export type EmailMarketingAction =
   | {
       type: EmailMarketingActionType.SetLatestAIResponse;
       payload: AIResponse | string;
-    }
-  | {type: EmailMarketingActionType.SetShowDevTools; payload: boolean};
+    };

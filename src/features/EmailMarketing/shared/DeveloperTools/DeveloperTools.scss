@@ -1,4 +1,26 @@
 @import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
 
 [aria-label='Developer tools container'] {
+  border-top: $border-1;
+  margin-top: $spacer-10;
+  padding-top: $spacer-4;
+
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: $spacer-2;
+
+    img {
+      width: $dimension-6;
+      height: $dimension-6;
+    }
+
+    h2 {
+      margin: 0;
+      text-align: center;
+      font-size: $font-size-2xl;
+    }
+  }
 }

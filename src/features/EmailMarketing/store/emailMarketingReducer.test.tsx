@@ -449,17 +449,4 @@ describe('emailMarketingReducer', () => {
     const state = emailMarketingReducer(initialState, action);
     expect(state.latestAIResponse).toBe(response);
   });
-
-  it('handles SetShowDevTools action', () => {
-    const initialShowDevTools = initialState.showDevTools;
-    expect(initialShowDevTools).toBe(false);
-
-    const action: EmailMarketingAction = {
-      type: EmailMarketingActionType.SetShowDevTools,
-      payload: true,
-    };
-
-    const state = emailMarketingReducer(initialState, action);
-    expect(state.showDevTools).toBe(true);
-  });
 });
