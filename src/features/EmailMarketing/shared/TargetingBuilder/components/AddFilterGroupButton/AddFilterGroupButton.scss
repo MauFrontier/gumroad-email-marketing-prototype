@@ -15,8 +15,9 @@
   }
 
   &:hover {
-    box-shadow: $spacer-2 $spacer-2 0px 0px $MediumGray;
+    box-shadow: $shadow-regular-light;
   }
+
   &[disabled] {
     opacity: $opacity-disabled;
     box-shadow: none;
