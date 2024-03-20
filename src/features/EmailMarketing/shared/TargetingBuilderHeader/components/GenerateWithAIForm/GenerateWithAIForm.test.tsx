@@ -145,7 +145,7 @@ describe('GenerateWithAIForm', () => {
     });
   });
 
-  it('should set errors state when api returned errors', async () => {
+  it('should set loading to true when we submit the prompt', async () => {
     renderComponentWithState(<GenerateWithAIForm visible={true} />, {
       ...emailMarketingInitialState,
       prompt: 'test prompt',
@@ -157,8 +157,8 @@ describe('GenerateWithAIForm', () => {
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith({
-        type: EmailMarketingActionType.SetAIErrors,
-        payload: expect.any(Object),
+        type: EmailMarketingActionType.SetIsAILoading,
+        payload: true,
       });
     });
   });
@@ -192,7 +192,7 @@ describe('GenerateWithAIForm', () => {
     });
   });
 
-  it('should clear the prompt after a result from the API is received', async () => {
+  it('should reset errors in state when we submit the prompt', async () => {
     renderComponentWithState(<GenerateWithAIForm visible={true} />, {
       ...emailMarketingInitialState,
       prompt: 'test prompt',
@@ -204,8 +204,32 @@ describe('GenerateWithAIForm', () => {
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SetPrompt',
-        payload: '',
+        type: EmailMarketingActionType.SetAIErrors,
+        payload: expect.any(Object),
+      });
+    });
+  });
+
+  it('should set errors in state when api returns any errors, and they should default to visible', async () => {
+    renderComponentWithState(<GenerateWithAIForm visible={true} />, {
+      ...emailMarketingInitialState,
+      prompt: 'test prompt yielding errors',
+    });
+
+    const button = screen.getByLabelText('Generate with AI button');
+
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: EmailMarketingActionType.SetAIErrors,
+        payload: [
+          {
+            id: expect.any(String),
+            isVisible: true,
+            error: expect.any(String),
+          },
+        ],
       });
     });
   });

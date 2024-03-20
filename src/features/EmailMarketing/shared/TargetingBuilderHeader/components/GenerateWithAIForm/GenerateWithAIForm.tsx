@@ -7,6 +7,7 @@ import Button from '../../../../../shared/ui/Button/Button';
 import Icon from '../../../../../shared/ui/Icon/Icon';
 import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
 import {IconType} from '../../../../../shared/ui/Icon/iconLibrary';
+import {v4 as uuid} from 'uuid';
 
 interface Props {
   isFloatingDialog?: boolean;
@@ -50,8 +51,9 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
     });
   };
 
-  const clearPrompt = () => {
-    dispatch({type: EmailMarketingActionType.SetPrompt, payload: ''});
+  const resetAIState = () => {
+    dispatch({type: EmailMarketingActionType.SetIsAILoading, payload: true});
+    dispatch({type: EmailMarketingActionType.SetAIErrors, payload: []});
   };
 
   const handleSendPrompt = async () => {
@@ -65,7 +67,7 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
     }
 
     try {
-      dispatch({type: EmailMarketingActionType.SetIsAILoading, payload: true});
+      resetAIState();
 
       const apiResponse = await SubmitAIPrompt(prompt);
 
@@ -86,9 +88,15 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
         }
 
         if (errors) {
+          const errorWarnings = errors.map((error: string) => ({
+            id: uuid(),
+            isVisible: true,
+            error: error,
+          }));
+
           dispatch({
             type: EmailMarketingActionType.SetAIErrors,
-            payload: errors,
+            payload: errorWarnings,
           });
         }
       }

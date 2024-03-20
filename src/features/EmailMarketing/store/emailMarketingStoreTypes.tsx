@@ -1,4 +1,5 @@
 import {
+  ErrorWarning,
   Operand,
   Targeting,
   TargetingFilter,
@@ -16,7 +17,7 @@ export interface EmailMarketingState {
   showGenerateWithAIPanel: boolean;
   prompt: string;
   isAILoading: boolean;
-  aiErrors: string[];
+  aiErrors: ErrorWarning[];
 }
 
 export enum EmailMarketingActionType {
@@ -37,6 +38,7 @@ export enum EmailMarketingActionType {
   SetPrompt = 'SetPrompt',
   SetIsAILoading = 'SetIsAILoading',
   SetAIErrors = 'SetAIErrors',
+  SetErrorVisibility = 'SetErrorVisibility',
 }
 
 export type EmailMarketingAction =
@@ -105,4 +107,11 @@ export type EmailMarketingAction =
   | {type: EmailMarketingActionType.SetPrompt; payload: string}
   | {type: EmailMarketingActionType.SetIsAILoading; payload: boolean}
   | {type: EmailMarketingActionType.SetShowAIAccuracyWarning; payload: boolean}
-  | {type: EmailMarketingActionType.SetAIErrors; payload: string[]}
+  | {type: EmailMarketingActionType.SetAIErrors; payload: ErrorWarning[]}
+  | {
+      type: EmailMarketingActionType.SetErrorVisibility;
+      payload: {
+        id: string;
+        isVisible: boolean;
+      };
+    }

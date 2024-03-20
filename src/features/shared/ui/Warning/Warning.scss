@@ -1,0 +1,51 @@
+@import './src/features/shared/ui/designSystemStyles/designSystemStyles.scss';
+
+[role='alert'] {
+  border: $border-1;
+  border-radius: $border-radius-2;
+  padding: $spacer-4 $spacer-2 $spacer-4 $spacer-4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  gap: $spacer-3;
+
+  &.error {
+    border-color: $Red;
+    color: $Red;
+
+    svg {
+      color: $Red;
+      fill: $Red;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .warning-icon-and-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacer-3;
+  }
+
+  [role='toolbar'] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  [aria-label='Close warning button'] {
+    border: 0;
+    height: $dimension-7;
+    padding: 0;
+
+    &:hover {
+      box-shadow: none;
+      transform: none;
+    }
+  }
+}

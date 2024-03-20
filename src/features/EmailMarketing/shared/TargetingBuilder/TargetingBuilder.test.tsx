@@ -48,4 +48,25 @@ describe('TargetingBuilder', () => {
     const operandSelect = within(operand).getByRole('combobox');
     expect(operandSelect).not.toBeDisabled();
   });
+
+  it('displays the error warnings when any are present', () => {
+    renderComponentWithState(<TargetingBuilder />, {
+      ...emailMarketingInitialState,
+      aiErrors: [
+        {id: 'test-id-1', isVisible: true, error: 'test error 1'},
+        {id: 'test-id-2', isVisible: true, error: 'test error 2'},
+      ],
+    });
+
+    expect(screen.getAllByLabelText('AI error warning').length > 0).toBe(true);
+    expect(screen.queryByText('test error 1')).toBeInTheDocument();
+    expect(screen.queryByText('test error 2')).toBeInTheDocument();
+  });
+
+  it('does not display the error warnings when none are present', () => {
+    renderComponentWithState(<TargetingBuilder />, emailMarketingInitialState);
+
+    expect(screen.queryByLabelText('AI error warning')).not.toBeInTheDocument();
+  });
+
 });

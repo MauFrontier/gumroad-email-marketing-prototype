@@ -8,7 +8,6 @@ export const emailMarketingInitialState: EmailMarketingState = {
   showGenerateWithAIPanel: false,
   isAILoading: false,
   showAIAccuracyWarning: false,
-  showAIErrorsWarning: false,
   prompt: '',
   aiErrors: [],
   latestAIPrompt: '',

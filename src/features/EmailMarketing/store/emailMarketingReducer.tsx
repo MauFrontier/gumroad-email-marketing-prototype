@@ -222,6 +222,14 @@ export const emailMarketingReducer = (
         aiErrors: action.payload,
       };
       break;
+    case EmailMarketingActionType.SetErrorVisibility:
+      return {
+        ...state,
+        aiErrors: state.aiErrors.map(error =>
+          error.id === action.payload.id ? {...error, isVisible: false} : error,
+        ),
+      };
+      break;
     default:
       return state;
       break;

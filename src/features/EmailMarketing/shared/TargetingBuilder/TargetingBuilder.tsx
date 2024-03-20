@@ -6,6 +6,7 @@ import {v4 as uuid} from 'uuid';
 import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
 import TargetingBuilderHeader from '../TargetingBuilderHeader/TargetingBuilderHeader';
 import AddFilterGroupButton from './components/AddFilterGroupButton/AddFilterGroupButton';
+import AIErrorWarnings from '../TargetingBuilderHeader/components/AIErrorWarnings/AIErrorWarnings';
 
 const TargetingBuilder = () => {
   const {state, dispatch} = useEmailMarketingState();
@@ -22,10 +23,15 @@ const TargetingBuilder = () => {
     });
   };
 
+  const aiErrors = state.aiErrors;
+
   return (
     <>
       <section role="region" aria-label="Targeting builder">
         <TargetingBuilderHeader />
+        {aiErrors && aiErrors.some(error => error.isVisible) && (
+          <AIErrorWarnings />
+        )}
         {targeting.filterGroups.map((filterGroup, index) => (
           <div
             key={filterGroup.id}

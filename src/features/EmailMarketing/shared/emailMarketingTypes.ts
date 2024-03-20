@@ -100,3 +100,9 @@ export enum TriggerType {
   MemberCancels = 'Member cancels',
   NewAffiliate = 'New affiliate',
 }
+
+export type ErrorWarning = {
+  id: string;
+  isVisible: boolean;
+  error: string;
+};

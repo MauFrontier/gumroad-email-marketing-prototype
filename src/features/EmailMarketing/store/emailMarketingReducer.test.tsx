@@ -312,16 +312,45 @@ describe('emailMarketingReducer', () => {
     const state = emailMarketingReducer(initialState, action);
     expect(state.showAIAccuracyWarning).toBe(true);
   });
+
   it('handles SetAIErrors action', () => {
     const initialAIErrors = initialState.aiErrors;
     expect(initialAIErrors).toEqual([]);
 
+    const errors = [
+      {id: '1', isVisible: true, error: 'error1'},
+      {id: '2', isVisible: true, error: 'error2'},
+    ];
+
     const action: EmailMarketingAction = {
       type: EmailMarketingActionType.SetAIErrors,
-      payload: ['error1', 'error2'],
+      payload: errors,
     };
 
     const state = emailMarketingReducer(initialState, action);
-    expect(state.aiErrors).toEqual(['error1', 'error2']);
+    expect(state.aiErrors).toEqual(errors);
+  });
+
+  it('handles SetAIErrorVisibility action', () => {
+    const errors = [
+      {id: '1', isVisible: true, error: 'error1'},
+      {id: '2', isVisible: true, error: 'error2'},
+    ];
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetErrorVisibility,
+      payload: {
+        id: '1',
+        isVisible: false,
+      },
+    };
+
+    const stateWithChangedErrorVisibility = emailMarketingReducer(
+      {...initialState, aiErrors: errors},
+      action,
+    );
+
+    expect(stateWithChangedErrorVisibility.aiErrors[0].isVisible).toBe(false);
+    expect(stateWithChangedErrorVisibility.aiErrors[1].isVisible).toBe(true);
   });
 });
