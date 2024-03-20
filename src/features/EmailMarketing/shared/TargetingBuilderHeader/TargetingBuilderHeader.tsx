@@ -4,6 +4,7 @@ import Button from '../../../shared/ui/Button/Button';
 import Icon from '../../../shared/ui/Icon/Icon';
 import GenerateWithAIForm from './components/GenerateWithAIForm/GenerateWithAIForm';
 import './TargetingBuilderHeader.scss';
+import {IconType} from '../../../shared/ui/Icon/iconLibrary';
 
 const TargetingBuilderHeader = () => {
   const {state, dispatch} = useEmailMarketingState();
