@@ -46,6 +46,7 @@ export enum EmailMarketingActionType {
   SetVotedAIAccuracyDown = 'SetVotedAIAccuracyDown',
   SetAIErrors = 'SetAIErrors',
   SetErrorVisibility = 'SetErrorVisibility',
+  SetShowDevTools = 'SetShowDevTools',
 }
 
 export type EmailMarketingAction =
@@ -124,3 +125,4 @@ export type EmailMarketingAction =
         isVisible: boolean;
       };
     }
+  | {type: EmailMarketingActionType.SetShowDevTools; payload: boolean};
