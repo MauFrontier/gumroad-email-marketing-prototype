@@ -29,7 +29,7 @@ const TargetingFilterGroup = ({
     const newFilter = {...defaultFilter, id: uuid()};
 
     if (targetingFilterGroup.filters.length === 0) {
-      newFilter.operand = OperandEnum.Initial;
+      delete newFilter.operand;
     }
 
     dispatch({

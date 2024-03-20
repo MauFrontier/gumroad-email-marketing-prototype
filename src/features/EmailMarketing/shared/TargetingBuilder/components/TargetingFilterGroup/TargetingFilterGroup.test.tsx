@@ -92,7 +92,7 @@ describe('TargetingFilterGroup', () => {
     ).toBeInTheDocument();
   });
 
-  it('dispatches AddFilter action', async () => {
+  it('Adds a filter when add filter button is clicked', async () => {
     const user = userEvent.setup();
     const propsWithFilters = {
       ...baseProps,
@@ -108,14 +108,14 @@ describe('TargetingFilterGroup', () => {
 
     await user.click(screen.getByLabelText('Add filter button'));
 
+    const filterWithoutOperand = {...defaultDateFilter};
+    delete filterWithoutOperand.operand;
+
     expect(mockDispatch).toHaveBeenCalledWith({
       type: EmailMarketingActionType.AddFilter,
       payload: {
         filterGroupId: propsWithFilters.targetingFilterGroup.id,
-        filter: {
-          ...defaultDateFilter,
-          operand: OperandEnum.Initial,
-        },
+        filter: filterWithoutOperand,
       },
     });
   });
