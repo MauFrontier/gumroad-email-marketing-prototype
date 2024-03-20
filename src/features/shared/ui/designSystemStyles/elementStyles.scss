@@ -121,6 +121,14 @@ select {
   appearance: none; /* Standard way to remove default arrow, but not supported everywhere */
 }
 
+textarea {
+  padding: $spacer-4;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: $dimension-14;
+  border-radius: $border-radius-2;
+}
+
 fieldset {
   padding: 0;
   margin: 0;
