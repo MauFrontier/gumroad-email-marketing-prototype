@@ -111,6 +111,7 @@ export const emailMarketingReducer = (
                 ? {
                     ...getDefaultFilterForSubject(action.payload.subject),
                     id: filter.id,
+                    operand: filter.operand,
                   }
                 : filter,
             ),
