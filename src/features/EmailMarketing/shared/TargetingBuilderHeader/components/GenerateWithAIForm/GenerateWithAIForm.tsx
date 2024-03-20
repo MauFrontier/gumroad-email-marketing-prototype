@@ -133,6 +133,7 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
           <Button
             onClick={handleSendPrompt}
             label="Generate with AI button"
+            className="dark"
             disabled={isAILoading}>
             {isAILoading ? (
               <Icon

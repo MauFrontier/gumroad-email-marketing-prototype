@@ -23,12 +23,16 @@ button {
   align-items: center;
   justify-content: center;
 
-  &:not(:disabled) {
-    &:hover {
-      box-shadow: $shadow-regular;
-      transform: translate(-#{$spacer-2}, -#{$spacer-2});
-      cursor: pointer;
-    }
+  &:hover {
+    box-shadow: $shadow-regular;
+    transform: translate(-#{$spacer-2}, -#{$spacer-2});
+    cursor: pointer;
+  }
+
+  &[disabled] {
+    opacity: $opacity-disabled;
+    box-shadow: none;
+    transform: none;
   }
 
   &.selected {
@@ -39,6 +43,22 @@ button {
   img {
     width: $dimension-5;
     height: $dimension-5;
+  }
+
+  &[aria-pressed='true'] {
+    box-shadow: $shadow-regular;
+    transform: translate(-#{$spacer-2}, -#{$spacer-2});
+  }
+
+  &.dark {
+    color: $White;
+    background-color: $Black;
+
+    &:hover,
+    &[aria-pressed='true'] {
+      box-shadow: $shadow-regular-light;
+      transform: translate(-#{$spacer-2}, -#{$spacer-2});
+    }
   }
 }
 

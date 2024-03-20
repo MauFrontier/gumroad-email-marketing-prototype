@@ -25,9 +25,7 @@ section[aria-label='Generate with AI dialog'] {
     }
 
     button[aria-label='Generate with AI button'] {
-      color: $White;
       background-color: $Black;
-      padding: $spacer-4;
       width: 100%;
 
       .generate-with-ai-icon {

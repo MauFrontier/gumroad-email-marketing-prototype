@@ -21,12 +21,6 @@ header[aria-label='Targeting builder header'] {
 
       &[aria-pressed='true'] {
         background-color: $White;
-        box-shadow: $shadow-regular;
-        transform: translate(-#{$spacer-2}, -#{$spacer-2});
-      }
-
-      &[disabled] {
-        opacity: $opacity-disabled;
       }
     }
   }
