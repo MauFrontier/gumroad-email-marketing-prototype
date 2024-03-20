@@ -15,6 +15,15 @@ describe('Operand', () => {
     expect(screen.getByLabelText('Test')).toBeInTheDocument();
   });
 
+  it('displays the right options', () => {
+    render(<Operand value={OperandEnum.And} onChange={jest.fn()} />);
+
+    const options = screen.getAllByRole('option');
+    expect(options).toHaveLength(2);
+    expect(options[0]).toHaveTextContent(OperandEnum.And);
+    expect(options[1]).toHaveTextContent(OperandEnum.Or);
+  });
+
   it('Uses default label if prop label is not present', () => {
     render(<Operand value={OperandEnum.And} onChange={jest.fn()} />);
     expect(screen.getByLabelText('Operand')).toBeInTheDocument();

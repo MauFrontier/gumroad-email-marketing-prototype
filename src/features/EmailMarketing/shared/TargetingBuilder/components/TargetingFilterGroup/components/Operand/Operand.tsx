@@ -18,7 +18,6 @@ const Operand = ({value, onChange, disabled, label, className}: Props) => {
   };
 
   const operandOptions = [
-    {key: OperandEnum.Initial, value: OperandEnum.Initial},
     {key: OperandEnum.And, value: OperandEnum.And},
     {key: OperandEnum.Or, value: OperandEnum.Or},
   ];
