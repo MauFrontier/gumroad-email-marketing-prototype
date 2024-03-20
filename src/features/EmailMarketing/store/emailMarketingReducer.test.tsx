@@ -400,4 +400,16 @@ describe('emailMarketingReducer', () => {
     expect(stateWithChangedErrorVisibility.aiErrors[0].isVisible).toBe(false);
     expect(stateWithChangedErrorVisibility.aiErrors[1].isVisible).toBe(true);
   });
+  it('handles SetShowDevTools action', () => {
+    const initialShowDevTools = initialState.showDevTools;
+    expect(initialShowDevTools).toBe(false);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetShowDevTools,
+      payload: true,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.showDevTools).toBe(true);
+  });
 });

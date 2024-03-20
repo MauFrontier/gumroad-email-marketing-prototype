@@ -245,6 +245,12 @@ export const emailMarketingReducer = (
         ),
       };
       break;
+    case EmailMarketingActionType.SetShowDevTools:
+      return {
+        ...state,
+        showDevTools: action.payload,
+      };
+      break;
     default:
       return state;
       break;

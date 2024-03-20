@@ -21,6 +21,7 @@ export interface EmailMarketingState {
   votedAIAccuracyUp: boolean;
   votedAIAccuracyDown: boolean;
   aiErrors: ErrorWarning[];
+  showDevTools: boolean;
 }
 
 export enum EmailMarketingActionType {

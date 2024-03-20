@@ -26,4 +26,9 @@ describe('WorkflowBuilder', () => {
     render(<WorkflowBuilder />);
     expect(screen.getByLabelText('Targeting builder')).toBeInTheDocument();
   });
+
+  it('renders developer tools', () => {
+    render(<WorkflowBuilder />);
+    expect(screen.getByLabelText('Developer tools')).toBeInTheDocument();
+  });
 });
