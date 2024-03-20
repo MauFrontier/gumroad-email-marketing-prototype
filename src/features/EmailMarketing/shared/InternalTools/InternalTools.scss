@@ -31,5 +31,15 @@
     justify-content: center;
     gap: $spacer-6;
     margin-top: $spacer-4;
+
+    h3 {
+      margin: 0;
+      text-align: center;
+      font-size: $font-size-lg;
+    }
+
+    pre {
+      margin: 0;
+    }
   }
 }
