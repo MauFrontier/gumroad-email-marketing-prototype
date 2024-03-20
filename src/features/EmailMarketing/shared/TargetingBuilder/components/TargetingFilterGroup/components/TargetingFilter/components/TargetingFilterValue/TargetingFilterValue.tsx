@@ -73,6 +73,7 @@ const TargetingFilterValue = ({
         <ComboBox
           selectedValues={value as string[]}
           onValuesChange={handleOnChange}
+          placeholder="Select a product..."
           suggestions={options ?? []}
           disabled={disabled}
         />
