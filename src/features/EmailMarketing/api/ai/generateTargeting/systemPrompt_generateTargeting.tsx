@@ -2,7 +2,7 @@ import emailMarketingTypes from './types_generateTargeting.ts';
 import {exampleProducts, examples} from './examples_generateTargeting';
 import products from '../../productsFromServer';
 
-const responseType = `type Response = {
+const responseType = `type AIResponse = {
   result: 'success' | 'success with errors' | 'failure';
   payload: Targeting;
   errors: string[];
@@ -12,19 +12,23 @@ export const basicRules = `
 You're going to take a user's prompt in natural language and will generate the JSON for email marketing targeting, adhering strictly to these rules:
 
 * The JSON must me 100% compatible with the type structure laid out below.
-* If any parts of the prompt are incompatible with the type structure, you will ignore those parts and generate the JSON with only the valid parts, and with a structure that is actually compatible. You will take note of the issues, though, explaining in a maximum of 2 sentences and 96 characters why the JSON is not compatible, making sure that the explanation is sanitized, professional and appropriate for a company to show to their customers.
+* If any parts of the prompt are incompatible with the type structure, you will ignore those parts and generate the JSON with only the valid parts, and with a structure that is actually compatible. You will take note of the issues, though.
 * If the prompt is empty, or if your resulting JSON is empty, you will return an empty JSON object, but this will be considered a failure and you will explain why in the errors array. Do not include any sensitive information in the error messages - product names and data entered by the user are fine to include.
 * For each filter, you will include all the relevant fields. If the prompt didn't specify a valid value for one of those, you will keep it empty if that's valid, or you'll pick the default value that makes the most sense in this type structure.
-* Dates are ISO strings in the user's timezone, and you'll think of dates in the user's timezone which is ${Intl.DateTimeFormat().resolvedOptions().timeZone}, and the current date in UTC is ${new Date().toISOString()}. Weeks start on Monday unless the prompt says otherwise. Disregard the time in all dates, we're not able to specify time of day, only dates. Still, your responses should adhere to the ISOString format, always in the user's timezone.
+* Dates are ISO strings in the user's timezone, and you'll think of dates in the user's timezone which is ${Intl.DateTimeFormat().resolvedOptions().timeZone}, and the current date in UTC is ${new Date().toISOString()}. Weeks start on Monday unless the prompt says otherwise. Disregard the time in all dates, we're not able to specify time of day, only dates. Still, your responses should adhere to the ISOString format, always in the user's timezone. Don't report adjustments in this to the errors array.
 * "Is in the last" accepts a number of days, and it should be a numerical value
 * When dealing with currency amounts, don't include the currency symbol.
 * When people give you a time range, use multiple filters with the right filter parameters to cover that date range, making sure to use the right verb, subject, qualifiers, and value.
 * Be flexible in the types of prompts you receive. Do your best to understand or even infer what the user meant to say. You can accept dates far in the past or future, and the user doesn't need to provide dates in the right format. If any values are in the wrong format but it's clear what the user meant to say, make the correction and accept it.
 * The first filter in each group, and the first filter group in the entire targeting, will have no operand. The rest will have an operand.
 * You will assign a unique, randomized UUID to each filter and filter group.
-* When returning products, you will only use products that are in the provided list of products. If none of them are applicable, you'll return an empty products array and report it in the errors array. However, if you can infer which products the user meant, do so - for example: "has bought any tutorials" will return all the tutorials, but "has bought any painting tutorials" would match tutorial-2024 and tutorial-painting-101 from the example products'
+* When returning products, you will only use products that are in the provided list of products. Never, ever use a product that isn't in the list. If none of them are applicable, first try to infer which product(s) from the list the user was referring to and match those, without saying anything about it in the errors array. If there's very clearly no reasonable match in the list, you'll leave out that product and report the issue in the errors array.'
+* When returning products, you will return their names, not their IDs.
+* If a Product filter ends up with an empty least, you'll exclude that filter from the results.
+* If there were any issues or errors, you will explain in a maximum of 96 characters why the JSON is not compatible, making sure that the explanation is sanitized, professional and appropriate for a company to show to their customers. If there were multiple issues, you will include each of them as a separate entry in the errors array.
+* If the user prompt is not in English, you will still interpret their prompt, and you will translate the error messages to that language.
 * Make sure you consider the type structure and use the best possible operands, subjects, subject qualifiers, verbs, verb qualifiers, and verbs to represent what the user is asking for.
-* You will adhere to the ISO 3166-1 standard for countries`;
+* You will adhere to the ISO 3166-1 standard for countries, but you will not demand that the user uses the standard. If the user uses a non-standard country name, you will infer the correct country from the user's input and not say anything about it.`;
 
 const responseTypeSegment = `* You will return an object in the following structure as a response, with no explanation: ${responseType}`;
 
