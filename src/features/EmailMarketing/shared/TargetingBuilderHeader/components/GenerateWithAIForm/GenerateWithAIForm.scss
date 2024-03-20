@@ -37,7 +37,7 @@ section[aria-label='Generate with AI dialog'] {
       &[disabled] {
         opacity: $opacity-full;
 
-        :hover {
+        &:hover {
           box-shadow: none;
           transform: none;
           cursor: default;
