@@ -14,6 +14,20 @@ describe('GenerateWithAIForm', () => {
     ).toBeInTheDocument();
   });
 
+  it('should reflect that this is a floating dialog if the isFloatingDialog prop is true', async () => {
+    renderComponentWithState(
+      <GenerateWithAIForm visible={true} isFloatingDialog={true} />,
+      {
+        ...emailMarketingInitialState,
+        prompt: 'test prompt',
+      },
+    );
+
+    const dialog = screen.getByLabelText('Generate with AI dialog');
+
+    expect(dialog).toHaveClass('floating-dialog');
+  });
+
   it('should focus textArea when opened', () => {
     render(<GenerateWithAIForm visible={true} />);
 
@@ -22,7 +36,7 @@ describe('GenerateWithAIForm', () => {
     expect(textArea).toHaveFocus();
   });
 
-  it('should hide the Generate With AI dialog when pressing ESC', async () => {
+  it('should hide the Generate With AI dialog when pressing the Escape (Esc) key', async () => {
     render(<GenerateWithAIForm visible={true} />);
 
     const textArea = screen.getByLabelText('Prompt to generate with AI');
@@ -30,15 +44,15 @@ describe('GenerateWithAIForm', () => {
 
     expect(textArea).toHaveFocus();
 
-    fireEvent.keyDown(screen.getByLabelText('Prompt to generate with AI'), {
+    await fireEvent.keyDown(textArea, {
       key: 'Escape',
       code: 'Escape',
       keyCode: 27,
       charCode: 27,
     });
 
-    await waitFor(() => {
-      //
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel,
     });
   });
 
@@ -59,21 +73,28 @@ describe('GenerateWithAIForm', () => {
     });
   });
 
-  it('should dispatch SetPrompt textarea value changes', () => {
-    render(<GenerateWithAIForm visible={true} />);
+  it('should set the prompt in state when the textarea value changes', async () => {
+    const existingPrompt = 'test prompt';
+
+    renderComponentWithState(<GenerateWithAIForm visible={true} />, {
+      ...emailMarketingInitialState,
+      prompt: existingPrompt,
+    });
 
     const textArea = screen.getByLabelText('Prompt to generate with AI');
     textArea.focus();
 
-    fireEvent.change(textArea, {target: {value: 'test prompt'}});
+    await userEvent.type(textArea, 'X');
 
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: EmailMarketingActionType.SetPrompt,
-      payload: 'test prompt',
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: EmailMarketingActionType.SetPrompt,
+        payload: existingPrompt + 'X',
+      });
     });
   });
 
-  it('should send prompt when Enter key is pressed without shift or ctrl', async () => {
+  it('should submit the prompt when the Enter key is pressed', async () => {
     renderComponentWithState(<GenerateWithAIForm visible={true} />, {
       ...emailMarketingInitialState,
       prompt: 'test prompt',
@@ -95,7 +116,7 @@ describe('GenerateWithAIForm', () => {
     });
   });
 
-  it('should send prompt when button is clicked', () => {
+  it('should submit the prompt when the Generate with AI button is clicked', () => {
     renderComponentWithState(<GenerateWithAIForm visible={true} />, {
       ...emailMarketingInitialState,
       prompt: 'test prompt',
@@ -111,7 +132,7 @@ describe('GenerateWithAIForm', () => {
     });
   });
 
-  it('should not send prompt to ChatGPT when textarea is empty', () => {
+  it('should not submit the prompt if the textarea is empty, and it should highlight the error', () => {
     renderComponentWithState(<GenerateWithAIForm visible={true} />, {
       ...emailMarketingInitialState,
       prompt: '',
@@ -125,9 +146,39 @@ describe('GenerateWithAIForm', () => {
       type: EmailMarketingActionType.SetIsAILoading,
       payload: true,
     });
+
+    const textArea = screen.getByLabelText('Prompt to generate with AI');
+    expect(textArea).toHaveClass('error');
   });
 
-  it('should set loading to false when received a response from the OpenAI API', async () => {
+  it('should remove error highlight from textarea when we type into it', async () => {
+    renderComponentWithState(<GenerateWithAIForm visible={true} />, {
+      ...emailMarketingInitialState,
+      prompt: '',
+    });
+
+    const button = screen.getByLabelText('Generate with AI button');
+    const textArea = screen.getByLabelText('Prompt to generate with AI');
+
+    fireEvent.click(button);
+
+    expect(textArea).toHaveClass('error');
+
+    textArea.focus();
+
+    await userEvent.type(textArea, 'X');
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: EmailMarketingActionType.SetPrompt,
+        payload: 'X',
+      });
+    });
+
+    expect(textArea).not.toHaveClass('error');
+  });
+
+  it('should set loading to false when we receive a response from the OpenAI API', async () => {
     renderComponentWithState(<GenerateWithAIForm visible={true} />, {
       ...emailMarketingInitialState,
       prompt: 'test prompt',
