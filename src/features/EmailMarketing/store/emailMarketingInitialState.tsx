@@ -1,5 +1,5 @@
 import {Targeting, TriggerType} from '../shared/emailMarketingTypes';
-import {EmailMarketingState} from './emailMarketingStoreTypes';
+import {EmailMarketingState} from './emailMarketingActionTypes';
 import defaultData_targeting from './defaultTargeting.json';
 import productsFromServer from '../api/productsFromServer';
 

@@ -4,7 +4,7 @@ import TargetingFilterGroup from './TargetingFilterGroup';
 import {Operand as OperandEnum} from '../../../emailMarketingTypes';
 import {defaultDateFilter} from '../../../emailMarketingDefaults';
 import {mockDispatch} from '../../../../../../utils/mocks/mocks';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
 
 jest.mock('../../../../store/useEmailMarketingState');
 

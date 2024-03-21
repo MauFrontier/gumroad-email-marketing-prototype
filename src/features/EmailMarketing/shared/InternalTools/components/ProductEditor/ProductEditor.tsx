@@ -3,7 +3,7 @@ import Button from '../../../../../shared/ui/components/Button/Button';
 import Icon from '../../../../../shared/ui/components/Icon/Icon';
 import './ProductEditor.scss';
 import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
 import productsFromServer from '../../../../api/productsFromServer';
 import {IconType} from '../../../../../shared/ui/components/Icon/iconLibrary';
 import {KeyValuePair} from '../../../../../shared/sharedTypes';

@@ -9,7 +9,7 @@ import {
 } from '../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 import {mockDispatch} from '../../../../../../../../utils/mocks/mocks';
-import {EmailMarketingActionType} from '../../../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../../../store/emailMarketingActionTypes';
 import {
   dateFilterForTests,
   locationFilterForTests,

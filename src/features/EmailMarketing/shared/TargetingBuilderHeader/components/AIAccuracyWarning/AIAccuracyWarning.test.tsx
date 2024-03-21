@@ -2,7 +2,7 @@ import {fireEvent, render, screen} from '@testing-library/react';
 import AIAccuracyWarning from './AIAccuracyWarning';
 import {emailMarketingInitialState} from '../../../../store/emailMarketingInitialState';
 import {renderComponentWithState} from '../../../../store/emailMarketingStoreUtils';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
 import {mockDispatch} from '../../../../../../utils/mocks/mocks';
 
 describe('AIAccuracyWarning', () => {

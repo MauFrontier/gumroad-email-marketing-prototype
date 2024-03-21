@@ -1,5 +1,5 @@
 import Warning from '../../../../../shared/ui/components/Warning/Warning';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
 import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
 import {ErrorWarning} from '../../../emailMarketingTypes';
 import './AIErrorWarnings.scss';

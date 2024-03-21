@@ -5,7 +5,7 @@ import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
 import './GenerateWithAIForm.scss';
 import Button from '../../../../../shared/ui/components/Button/Button';
 import Icon from '../../../../../shared/ui/components/Icon/Icon';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
 import {IconType} from '../../../../../shared/ui/components/Icon/iconLibrary';
 import {v4 as uuid} from 'uuid';
 import {AIResponse} from '../../../emailMarketingTypes';

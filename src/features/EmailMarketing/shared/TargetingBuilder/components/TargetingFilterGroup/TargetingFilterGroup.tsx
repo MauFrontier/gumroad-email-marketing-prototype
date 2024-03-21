@@ -9,7 +9,7 @@ import './TargetingFilterGroup.scss';
 import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
 import {v4 as uuid} from 'uuid';
 import DeleteFilterGroupButton from './components/DeleteFilterGroupButton/DeleteFilterGroupButton';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
 import {defaultFilter} from '../../../emailMarketingDefaults';
 
 type Props = {

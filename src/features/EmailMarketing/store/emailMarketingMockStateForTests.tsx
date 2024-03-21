@@ -11,7 +11,7 @@ import {
   TargetingFilterVerbQualifier,
 } from '../shared/emailMarketingTypes';
 import {emailMarketingInitialState} from './emailMarketingInitialState';
-import {EmailMarketingState} from './emailMarketingStoreTypes';
+import {EmailMarketingState} from './emailMarketingActionTypes';
 
 export const dateFilterForTests: DateFilter = {
   id: 'id_initialDateFilter',

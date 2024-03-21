@@ -16,7 +16,7 @@ import {
 import {
   EmailMarketingAction,
   EmailMarketingActionType,
-} from './emailMarketingStoreTypes';
+} from './emailMarketingActionTypes';
 import {KeyValuePair} from '../../shared/sharedTypes';
 
 describe('emailMarketingReducer', () => {

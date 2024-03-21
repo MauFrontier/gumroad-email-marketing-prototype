@@ -1,5 +1,5 @@
 import {emailMarketingInitialState} from '../../features/EmailMarketing/store/emailMarketingInitialState';
-import {EmailMarketingState} from '../../features/EmailMarketing/store/emailMarketingStoreTypes';
+import {EmailMarketingState} from '../../features/EmailMarketing/store/emailMarketingActionTypes';
 
 import defaultTargeting from '../../features/EmailMarketing/store/defaultTargeting.json';
 

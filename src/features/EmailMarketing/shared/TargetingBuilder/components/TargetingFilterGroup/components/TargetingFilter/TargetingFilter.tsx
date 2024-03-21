@@ -17,7 +17,7 @@ import TargetingFilterVerbQualifier from './components/TargetingFilterVerbQualif
 import DeleteFilterButton from './components/DeleteFilterButton/DeleteFilterButton';
 import TargetingFilterValue from './components/TargetingFilterValue/TargetingFilterValue';
 import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
-import {EmailMarketingActionType} from '../../../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../../../store/emailMarketingActionTypes';
 import {getDefaultValueForVerb} from '../../../../../emailMarketingDefaults';
 import {shouldResetValue} from '../../../../../targetingUtils';
 

@@ -1,7 +1,7 @@
 import {fireEvent, render, screen} from '@testing-library/react';
 import ProductEditor from './ProductEditor';
 import {mockDispatch} from '../../../../../../utils/mocks/mocks';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
 import {renderComponentWithState} from '../../../../store/emailMarketingStoreUtils';
 import {emailMarketingInitialState} from '../../../../store/emailMarketingInitialState';
 import {KeyValuePair} from '../../../../../shared/sharedTypes';

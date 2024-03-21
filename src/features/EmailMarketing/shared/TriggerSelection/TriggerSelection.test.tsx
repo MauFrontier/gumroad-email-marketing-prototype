@@ -5,7 +5,7 @@ import {renderComponentWithState} from '../../store/emailMarketingStoreUtils';
 import {TriggerType} from '../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 import {mockDispatch} from '../../../../utils/mocks/mocks';
-import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../store/emailMarketingActionTypes';
 
 describe('TriggerSelection', () => {
   it('renders component', () => {

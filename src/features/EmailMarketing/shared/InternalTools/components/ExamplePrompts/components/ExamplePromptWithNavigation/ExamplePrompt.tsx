@@ -1,6 +1,6 @@
 import Icon from '../../../../../../../shared/ui/components/Icon/Icon';
 import {IconType} from '../../../../../../../shared/ui/components/Icon/iconLibrary';
-import {EmailMarketingActionType} from '../../../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../../../store/emailMarketingActionTypes';
 import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
 import './ExamplePrompt.scss';
 import PromptTemplate from './components/PromptTemplate/PromptTemplate';

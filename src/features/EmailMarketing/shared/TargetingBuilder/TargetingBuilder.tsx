@@ -3,7 +3,7 @@ import TargetingFilterGroup from './components/TargetingFilterGroup/TargetingFil
 import {useEmailMarketingState} from '../../store/useEmailMarketingState';
 import {defaultFilterGroup} from '../emailMarketingDefaults';
 import {v4 as uuid} from 'uuid';
-import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../store/emailMarketingActionTypes';
 import TargetingBuilderHeader from '../TargetingBuilderHeader/TargetingBuilderHeader';
 import AddFilterGroupButton from './components/AddFilterGroupButton/AddFilterGroupButton';
 import AIAccuracyWarning from '../TargetingBuilderHeader/components/AIAccuracyWarning/AIAccuracyWarning';

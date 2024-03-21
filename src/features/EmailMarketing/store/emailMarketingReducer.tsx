@@ -2,7 +2,7 @@ import {
   EmailMarketingState,
   EmailMarketingAction,
   EmailMarketingActionType,
-} from './emailMarketingStoreTypes';
+} from './emailMarketingActionTypes';
 import {Operand} from '../shared/emailMarketingTypes';
 import {getDefaultFilterForSubject} from '../shared/emailMarketingDefaults';
 import {updateFilterValue, updateFilterVerb} from '../shared/targetingUtils';

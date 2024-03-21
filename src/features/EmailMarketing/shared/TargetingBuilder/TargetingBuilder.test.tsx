@@ -2,7 +2,7 @@ import {fireEvent, render, screen, within} from '@testing-library/react';
 import TargetingBuilder from './TargetingBuilder';
 import {renderComponentWithState} from '../../store/emailMarketingStoreUtils';
 import {emailMarketingInitialState} from '../../store/emailMarketingInitialState';
-import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../store/emailMarketingActionTypes';
 import {mockDispatch} from '../../../../utils/mocks/mocks';
 import {Operand} from '../emailMarketingTypes';
 

@@ -1,4 +1,4 @@
-import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../store/emailMarketingActionTypes';
 import {useEmailMarketingState} from '../../store/useEmailMarketingState';
 import Button from '../../../shared/ui/components/Button/Button';
 import Icon from '../../../shared/ui/components/Icon/Icon';

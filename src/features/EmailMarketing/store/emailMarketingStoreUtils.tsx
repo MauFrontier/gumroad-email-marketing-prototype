@@ -1,5 +1,5 @@
 import {render} from '@testing-library/react';
-import {EmailMarketingState} from './emailMarketingStoreTypes';
+import {EmailMarketingState} from './emailMarketingActionTypes';
 import {EmailMarketingProvider} from './emailMarketingStore';
 import {emailMarketingInitialState} from './emailMarketingInitialState';
 import {setMockEmailMarketingState} from '../../../utils/mocks/mocks';

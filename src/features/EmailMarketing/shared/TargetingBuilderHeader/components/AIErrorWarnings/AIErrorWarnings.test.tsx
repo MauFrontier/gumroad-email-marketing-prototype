@@ -1,6 +1,6 @@
 import {fireEvent, render, screen} from '@testing-library/react';
 import AIErrorWarnings from './AIErrorWarnings';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
 import {mockDispatch} from '../../../../../../utils/mocks/mocks';
 import {renderComponentWithState} from '../../../../store/emailMarketingStoreUtils';
 import {emailMarketingInitialState} from '../../../../store/emailMarketingInitialState';
