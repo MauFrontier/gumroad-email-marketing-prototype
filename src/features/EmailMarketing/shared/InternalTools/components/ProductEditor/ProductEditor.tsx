@@ -14,6 +14,7 @@ const ProductEditor = () => {
   const [customProducts, setCustomProducts] = useState<string>(
     JSON.stringify(state.products, null, 2),
   );
+
   const [customProductsError, setCustomProductsError] =
     useState<boolean>(false);
 
@@ -62,6 +63,22 @@ const ProductEditor = () => {
     removeTargetingProductsThatAreNotInProductsList(productsFromServer);
   };
 
+  const signalSuccess = () => {
+    setCustomProductsSuccess(true);
+
+    setTimeout(() => {
+      setCustomProductsSuccess(false);
+    }, 800);
+  };
+
+  const signalError = () => {
+    setCustomProductsError(true);
+
+    setTimeout(() => {
+      setCustomProductsError(false);
+    }, 800);
+  };
+
   const setProducts = () => {
     try {
       const parsedProducts = JSON.parse(customProducts);
@@ -72,17 +89,9 @@ const ProductEditor = () => {
 
       removeTargetingProductsThatAreNotInProductsList(parsedProducts);
 
-      setCustomProductsSuccess(true);
-
-      setTimeout(() => {
-        setCustomProductsSuccess(false);
-      }, 800);
+      signalSuccess();
     } catch (error) {
-      setCustomProductsError(true);
-
-      setTimeout(() => {
-        setCustomProductsError(false);
-      }, 800);
+      signalError();
       console.error(error);
     }
   };
