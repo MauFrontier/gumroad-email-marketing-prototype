@@ -10,7 +10,7 @@ import {formatDateForDisplay} from '../../../../../../../../../../utils/formats/
 import NumberInputWithLabel from '../../../../../../../../../shared/ui/components/NumberInputWithLabel/NumberInputWithLabel';
 import CurrencyInput from '../../../../../../../../../shared/ui/components/CurrencyInput/CurrencyInput';
 import Select from '../../../../../../../../../shared/ui/components/Select/Select';
-import {getCountriesArray} from '../../../../../../../countries';
+import {getCountriesArray} from '../../../../../../../../../../utils/formats/countries';
 import {useEmailMarketingState} from '../../../../../../../../store/useEmailMarketingState';
 
 interface Props {
