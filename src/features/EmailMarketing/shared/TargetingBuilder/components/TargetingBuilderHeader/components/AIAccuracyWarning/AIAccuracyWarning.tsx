@@ -1,6 +1,6 @@
-import Warning from '../../../../../shared/ui/components/Warning/Warning';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
-import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
+import Warning from '../../../../../../../shared/ui/components/Warning/Warning';
+import {EmailMarketingActionType} from '../../../../../../store/emailMarketingActionTypes';
+import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
 import './AIAccuracyWarning.scss';
 
 const AIAccuracyWarning = () => {

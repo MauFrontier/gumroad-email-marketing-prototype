@@ -1,9 +1,9 @@
 import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import GenerateWithAIForm from './GenerateWithAIForm';
-import {mockDispatch} from '../../../../../../utils/mocks/mocks';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
-import {renderComponentWithState} from '../../../../store/emailMarketingStoreUtils';
-import {emailMarketingInitialState} from '../../../../store/emailMarketingInitialState';
+import {mockDispatch} from '../../../../../../../../utils/mocks/mocks';
+import {EmailMarketingActionType} from '../../../../../../store/emailMarketingActionTypes';
+import {renderComponentWithState} from '../../../../../../store/emailMarketingStoreUtils';
+import {emailMarketingInitialState} from '../../../../../../store/emailMarketingInitialState';
 import userEvent from '@testing-library/user-event';
 
 describe('GenerateWithAIForm', () => {

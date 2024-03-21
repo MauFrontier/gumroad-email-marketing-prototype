@@ -1,9 +1,9 @@
 import {fireEvent, render, screen} from '@testing-library/react';
 import TargetingBuilderHeader from './TargetingBuilderHeader';
-import {mockDispatch} from '../../../../utils/mocks/mocks';
-import {EmailMarketingActionType} from '../../store/emailMarketingActionTypes';
-import {renderComponentWithState} from '../../store/emailMarketingStoreUtils';
-import {emailMarketingInitialState} from '../../store/emailMarketingInitialState';
+import {mockDispatch} from '../../../../../../utils/mocks/mocks';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
+import {renderComponentWithState} from '../../../../store/emailMarketingStoreUtils';
+import {emailMarketingInitialState} from '../../../../store/emailMarketingInitialState';
 
 describe('TargetingBuilderHeader', () => {
   it('renders component', () => {

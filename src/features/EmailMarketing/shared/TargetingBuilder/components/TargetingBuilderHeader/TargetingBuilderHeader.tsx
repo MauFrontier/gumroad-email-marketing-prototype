@@ -1,12 +1,12 @@
-import {EmailMarketingActionType} from '../../store/emailMarketingActionTypes';
-import {useEmailMarketingState} from '../../store/useEmailMarketingState';
-import Button from '../../../shared/ui/components/Button/Button';
-import Icon from '../../../shared/ui/components/Icon/Icon';
+import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
+import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
+import Button from '../../../../../shared/ui/components/Button/Button';
+import Icon from '../../../../../shared/ui/components/Icon/Icon';
 import GenerateWithAIForm from './components/GenerateWithAIForm/GenerateWithAIForm';
 import './TargetingBuilderHeader.scss';
-import {IconType} from '../../../shared/ui/components/Icon/iconLibrary';
+import {IconType} from '../../../../../shared/ui/components/Icon/iconLibrary';
 import {useEffect, useState} from 'react';
-import {Targeting} from '../emailMarketingTypes';
+import {Targeting} from '../../../emailMarketingTypes';
 
 const TargetingBuilderHeader = () => {
   const {state, dispatch} = useEmailMarketingState();

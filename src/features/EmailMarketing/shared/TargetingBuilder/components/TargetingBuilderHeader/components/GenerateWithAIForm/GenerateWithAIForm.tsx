@@ -1,14 +1,14 @@
 import {useEffect, useRef, useState} from 'react';
-import {SubmitAIPrompt} from '../../../../../shared/ai/ChatGPTService'; // Adjust the path as necessary
-import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
+import {SubmitAIPrompt} from '../../../../../../../shared/ai/ChatGPTService'; // Adjust the path as necessary
+import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
 
 import './GenerateWithAIForm.scss';
-import Button from '../../../../../shared/ui/components/Button/Button';
-import Icon from '../../../../../shared/ui/components/Icon/Icon';
-import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
-import {IconType} from '../../../../../shared/ui/components/Icon/iconLibrary';
+import Button from '../../../../../../../shared/ui/components/Button/Button';
+import Icon from '../../../../../../../shared/ui/components/Icon/Icon';
+import {EmailMarketingActionType} from '../../../../../../store/emailMarketingActionTypes';
+import {IconType} from '../../../../../../../shared/ui/components/Icon/iconLibrary';
 import {v4 as uuid} from 'uuid';
-import {AIResponse} from '../../../emailMarketingTypes';
+import {AIResponse} from '../../../../../emailMarketingTypes';
 
 interface Props {
   isFloatingDialog?: boolean;

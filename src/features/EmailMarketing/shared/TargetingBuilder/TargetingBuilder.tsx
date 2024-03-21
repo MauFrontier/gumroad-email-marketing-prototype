@@ -4,10 +4,10 @@ import {useEmailMarketingState} from '../../store/useEmailMarketingState';
 import {defaultFilterGroup} from '../emailMarketingDefaults';
 import {v4 as uuid} from 'uuid';
 import {EmailMarketingActionType} from '../../store/emailMarketingActionTypes';
-import TargetingBuilderHeader from '../TargetingBuilderHeader/TargetingBuilderHeader';
+import TargetingBuilderHeader from './components/TargetingBuilderHeader/TargetingBuilderHeader';
 import AddFilterGroupButton from './components/AddFilterGroupButton/AddFilterGroupButton';
-import AIAccuracyWarning from '../TargetingBuilderHeader/components/AIAccuracyWarning/AIAccuracyWarning';
-import AIErrorWarnings from '../TargetingBuilderHeader/components/AIErrorWarnings/AIErrorWarnings';
+import AIAccuracyWarning from './components/TargetingBuilderHeader/components/AIAccuracyWarning/AIAccuracyWarning';
+import AIErrorWarnings from './components/TargetingBuilderHeader/components/AIErrorWarnings/AIErrorWarnings';
 
 const TargetingBuilder = () => {
   const {state, dispatch} = useEmailMarketingState();
