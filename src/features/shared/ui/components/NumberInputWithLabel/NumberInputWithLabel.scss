@@ -7,6 +7,11 @@
 
   input {
     padding-right: $spacer-9;
+
+    &:focus {
+      outline: $border-2;
+      outline-color: $Gum;
+    }
   }
 
   label {

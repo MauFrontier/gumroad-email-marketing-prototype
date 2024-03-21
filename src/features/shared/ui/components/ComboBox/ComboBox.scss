@@ -14,6 +14,11 @@
     gap: $spacer-2;
     min-height: $dimension-7;
 
+    &:focus-within {
+      outline: $border-2;
+      outline-color: $Gum;
+    }
+
     .pill {
       background-color: $Black;
       color: $White;

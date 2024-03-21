@@ -19,6 +19,11 @@
     background-color: transparent;
   }
 
+  &:focus-within {
+    outline: $border-2;
+    outline-color: $Gum;
+  }
+
   .currency-label {
     position: absolute;
     display: flex;

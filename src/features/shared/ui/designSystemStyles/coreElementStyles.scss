@@ -79,6 +79,11 @@ input {
   border: $border-1;
   border-radius: $border-radius-2;
   padding: $spacer-4;
+
+  &:focus {
+    outline: $border-2;
+    outline-color: $Gum;
+  }
 }
 
 input[type='checkbox'] {
@@ -129,6 +134,11 @@ select {
   -webkit-appearance: none; /* Removes default arrow on WebKit browsers */
   -moz-appearance: none; /* Removes default arrow on Firefox */
   appearance: none; /* Standard way to remove default arrow, but not supported everywhere */
+
+  &:focus {
+    outline: $border-2;
+    outline-color: $Gum;
+  }
 }
 
 textarea {
@@ -137,6 +147,10 @@ textarea {
   box-sizing: border-box;
   min-height: $dimension-14;
   border-radius: $border-radius-2;
+  &:focus {
+    outline: $border-2;
+    outline-color: $Gum;
+  }
 }
 
 fieldset {
