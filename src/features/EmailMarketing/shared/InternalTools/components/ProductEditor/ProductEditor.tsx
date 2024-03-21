@@ -6,6 +6,7 @@ import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
 import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
 import productsFromServer from '../../../../api/productsFromServer';
 import {IconType} from '../../../../../shared/ui/Icon/iconLibrary';
+import {KeyValuePair} from '../../../../../shared/sharedTypes';
 
 const ProductEditor = () => {
   const {state, dispatch} = useEmailMarketingState();
@@ -26,6 +27,30 @@ const ProductEditor = () => {
     setCustomProducts(event.target.value);
   };
 
+  const removeTargetingProductsThatAreNotInProductsList = (
+    updatedProducts: KeyValuePair[],
+  ) => {
+    const updatedTargeting = {...state.targeting};
+    updatedTargeting.filterGroups.forEach(filterGroup => {
+      filterGroup.filters.forEach(filter => {
+        if (filter.subject === 'Product') {
+          const oldSelectedProducts: string[] = filter.value;
+
+          const newSelectedProducts: string[] = oldSelectedProducts.filter(
+            product => updatedProducts.find(p => p.value === product),
+          );
+
+          filter.value = newSelectedProducts;
+        }
+      });
+    });
+
+    dispatch({
+      type: EmailMarketingActionType.SetTargeting,
+      payload: updatedTargeting,
+    });
+  };
+
   const resetProducts = () => {
     dispatch({
       type: EmailMarketingActionType.SetProducts,
@@ -33,6 +58,8 @@ const ProductEditor = () => {
     });
 
     setCustomProducts(JSON.stringify(productsFromServer, null, 2));
+
+    removeTargetingProductsThatAreNotInProductsList(productsFromServer);
   };
 
   const setProducts = () => {
@@ -42,6 +69,8 @@ const ProductEditor = () => {
         type: EmailMarketingActionType.SetProducts,
         payload: parsedProducts,
       });
+
+      removeTargetingProductsThatAreNotInProductsList(parsedProducts);
 
       setCustomProductsSuccess(true);
 

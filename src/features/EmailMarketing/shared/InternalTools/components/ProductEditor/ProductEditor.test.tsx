@@ -7,6 +7,7 @@ import {emailMarketingInitialState} from '../../../../store/emailMarketingInitia
 import {KeyValuePair} from '../../../../../shared/sharedTypes';
 import productsFromServer from '../../../../api/productsFromServer';
 import userEvent from '@testing-library/user-event';
+import {defaultProductFilter} from '../../../emailMarketingDefaults';
 
 describe('ProductEditor', () => {
   const exampleCustomProducts: KeyValuePair[] = [
@@ -85,6 +86,57 @@ describe('ProductEditor', () => {
     expect(mockDispatch).toHaveBeenCalledWith({
       type: EmailMarketingActionType.SetProducts,
       payload: productsFromServer,
+    });
+  });
+
+  it('should remove from current targeting state any previously selected products that no longer exist in the product list', async () => {
+    const previousTargeting = {
+      filterGroups: [
+        {
+          id: '1',
+          filters: [
+            {
+              ...defaultProductFilter,
+              value: ['previous-product-1', exampleCustomProducts[0].value],
+            },
+          ],
+        },
+      ],
+    };
+
+    renderComponentWithState(<ProductEditor />, {
+      ...emailMarketingInitialState,
+      products: exampleCustomProducts,
+      targeting: previousTargeting,
+    });
+
+    const productsField = screen.getByLabelText('Custom products');
+    fireEvent.change(productsField, {
+      target: {value: JSON.stringify(exampleCustomProducts)},
+    });
+
+    const saveButton = screen.getByLabelText('Save custom products');
+    await userEvent.click(saveButton);
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetProducts,
+      payload: exampleCustomProducts,
+    });
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: EmailMarketingActionType.SetTargeting,
+      payload: {
+        ...previousTargeting,
+        filterGroups: previousTargeting.filterGroups.map(group => ({
+          ...group,
+          filters: group.filters.map(filter => ({
+            ...filter,
+            value: filter.value.filter(v =>
+              exampleCustomProducts.some(p => p.value === v),
+            ),
+          })),
+        })),
+      },
     });
   });
 });
