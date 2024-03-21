@@ -1,9 +1,9 @@
 require 'openai'
 
-class EmailMarketingTargetingController < ActionController::API
+class SegmentationController < ActionController::API
   def generate
     client = OpenAI::Client.new
-    system_prompt = EmailMarketingService.system_prompt
+    system_prompt = SegmentationService.system_prompt
 
     response = client.chat(
       parameters: {
