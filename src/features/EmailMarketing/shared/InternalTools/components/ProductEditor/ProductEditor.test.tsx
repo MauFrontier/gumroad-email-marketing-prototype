@@ -50,6 +50,9 @@ describe('ProductEditor', () => {
   });
 
   it('does not set the products if the field does not contain valid JSON, and it signals that there was an error', async () => {
+    //Mock this so we don't pollute the terminal during this intentional use of incorrect JSON.
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+
     renderComponentWithState(<ProductEditor />, {
       ...emailMarketingInitialState,
       products: exampleCustomProducts,
