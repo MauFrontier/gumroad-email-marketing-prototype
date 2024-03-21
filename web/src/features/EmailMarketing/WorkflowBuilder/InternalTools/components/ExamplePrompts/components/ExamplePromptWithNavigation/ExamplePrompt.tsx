@@ -30,13 +30,15 @@ const ExamplePrompt = ({
       payload: newPrompt,
     });
 
-    if (!state.showGenerateWithAIPanel) {
-      dispatch({
-        type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel,
-      });
-    }
-
     scrollToTop();
+
+    if (!state.showGenerateWithAIPanel) {
+      setTimeout(() => {
+        dispatch({
+          type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel,
+        });
+      }, 500);
+    }
   };
 
   return (
