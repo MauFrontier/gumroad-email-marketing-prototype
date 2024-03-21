@@ -72,21 +72,6 @@ export const getVerbOptions = (
   }
 };
 
-export const shouldResetValue = (
-  oldVerb: TargetingFilterVerb,
-  newVerb: TargetingFilterVerb,
-) =>
-  (oldVerb === TargetingFilterVerb.IsInTheLast &&
-    (newVerb === TargetingFilterVerb.Is ||
-      newVerb === TargetingFilterVerb.IsNot ||
-      newVerb === TargetingFilterVerb.IsBefore ||
-      newVerb === TargetingFilterVerb.IsAfter)) ||
-  ((oldVerb === TargetingFilterVerb.IsBefore ||
-    oldVerb === TargetingFilterVerb.Is ||
-    oldVerb === TargetingFilterVerb.IsNot ||
-    oldVerb === TargetingFilterVerb.IsAfter) &&
-    newVerb === TargetingFilterVerb.IsInTheLast);
-
 export const getVerbQualifierOptions = (
   subject: TargetingFilterSubject,
 ): KeyValuePair[] => {
@@ -191,3 +176,18 @@ export const updateFilterValue = (
   console.warn(`Invalid value type for subject ${filter.subject}:`, newValue);
   return filter; // Return the original filter if the value type is incorrect
 };
+
+export const shouldResetValue = (
+  oldVerb: TargetingFilterVerb,
+  newVerb: TargetingFilterVerb,
+) =>
+  (oldVerb === TargetingFilterVerb.IsInTheLast &&
+    (newVerb === TargetingFilterVerb.Is ||
+      newVerb === TargetingFilterVerb.IsNot ||
+      newVerb === TargetingFilterVerb.IsBefore ||
+      newVerb === TargetingFilterVerb.IsAfter)) ||
+  ((oldVerb === TargetingFilterVerb.IsBefore ||
+    oldVerb === TargetingFilterVerb.Is ||
+    oldVerb === TargetingFilterVerb.IsNot ||
+    oldVerb === TargetingFilterVerb.IsAfter) &&
+    newVerb === TargetingFilterVerb.IsInTheLast);
