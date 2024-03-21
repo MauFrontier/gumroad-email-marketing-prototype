@@ -27,7 +27,7 @@ export const SubmitAIPrompt = async (
         },
       ],
       response_format: {type: 'json_object'},
-      model: 'gpt-4-1106-preview',
+      model: 'gpt-4-0125-preview',
     });
     return completion.choices[0].message.content;
   } catch (error) {
