@@ -3,9 +3,15 @@
 [GitHub Repository](https://github.com/MauFrontier/gumroad-email-marketing)
 
 Author: **Mau Fournier**
-Applying for the role of **Customer Supporter** (with design and engineering tendencies 😉)
+Applying for the role of **Software engineer**.
 
-This project showcases my ability to quickly generate working Typescript + React code.  Check out [the Figma project](https://www.figma.com/file/brvBekodG186nNxzCUkKLu/Email-Marketing-Mockups) which I prepared before starting this app. 
+This project showcases my ability to quickly build Gumroad UIs with Typescript + React code.
+
+It's also a sample of my level of comfort with Generative AI and my vision for how it can be harnessed to revolutionize the way people interact with Gumroad.
+
+I hope you enjoy 🙂.
+
+[Figma project](https://www.figma.com/file/brvBekodG186nNxzCUkKLu/Email-Marketing-Mockups) I prepared before starting this app. 
 
 I also have experience with backend development, but not with Ruby on Rails yet (I'm usually on Node + Express.js).
 
