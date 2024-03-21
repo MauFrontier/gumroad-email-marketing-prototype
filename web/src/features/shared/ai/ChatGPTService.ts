@@ -1,5 +1,5 @@
 import {OpenAI} from 'openai';
-import {getTargetingSystemPrompt} from '../../EmailMarketing/api/ai/generateTargeting/getTargetingSystemPrompt';
+import {getSegmentationSystemPrompt} from '../../EmailMarketing/api/ai/generateTargeting/getSegmentationSystemPrompt';
 import {VITE_OPENAI_API_KEY} from '../../../constants';
 import {KeyValuePair} from '../sharedTypes';
 
@@ -19,7 +19,7 @@ export const SubmitAIPrompt = async (
       messages: [
         {
           role: 'system',
-          content: getTargetingSystemPrompt(products),
+          content: getSegmentationSystemPrompt(products),
         },
         {
           role: 'user',

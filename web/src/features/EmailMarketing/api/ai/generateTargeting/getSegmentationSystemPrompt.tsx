@@ -8,7 +8,7 @@ const responseType = `type AIResponse = {
   errors: string[];
 };`;
 
-export const getTargetingSystemPrompt = (products: KeyValuePair[]) => {
+export const getSegmentationSystemPrompt = (products: KeyValuePair[]) => {
   const basicRules = ` 
 You're going to take a user's prompt in natural language and will generate the JSON for email marketing targeting, adhering strictly to these rules:
 
