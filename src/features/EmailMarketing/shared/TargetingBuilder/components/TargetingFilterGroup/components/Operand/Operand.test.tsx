@@ -8,7 +8,7 @@ describe('Operand', () => {
     expect(screen.getByRole('combobox')).toBeInTheDocument();
   });
 
-  it('Uses prop label if present', () => {
+  it('uses prop label if present', () => {
     render(
       <Operand value={OperandEnum.And} onChange={jest.fn()} label="Test" />,
     );
@@ -24,7 +24,7 @@ describe('Operand', () => {
     expect(options[1]).toHaveTextContent(OperandEnum.Or);
   });
 
-  it('Uses default label if prop label is not present', () => {
+  it('uses default label if prop label is not present', () => {
     render(<Operand value={OperandEnum.And} onChange={jest.fn()} />);
     expect(screen.getByLabelText('Operand')).toBeInTheDocument();
   });

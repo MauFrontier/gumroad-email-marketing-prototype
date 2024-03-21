@@ -6,7 +6,7 @@ import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTyp
 import {mockDispatch} from '../../../../../../utils/mocks/mocks';
 
 describe('AIAccuracyWarning', () => {
-  it('Renders the component', async () => {
+  it('renders the component', async () => {
     render(<AIAccuracyWarning />);
 
     expect(screen.getByLabelText('AI accuracy warning')).toBeVisible();

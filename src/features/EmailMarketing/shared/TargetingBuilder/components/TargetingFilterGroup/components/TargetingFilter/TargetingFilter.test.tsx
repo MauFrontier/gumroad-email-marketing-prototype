@@ -29,7 +29,7 @@ describe('TargetingFilter', () => {
     expect(screen.getByLabelText('Filter operand')).toBeInTheDocument();
   });
 
-  it("Sets the filter's operand when the operand picker's value changes", async () => {
+  it("sets the filter's operand when the operand picker's value changes", async () => {
     render(
       <TargetingFilter
         targetingFilter={{...dateFilterForTests, operand: Operand.And}}
@@ -58,7 +58,7 @@ describe('TargetingFilter', () => {
     expect(screen.getByLabelText('Delete filter button')).toBeInTheDocument();
   });
 
-  it('Deletes the filter when the "Delete filter" button is clicked', async () => {
+  it('deletes the filter when the "Delete filter" button is clicked', async () => {
     render(<TargetingFilter targetingFilter={dateFilterForTests} />);
 
     const deleteFilterButton = screen.getByLabelText('Delete filter button');
@@ -77,7 +77,7 @@ describe('TargetingFilter', () => {
     expect(screen.getByLabelText('Filter subject')).toBeInTheDocument();
   });
 
-  it("Sets the filter's subject when the Subject picker's value changes", async () => {
+  it("sets the filter's subject when the Subject picker's value changes", async () => {
     render(<TargetingFilter targetingFilter={dateFilterForTests} />);
 
     expect(screen.getByLabelText('Filter subject')).toBeInTheDocument();
@@ -112,7 +112,7 @@ describe('TargetingFilter', () => {
     ).toBeInTheDocument();
   });
 
-  it("Sets the FilterSubjectQualifier when subject qualifier picker's value changes", async () => {
+  it("sets the FilterSubjectQualifier when subject qualifier picker's value changes", async () => {
     render(
       <TargetingFilter
         targetingFilter={{
@@ -147,7 +147,7 @@ describe('TargetingFilter', () => {
     expect(screen.getByLabelText('Filter verb')).toBeInTheDocument();
   });
 
-  it("Sets the filter verb when verb picker's value changes", async () => {
+  it("sets the filter verb when verb picker's value changes", async () => {
     render(<TargetingFilter targetingFilter={dateFilterForTests} />);
 
     const verbContainer = screen.getByLabelText('Filter verb');
@@ -237,7 +237,7 @@ describe('TargetingFilter', () => {
     expect(screen.queryByLabelText('Filter verb qualifier')).toBeNull();
   });
 
-  it("Sets the filter's VerbQualifier when the verb qualifier picker's value changes", async () => {
+  it("sets the filter's VerbQualifier when the verb qualifier picker's value changes", async () => {
     render(<TargetingFilter targetingFilter={productFilterForTests} />);
 
     const verbQualifierContainer = screen.getByLabelText(
@@ -263,7 +263,7 @@ describe('TargetingFilter', () => {
     expect(screen.getByLabelText('Filter value')).toBeInTheDocument();
   });
 
-  it("Sets the filter's value when the value field changes", async () => {
+  it("sets the filter's value when the value field changes", async () => {
     render(<TargetingFilter targetingFilter={paymentFilterForTests} />);
 
     const valueField = screen.getByLabelText('Currency amount input');
@@ -278,7 +278,7 @@ describe('TargetingFilter', () => {
     });
   });
 
-  it('Disables its direct children and at least one filtering input when the disabled prop is included', () => {
+  it('disables its direct children and at least one filtering input when the disabled prop is included', () => {
     //I don't want to get this too coupled to its children's implementations,
     //and they're each getting tested on getting disabled, so we can let
     //integration tests handle that and not test all of them here.
@@ -301,7 +301,7 @@ describe('TargetingFilter', () => {
     expect(operandSelect).toBeDisabled();
   });
 
-  it('Does not disable its direct children and at least one filtering input when the disabled prop is not included', () => {
+  it('does not disable its direct children and at least one filtering input when the disabled prop is not included', () => {
     //I don't want to get this too coupled to its children's implementations,
     //and they're each getting tested on getting disabled, so we can let
     //integration tests handle that and not test all of them here.

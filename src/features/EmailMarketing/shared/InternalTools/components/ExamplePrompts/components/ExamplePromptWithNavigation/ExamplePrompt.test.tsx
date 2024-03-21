@@ -82,7 +82,7 @@ describe('ExamplePrompt', () => {
     expect(goToPreviousPrompt).toHaveBeenCalled();
   });
 
-  it('Sets prompt state when the Use Prompt button is clicked', async () => {
+  it('sets prompt state when the Use Prompt button is clicked', async () => {
     render(
       <ExamplePrompt
         goToNextPrompt={jest.fn()}

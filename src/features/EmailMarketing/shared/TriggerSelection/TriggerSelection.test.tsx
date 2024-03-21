@@ -13,7 +13,7 @@ describe('TriggerSelection', () => {
     expect(screen.getByLabelText('Trigger selection')).toBeInTheDocument();
   });
 
-  it('Presses a trigger button', async () => {
+  it('presses a trigger button', async () => {
     renderComponentWithState(<TriggerSelection />, emailMarketingInitialState);
     const initialTrigger = emailMarketingInitialState.selectedTrigger;
     const newTrigger = TriggerType.NewAffiliate;

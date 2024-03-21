@@ -20,7 +20,7 @@ describe('TargetingFilterValue', () => {
     expect(screen.getByLabelText('Filter value')).toBeInTheDocument();
   });
 
-  it('Shows a currency input field when the subject is Payment', () => {
+  it('shows a currency input field when the subject is Payment', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Payment}
@@ -33,7 +33,7 @@ describe('TargetingFilterValue', () => {
     expect(screen.getByLabelText('Currency amount input')).toBeInTheDocument();
   });
 
-  it('Shows a date input field when the subject is Date and the verb is IsBefore, IsAfter, Is, and IsNot', () => {
+  it('shows a date input field when the subject is Date and the verb is IsBefore, IsAfter, Is, and IsNot', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
@@ -49,7 +49,7 @@ describe('TargetingFilterValue', () => {
     expect(dateInput).toBeInTheDocument();
   });
 
-  it('Shows a text input field when the subject is Date and the verb is IsInTheLast', () => {
+  it('shows a text input field when the subject is Date and the verb is IsInTheLast', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
@@ -66,7 +66,7 @@ describe('TargetingFilterValue', () => {
     expect(dateInput).not.toBeInTheDocument();
   });
 
-  it('Shows a select field when the subject is Location', () => {
+  it('shows a select field when the subject is Location', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Location}
@@ -82,7 +82,7 @@ describe('TargetingFilterValue', () => {
     expect(selectElement).toBeInTheDocument();
   });
 
-  it('Shows a ComboBox field when the subject is Product', () => {
+  it('shows a ComboBox field when the subject is Product', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Product}
@@ -94,7 +94,7 @@ describe('TargetingFilterValue', () => {
     expect(screen.getByLabelText('ComboBox input')).toBeInTheDocument();
   });
 
-  it('Calls onChange with new value when the subject is Payment', async () => {
+  it('calls onChange with new value when the subject is Payment', async () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterValue
@@ -111,7 +111,7 @@ describe('TargetingFilterValue', () => {
     expect(onChange).toHaveBeenCalledWith(3000);
   });
 
-  it('Calls onChange with new value when the subject is Date and the verb is IsBefore, IsAfter, Is, and IsNot', async () => {
+  it('calls onChange with new value when the subject is Date and the verb is IsBefore, IsAfter, Is, and IsNot', async () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterValue
@@ -133,7 +133,7 @@ describe('TargetingFilterValue', () => {
     expect(onChange).toHaveBeenCalledWith('2022-01-01');
   });
 
-  it('Calls onChange with new value when the subject is Date and the verb is IsInTheLast', async () => {
+  it('calls onChange with new value when the subject is Date and the verb is IsInTheLast', async () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterValue
@@ -155,7 +155,7 @@ describe('TargetingFilterValue', () => {
     expect(onChange).toHaveBeenCalledWith(300);
   });
 
-  it('Calls onChange with new value when the subject is Location', async () => {
+  it('calls onChange with new value when the subject is Location', async () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterValue
@@ -173,7 +173,7 @@ describe('TargetingFilterValue', () => {
     expect(onChange).toHaveBeenCalledWith('US');
   });
 
-  it('Calls onChange with new value when the subject is Product', async () => {
+  it('calls onChange with new value when the subject is Product', async () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterValue
@@ -194,7 +194,7 @@ describe('TargetingFilterValue', () => {
     expect(onChange).toHaveBeenCalledWith([productsFromServer[0].value]);
   });
 
-  it('Uses the passed value when the subject is Payment', () => {
+  it('uses the passed value when the subject is Payment', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Payment}
@@ -211,7 +211,7 @@ describe('TargetingFilterValue', () => {
     expect(inputElement.value).toBe('300');
   });
 
-  it('Uses the passed value when the subject is Date and the verb is IsBefore, IsAfter, Is, or IsNot', () => {
+  it('uses the passed value when the subject is Date and the verb is IsBefore, IsAfter, Is, or IsNot', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
@@ -228,7 +228,7 @@ describe('TargetingFilterValue', () => {
     expect(dateInputElement.value).toBe('2021-02-03');
   });
 
-  it('Uses the passed value when the subject is Date and the verb is IsInTheLast', () => {
+  it('uses the passed value when the subject is Date and the verb is IsInTheLast', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
@@ -245,7 +245,7 @@ describe('TargetingFilterValue', () => {
     expect(inputElement.value).toBe('30');
   });
 
-  it('Uses the passed value when the subject is Location', () => {
+  it('uses the passed value when the subject is Location', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Location}
@@ -261,7 +261,7 @@ describe('TargetingFilterValue', () => {
     expect(selectElement).toHaveValue('CR');
   });
 
-  it('Uses the passed value when the subject is Product', () => {
+  it('uses the passed value when the subject is Product', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Product}
@@ -275,7 +275,7 @@ describe('TargetingFilterValue', () => {
     expect(product).toBeInTheDocument();
   });
 
-  it('Formats date for display in the date field', () => {
+  it('formats date for display in the date field', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
@@ -292,7 +292,7 @@ describe('TargetingFilterValue', () => {
     expect(dateInputElement?.value).toBe('2021-01-01');
   });
 
-  it('Shows Location options when the subject is Location', () => {
+  it('shows Location options when the subject is Location', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Location}
@@ -308,7 +308,7 @@ describe('TargetingFilterValue', () => {
     expect(option).toBeInTheDocument();
   });
 
-  it('Shows Product options when the subject is Product', async () => {
+  it('shows Product options when the subject is Product', async () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Product}

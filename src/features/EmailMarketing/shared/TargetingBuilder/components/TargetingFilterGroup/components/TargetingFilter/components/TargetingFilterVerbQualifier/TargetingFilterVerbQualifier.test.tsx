@@ -54,7 +54,7 @@ describe('TargetingFilterVerbQualifier', () => {
     ).toBeInTheDocument();
   });
 
-  it('Selects the passed value', async () => {
+  it('selects the passed value', async () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterVerbQualifier
@@ -73,7 +73,7 @@ describe('TargetingFilterVerbQualifier', () => {
     expect(onChange).toHaveBeenCalledWith(TargetingFilterVerbQualifierEnum.All);
   });
 
-  it('Calls onChange with new value when selection changes', async () => {
+  it('calls onChange with new value when selection changes', async () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterVerbQualifier
@@ -92,7 +92,7 @@ describe('TargetingFilterVerbQualifier', () => {
     expect(onChange).toHaveBeenCalledWith(TargetingFilterVerbQualifierEnum.All);
   });
 
-  it('Uses Any if value is not provided', () => {
+  it('uses Any if value is not provided', () => {
     render(
       <TargetingFilterVerbQualifier
         subject={TargetingFilterSubjectEnum.Product}

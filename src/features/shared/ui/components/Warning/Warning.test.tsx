@@ -44,7 +44,7 @@ describe('Warning', () => {
     expect(onCloseWarning).toHaveBeenCalled();
   });
 
-  it('Shows "vote up" button when votedUp is false', async () => {
+  it('shows "vote up" button when votedUp is false', async () => {
     render(
       <Warning
         message="This is a warning"
@@ -60,7 +60,7 @@ describe('Warning', () => {
     expect(screen.getByLabelText('Vote up button')).toBeVisible();
   });
 
-  it('Defaults to votedUp false', async () => {
+  it('defaults to votedUp false', async () => {
     render(
       <Warning
         message="This is a warning"
@@ -77,7 +77,7 @@ describe('Warning', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('Shows "remove vote up" button when votedUp is true', async () => {
+  it('shows "remove vote up" button when votedUp is true', async () => {
     render(
       <Warning
         message="This is a warning"
@@ -93,7 +93,7 @@ describe('Warning', () => {
     expect(screen.getByLabelText('Remove vote up button')).toBeVisible();
   });
 
-  it('Shows "vote down" button when votedDown is false', async () => {
+  it('shows "vote down" button when votedDown is false', async () => {
     render(
       <Warning
         message="This is a warning"
@@ -109,7 +109,7 @@ describe('Warning', () => {
     expect(screen.getByLabelText('Vote down button')).toBeVisible();
   });
 
-  it('Defaults to votedDown false', async () => {
+  it('defaults to votedDown false', async () => {
     render(
       <Warning
         message="This is a warning"
@@ -126,7 +126,7 @@ describe('Warning', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('Shows "remove vote down" button when votedDown is true', async () => {
+  it('shows "remove vote down" button when votedDown is true', async () => {
     render(
       <Warning
         message="This is a warning"

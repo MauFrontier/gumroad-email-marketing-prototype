@@ -92,7 +92,7 @@ describe('TargetingFilterGroup', () => {
     ).toBeInTheDocument();
   });
 
-  it('Adds a filter when add filter button is clicked', async () => {
+  it('adds a filter when add filter button is clicked', async () => {
     const user = userEvent.setup();
     const propsWithFilters = {
       ...baseProps,
@@ -120,7 +120,7 @@ describe('TargetingFilterGroup', () => {
     });
   });
 
-  it('Deletes the filter group', async () => {
+  it('deletes the filter group', async () => {
     render(<TargetingFilterGroup {...baseProps} />);
     expect(
       screen.getByLabelText('Delete filter group button'),
@@ -134,7 +134,7 @@ describe('TargetingFilterGroup', () => {
     });
   });
 
-  it("Sets the filter group's operand", async () => {
+  it("sets the filter group's operand", async () => {
     render(<TargetingFilterGroup {...baseProps} />);
     expect(screen.getByLabelText('Filter group operand')).toBeInTheDocument();
 
@@ -152,7 +152,7 @@ describe('TargetingFilterGroup', () => {
     });
   });
 
-  it('Disables its direct children and at least one filtering input when the disabled prop is included', () => {
+  it('disables its direct children and at least one filtering input when the disabled prop is included', () => {
     //I don't want to get this too coupled to its children's implementations,
     //and they're each getting tested on getting disabled, so we can let
     //integration tests handle that and not test all of them here.

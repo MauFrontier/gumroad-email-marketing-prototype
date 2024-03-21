@@ -20,7 +20,7 @@ describe('TargetingFilterSubjectQualifier', () => {
     ).toBeInTheDocument();
   });
 
-  it('Sets the right value', () => {
+  it('sets the right value', () => {
     render(
       <TargetingFilterSubjectQualifier
         subject={TargetingFilterSubjectEnum.Date}
@@ -35,7 +35,7 @@ describe('TargetingFilterSubjectQualifier', () => {
     expect(selectElement).toHaveValue('Purchased');
   });
 
-  it('Calls onChange with new value when selection changes', async () => {
+  it('calls onChange with new value when selection changes', async () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterSubjectQualifier
@@ -58,7 +58,7 @@ describe('TargetingFilterSubjectQualifier', () => {
     );
   });
 
-  it("Doesn't display if subject isn't Date", () => {
+  it("doesn't display if subject isn't Date", () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterSubjectQualifier

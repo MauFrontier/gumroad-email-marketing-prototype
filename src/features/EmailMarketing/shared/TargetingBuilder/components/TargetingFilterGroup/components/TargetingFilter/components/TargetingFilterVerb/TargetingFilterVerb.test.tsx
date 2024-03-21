@@ -18,7 +18,7 @@ describe('TargetingFilterVerb', () => {
     expect(screen.getByLabelText('Filter verb')).toBeInTheDocument();
   });
 
-  it('Shows options that are appropriate for the Date subject', () => {
+  it('shows options that are appropriate for the Date subject', () => {
     render(
       <TargetingFilterVerb
         subject={TargetingFilterSubjectEnum.Date}
@@ -47,7 +47,7 @@ describe('TargetingFilterVerb', () => {
     ).toBeInTheDocument();
   });
 
-  it('Shows options that are appropriate for the Payment subject', () => {
+  it('shows options that are appropriate for the Payment subject', () => {
     render(
       <TargetingFilterVerb
         subject={TargetingFilterSubjectEnum.Payment}
@@ -73,7 +73,7 @@ describe('TargetingFilterVerb', () => {
     ).toBeInTheDocument();
   });
 
-  it('Shows options that are appropriate for the Location subject', () => {
+  it('shows options that are appropriate for the Location subject', () => {
     render(
       <TargetingFilterVerb
         subject={TargetingFilterSubjectEnum.Location}
@@ -93,7 +93,7 @@ describe('TargetingFilterVerb', () => {
     expect(screen.getByText(TargetingFilterVerbEnum.IsNot)).toBeInTheDocument();
   });
 
-  it('Shows options that are appropriate for the Product subject', () => {
+  it('shows options that are appropriate for the Product subject', () => {
     render(
       <TargetingFilterVerb
         subject={TargetingFilterSubjectEnum.Product}
@@ -110,7 +110,7 @@ describe('TargetingFilterVerb', () => {
     ).toBeInTheDocument();
   });
 
-  it('Selects the passed value', async () => {
+  it('selects the passed value', async () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterVerb
@@ -128,7 +128,7 @@ describe('TargetingFilterVerb', () => {
     expect(onChange).toHaveBeenCalledWith(TargetingFilterVerbEnum.Is);
   });
 
-  it('Calls onChange with new value when selection changes', async () => {
+  it('calls onChange with new value when selection changes', async () => {
     const onChange = jest.fn();
     render(
       <TargetingFilterVerb
