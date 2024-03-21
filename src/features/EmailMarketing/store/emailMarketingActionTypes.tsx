@@ -11,7 +11,7 @@ import {
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
   TriggerType,
-} from '../shared/emailMarketingTypes';
+} from '../WorkflowBuilder/emailMarketingTypes';
 
 export interface EmailMarketingState {
   targeting: Targeting;

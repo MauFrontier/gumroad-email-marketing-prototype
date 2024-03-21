@@ -9,7 +9,7 @@ import {
   TargetingFilterSubjectQualifier,
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
-} from '../shared/emailMarketingTypes';
+} from '../WorkflowBuilder/emailMarketingTypes';
 import {emailMarketingInitialState} from './emailMarketingInitialState';
 import {EmailMarketingState} from './emailMarketingActionTypes';
 

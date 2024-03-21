@@ -1,4 +1,4 @@
-import {Targeting, TriggerType} from '../shared/emailMarketingTypes';
+import {Targeting, TriggerType} from '../WorkflowBuilder/emailMarketingTypes';
 import {EmailMarketingState} from './emailMarketingActionTypes';
 import defaultData_targeting from './defaultTargeting.json';
 import productsFromServer from '../api/productsFromServer';

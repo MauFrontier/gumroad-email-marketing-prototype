@@ -5,7 +5,7 @@ import {
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
   TriggerType,
-} from '../shared/emailMarketingTypes';
+} from '../WorkflowBuilder/emailMarketingTypes';
 import {emailMarketingReducer} from './emailMarketingReducer';
 import {
   emailMarketingStateForTests as initialState,

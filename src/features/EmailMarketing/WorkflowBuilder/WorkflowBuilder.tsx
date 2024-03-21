@@ -1,7 +1,7 @@
 import TextInput from '../../shared/ui/components/TextInput/TextInput';
-import InternalTools from '../shared/InternalTools/InternalTools';
-import TargetingBuilder from '../shared/TargetingBuilder/TargetingBuilder';
-import TriggerSelection from '../shared/TriggerSelection/TriggerSelection';
+import InternalTools from './InternalTools/InternalTools';
+import TargetingBuilder from './TargetingBuilder/TargetingBuilder';
+import TriggerSelection from './TriggerSelection/TriggerSelection';
 
 const WorkflowBuilder = () => {
   return (
