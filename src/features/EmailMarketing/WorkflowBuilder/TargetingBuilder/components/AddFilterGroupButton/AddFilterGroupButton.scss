@@ -1,0 +1,29 @@
+@import './src/features/shared/ui/designSystemStyles.scss';
+
+[aria-label='Add filter group button'] {
+  fill: $White;
+  height: $dimension-9;
+  padding: 0;
+
+  color: $White;
+  background-color: $Black;
+  width: 100%;
+  padding: $spacer-3;
+
+  .plus-circle-icon {
+    fill: $White;
+  }
+
+  &:hover {
+    box-shadow: $shadow-regular-light;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &[disabled] {
+    opacity: $opacity-disabled;
+    box-shadow: none;
+  }
+}

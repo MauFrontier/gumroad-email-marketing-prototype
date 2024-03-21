@@ -1,0 +1,7 @@
+@import './src/features/shared/ui/designSystemStyles.scss';
+
+[aria-label='Delete filter group button'] {
+  width: $dimension-9;
+  height: $dimension-9;
+  padding: 0;
+}

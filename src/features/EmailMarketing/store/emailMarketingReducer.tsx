@@ -2,10 +2,13 @@ import {
   EmailMarketingState,
   EmailMarketingAction,
   EmailMarketingActionType,
-} from './emailMarketingStoreTypes';
-import {Operand} from '../shared/emailMarketingTypes';
-import {getDefaultFilterForSubject} from '../shared/emailMarketingDefaults';
-import {updateFilterValue, updateFilterVerb} from '../shared/targetingUtils';
+} from './emailMarketingActionTypes';
+import {Operand} from '../WorkflowBuilder/emailMarketingTypes';
+import {getDefaultFilterForSubject} from '../WorkflowBuilder/emailMarketingDefaults';
+import {
+  updateFilterValue,
+  updateFilterVerb,
+} from '../WorkflowBuilder/targetingUtils';
 
 export const emailMarketingReducer = (
   state: EmailMarketingState,

@@ -1,0 +1,18 @@
+@import './src/features/shared/ui/designSystemStyles.scss';
+
+[aria-label='Filter value'] {
+  .number-input-with-label {
+    width: 10rem;
+  }
+
+  &.expanded {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  @media (max-width: 60rem) {
+    .number-input-with-label {
+      width: 100%;
+    }
+  }
+}

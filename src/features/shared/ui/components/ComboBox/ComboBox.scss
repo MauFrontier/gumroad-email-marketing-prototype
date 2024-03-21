@@ -1,0 +1,70 @@
+@import './src/features/shared/ui/designSystemStyles.scss';
+
+[role='combobox'] {
+  width: 100%;
+  position: relative;
+
+  .input-pill-container {
+    border: $border-1;
+    padding: $spacer-2 $spacer-2;
+    border-radius: $border-radius-2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $spacer-2;
+    min-height: $dimension-7;
+
+    .pill {
+      background-color: $Black;
+      color: $White;
+      border-radius: $dimension-20;
+      padding: $spacer-3 $spacer-4;
+      display: inline-flex;
+      font-size: $font-size-sm;
+      align-items: center;
+      cursor: pointer;
+
+      .pill-close-icon {
+        margin-left: $spacer-3;
+      }
+    }
+
+    [role='textbox'] {
+      flex-grow: 1;
+      height: $dimension-7;
+      border: none;
+      outline: none;
+      padding: 0 $spacer-2;
+      background: transparent;
+      width: auto;
+      min-width: $dimension-11;
+    }
+  }
+
+  [role='listbox'] {
+    position: absolute;
+    margin: 0;
+    top: 100%;
+    transform: translateY(-$spacer-1);
+    width: 100%;
+    z-index: 20;
+    border: $border-1;
+    border-radius: 0 0 $border-radius-2 $border-radius-2;
+    box-shadow: $shadow-regular;
+    background-color: $White;
+    list-style: none;
+    padding: 0;
+    max-height: $dimension-20;
+    overflow-y: auto;
+
+    li {
+      padding: $spacer-3;
+      cursor: pointer;
+      &:hover,
+      &[aria-selected='true'] {
+        background-color: $Black;
+        color: $White;
+      }
+    }
+  }
+}

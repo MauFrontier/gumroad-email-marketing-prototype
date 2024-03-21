@@ -1,0 +1,50 @@
+@import './src/features/shared/ui/designSystemStyles.scss';
+
+section[aria-label='Trigger selection'] {
+  margin-top: $spacer-4;
+  margin-bottom: $spacer-4;
+
+  fieldset {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    legend {
+      margin-bottom: $spacer-2;
+    }
+  }
+
+  img {
+    width: $dimension-8;
+    height: $dimension-8;
+    margin-bottom: $spacer-4;
+  }
+
+  button {
+    display: flex;
+    flex: 0 0 calc(25% - 0.75rem);
+    max-width: calc(25% - 0.75rem);
+    padding: $spacer-4 $spacer-3;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+
+    &[aria-pressed='true'] {
+      background-color: $White;
+      box-shadow: $shadow-regular;
+      transform: translate(-#{$spacer-2}, -#{$spacer-2});
+    }
+  }
+
+  label {
+    margin-top: $spacer-4;
+  }
+
+  h3,
+  p {
+    margin: 0 $spacer-2 $spacer-2 $spacer-2;
+  }
+}

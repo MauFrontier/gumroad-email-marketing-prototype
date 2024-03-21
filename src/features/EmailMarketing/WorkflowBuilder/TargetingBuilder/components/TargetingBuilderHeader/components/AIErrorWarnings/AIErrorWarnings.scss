@@ -1,0 +1,8 @@
+@import './src/features/shared/ui/designSystemStyles.scss';
+
+[aria-label='AI error warnings'] {
+  display: flex;
+  flex-direction: column;
+  gap: $spacer-4;
+  margin: $spacer-4 0;
+}

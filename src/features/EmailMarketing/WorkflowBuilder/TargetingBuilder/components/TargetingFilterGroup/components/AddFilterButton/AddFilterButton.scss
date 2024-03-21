@@ -1,0 +1,6 @@
+@import './src/features/shared/ui/designSystemStyles.scss';
+
+[aria-label='Add filter button'] {
+  height: $dimension-9;
+  padding: 0;
+}

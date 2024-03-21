@@ -2,7 +2,7 @@ import {createContext, useReducer} from 'react';
 import {
   EmailMarketingAction,
   EmailMarketingState,
-} from './emailMarketingStoreTypes';
+} from './emailMarketingActionTypes';
 import {emailMarketingReducer} from './emailMarketingReducer';
 import {emailMarketingInitialState} from './emailMarketingInitialState';
 

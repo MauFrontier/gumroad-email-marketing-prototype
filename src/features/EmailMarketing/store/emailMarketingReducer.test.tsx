@@ -5,7 +5,7 @@ import {
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
   TriggerType,
-} from '../shared/emailMarketingTypes';
+} from '../WorkflowBuilder/emailMarketingTypes';
 import {emailMarketingReducer} from './emailMarketingReducer';
 import {
   emailMarketingStateForTests as initialState,
@@ -16,7 +16,7 @@ import {
 import {
   EmailMarketingAction,
   EmailMarketingActionType,
-} from './emailMarketingStoreTypes';
+} from './emailMarketingActionTypes';
 import {KeyValuePair} from '../../shared/sharedTypes';
 
 describe('emailMarketingReducer', () => {

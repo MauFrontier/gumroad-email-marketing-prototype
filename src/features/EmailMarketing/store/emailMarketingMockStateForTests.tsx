@@ -9,9 +9,9 @@ import {
   TargetingFilterSubjectQualifier,
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
-} from '../shared/emailMarketingTypes';
+} from '../WorkflowBuilder/emailMarketingTypes';
 import {emailMarketingInitialState} from './emailMarketingInitialState';
-import {EmailMarketingState} from './emailMarketingStoreTypes';
+import {EmailMarketingState} from './emailMarketingActionTypes';
 
 export const dateFilterForTests: DateFilter = {
   id: 'id_initialDateFilter',
