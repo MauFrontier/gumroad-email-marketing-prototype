@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_support.report_deprecations = false
 
   # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
+  #config.active_record.dump_schema_after_migration = false
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
