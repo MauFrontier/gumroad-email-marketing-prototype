@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'email_marketing_targeting/create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   post '/email_marketing_targeting', to: 'email_marketing_targeting#generate'
