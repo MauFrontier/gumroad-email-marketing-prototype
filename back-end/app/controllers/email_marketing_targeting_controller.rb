@@ -1,7 +1,7 @@
 require 'openai'
 
 class EmailMarketingTargetingController < ActionController::API
-  def create
+  def generate
     client = OpenAI::Client.new
     system_prompt = EmailMarketingService.system_prompt
 
