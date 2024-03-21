@@ -3,7 +3,7 @@ import Sticker from '../../../shared/ui/components/Sticker/Sticker';
 import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
 import {useEmailMarketingState} from '../../store/useEmailMarketingState';
 import {TriggerType} from '../emailMarketingTypes';
-import {triggers} from '../triggers';
+import {triggers} from './triggers';
 
 import './TriggerSelection.scss';
 

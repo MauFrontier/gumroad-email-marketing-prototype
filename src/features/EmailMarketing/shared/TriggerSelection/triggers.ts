@@ -1,4 +1,4 @@
-import {TriggerType} from './emailMarketingTypes';
+import {TriggerType} from '../emailMarketingTypes';
 
 export const triggers = [
   {
