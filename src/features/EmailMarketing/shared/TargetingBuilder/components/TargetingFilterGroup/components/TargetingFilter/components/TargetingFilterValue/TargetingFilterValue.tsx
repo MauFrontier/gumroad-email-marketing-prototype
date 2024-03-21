@@ -6,7 +6,7 @@ import {
 import './TargetingFilterValue.scss';
 import DateInput from '../../../../../../../../../shared/ui/components/DateInput/DateInput';
 import ComboBox from '../../../../../../../../../shared/ui/components/ComboBox/ComboBox';
-import {formatDateForDisplay} from '../../../../../../../formatUtils';
+import {formatDateForDisplay} from '../../../../../../../../../../utils/formats/formatUtils';
 import NumberInputWithLabel from '../../../../../../../../../shared/ui/components/NumberInputWithLabel/NumberInputWithLabel';
 import CurrencyInput from '../../../../../../../../../shared/ui/components/CurrencyInput/CurrencyInput';
 import Select from '../../../../../../../../../shared/ui/components/Select/Select';

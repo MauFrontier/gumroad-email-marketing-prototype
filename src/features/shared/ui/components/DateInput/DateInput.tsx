@@ -1,5 +1,5 @@
 import React from 'react';
-import {formatDateForDisplay} from '../../../../EmailMarketing/shared/formatUtils';
+import {formatDateForDisplay} from '../../../../../utils/formats/formatUtils';
 
 interface DatePickerProps {
   value?: string;
