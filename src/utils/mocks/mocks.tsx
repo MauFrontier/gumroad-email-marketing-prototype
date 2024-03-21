@@ -59,3 +59,5 @@ jest.mock('../../features/EmailMarketing/store/useEmailMarketingState', () => ({
     dispatch: mockDispatch,
   }),
 }));
+
+global.scrollTo = jest.fn();

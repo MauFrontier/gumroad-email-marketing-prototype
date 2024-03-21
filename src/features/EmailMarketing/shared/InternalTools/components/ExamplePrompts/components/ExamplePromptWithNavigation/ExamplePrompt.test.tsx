@@ -146,8 +146,6 @@ describe('ExamplePrompt', () => {
   });
 
   it('scrolls to the top of the page when the Use Prompt button is clicked', async () => {
-    window.scrollTo = jest.fn();
-
     render(
       <ExamplePrompt
         goToNextPrompt={jest.fn()}
