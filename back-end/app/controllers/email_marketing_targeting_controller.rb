@@ -3,7 +3,7 @@ require 'openai'
 class EmailMarketingTargetingController < ActionController::API
   def create
     client = OpenAI::Client.new
-    system_prompt = "Respond with json in 1 sentence to the user message"
+    system_prompt = EmailMarketingService.system_prompt
 
     response = client.chat(
       parameters: {
