@@ -1,5 +1,5 @@
-import Button from '../../../shared/ui/Button/Button';
-import Icon from '../../../shared/ui/Icon/Icon';
+import Button from '../Button/Button';
+import Icon from '../Icon/Icon';
 import {IconType} from '../Icon/iconLibrary';
 import VoteUpOrDown from '../VoteUpOrDown/VoteUpOrDown';
 import './Warning.scss';

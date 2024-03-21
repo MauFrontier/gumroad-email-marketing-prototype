@@ -1,6 +1,6 @@
-import Button from '../../../../../../../shared/ui/Button/Button';
-import Icon from '../../../../../../../shared/ui/Icon/Icon';
-import {IconType} from '../../../../../../../shared/ui/Icon/iconLibrary';
+import Button from '../../../../../../../shared/ui/components/Button/Button';
+import Icon from '../../../../../../../shared/ui/components/Icon/Icon';
+import {IconType} from '../../../../../../../shared/ui/components/Icon/iconLibrary';
 import './DeleteFilterGroupButton.scss';
 
 interface Props {

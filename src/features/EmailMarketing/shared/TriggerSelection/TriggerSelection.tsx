@@ -1,5 +1,5 @@
-import Button from '../../../shared/ui/Button/Button';
-import Sticker from '../../../shared/ui/Sticker/Sticker';
+import Button from '../../../shared/ui/components/Button/Button';
+import Sticker from '../../../shared/ui/components/Sticker/Sticker';
 import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
 import {useEmailMarketingState} from '../../store/useEmailMarketingState';
 import {TriggerType} from '../emailMarketingTypes';

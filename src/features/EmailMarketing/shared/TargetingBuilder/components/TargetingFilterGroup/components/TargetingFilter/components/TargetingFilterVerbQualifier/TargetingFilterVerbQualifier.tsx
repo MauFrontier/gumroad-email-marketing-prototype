@@ -4,7 +4,7 @@ import {
 } from '../../../../../../../emailMarketingTypes';
 import {getVerbQualifierOptions} from '../../../../../../../targetingUtils';
 import './TargetingFilterVerbQualifier.scss';
-import Select from '../../../../../../../../../shared/ui/Select/Select';
+import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 
 interface Props {
   subject: TargetingFilterSubjectEnum;

@@ -4,12 +4,12 @@ import {
   TargetingFilterValueType,
 } from '../../../../../../../emailMarketingTypes';
 import './TargetingFilterValue.scss';
-import DateInput from '../../../../../../../../../shared/ui/DateInput/DateInput';
-import ComboBox from '../../../../../../../../../shared/ui/ComboBox/ComboBox';
+import DateInput from '../../../../../../../../../shared/ui/components/DateInput/DateInput';
+import ComboBox from '../../../../../../../../../shared/ui/components/ComboBox/ComboBox';
 import {formatDateForDisplay} from '../../../../../../../formatUtils';
-import NumberInputWithLabel from '../../../../../../../../../shared/ui/NumberInputWithLabel/NumberInputWithLabel';
-import CurrencyInput from '../../../../../../../../../shared/ui/CurrencyInput/CurrencyInput';
-import Select from '../../../../../../../../../shared/ui/Select/Select';
+import NumberInputWithLabel from '../../../../../../../../../shared/ui/components/NumberInputWithLabel/NumberInputWithLabel';
+import CurrencyInput from '../../../../../../../../../shared/ui/components/CurrencyInput/CurrencyInput';
+import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 import {getCountriesArray} from '../../../../../../../countries';
 import {useEmailMarketingState} from '../../../../../../../../store/useEmailMarketingState';
 

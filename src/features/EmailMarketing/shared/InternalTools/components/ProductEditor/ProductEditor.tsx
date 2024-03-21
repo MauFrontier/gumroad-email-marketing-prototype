@@ -1,11 +1,11 @@
 import {useState} from 'react';
-import Button from '../../../../../shared/ui/Button/Button';
-import Icon from '../../../../../shared/ui/Icon/Icon';
+import Button from '../../../../../shared/ui/components/Button/Button';
+import Icon from '../../../../../shared/ui/components/Icon/Icon';
 import './ProductEditor.scss';
 import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
 import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
 import productsFromServer from '../../../../api/productsFromServer';
-import {IconType} from '../../../../../shared/ui/Icon/iconLibrary';
+import {IconType} from '../../../../../shared/ui/components/Icon/iconLibrary';
 import {KeyValuePair} from '../../../../../shared/sharedTypes';
 
 const ProductEditor = () => {

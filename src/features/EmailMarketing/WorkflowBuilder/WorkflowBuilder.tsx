@@ -1,4 +1,4 @@
-import TextInput from '../../shared/ui/TextInput/TextInput';
+import TextInput from '../../shared/ui/components/TextInput/TextInput';
 import InternalTools from '../shared/InternalTools/InternalTools';
 import TargetingBuilder from '../shared/TargetingBuilder/TargetingBuilder';
 import TriggerSelection from '../shared/TriggerSelection/TriggerSelection';

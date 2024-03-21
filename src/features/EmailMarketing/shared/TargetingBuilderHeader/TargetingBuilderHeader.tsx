@@ -1,10 +1,10 @@
 import {EmailMarketingActionType} from '../../store/emailMarketingStoreTypes';
 import {useEmailMarketingState} from '../../store/useEmailMarketingState';
-import Button from '../../../shared/ui/Button/Button';
-import Icon from '../../../shared/ui/Icon/Icon';
+import Button from '../../../shared/ui/components/Button/Button';
+import Icon from '../../../shared/ui/components/Icon/Icon';
 import GenerateWithAIForm from './components/GenerateWithAIForm/GenerateWithAIForm';
 import './TargetingBuilderHeader.scss';
-import {IconType} from '../../../shared/ui/Icon/iconLibrary';
+import {IconType} from '../../../shared/ui/components/Icon/iconLibrary';
 import {useEffect, useState} from 'react';
 import {Targeting} from '../emailMarketingTypes';
 

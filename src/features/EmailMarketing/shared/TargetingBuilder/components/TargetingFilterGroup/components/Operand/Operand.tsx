@@ -1,4 +1,4 @@
-import Select from '../../../../../../../shared/ui/Select/Select';
+import Select from '../../../../../../../shared/ui/components/Select/Select';
 import {Operand as OperandEnum} from '../../../../../emailMarketingTypes';
 import './Operand.scss';
 

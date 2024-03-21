@@ -1,6 +1,6 @@
-import Icon from '../../../../../../../../../shared/ui/Icon/Icon';
-import {IconType} from '../../../../../../../../../shared/ui/Icon/iconLibrary';
-import Select from '../../../../../../../../../shared/ui/Select/Select';
+import Icon from '../../../../../../../../../shared/ui/components/Icon/Icon';
+import {IconType} from '../../../../../../../../../shared/ui/components/Icon/iconLibrary';
+import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 import {TargetingFilterSubject as TargetingFilterSubjectEnum} from '../../../../../../../emailMarketingTypes';
 import './TargetingFilterSubject.scss';
 

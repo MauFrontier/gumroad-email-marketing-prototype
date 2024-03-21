@@ -1,4 +1,4 @@
-import {KeyValuePair} from '../../sharedTypes';
+import {KeyValuePair} from '../../../sharedTypes';
 
 type Props = {
   value?: string;

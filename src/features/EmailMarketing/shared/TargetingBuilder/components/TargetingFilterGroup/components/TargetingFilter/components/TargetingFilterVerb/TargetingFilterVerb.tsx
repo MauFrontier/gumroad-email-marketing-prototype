@@ -3,7 +3,7 @@ import {
   TargetingFilterVerb as TargetingFilterVerbEnum,
 } from '../../../../../../../emailMarketingTypes';
 import {getVerbOptions} from '../../../../../../../targetingUtils';
-import Select from '../../../../../../../../../shared/ui/Select/Select';
+import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 
 interface Props {
   subject: TargetingFilterSubjectEnum;

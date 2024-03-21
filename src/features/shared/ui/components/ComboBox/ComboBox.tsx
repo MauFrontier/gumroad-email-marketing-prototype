@@ -6,7 +6,7 @@ import React, {
   ChangeEvent,
   FocusEvent,
 } from 'react';
-import {KeyValuePair} from '../../sharedTypes';
+import {KeyValuePair} from '../../../sharedTypes';
 
 import './ComboBox.scss';
 

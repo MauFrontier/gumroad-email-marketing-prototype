@@ -1,4 +1,4 @@
-import Select from '../../../../../../../../../shared/ui/Select/Select';
+import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 import {
   TargetingFilterSubject as TargetingFilterSubjectEnum,
   TargetingFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,

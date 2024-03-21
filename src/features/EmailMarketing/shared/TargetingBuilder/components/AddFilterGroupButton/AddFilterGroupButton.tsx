@@ -1,7 +1,7 @@
-import Button from '../../../../../shared/ui/Button/Button';
+import Button from '../../../../../shared/ui/components/Button/Button';
 import './AddFilterGroupButton.scss';
-import Icon from '../../../../../shared/ui/Icon/Icon';
-import {IconType} from '../../../../../shared/ui/Icon/iconLibrary';
+import Icon from '../../../../../shared/ui/components/Icon/Icon';
+import {IconType} from '../../../../../shared/ui/components/Icon/iconLibrary';
 
 interface Props {
   onPress: () => void;

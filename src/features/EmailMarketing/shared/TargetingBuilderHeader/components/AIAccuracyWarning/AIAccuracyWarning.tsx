@@ -1,4 +1,4 @@
-import Warning from '../../../../../shared/ui/Warning/Warning';
+import Warning from '../../../../../shared/ui/components/Warning/Warning';
 import {EmailMarketingActionType} from '../../../../store/emailMarketingStoreTypes';
 import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
 import './AIAccuracyWarning.scss';
