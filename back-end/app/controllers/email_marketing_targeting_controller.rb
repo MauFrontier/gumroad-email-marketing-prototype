@@ -5,8 +5,6 @@ class EmailMarketingTargetingController < ActionController::API
     client = OpenAI::Client.new
     system_prompt = "Respond with json in 1 sentence to the user message"
 
-    # Assuming 'chat' or a similar method based on the documentation.
-    # Adjust the parameters according to what's actually available and required.
     response = client.chat(
       parameters: {
         model: "gpt-4-0125-preview",
