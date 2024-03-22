@@ -10,7 +10,7 @@ import {
 
 import Operand from '../Operand/Operand';
 import SegmentationFilterSubject from './components/SegmentationFilterSubject/SegmentationFilterSubject';
-import TargetingFilterSubjectQualifier from './components/TargetingFilterSubjectQualifier/TargetingFilterSubjectQualifier';
+import SegmentationFilterSubjectQualifier from './components/SegmentationFilterSubjectQualifier/SegmentationFilterSubjectQualifier';
 import './TargetingFilter.scss';
 import TargetingFilterVerb from './components/TargetingFilterVerb/TargetingFilterVerb';
 import TargetingFilterVerbQualifier from './components/TargetingFilterVerbQualifier/TargetingFilterVerbQualifier';
@@ -132,7 +132,7 @@ const TargetingFilter = ({
             disabled={disabled}
           />
           {'subjectQualifier' in targetingFilter && (
-            <TargetingFilterSubjectQualifier
+            <SegmentationFilterSubjectQualifier
               subject={targetingFilter.subject}
               onChange={handleSubjectQualifierChange}
               value={targetingFilter.subjectQualifier}

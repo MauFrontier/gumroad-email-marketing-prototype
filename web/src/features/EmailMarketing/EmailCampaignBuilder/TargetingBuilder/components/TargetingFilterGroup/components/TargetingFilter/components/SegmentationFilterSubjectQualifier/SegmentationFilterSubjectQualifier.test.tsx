@@ -1,17 +1,17 @@
 import {render, screen, within} from '@testing-library/react';
-import TargetingFilterSubjectQualifier from './TargetingFilterSubjectQualifier';
+import SegmentationFilterSubjectQualifier from './SegmentationFilterSubjectQualifier';
 import {
-  SegmentationFilterSubject as TargetingFilterSubjectEnum,
-  SegmentationFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
+  SegmentationFilterSubject as SegmentationFilterSubjectEnum,
+  SegmentationFilterSubjectQualifier as SegmentationFilterSubjectQualifierEnum,
 } from '../../../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 
-describe('TargetingFilterSubjectQualifier', () => {
+describe('SegmentationFilterSubjectQualifier', () => {
   it('renders component', () => {
     render(
-      <TargetingFilterSubjectQualifier
-        subject={TargetingFilterSubjectEnum.Date}
-        value={TargetingFilterSubjectQualifierEnum.Purchased}
+      <SegmentationFilterSubjectQualifier
+        subject={SegmentationFilterSubjectEnum.Date}
+        value={SegmentationFilterSubjectQualifierEnum.Purchased}
         onChange={jest.fn()}
       />,
     );
@@ -22,9 +22,9 @@ describe('TargetingFilterSubjectQualifier', () => {
 
   it('sets the right value', () => {
     render(
-      <TargetingFilterSubjectQualifier
-        subject={TargetingFilterSubjectEnum.Date}
-        value={TargetingFilterSubjectQualifierEnum.Purchased}
+      <SegmentationFilterSubjectQualifier
+        subject={SegmentationFilterSubjectEnum.Date}
+        value={SegmentationFilterSubjectQualifierEnum.Purchased}
         onChange={jest.fn()}
       />,
     );
@@ -38,9 +38,9 @@ describe('TargetingFilterSubjectQualifier', () => {
   it('calls onChange with new value when selection changes', async () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterSubjectQualifier
-        subject={TargetingFilterSubjectEnum.Date}
-        value={TargetingFilterSubjectQualifierEnum.Purchased}
+      <SegmentationFilterSubjectQualifier
+        subject={SegmentationFilterSubjectEnum.Date}
+        value={SegmentationFilterSubjectQualifierEnum.Purchased}
         onChange={onChange}
       />,
     );
@@ -48,22 +48,22 @@ describe('TargetingFilterSubjectQualifier', () => {
     const subjectQualifier = screen.getByLabelText('Filter subject qualifier');
     const selectElement = within(subjectQualifier).getByRole('combobox');
     const option = screen.getByText(
-      TargetingFilterSubjectQualifierEnum.Purchased,
+      SegmentationFilterSubjectQualifierEnum.Purchased,
     );
 
     await userEvent.selectOptions(selectElement, option);
 
     expect(onChange).toHaveBeenCalledWith(
-      TargetingFilterSubjectQualifierEnum.Purchased,
+      SegmentationFilterSubjectQualifierEnum.Purchased,
     );
   });
 
   it("doesn't display if subject isn't Date", () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterSubjectQualifier
-        subject={TargetingFilterSubjectEnum.Payment}
-        value={TargetingFilterSubjectQualifierEnum.Purchased}
+      <SegmentationFilterSubjectQualifier
+        subject={SegmentationFilterSubjectEnum.Payment}
+        value={SegmentationFilterSubjectQualifierEnum.Purchased}
         onChange={onChange}
       />,
     );
@@ -74,9 +74,9 @@ describe('TargetingFilterSubjectQualifier', () => {
 
   it('disables Select component when disabled prop is true', () => {
     render(
-      <TargetingFilterSubjectQualifier
-        subject={TargetingFilterSubjectEnum.Date}
-        value={TargetingFilterSubjectQualifierEnum.Purchased}
+      <SegmentationFilterSubjectQualifier
+        subject={SegmentationFilterSubjectEnum.Date}
+        value={SegmentationFilterSubjectQualifierEnum.Purchased}
         onChange={jest.fn()}
         disabled={true}
       />,
@@ -90,9 +90,9 @@ describe('TargetingFilterSubjectQualifier', () => {
 
   it('is not disabled by default', () => {
     render(
-      <TargetingFilterSubjectQualifier
-        subject={TargetingFilterSubjectEnum.Date}
-        value={TargetingFilterSubjectQualifierEnum.Purchased}
+      <SegmentationFilterSubjectQualifier
+        subject={SegmentationFilterSubjectEnum.Date}
+        value={SegmentationFilterSubjectQualifierEnum.Purchased}
         onChange={jest.fn()}
       />,
     );

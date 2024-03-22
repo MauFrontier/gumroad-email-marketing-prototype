@@ -1,18 +1,18 @@
 import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 import {
-  SegmentationFilterSubject as TargetingFilterSubjectEnum,
-  SegmentationFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
+  SegmentationFilterSubject as SegmentationFilterSubjectEnum,
+  SegmentationFilterSubjectQualifier as SegmentationFilterSubjectQualifierEnum,
 } from '../../../../../../../emailMarketingTypes';
 import {getSubjectQualifierOptions} from '../../../../../../../segmentationUtils';
 
 interface Props {
-  subject: TargetingFilterSubjectEnum;
-  value: TargetingFilterSubjectQualifierEnum;
-  onChange: (value: TargetingFilterSubjectQualifierEnum) => void;
+  subject: SegmentationFilterSubjectEnum;
+  value: SegmentationFilterSubjectQualifierEnum;
+  onChange: (value: SegmentationFilterSubjectQualifierEnum) => void;
   disabled?: boolean;
 }
 
-const TargetingFilterSubjectQualifier = ({
+const SegmentationFilterSubjectQualifier = ({
   subject,
   value,
   onChange,
@@ -20,7 +20,7 @@ const TargetingFilterSubjectQualifier = ({
 }: Props) => {
   const handleSubjectQualifierChange = (selectedValue: string) => {
     if (onChange) {
-      onChange(selectedValue as TargetingFilterSubjectQualifierEnum);
+      onChange(selectedValue as SegmentationFilterSubjectQualifierEnum);
     }
   };
 
@@ -42,4 +42,4 @@ const TargetingFilterSubjectQualifier = ({
   );
 };
 
-export default TargetingFilterSubjectQualifier;
+export default SegmentationFilterSubjectQualifier;
