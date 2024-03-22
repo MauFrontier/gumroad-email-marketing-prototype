@@ -2,6 +2,7 @@
 
 .icon-wrapper {
   display: inline-block;
+  flex-shrink: 0;
 
   svg {
     width: 100%;

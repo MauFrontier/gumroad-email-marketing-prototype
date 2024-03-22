@@ -21,15 +21,16 @@
     }
   }
 
-  p {
-    margin: 0;
-  }
-
   .warning-icon-and-message {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: $spacer-3;
+
+    p {
+      margin: 0;
+      flex: 1 1 auto;
+    }
   }
 
   [role='toolbar'] {
