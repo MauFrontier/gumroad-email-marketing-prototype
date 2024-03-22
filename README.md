@@ -39,6 +39,8 @@ Infrastructure:
 
 The segmentation builder is at the heart of this demo, and it's what the demo in the [board meeting](https://youtu.be/qUYSTvJnIXA?t=753) centered around.
 
+It's a very powerful segmentation builder, and I've only scratched the surface here!
+
 ### 🤖 Generate with AI
 
 The real star of this show is the "Generate with AI" feature, and it's run by [a contract written in Markdown](https://github.com/MauFrontier/gumroad-email-marketing-prototype/blob/main/back-end/app/assets/ai_contracts/segmentation_contract.md). I leveraged the Typescript types and enums and clever prompt engineering to guide the AI to give us very consistent results in generating the segmentation automatically.
@@ -71,7 +73,7 @@ To install front-end dependencies, run this command from the `./web/` directory:
 npm install
 ```
 
-Other considerations:
+Final steps:
 
 * To enable the "Generate with AI" feature, you'll need to set an environment variable in the back-end with your OpenAI API key. I've included a `.sample.env` file so just rename that file to `.env` and enter your API key there.
 * You'll need to replace the `API_URL` variable in the `./web/src/utils/apiURL.tsx` file with the URL of your back-end API.
