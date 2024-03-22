@@ -367,7 +367,7 @@ type AIResponse = {
 }
 ```
 
-- Prompt: People who made a purchase during or after 2019, who bought the skate course and Premiere templates. Must not have bought Christmas bundle or the new tutorial. I also want those who have bought a motorcycle or an app. The other group are people in Canada who paid more than $99.
+- Prompt: People who made a purchase during or after 2019, who bought the brushes, the skate course and Premiere templates. Must not have bought Christmas bundle or the new tutorial. I also want those who have bought a motorcycle or an app. The other group are people in Canada who paid more than $99.
 
 ```json
 {
@@ -390,7 +390,7 @@ type AIResponse = {
             "subject": "Product",
             "verb": "Has bought",
             "verbQualifier": "All",
-            "value": ["Skateboarding course", "Premiere Pro templates"]
+            "value": ["Brush pack 1", "Brush pack 2024", "Skateboarding course", "Premiere Pro templates"]
           },
           {
             "id": "fb478e76-390f-44f4-abdc-891139e79d8c",
