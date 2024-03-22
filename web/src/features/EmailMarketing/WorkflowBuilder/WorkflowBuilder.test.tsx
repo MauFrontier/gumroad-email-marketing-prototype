@@ -7,19 +7,14 @@ describe('WorkflowBuilder', () => {
     expect(screen.getByLabelText('Workflow builder')).toBeInTheDocument();
   });
 
-  it('renders name input', () => {
+  it('renders title input', () => {
     render(<WorkflowBuilder />);
-    expect(screen.getByLabelText('Name')).toBeInTheDocument();
+    expect(screen.getByLabelText('Title')).toBeInTheDocument();
   });
 
   it('renders audience selection', () => {
     render(<WorkflowBuilder />);
     expect(screen.getByLabelText('Audience selection')).toBeInTheDocument();
-  });
-
-  it("renders WorkflowBuilder's components", () => {
-    render(<WorkflowBuilder />);
-    expect(screen.getByLabelText('Name')).toBeInTheDocument();
   });
 
   it('renders targeting builder', () => {

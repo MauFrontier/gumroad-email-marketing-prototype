@@ -7,8 +7,8 @@ const WorkflowBuilder = () => {
   return (
     <form aria-label="Workflow builder">
       <label>
-        Name
-        <TextInput placeholder="Name of workflow" />
+        Title
+        <TextInput placeholder="Title" />
       </label>
       <AudienceSelection />
       <TargetingBuilder />
