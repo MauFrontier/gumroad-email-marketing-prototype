@@ -25,6 +25,5 @@ class SegmentationController < ActionController::API
   end
 
   private
-
   
 end
