@@ -117,6 +117,8 @@ describe('ExamplePrompt', () => {
     const usePromptButton = screen.getByLabelText('Use this prompt');
     await userEvent.click(usePromptButton);
 
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     expect(mockDispatch).toHaveBeenCalledWith(
       expect.objectContaining({
         type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel,
