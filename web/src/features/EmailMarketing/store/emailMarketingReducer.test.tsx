@@ -4,8 +4,9 @@ import {
   TargetingFilterSubjectQualifier,
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
-  TriggerType,
-} from '../WorkflowBuilder/emailMarketingTypes';
+  AudienceType,
+  Channels,
+} from '../EmailCampaignBuilder/emailMarketingTypes';
 import {emailMarketingReducer} from './emailMarketingReducer';
 import {
   emailMarketingStateForTests as initialState,
@@ -284,18 +285,18 @@ describe('emailMarketingReducer', () => {
     expect(updatedFilter?.value).toEqual(newValue);
   });
 
-  it('handles SelectTrigger action', () => {
-    const originalTrigger = initialState.selectedTrigger;
-    const newTrigger = TriggerType.NewAffiliate;
-    expect(originalTrigger).not.toEqual(newTrigger);
+  it('handles SelectAudience action', () => {
+    const originalAudience = initialState.selectedAudience;
+    const newAudience = AudienceType.Affiliates;
+    expect(originalAudience).not.toEqual(newAudience);
 
     const action: EmailMarketingAction = {
-      type: EmailMarketingActionType.SelectTrigger,
-      payload: newTrigger,
+      type: EmailMarketingActionType.SelectAudience,
+      payload: newAudience,
     };
 
     const state = emailMarketingReducer(initialState, action);
-    expect(state.selectedTrigger).toEqual(newTrigger);
+    expect(state.selectedAudience).toEqual(newAudience);
   });
 
   it('handles SetProducts action', () => {
@@ -448,5 +449,32 @@ describe('emailMarketingReducer', () => {
 
     const state = emailMarketingReducer(initialState, action);
     expect(state.latestAIResponse).toBe(response);
+  });
+
+  it('handles SetChannel action', () => {
+    const initialChannel = initialState.channel;
+    expect(initialChannel).toBe(Channels.EmailAndProfile);
+
+    const newChannel = Channels.Email;
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetChannel,
+      payload: newChannel,
+    };
+    const state = emailMarketingReducer(initialState, action);
+
+    expect(state.channel).toBe(newChannel);
+  });
+
+  it('handles SetAllowComments action', () => {
+    const initialAllowComments = initialState.allowComments;
+    expect(initialAllowComments).toBe(true);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetAllowComments,
+      payload: false,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.allowComments).toBe(false);
   });
 });

@@ -105,10 +105,6 @@ input[type='checkbox'] {
   border-radius: $border-radius-3;
   cursor: pointer;
   position: relative;
-
-  &:focus {
-    outline: none;
-  }
 }
 
 input[type='checkbox']:checked {

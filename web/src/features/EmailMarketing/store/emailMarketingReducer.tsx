@@ -3,12 +3,12 @@ import {
   EmailMarketingAction,
   EmailMarketingActionType,
 } from './emailMarketingActionTypes';
-import {Operand} from '../WorkflowBuilder/emailMarketingTypes';
-import {getDefaultFilterForSubject} from '../WorkflowBuilder/emailMarketingDefaults';
+import {Operand} from '../EmailCampaignBuilder/emailMarketingTypes';
+import {getDefaultFilterForSubject} from '../EmailCampaignBuilder/emailMarketingDefaults';
 import {
   updateFilterValue,
   updateFilterVerb,
-} from '../WorkflowBuilder/targetingUtils';
+} from '../EmailCampaignBuilder/targetingUtils';
 
 export const emailMarketingReducer = (
   state: EmailMarketingState,
@@ -195,10 +195,10 @@ export const emailMarketingReducer = (
       }
       break;
 
-    case EmailMarketingActionType.SelectTrigger:
+    case EmailMarketingActionType.SelectAudience:
       return {
         ...state,
-        selectedTrigger: action.payload,
+        selectedAudience: action.payload,
       };
     case EmailMarketingActionType.ToggleShowGenerateWithAIPanel:
       return {
@@ -265,7 +265,16 @@ export const emailMarketingReducer = (
         ...state,
         products: action.payload,
       };
-
+    case EmailMarketingActionType.SetChannel:
+      return {
+        ...state,
+        channel: action.payload,
+      };
+    case EmailMarketingActionType.SetAllowComments:
+      return {
+        ...state,
+        allowComments: action.payload,
+      };
     default:
       return state;
       break;

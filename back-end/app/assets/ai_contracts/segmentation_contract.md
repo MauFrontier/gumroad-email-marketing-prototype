@@ -225,11 +225,11 @@ type Targeting = {
   filterGroups: TargetingFilterGroup[];
 };
 
-enum TriggerType {
-  Purchase = 'Purchase',
-  NewSubscriber = 'New Subscriber',
-  MemberCancels = 'Member cancels',
-  NewAffiliate = 'New affiliate',
+enum AudienceType {
+  Everyone = 'Everyone',
+  Customers = 'Customers',
+  Followers = 'Followers',
+  Affiliates = 'Affiliates',
 }
 
 type AIResponse = {

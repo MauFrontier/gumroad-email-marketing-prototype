@@ -1,0 +1,13 @@
+@import './src/features/shared/ui/designSystemStyles.scss';
+
+[aria-label='Select channel'] {
+  margin-top: $spacer-4;
+  margin-bottom: $spacer-2;
+}
+
+[aria-label='Allow comments'] {
+  margin-top: $spacer-4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

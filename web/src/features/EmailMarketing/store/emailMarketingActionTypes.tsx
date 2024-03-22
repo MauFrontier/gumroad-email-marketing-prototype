@@ -10,12 +10,13 @@ import {
   TargetingFilterSubjectQualifier,
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
-  TriggerType,
-} from '../WorkflowBuilder/emailMarketingTypes';
+  AudienceType,
+  Channels,
+} from '../EmailCampaignBuilder/emailMarketingTypes';
 
 export interface EmailMarketingState {
   targeting: Targeting;
-  selectedTrigger: TriggerType;
+  selectedAudience: AudienceType;
   products: KeyValuePair[];
   showGenerateWithAIPanel: boolean;
   prompt: string;
@@ -26,6 +27,8 @@ export interface EmailMarketingState {
   aiErrors: ErrorWarning[];
   latestAIPrompt: string;
   latestAIResponse: AIResponse | string;
+  channel: Channels;
+  allowComments: boolean;
 }
 
 export enum EmailMarketingActionType {
@@ -41,7 +44,7 @@ export enum EmailMarketingActionType {
   SetFilterVerb = 'SetFilterVerb',
   SetFilterVerbQualifier = 'SetFilterVerbQualifier',
   SetFilterValue = 'SetFilterValue',
-  SelectTrigger = 'SelectTrigger',
+  SelectAudience = 'SelectAudience',
   SetProducts = 'SetProducts',
   ToggleShowGenerateWithAIPanel = 'ToggleGenerateWithAIPanel',
   SetPrompt = 'SetPrompt',
@@ -53,6 +56,8 @@ export enum EmailMarketingActionType {
   SetErrorVisibility = 'SetErrorVisibility',
   SetLatestAIPrompt = 'SetLatestAIPrompt',
   SetLatestAIResponse = 'SetLatestAIResponse',
+  SetChannel = 'SetChannel',
+  SetAllowComments = 'SetAllowComments',
 }
 
 export type EmailMarketingAction =
@@ -116,7 +121,7 @@ export type EmailMarketingAction =
         value: string | number | string[];
       };
     }
-  | {type: EmailMarketingActionType.SelectTrigger; payload: TriggerType}
+  | {type: EmailMarketingActionType.SelectAudience; payload: AudienceType}
   | {type: EmailMarketingActionType.SetProducts; payload: KeyValuePair[]}
   | {type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel}
   | {type: EmailMarketingActionType.SetPrompt; payload: string}
@@ -136,4 +141,6 @@ export type EmailMarketingAction =
   | {
       type: EmailMarketingActionType.SetLatestAIResponse;
       payload: AIResponse | string;
-    };
+    }
+  | {type: EmailMarketingActionType.SetChannel; payload: Channels}
+  | {type: EmailMarketingActionType.SetAllowComments; payload: boolean};

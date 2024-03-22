@@ -94,11 +94,11 @@ export type Targeting = {
   filterGroups: TargetingFilterGroup[];
 };
 
-export enum TriggerType {
-  Purchase = 'Purchase',
-  NewSubscriber = 'New Subscriber',
-  MemberCancels = 'Member cancels',
-  NewAffiliate = 'New affiliate',
+export enum AudienceType {
+  Everyone = 'Everyone',
+  Customers = 'Customers',
+  Followers = 'Followers',
+  Affiliates = 'Affiliates',
 }
 
 export type ErrorWarning = {
@@ -112,3 +112,8 @@ export type AIResponse = {
   payload: Targeting;
   errors: string[];
 };
+
+export enum Channels {
+  Email = 'Email',
+  EmailAndProfile = 'Email and Profile',
+}
