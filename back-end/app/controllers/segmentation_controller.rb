@@ -1,9 +1,9 @@
-require 'openai'
-
 class SegmentationController < ActionController::API
   include ActionController::Live
 
   def generate
+    return render json: { error: "user_prompt is required" }, status: :bad_request unless params[:user_prompt].present?
+
     client = OpenAI::Client.new
     system_prompt = SegmentationService.generate_system_prompt(params[:current_date], params[:user_timezone], params[:products])
 

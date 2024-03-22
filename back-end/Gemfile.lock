@@ -75,6 +75,8 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    addressable (2.8.6)
+      public_suffix (>= 2.0.2, < 6.0)
     base64 (0.2.0)
     bigdecimal (3.1.7)
     bootsnap (1.18.3)
@@ -82,6 +84,9 @@ GEM
     builder (3.2.4)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
+    crack (1.0.0)
+      bigdecimal
+      rexml
     crass (1.0.6)
     date (3.3.4)
     debug (1.9.1)
@@ -104,6 +109,7 @@ GEM
       net-http
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashdiff (1.1.0)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -150,6 +156,7 @@ GEM
       racc (~> 1.4)
     psych (5.1.2)
       stringio
+    public_suffix (5.0.4)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
@@ -197,6 +204,7 @@ GEM
       psych (>= 4.0.0)
     reline (0.4.3)
       io-console (~> 0.5)
+    rexml (3.2.6)
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.0)
@@ -224,6 +232,11 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uri (0.13.0)
+    vcr (6.2.0)
+    webmock (3.23.0)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.8.1)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -249,6 +262,8 @@ DEPENDENCIES
   rspec-rails (~> 5.0.0)
   ruby-openai
   tzinfo-data
+  vcr
+  webmock
 
 RUBY VERSION
    ruby 3.1.4p223
