@@ -3,34 +3,28 @@ import {EmailMarketingState} from '../../features/EmailMarketing/store/emailMark
 
 import defaultTargeting from '../../features/EmailMarketing/store/defaultTargeting.json';
 
-jest.mock('openai', () => {
-  return {
-    OpenAI: jest.fn().mockImplementation(() => {
-      return {
-        chat: {
-          completions: {
-            create: () =>
-              Promise.resolve({
-                choices: [
-                  {
-                    message: {
-                      content: JSON.stringify({
-                        result: 'success with errors',
-                        payload: defaultTargeting,
-                        errors: [
-                          "Products 'motorcycle' and 'app' were not recognized. They've been excluded from your criteria.",
-                        ],
-                      }),
-                    },
-                  },
+jest.mock('axios', () => ({
+  post: () =>
+    Promise.resolve({
+      data: {
+        choices: [
+          {
+            message: {
+              content: JSON.stringify({
+                result: 'success with errors',
+                payload: {
+                  defaultTargeting,
+                },
+                errors: [
+                  "Products 'motorcycle' and 'app' were not recognized. They've been excluded from your criteria.",
                 ],
               }),
+            },
           },
-        },
-      };
+        ],
+      },
     }),
-  };
-});
+}));
 
 jest.mock('@/constants', () => ({
   VITE_OPENAI_API_KEY: 'EXAMPLE_OPENAI_API_KEY',

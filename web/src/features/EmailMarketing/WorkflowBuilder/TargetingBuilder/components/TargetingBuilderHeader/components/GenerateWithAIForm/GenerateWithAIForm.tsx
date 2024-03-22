@@ -1,5 +1,4 @@
 import {useEffect, useRef, useState} from 'react';
-import {SubmitAIPrompt} from '../../../../../../../shared/ai/ChatGPTService'; // Adjust the path as necessary
 import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
 
 import './GenerateWithAIForm.scss';
@@ -9,6 +8,7 @@ import {EmailMarketingActionType} from '../../../../../../store/emailMarketingAc
 import {IconType} from '../../../../../../../shared/ui/components/Icon/iconLibrary';
 import {v4 as uuid} from 'uuid';
 import {AIResponse} from '../../../../../emailMarketingTypes';
+import {generateSegmentationAPIRequest} from '../../../../../../api/ai/ChatGPT';
 
 interface Props {
   isFloatingDialog?: boolean;
@@ -87,7 +87,7 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
         payload: prompt,
       });
 
-      const apiResponse = await SubmitAIPrompt(prompt, state.products);
+      const apiResponse = await generateSegmentationAPIRequest(prompt, '');
 
       if (apiResponse !== null) {
         const parsedResponse: AIResponse = JSON.parse(apiResponse);
@@ -176,7 +176,7 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
             disabled={isAILoading}>
             {isAILoading ? (
               <img
-                src="./assets/images/icons/icon_spinner.png"
+                src="/assets/images/icons/icon_spinner.png"
                 alt="Loading..."
                 className="spinner"
               />
