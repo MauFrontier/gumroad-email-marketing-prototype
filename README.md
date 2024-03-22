@@ -25,8 +25,9 @@ Back-end:
 Front-end:
 * Typescript
 * React (via Vite)
+* Axios
 * SCSS (following [Gumroad's design system principles](https://gumroad.notion.site/Design-System-Principles-3c47ff13facb47d49b7f1d1ebf30eb2a))
-* Axios to talk to the API
+* Built to be accessible and responsive
 
 Infrastructure:
 * Ruby on Rails serves both the front-end and the back-end API
