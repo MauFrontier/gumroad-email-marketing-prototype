@@ -37,7 +37,7 @@ const ExamplePrompt = ({
         dispatch({
           type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel,
         });
-      }, 500);
+      }, 350);
     }
   };
 
