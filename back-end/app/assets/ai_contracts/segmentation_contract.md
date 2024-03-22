@@ -129,12 +129,12 @@ exampleProducts = [
 - If any parts of user's prompt are incompatible with the type structure, ignore those parts and generate the JSON with only the valid parts, and a compatible structure
 
 ```ts
-enum TargetingFilterVerbQualifier {
+enum SegmentationFilterVerbQualifier {
   Any = 'Any',
   All = 'All',
 }
 
-enum TargetingFilterVerb {
+enum SegmentationFilterVerb {
   Is = 'Is',
   IsNot = 'Is not',
   HasBought = 'Has bought',
@@ -146,12 +146,12 @@ enum TargetingFilterVerb {
   IsBefore = 'Is before',
 }
 
-enum TargetingFilterSubjectQualifier {
+enum SegmentationFilterSubjectQualifier {
   Purchased = 'Purchased',
   Joined = 'Joined',
 }
 
-enum TargetingFilterSubject {
+enum SegmentationFilterSubject {
   Date = 'Date',
   Product = 'Product',
   Payment = 'Payment',
@@ -164,65 +164,67 @@ enum Operand {
   Initial = 'Initial',
 }
 
-type TargetingFilterValueType = string | number | string[];
+type SegmentationFilterValueType = string | number | string[];
 
 type DateFilter = {
   id: string;
   operand?: Operand;
-  subject: TargetingFilterSubject.Date;
-  subjectQualifier: TargetingFilterSubjectQualifier;
+  subject: SegmentationFilterSubject.Date;
+  subjectQualifier: SegmentationFilterSubjectQualifier;
   verb:
-    | TargetingFilterVerb.Is
-    | TargetingFilterVerb.IsNot
-    | TargetingFilterVerb.IsAfter
-    | TargetingFilterVerb.IsBefore
-    | TargetingFilterVerb.IsInTheLast;
+    | SegmentationFilterVerb.Is
+    | SegmentationFilterVerb.IsNot
+    | SegmentationFilterVerb.IsAfter
+    | SegmentationFilterVerb.IsBefore
+    | SegmentationFilterVerb.IsInTheLast;
   value: string | number;
 };
 
 type ProductFilter = {
   id: string;
   operand?: Operand;
-  subject: TargetingFilterSubject.Product;
-  verb: TargetingFilterVerb.HasBought | TargetingFilterVerb.HasNotYetBought;
-  verbQualifier: TargetingFilterVerbQualifier;
+  subject: SegmentationFilterSubject.Product;
+  verb:
+    | SegmentationFilterVerb.HasBought
+    | SegmentationFilterVerb.HasNotYetBought;
+  verbQualifier: SegmentationFilterVerbQualifier;
   value: string[];
 };
 
 type PaymentFilter = {
   id: string;
   operand?: Operand;
-  subject: TargetingFilterSubject.Payment;
+  subject: SegmentationFilterSubject.Payment;
   verb:
-    | TargetingFilterVerb.Is
-    | TargetingFilterVerb.IsNot
-    | TargetingFilterVerb.IsMoreThan
-    | TargetingFilterVerb.IsLessThan;
+    | SegmentationFilterVerb.Is
+    | SegmentationFilterVerb.IsNot
+    | SegmentationFilterVerb.IsMoreThan
+    | SegmentationFilterVerb.IsLessThan;
   value: number;
 };
 
 type LocationFilter = {
   id: string;
   operand?: Operand;
-  subject: TargetingFilterSubject.Location;
-  verb: TargetingFilterVerb.Is | TargetingFilterVerb.IsNot;
+  subject: SegmentationFilterSubject.Location;
+  verb: SegmentationFilterVerb.Is | SegmentationFilterVerb.IsNot;
   value: string;
 };
 
-type TargetingFilter =
+type SegmentationFilter =
   | DateFilter
   | ProductFilter
   | PaymentFilter
   | LocationFilter;
 
-type TargetingFilterGroup = {
+type SegmentationFilterGroup = {
   id: string;
   operand?: Operand;
-  filters: TargetingFilter[];
+  filters: SegmentationFilter[];
 };
 
-type Targeting = {
-  filterGroups: TargetingFilterGroup[];
+type Segmentation = {
+  filterGroups: SegmentationFilterGroup[];
 };
 
 enum AudienceType {
@@ -232,16 +234,22 @@ enum AudienceType {
   Affiliates = 'Affiliates',
 }
 
+type ErrorWarning = {
+  id: string;
+  isVisible: boolean;
+  error: string;
+};
+
 type AIResponse = {
   result: 'success' | 'success with errors' | 'failure';
-  payload: Targeting;
+  payload: Segmentation;
   errors: string[];
 };
 ```
 
 ### Some updates on those types:
 
-- TargetingFilterVerb.IsInTheLast → (int) Number of days
+- SegmentationFilterVerb.IsInTheLast → (int) Number of days
 
 ## Examples
 
