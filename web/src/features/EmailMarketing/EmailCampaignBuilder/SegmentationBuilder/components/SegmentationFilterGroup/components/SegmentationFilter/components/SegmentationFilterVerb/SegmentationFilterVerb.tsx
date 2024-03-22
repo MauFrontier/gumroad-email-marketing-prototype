@@ -4,6 +4,7 @@ import {
 } from '../../../../../../../emailMarketingTypes';
 import {getVerbOptions} from '../../../../../../../segmentationUtils';
 import Select from '../../../../../../../../../shared/ui/components/Select/Select';
+import './SegmentationFilterVerb.scss';
 
 interface Props {
   subject: SegmentationFilterSubjectEnum;
@@ -30,8 +31,10 @@ const SegmentationFilterVerb = ({
     return null;
   }
 
+  const verbClass = value.replace(/\s/g, '-').toLowerCase();
+
   return (
-    <div aria-label="Filter verb">
+    <div aria-label="Filter verb" className={verbClass}>
       <Select
         value={value}
         onChange={handleVerbChange}

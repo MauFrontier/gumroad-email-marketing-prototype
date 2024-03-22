@@ -1,5 +1,6 @@
 @import './src/features/shared/ui/designSystemStyles.scss';
 
 [aria-label='Filter verb qualifier'] {
+  flex: 1 1 auto;
   min-width: $dimension-12;
 }

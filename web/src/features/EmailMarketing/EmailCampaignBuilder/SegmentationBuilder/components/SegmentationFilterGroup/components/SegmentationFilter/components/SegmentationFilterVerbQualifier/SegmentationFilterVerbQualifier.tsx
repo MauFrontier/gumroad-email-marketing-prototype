@@ -31,8 +31,10 @@ const SegmentationFilterVerbQualifier = ({
     return null;
   }
 
+  const verbQualifierClass = value?.replace(/\s/g, '-').toLowerCase();
+
   return (
-    <div aria-label="Filter verb qualifier">
+    <div aria-label="Filter verb qualifier" className={verbQualifierClass}>
       <Select
         value={value || VerbQualifierEnum.Any}
         options={verbQualifierOptions}

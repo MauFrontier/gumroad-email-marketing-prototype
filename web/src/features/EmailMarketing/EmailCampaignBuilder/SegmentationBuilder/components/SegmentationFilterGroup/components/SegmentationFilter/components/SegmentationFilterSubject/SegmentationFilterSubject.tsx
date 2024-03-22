@@ -40,8 +40,10 @@ const SegmentationFilterSubject = ({
     },
   ];
 
+  const subjectClass = value?.toLowerCase();
+
   return (
-    <div aria-label="Filter subject">
+    <div aria-label="Filter subject" className={subjectClass}>
       {value && value === SegmentationFilterSubjectEnum.Product ? (
         <Icon type={IconType.Archive} />
       ) : value === SegmentationFilterSubjectEnum.Payment ? (

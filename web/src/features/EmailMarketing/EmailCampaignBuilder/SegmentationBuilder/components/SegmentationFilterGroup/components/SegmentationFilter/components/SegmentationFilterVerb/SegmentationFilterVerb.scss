@@ -1,0 +1,22 @@
+@import './src/features/shared/ui/designSystemStyles.scss';
+
+[aria-label='Filter verb'] {
+  flex: 1 1 auto;
+  min-width: 0;
+
+  &.is,
+  &.is-not {
+    flex: 1 1 5rem;
+  }
+
+  &.is-after,
+  &.is-before {
+    flex: 1 1 6.5rem;
+    min-width: 7.5rem;
+  }
+
+  &.is-in-the-last {
+    flex: 1 1 7.5rem;
+    min-width: 8.5rem;
+  }
+}

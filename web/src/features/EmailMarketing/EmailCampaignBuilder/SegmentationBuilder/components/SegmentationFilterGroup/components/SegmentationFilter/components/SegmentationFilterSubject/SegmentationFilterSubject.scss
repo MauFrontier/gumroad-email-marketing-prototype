@@ -12,6 +12,15 @@
     pointer-events: none;
   }
 
+  &.location {
+    flex: 1 1 9rem;
+    min-width: 9rem;
+  }
+
+  &.date {
+    flex: 1 1 7rem;
+  }
+
   select {
     padding-left: $spacer-8;
   }

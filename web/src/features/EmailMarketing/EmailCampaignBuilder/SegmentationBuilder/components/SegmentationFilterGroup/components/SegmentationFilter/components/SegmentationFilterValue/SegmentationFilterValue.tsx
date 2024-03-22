@@ -46,10 +46,13 @@ const SegmentationFilterValue = ({
     }
   };
 
+  const subjectClass = subject.toLowerCase();
+  const verbClass = verb.replace(/\s/g, '-').toLowerCase();
+
   return (
     <div
       aria-label="Filter value"
-      className={`${shouldExpand ? 'expanded' : ''}`}>
+      className={`${subjectClass} ${verbClass} ${shouldExpand ? 'expanded' : ''}`}>
       {subject === SegmentationFilterSubjectEnum.Date ? (
         verb === SegmentationFilterVerbEnum.IsInTheLast ? (
           <NumberInputWithLabel

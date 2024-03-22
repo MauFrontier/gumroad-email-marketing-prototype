@@ -1,9 +1,21 @@
 @import './src/features/shared/ui/designSystemStyles.scss';
 
 [aria-label='Filter value'] {
-  .number-input-with-label {
-    width: 7rem;
-    flex: 1 1 auto;
+  flex: 1 0 auto;
+
+  &.location {
+    flex: 1 1 18rem;
+    min-width: 0;
+  }
+
+  &.date {
+    flex: 1 0 9.5rem;
+    min-width: 0;
+  }
+
+  &.is-in-the-last {
+    flex: 1 0 5rem;
+    min-width: 6rem;
   }
 
   &.expanded {

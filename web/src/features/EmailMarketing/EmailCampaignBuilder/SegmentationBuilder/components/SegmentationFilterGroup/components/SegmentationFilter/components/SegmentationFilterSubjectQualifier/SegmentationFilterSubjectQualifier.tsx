@@ -4,6 +4,7 @@ import {
   SegmentationFilterSubjectQualifier as SegmentationFilterSubjectQualifierEnum,
 } from '../../../../../../../emailMarketingTypes';
 import {getSubjectQualifierOptions} from '../../../../../../../segmentationUtils';
+import './SegmentationFilterSubjectQualifier.scss';
 
 interface Props {
   subject: SegmentationFilterSubjectEnum;
@@ -30,8 +31,12 @@ const SegmentationFilterSubjectQualifier = ({
     return null;
   }
 
+  const subjectQualifierClass = value?.replace(/\s/g, '-').toLowerCase();
+
   return (
-    <div aria-label="Filter subject qualifier">
+    <div
+      aria-label="Filter subject qualifier"
+      className={subjectQualifierClass}>
       <Select
         value={value}
         disabled={disabled}
