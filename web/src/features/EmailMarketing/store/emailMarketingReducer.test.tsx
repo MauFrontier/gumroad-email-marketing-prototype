@@ -4,7 +4,7 @@ import {
   TargetingFilterSubjectQualifier,
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
-  TriggerType,
+  AudienceType,
 } from '../WorkflowBuilder/emailMarketingTypes';
 import {emailMarketingReducer} from './emailMarketingReducer';
 import {
@@ -284,18 +284,18 @@ describe('emailMarketingReducer', () => {
     expect(updatedFilter?.value).toEqual(newValue);
   });
 
-  it('handles SelectTrigger action', () => {
-    const originalTrigger = initialState.selectedTrigger;
-    const newTrigger = TriggerType.NewAffiliate;
-    expect(originalTrigger).not.toEqual(newTrigger);
+  it('handles SelectAudience action', () => {
+    const originalAudience = initialState.selectedAudience;
+    const newAudience = AudienceType.Affiliates;
+    expect(originalAudience).not.toEqual(newAudience);
 
     const action: EmailMarketingAction = {
-      type: EmailMarketingActionType.SelectTrigger,
-      payload: newTrigger,
+      type: EmailMarketingActionType.SelectAudience,
+      payload: newAudience,
     };
 
     const state = emailMarketingReducer(initialState, action);
-    expect(state.selectedTrigger).toEqual(newTrigger);
+    expect(state.selectedAudience).toEqual(newAudience);
   });
 
   it('handles SetProducts action', () => {

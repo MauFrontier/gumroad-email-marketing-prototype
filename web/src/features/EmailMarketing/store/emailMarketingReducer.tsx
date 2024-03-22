@@ -195,10 +195,10 @@ export const emailMarketingReducer = (
       }
       break;
 
-    case EmailMarketingActionType.SelectTrigger:
+    case EmailMarketingActionType.SelectAudience:
       return {
         ...state,
-        selectedTrigger: action.payload,
+        selectedAudience: action.payload,
       };
     case EmailMarketingActionType.ToggleShowGenerateWithAIPanel:
       return {

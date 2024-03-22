@@ -12,9 +12,9 @@ describe('WorkflowBuilder', () => {
     expect(screen.getByLabelText('Name')).toBeInTheDocument();
   });
 
-  it('renders trigger selection', () => {
+  it('renders audience selection', () => {
     render(<WorkflowBuilder />);
-    expect(screen.getByLabelText('Trigger selection')).toBeInTheDocument();
+    expect(screen.getByLabelText('Audience selection')).toBeInTheDocument();
   });
 
   it("renders WorkflowBuilder's components", () => {

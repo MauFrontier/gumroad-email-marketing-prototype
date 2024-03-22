@@ -1,7 +1,7 @@
 import TextInput from '../../shared/ui/components/TextInput/TextInput';
 import InternalTools from './InternalTools/InternalTools';
 import TargetingBuilder from './TargetingBuilder/TargetingBuilder';
-import TriggerSelection from './TriggerSelection/TriggerSelection';
+import AudienceSelection from './AudienceSelection/AudienceSelection';
 
 const WorkflowBuilder = () => {
   return (
@@ -10,7 +10,7 @@ const WorkflowBuilder = () => {
         Name
         <TextInput placeholder="Name of workflow" />
       </label>
-      <TriggerSelection />
+      <AudienceSelection />
       <TargetingBuilder />
       <InternalTools />
     </form>

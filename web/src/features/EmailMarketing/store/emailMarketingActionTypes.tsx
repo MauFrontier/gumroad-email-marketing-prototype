@@ -10,12 +10,12 @@ import {
   TargetingFilterSubjectQualifier,
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
-  TriggerType,
+  AudienceType,
 } from '../WorkflowBuilder/emailMarketingTypes';
 
 export interface EmailMarketingState {
   targeting: Targeting;
-  selectedTrigger: TriggerType;
+  selectedAudience: AudienceType;
   products: KeyValuePair[];
   showGenerateWithAIPanel: boolean;
   prompt: string;
@@ -41,7 +41,7 @@ export enum EmailMarketingActionType {
   SetFilterVerb = 'SetFilterVerb',
   SetFilterVerbQualifier = 'SetFilterVerbQualifier',
   SetFilterValue = 'SetFilterValue',
-  SelectTrigger = 'SelectTrigger',
+  SelectAudience = 'SelectAudience',
   SetProducts = 'SetProducts',
   ToggleShowGenerateWithAIPanel = 'ToggleGenerateWithAIPanel',
   SetPrompt = 'SetPrompt',
@@ -116,7 +116,7 @@ export type EmailMarketingAction =
         value: string | number | string[];
       };
     }
-  | {type: EmailMarketingActionType.SelectTrigger; payload: TriggerType}
+  | {type: EmailMarketingActionType.SelectAudience; payload: AudienceType}
   | {type: EmailMarketingActionType.SetProducts; payload: KeyValuePair[]}
   | {type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel}
   | {type: EmailMarketingActionType.SetPrompt; payload: string}
