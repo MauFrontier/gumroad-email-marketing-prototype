@@ -129,6 +129,10 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
     } catch (error) {
       console.error('Failed to fetch from ChatGPT: ', error);
 
+      //Alerts suck, but I've worked enough on this demo, and I want a clear visual error
+      //This is merely an escape hatch. ChatGPT goes down at times..
+      alert('Failed to fetch from ChatGPT. ' + error);
+
       dispatch({
         type: EmailMarketingActionType.SetLatestAIResponse,
         payload: 'Failed to fetch from ChatGPT: ' + error,
