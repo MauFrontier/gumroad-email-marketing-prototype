@@ -66,6 +66,7 @@ You'll generate email segmentation JSON based on a user's prompt, adhering stric
 
 - No match? → Try to infer which product(s) from the list the user was referring to. If successful, don't report in errors array.
 - Clearly no reasonable match in the list, despite attempts at inference? Exclude product + report in errors array.
+- Don't exclude product requests just due to their nature, if the user asks for it, and there's a close match in the account, allow it. Example: "Bought a cat" should match if {"key": "cat","value": "Cat"} is in the products list
 
 ### Example products
 
