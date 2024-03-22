@@ -1,18 +1,18 @@
 import {
-  SegmentationFilterSubject as TargetingFilterSubjectEnum,
-  SegmentationFilterVerb as TargetingFilterVerbEnum,
+  SegmentationFilterSubject as SegmentationFilterSubjectEnum,
+  SegmentationFilterVerb as SegmentationFilterVerbEnum,
 } from '../../../../../../../emailMarketingTypes';
 import {getVerbOptions} from '../../../../../../../segmentationUtils';
 import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 
 interface Props {
-  subject: TargetingFilterSubjectEnum;
-  value: TargetingFilterVerbEnum;
-  onChange: (value: TargetingFilterVerbEnum) => void;
+  subject: SegmentationFilterSubjectEnum;
+  value: SegmentationFilterVerbEnum;
+  onChange: (value: SegmentationFilterVerbEnum) => void;
   disabled?: boolean;
 }
 
-const TargetingFilterVerb = ({
+const SegmentationFilterVerb = ({
   subject,
   value,
   onChange,
@@ -20,7 +20,7 @@ const TargetingFilterVerb = ({
 }: Props) => {
   const handleVerbChange = (selectedValue: string) => {
     if (onChange) {
-      onChange(selectedValue as TargetingFilterVerbEnum);
+      onChange(selectedValue as SegmentationFilterVerbEnum);
     }
   };
 
@@ -42,4 +42,4 @@ const TargetingFilterVerb = ({
   );
 };
 
-export default TargetingFilterVerb;
+export default SegmentationFilterVerb;

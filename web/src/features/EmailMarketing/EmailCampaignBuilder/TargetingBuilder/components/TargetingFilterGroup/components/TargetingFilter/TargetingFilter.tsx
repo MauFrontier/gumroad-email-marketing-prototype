@@ -12,7 +12,7 @@ import Operand from '../Operand/Operand';
 import SegmentationFilterSubject from './components/SegmentationFilterSubject/SegmentationFilterSubject';
 import SegmentationFilterSubjectQualifier from './components/SegmentationFilterSubjectQualifier/SegmentationFilterSubjectQualifier';
 import './TargetingFilter.scss';
-import TargetingFilterVerb from './components/TargetingFilterVerb/TargetingFilterVerb';
+import SegmentationFilterVerb from './components/SegmentationFilterVerb/SegmentationFilterVerb';
 import TargetingFilterVerbQualifier from './components/TargetingFilterVerbQualifier/TargetingFilterVerbQualifier';
 import DeleteFilterButton from './components/DeleteFilterButton/DeleteFilterButton';
 import SegmentationFilterValue from './components/SegmentationFilterValue/SegmentationFilterValue';
@@ -139,7 +139,7 @@ const TargetingFilter = ({
               disabled={disabled}
             />
           )}
-          <TargetingFilterVerb
+          <SegmentationFilterVerb
             subject={targetingFilter.subject}
             value={targetingFilter.verb}
             onChange={handleVerbChange}
