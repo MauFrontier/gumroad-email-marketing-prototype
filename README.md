@@ -1,10 +1,12 @@
 # Gumroad email segmentation prototype
-Author: **Mau Fournier**
+Author: [**Mau Fournier**](mau.fournier@gmail.com)
 Applying for the role of **Software engineer** at Gumroad.
 
 * [Open live demo](https://gumroad-email-segmentation-f38164d5c41f.herokuapp.com/)
 * [Visit GitHub Repository](https://github.com/MauFrontier/gumroad-email-marketing)
 * [View Figma mockups](https://www.figma.com/file/brvBekodG186nNxzCUkKLu/Email-Marketing-Mockups)
+* [Sample help article](https://freezing-bed-4b4.notion.site/Help-article-Workflow-targeting-builder-d5471c351acb46348e17ef6e383351da)
+* [Sample support queries and my answers](https://freezing-bed-4b4.notion.site/Sample-support-queries-and-answers-530ae28d101841dea86579764c692100)
 
 This project showcases my ability to quickly build a piece of Gumroad UI with Typescript + React code.
 
