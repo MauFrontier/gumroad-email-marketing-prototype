@@ -1,45 +1,45 @@
 import {render, screen, within} from '@testing-library/react';
-import WorkflowBuilder from './WorkflowBuilder';
+import EmailCampaignBuilder from './EmailCampaignBuilder';
 import userEvent from '@testing-library/user-event';
 import {mockDispatch} from '../../../utils/mocks/mocks';
 import {EmailMarketingActionType} from '../store/emailMarketingActionTypes';
 import {Channels} from './emailMarketingTypes';
 
-describe('WorkflowBuilder', () => {
+describe('EmailCampaignBuilder', () => {
   it('renders component', () => {
-    render(<WorkflowBuilder />);
-    expect(screen.getByLabelText('Workflow builder')).toBeInTheDocument();
+    render(<EmailCampaignBuilder />);
+    expect(screen.getByLabelText('Email campaign builder')).toBeInTheDocument();
   });
 
   it('renders title input', () => {
-    render(<WorkflowBuilder />);
+    render(<EmailCampaignBuilder />);
     expect(screen.getByLabelText('Title')).toBeInTheDocument();
   });
 
   it('renders audience selection', () => {
-    render(<WorkflowBuilder />);
+    render(<EmailCampaignBuilder />);
     expect(screen.getByLabelText('Audience selection')).toBeInTheDocument();
   });
 
   it('renders targeting builder', () => {
-    render(<WorkflowBuilder />);
+    render(<EmailCampaignBuilder />);
     expect(screen.getByLabelText('Targeting builder')).toBeInTheDocument();
   });
 
   it('renders internal tools container', () => {
-    render(<WorkflowBuilder />);
+    render(<EmailCampaignBuilder />);
     expect(
       screen.getByLabelText('Internal tools container'),
     ).toBeInTheDocument();
   });
 
   it('renders channel selection', () => {
-    render(<WorkflowBuilder />);
+    render(<EmailCampaignBuilder />);
     expect(screen.getByLabelText('Select channel')).toBeInTheDocument();
   });
 
   it('sets the selected channel when a channel is selected', async () => {
-    render(<WorkflowBuilder />);
+    render(<EmailCampaignBuilder />);
     const selectContainer = screen.getByLabelText('Select channel');
     const selectElement = within(selectContainer).getByRole('combobox');
 
@@ -52,12 +52,12 @@ describe('WorkflowBuilder', () => {
   });
 
   it('renders allow comments checkbox', () => {
-    render(<WorkflowBuilder />);
+    render(<EmailCampaignBuilder />);
     expect(screen.getByLabelText('Allow comments')).toBeInTheDocument();
   });
 
   it('sets whether comments are allowed', async () => {
-    render(<WorkflowBuilder />);
+    render(<EmailCampaignBuilder />);
     const checkbox = screen.getByLabelText('Allow comments');
 
     await userEvent.click(checkbox);

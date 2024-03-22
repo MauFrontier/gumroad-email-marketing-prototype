@@ -2,12 +2,12 @@ import TextInput from '../../shared/ui/components/TextInput/TextInput';
 import InternalTools from './InternalTools/InternalTools';
 import TargetingBuilder from './TargetingBuilder/TargetingBuilder';
 import AudienceSelection from './AudienceSelection/AudienceSelection';
-import './WorkflowBuilder.scss';
+import './EmailCampaignBuilder.scss';
 import {Channels} from './emailMarketingTypes';
 import {EmailMarketingActionType} from '../store/emailMarketingActionTypes';
 import {useEmailMarketingState} from '../store/useEmailMarketingState';
 
-const WorkflowBuilder = () => {
+const EmailCampaignBuilder = () => {
   const {state, dispatch} = useEmailMarketingState();
 
   const handleChangeChannel = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -27,7 +27,7 @@ const WorkflowBuilder = () => {
   };
 
   return (
-    <form aria-label="Workflow builder">
+    <form aria-label="Email campaign builder">
       <label>
         Title
         <TextInput placeholder="Title" />
@@ -56,4 +56,4 @@ const WorkflowBuilder = () => {
   );
 };
 
-export default WorkflowBuilder;
+export default EmailCampaignBuilder;

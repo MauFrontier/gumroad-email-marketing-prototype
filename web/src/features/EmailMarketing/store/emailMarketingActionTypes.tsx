@@ -12,7 +12,7 @@ import {
   TargetingFilterVerbQualifier,
   AudienceType,
   Channels,
-} from '../WorkflowBuilder/emailMarketingTypes';
+} from '../EmailCampaignBuilder/emailMarketingTypes';
 
 export interface EmailMarketingState {
   targeting: Targeting;

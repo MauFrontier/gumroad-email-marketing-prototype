@@ -6,7 +6,7 @@ import {
   TargetingFilterVerbQualifier,
   AudienceType,
   Channels,
-} from '../WorkflowBuilder/emailMarketingTypes';
+} from '../EmailCampaignBuilder/emailMarketingTypes';
 import {emailMarketingReducer} from './emailMarketingReducer';
 import {
   emailMarketingStateForTests as initialState,

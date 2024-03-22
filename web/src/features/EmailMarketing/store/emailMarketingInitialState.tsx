@@ -2,7 +2,7 @@ import {
   Targeting,
   AudienceType,
   Channels,
-} from '../WorkflowBuilder/emailMarketingTypes';
+} from '../EmailCampaignBuilder/emailMarketingTypes';
 import {EmailMarketingState} from './emailMarketingActionTypes';
 import defaultData_targeting from './defaultTargeting.json';
 import productsFromServer from '../api/productsFromServer';
