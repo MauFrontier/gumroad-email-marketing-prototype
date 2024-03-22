@@ -11,7 +11,7 @@ import AIErrorWarnings from './components/SegmentationBuilderHeader/components/A
 
 const TargetingBuilder = () => {
   const {state, dispatch} = useEmailMarketingState();
-  const {targeting} = state;
+  const {segmentation: targeting} = state;
 
   const handleAddFilterGroup = () => {
     const newFilterGroup = {...defaultFilterGroup};

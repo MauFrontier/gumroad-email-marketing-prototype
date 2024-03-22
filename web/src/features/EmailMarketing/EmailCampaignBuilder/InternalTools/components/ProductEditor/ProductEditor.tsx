@@ -31,7 +31,7 @@ const ProductEditor = () => {
   const removeTargetingProductsThatAreNotInProductsList = (
     updatedProducts: KeyValuePair[],
   ) => {
-    const updatedTargeting = {...state.targeting};
+    const updatedTargeting = {...state.segmentation};
     updatedTargeting.filterGroups.forEach(filterGroup => {
       filterGroup.filters.forEach(filter => {
         if (filter.subject === 'Product') {
@@ -47,7 +47,7 @@ const ProductEditor = () => {
     });
 
     dispatch({
-      type: EmailMarketingActionType.SetTargeting,
+      type: EmailMarketingActionType.SetSegmentation,
       payload: updatedTargeting,
     });
   };

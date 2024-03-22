@@ -1,5 +1,5 @@
 import {
-  TargetingFilterGroup as TargetingFilterGroupType,
+  SegmentationFilterGroup as TargetingFilterGroupType,
   Operand as OperandEnum,
 } from '../../../emailMarketingTypes';
 import AddFilterButton from './components/AddFilterButton/AddFilterButton';

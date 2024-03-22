@@ -1,9 +1,9 @@
-export enum TargetingFilterVerbQualifier {
+export enum SegmentationFilterVerbQualifier {
   Any = 'Any',
   All = 'All',
 }
 
-export enum TargetingFilterVerb {
+export enum SegmentationFilterVerb {
   Is = 'Is',
   IsNot = 'Is not',
   HasBought = 'Has bought',
@@ -15,12 +15,12 @@ export enum TargetingFilterVerb {
   IsBefore = 'Is before',
 }
 
-export enum TargetingFilterSubjectQualifier {
+export enum SegmentationFilterSubjectQualifier {
   Purchased = 'Purchased',
   Joined = 'Joined',
 }
 
-export enum TargetingFilterSubject {
+export enum SegmentationFilterSubject {
   Date = 'Date',
   Product = 'Product',
   Payment = 'Payment',
@@ -33,65 +33,67 @@ export enum Operand {
   Initial = 'Initial',
 }
 
-export type TargetingFilterValueType = string | number | string[];
+export type SegmentationFilterValueType = string | number | string[];
 
 export type DateFilter = {
   id: string;
   operand?: Operand;
-  subject: TargetingFilterSubject.Date;
-  subjectQualifier: TargetingFilterSubjectQualifier;
+  subject: SegmentationFilterSubject.Date;
+  subjectQualifier: SegmentationFilterSubjectQualifier;
   verb:
-    | TargetingFilterVerb.Is
-    | TargetingFilterVerb.IsNot
-    | TargetingFilterVerb.IsAfter
-    | TargetingFilterVerb.IsBefore
-    | TargetingFilterVerb.IsInTheLast;
+    | SegmentationFilterVerb.Is
+    | SegmentationFilterVerb.IsNot
+    | SegmentationFilterVerb.IsAfter
+    | SegmentationFilterVerb.IsBefore
+    | SegmentationFilterVerb.IsInTheLast;
   value: string | number;
 };
 
 export type ProductFilter = {
   id: string;
   operand?: Operand;
-  subject: TargetingFilterSubject.Product;
-  verb: TargetingFilterVerb.HasBought | TargetingFilterVerb.HasNotYetBought;
-  verbQualifier: TargetingFilterVerbQualifier;
+  subject: SegmentationFilterSubject.Product;
+  verb:
+    | SegmentationFilterVerb.HasBought
+    | SegmentationFilterVerb.HasNotYetBought;
+  verbQualifier: SegmentationFilterVerbQualifier;
   value: string[];
 };
 
 export type PaymentFilter = {
   id: string;
   operand?: Operand;
-  subject: TargetingFilterSubject.Payment;
+  subject: SegmentationFilterSubject.Payment;
   verb:
-    | TargetingFilterVerb.Is
-    | TargetingFilterVerb.IsNot
-    | TargetingFilterVerb.IsMoreThan
-    | TargetingFilterVerb.IsLessThan;
+    | SegmentationFilterVerb.Is
+    | SegmentationFilterVerb.IsNot
+    | SegmentationFilterVerb.IsMoreThan
+    | SegmentationFilterVerb.IsLessThan;
   value: number;
 };
 
 export type LocationFilter = {
   id: string;
   operand?: Operand;
-  subject: TargetingFilterSubject.Location;
-  verb: TargetingFilterVerb.Is | TargetingFilterVerb.IsNot;
+  subject: SegmentationFilterSubject.Location;
+  verb: SegmentationFilterVerb.Is | SegmentationFilterVerb.IsNot;
   value: string;
 };
 
-export type TargetingFilter =
+export type SegmentationFilter =
   | DateFilter
   | ProductFilter
   | PaymentFilter
   | LocationFilter;
 
-export type TargetingFilterGroup = {
+export type SegmentationFilterGroup = {
   id: string;
   operand?: Operand;
-  filters: TargetingFilter[];
+  filters: SegmentationFilter[];
 };
 
-export type Targeting = {
-  filterGroups: TargetingFilterGroup[];
+export type Segmentation = {
+  filterGroups: SegmentationFilterGroup[];
 };
 
 export enum AudienceType {
@@ -109,7 +111,7 @@ export type ErrorWarning = {
 
 export type AIResponse = {
   result: 'success' | 'success with errors' | 'failure';
-  payload: Targeting;
+  payload: Segmentation;
   errors: string[];
 };
 

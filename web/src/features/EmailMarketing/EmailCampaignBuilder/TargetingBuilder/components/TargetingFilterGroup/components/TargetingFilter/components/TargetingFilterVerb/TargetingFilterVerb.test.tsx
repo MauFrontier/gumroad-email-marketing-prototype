@@ -1,8 +1,8 @@
 import {render, screen, within} from '@testing-library/react';
 import TargetingFilterVerb from './TargetingFilterVerb';
 import {
-  TargetingFilterSubject as TargetingFilterSubjectEnum,
-  TargetingFilterVerb as TargetingFilterVerbEnum,
+  SegmentationFilterSubject as TargetingFilterSubjectEnum,
+  SegmentationFilterVerb as TargetingFilterVerbEnum,
 } from '../../../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 

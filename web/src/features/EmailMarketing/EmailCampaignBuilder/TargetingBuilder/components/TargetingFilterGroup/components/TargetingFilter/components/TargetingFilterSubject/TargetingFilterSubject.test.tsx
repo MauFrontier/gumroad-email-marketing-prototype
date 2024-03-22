@@ -1,6 +1,6 @@
 import {render, screen, within} from '@testing-library/react';
 import TargetingFilterSubject from './TargetingFilterSubject';
-import {TargetingFilterSubject as TargetingFilterSubjectEnum} from '../../../../../../../emailMarketingTypes';
+import {SegmentationFilterSubject as TargetingFilterSubjectEnum} from '../../../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 
 describe('TargetingFilterSubject', () => {

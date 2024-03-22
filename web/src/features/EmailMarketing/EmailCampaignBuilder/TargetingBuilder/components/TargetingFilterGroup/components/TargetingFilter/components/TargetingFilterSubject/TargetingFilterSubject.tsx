@@ -1,7 +1,7 @@
 import Icon from '../../../../../../../../../shared/ui/components/Icon/Icon';
 import {IconType} from '../../../../../../../../../shared/ui/components/Icon/iconLibrary';
 import Select from '../../../../../../../../../shared/ui/components/Select/Select';
-import {TargetingFilterSubject as TargetingFilterSubjectEnum} from '../../../../../../../emailMarketingTypes';
+import {SegmentationFilterSubject as TargetingFilterSubjectEnum} from '../../../../../../../emailMarketingTypes';
 import './TargetingFilterSubject.scss';
 
 interface Props {

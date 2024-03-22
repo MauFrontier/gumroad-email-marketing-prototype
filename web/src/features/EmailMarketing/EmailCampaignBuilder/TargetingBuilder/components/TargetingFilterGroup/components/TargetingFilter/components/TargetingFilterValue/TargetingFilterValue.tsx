@@ -1,7 +1,7 @@
 import {
-  TargetingFilterSubject as TargetingFilterSubjectEnum,
-  TargetingFilterVerb as TargetingFilterVerbEnum,
-  TargetingFilterValueType,
+  SegmentationFilterSubject as TargetingFilterSubjectEnum,
+  SegmentationFilterVerb as TargetingFilterVerbEnum,
+  SegmentationFilterValueType,
 } from '../../../../../../../emailMarketingTypes';
 import './TargetingFilterValue.scss';
 import DateInput from '../../../../../../../../../shared/ui/components/DateInput/DateInput';
@@ -16,8 +16,8 @@ import {useEmailMarketingState} from '../../../../../../../../store/useEmailMark
 interface Props {
   subject: TargetingFilterSubjectEnum;
   verb: TargetingFilterVerbEnum;
-  value: TargetingFilterValueType;
-  onChange: (value: TargetingFilterValueType) => void;
+  value: SegmentationFilterValueType;
+  onChange: (value: SegmentationFilterValueType) => void;
   disabled?: boolean;
 }
 
@@ -40,7 +40,7 @@ const TargetingFilterValue = ({
   const stringValue = value !== undefined ? value.toString() : '';
   const shouldExpand = subject === TargetingFilterSubjectEnum.Product;
 
-  const handleOnChange = (newValue: TargetingFilterValueType) => {
+  const handleOnChange = (newValue: SegmentationFilterValueType) => {
     if (onChange) {
       onChange(newValue);
     }

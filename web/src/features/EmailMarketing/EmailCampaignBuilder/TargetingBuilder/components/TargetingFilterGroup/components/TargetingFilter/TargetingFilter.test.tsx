@@ -2,10 +2,10 @@ import {render, screen, within} from '@testing-library/react';
 import TargetingFilter from './TargetingFilter';
 import {
   Operand,
-  TargetingFilterSubject,
-  TargetingFilterSubjectQualifier,
-  TargetingFilterVerb,
-  TargetingFilterVerbQualifier,
+  SegmentationFilterSubject,
+  SegmentationFilterSubjectQualifier,
+  SegmentationFilterVerb,
+  SegmentationFilterVerbQualifier,
 } from '../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 import {mockDispatch} from '../../../../../../../../utils/mocks/mocks';
@@ -84,7 +84,7 @@ describe('TargetingFilter', () => {
 
     const subjectContainer = screen.getByLabelText('Filter subject');
     const selectElement = within(subjectContainer).getByRole('combobox');
-    const option = screen.getByText(TargetingFilterSubject.Date);
+    const option = screen.getByText(SegmentationFilterSubject.Date);
 
     await userEvent.selectOptions(selectElement, option);
 
@@ -92,7 +92,7 @@ describe('TargetingFilter', () => {
       type: EmailMarketingActionType.SetFilterSubject,
       payload: {
         filterId: dateFilterForTests.id,
-        subject: TargetingFilterSubject.Date,
+        subject: SegmentationFilterSubject.Date,
       },
     });
   });
@@ -102,7 +102,7 @@ describe('TargetingFilter', () => {
       <TargetingFilter
         targetingFilter={{
           ...dateFilterForTests,
-          subject: TargetingFilterSubject.Date,
+          subject: SegmentationFilterSubject.Date,
         }}
       />,
     );
@@ -117,7 +117,7 @@ describe('TargetingFilter', () => {
       <TargetingFilter
         targetingFilter={{
           ...dateFilterForTests,
-          subject: TargetingFilterSubject.Date,
+          subject: SegmentationFilterSubject.Date,
         }}
       />,
     );
@@ -128,7 +128,9 @@ describe('TargetingFilter', () => {
     const selectElement = within(subjectQualifierContainer).getByRole(
       'combobox',
     );
-    const option = screen.getByText(TargetingFilterSubjectQualifier.Purchased);
+    const option = screen.getByText(
+      SegmentationFilterSubjectQualifier.Purchased,
+    );
 
     await userEvent.selectOptions(selectElement, option);
 
@@ -136,7 +138,7 @@ describe('TargetingFilter', () => {
       type: EmailMarketingActionType.SetFilterSubjectQualifier,
       payload: {
         filterId: dateFilterForTests.id,
-        subjectQualifier: TargetingFilterSubjectQualifier.Purchased,
+        subjectQualifier: SegmentationFilterSubjectQualifier.Purchased,
       },
     });
   });
@@ -152,7 +154,7 @@ describe('TargetingFilter', () => {
 
     const verbContainer = screen.getByLabelText('Filter verb');
     const selectElement = within(verbContainer).getByRole('combobox');
-    const option = screen.getByText(TargetingFilterVerb.Is);
+    const option = screen.getByText(SegmentationFilterVerb.Is);
 
     await userEvent.selectOptions(selectElement, option);
 
@@ -160,7 +162,7 @@ describe('TargetingFilter', () => {
       type: EmailMarketingActionType.SetFilterVerb,
       payload: {
         filterId: dateFilterForTests.id,
-        verb: TargetingFilterVerb.Is,
+        verb: SegmentationFilterVerb.Is,
       },
     });
   });
@@ -170,7 +172,9 @@ describe('TargetingFilter', () => {
 
     const verbContainer = screen.getByLabelText('Filter verb');
     const selectElement = within(verbContainer).getByRole('combobox');
-    const optionIsInTheLast = screen.getByText(TargetingFilterVerb.IsInTheLast);
+    const optionIsInTheLast = screen.getByText(
+      SegmentationFilterVerb.IsInTheLast,
+    );
 
     await userEvent.selectOptions(selectElement, optionIsInTheLast);
 
@@ -178,7 +182,7 @@ describe('TargetingFilter', () => {
       type: EmailMarketingActionType.SetFilterVerb,
       payload: {
         filterId: dateFilterForTests.id,
-        verb: TargetingFilterVerb.IsInTheLast,
+        verb: SegmentationFilterVerb.IsInTheLast,
       },
     });
 
@@ -196,7 +200,7 @@ describe('TargetingFilter', () => {
       <TargetingFilter
         targetingFilter={{
           ...dateFilterForTests,
-          verb: TargetingFilterVerb.IsInTheLast,
+          verb: SegmentationFilterVerb.IsInTheLast,
           value: 100,
         }}
       />,
@@ -204,7 +208,7 @@ describe('TargetingFilter', () => {
 
     const verbContainer = screen.getByLabelText('Filter verb');
     const selectElement = within(verbContainer).getByRole('combobox');
-    const optionIs = screen.getByText(TargetingFilterVerb.Is);
+    const optionIs = screen.getByText(SegmentationFilterVerb.Is);
 
     await userEvent.selectOptions(selectElement, optionIs);
 
@@ -212,7 +216,7 @@ describe('TargetingFilter', () => {
       type: EmailMarketingActionType.SetFilterVerb,
       payload: {
         filterId: dateFilterForTests.id,
-        verb: TargetingFilterVerb.Is,
+        verb: SegmentationFilterVerb.Is,
       },
     });
 
@@ -244,7 +248,7 @@ describe('TargetingFilter', () => {
       'Filter verb qualifier',
     );
     const selectElement = within(verbQualifierContainer).getByRole('combobox');
-    const option = screen.getByText(TargetingFilterVerbQualifier.All);
+    const option = screen.getByText(SegmentationFilterVerbQualifier.All);
 
     await userEvent.selectOptions(selectElement, option);
 
@@ -252,7 +256,7 @@ describe('TargetingFilter', () => {
       type: EmailMarketingActionType.SetFilterVerbQualifier,
       payload: {
         filterId: productFilterForTests.id,
-        verbQualifier: TargetingFilterVerbQualifier.All,
+        verbQualifier: SegmentationFilterVerbQualifier.All,
       },
     });
   });

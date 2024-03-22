@@ -1,8 +1,8 @@
 import {
-  TargetingFilterSubject as TargetingFilterSubjectEnum,
-  TargetingFilterVerb as TargetingFilterVerbEnum,
+  SegmentationFilterSubject as TargetingFilterSubjectEnum,
+  SegmentationFilterVerb as TargetingFilterVerbEnum,
 } from '../../../../../../../emailMarketingTypes';
-import {getVerbOptions} from '../../../../../../../targetingUtils';
+import {getVerbOptions} from '../../../../../../../segmentationUtils';
 import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 
 interface Props {

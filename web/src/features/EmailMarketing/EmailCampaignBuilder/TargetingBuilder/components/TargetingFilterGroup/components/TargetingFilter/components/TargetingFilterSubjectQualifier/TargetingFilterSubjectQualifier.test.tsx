@@ -1,8 +1,8 @@
 import {render, screen, within} from '@testing-library/react';
 import TargetingFilterSubjectQualifier from './TargetingFilterSubjectQualifier';
 import {
-  TargetingFilterSubject as TargetingFilterSubjectEnum,
-  TargetingFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
+  SegmentationFilterSubject as TargetingFilterSubjectEnum,
+  SegmentationFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
 } from '../../../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 

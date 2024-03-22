@@ -110,7 +110,7 @@ describe('ProductEditor', () => {
     renderComponentWithState(<ProductEditor />, {
       ...emailMarketingInitialState,
       products: exampleCustomProducts,
-      targeting: previousTargeting,
+      segmentation: previousTargeting,
     });
 
     const productsField = screen.getByLabelText('Custom products');
@@ -127,7 +127,7 @@ describe('ProductEditor', () => {
     });
 
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: EmailMarketingActionType.SetTargeting,
+      type: EmailMarketingActionType.SetSegmentation,
       payload: {
         ...previousTargeting,
         filterGroups: previousTargeting.filterGroups.map(group => ({

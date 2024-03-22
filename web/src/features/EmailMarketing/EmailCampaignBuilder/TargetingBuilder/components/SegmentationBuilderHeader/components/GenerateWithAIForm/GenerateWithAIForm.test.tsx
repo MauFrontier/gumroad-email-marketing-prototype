@@ -226,7 +226,7 @@ describe('GenerateWithAIForm', () => {
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith({
-        type: EmailMarketingActionType.SetTargeting,
+        type: EmailMarketingActionType.SetSegmentation,
         payload: expect.any(Object),
       });
     });

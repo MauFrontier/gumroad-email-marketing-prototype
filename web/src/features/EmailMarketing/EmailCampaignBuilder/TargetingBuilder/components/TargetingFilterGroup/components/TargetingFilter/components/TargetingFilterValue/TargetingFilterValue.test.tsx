@@ -1,8 +1,8 @@
 import {fireEvent, render, screen, within} from '@testing-library/react';
 import TargetingFilterValue from './TargetingFilterValue';
 import {
-  TargetingFilterSubject as TargetingFilterSubjectEnum,
-  TargetingFilterVerb,
+  SegmentationFilterSubject as TargetingFilterSubjectEnum,
+  SegmentationFilterVerb,
 } from '../../../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 import productsFromServer from '../../../../../../../../api/productsFromServer';
@@ -12,7 +12,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsBefore}
+        verb={SegmentationFilterVerb.IsBefore}
         value={'2021-01-01T00:00:00.000Z'}
         onChange={jest.fn()}
       />,
@@ -24,7 +24,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Payment}
-        verb={TargetingFilterVerb.IsMoreThan}
+        verb={SegmentationFilterVerb.IsMoreThan}
         value={300}
         onChange={jest.fn()}
       />,
@@ -37,7 +37,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsBefore}
+        verb={SegmentationFilterVerb.IsBefore}
         value={'2021-01-01T00:00:00.000Z'}
         onChange={jest.fn()}
       />,
@@ -53,7 +53,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsInTheLast}
+        verb={SegmentationFilterVerb.IsInTheLast}
         value={30}
         onChange={jest.fn()}
       />,
@@ -70,7 +70,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Location}
-        verb={TargetingFilterVerb.Is}
+        verb={SegmentationFilterVerb.Is}
         value={'CR'}
         onChange={jest.fn()}
       />,
@@ -86,7 +86,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Product}
-        verb={TargetingFilterVerb.HasBought}
+        verb={SegmentationFilterVerb.HasBought}
         value={[]}
         onChange={jest.fn()}
       />,
@@ -99,7 +99,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Payment}
-        verb={TargetingFilterVerb.IsMoreThan}
+        verb={SegmentationFilterVerb.IsMoreThan}
         value={300}
         onChange={onChange}
       />,
@@ -116,7 +116,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsBefore}
+        verb={SegmentationFilterVerb.IsBefore}
         value={'2021-01-01T00:00:00.000Z'}
         onChange={onChange}
       />,
@@ -138,7 +138,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsInTheLast}
+        verb={SegmentationFilterVerb.IsInTheLast}
         value={30}
         onChange={onChange}
       />,
@@ -160,7 +160,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Location}
-        verb={TargetingFilterVerb.Is}
+        verb={SegmentationFilterVerb.Is}
         value={'CR'}
         onChange={onChange}
       />,
@@ -178,7 +178,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Product}
-        verb={TargetingFilterVerb.HasBought}
+        verb={SegmentationFilterVerb.HasBought}
         value={[]}
         onChange={onChange}
       />,
@@ -198,7 +198,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Payment}
-        verb={TargetingFilterVerb.IsMoreThan}
+        verb={SegmentationFilterVerb.IsMoreThan}
         value={300}
         onChange={jest.fn()}
       />,
@@ -215,7 +215,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsBefore}
+        verb={SegmentationFilterVerb.IsBefore}
         value={'2021-02-03T00:00:00.000Z'}
         onChange={jest.fn()}
       />,
@@ -232,7 +232,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsInTheLast}
+        verb={SegmentationFilterVerb.IsInTheLast}
         value={30}
         onChange={jest.fn()}
       />,
@@ -249,7 +249,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Location}
-        verb={TargetingFilterVerb.Is}
+        verb={SegmentationFilterVerb.Is}
         value={'CR'}
         onChange={jest.fn()}
       />,
@@ -265,7 +265,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Product}
-        verb={TargetingFilterVerb.HasBought}
+        verb={SegmentationFilterVerb.HasBought}
         value={[productsFromServer[0].value]}
         onChange={jest.fn()}
       />,
@@ -279,7 +279,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsBefore}
+        verb={SegmentationFilterVerb.IsBefore}
         value={'2021-01-01T00:00:00.000Z'}
         onChange={jest.fn()}
       />,
@@ -296,7 +296,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Location}
-        verb={TargetingFilterVerb.Is}
+        verb={SegmentationFilterVerb.Is}
         value={'CR'}
         onChange={jest.fn()}
       />,
@@ -312,7 +312,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Product}
-        verb={TargetingFilterVerb.HasBought}
+        verb={SegmentationFilterVerb.HasBought}
         value={[]}
         onChange={jest.fn()}
       />,
@@ -334,7 +334,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Payment}
-        verb={TargetingFilterVerb.IsMoreThan}
+        verb={SegmentationFilterVerb.IsMoreThan}
         value={300}
         disabled={true}
         onChange={jest.fn()}
@@ -352,7 +352,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Payment}
-        verb={TargetingFilterVerb.IsMoreThan}
+        verb={SegmentationFilterVerb.IsMoreThan}
         value={300}
         onChange={jest.fn()}
       />,
@@ -369,7 +369,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsBefore}
+        verb={SegmentationFilterVerb.IsBefore}
         value={'2021-02-03T00:00:00.000Z'}
         disabled={true}
         onChange={jest.fn()}
@@ -387,7 +387,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsBefore}
+        verb={SegmentationFilterVerb.IsBefore}
         value={'2021-02-03T00:00:00.000Z'}
         onChange={jest.fn()}
       />,
@@ -404,7 +404,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsInTheLast}
+        verb={SegmentationFilterVerb.IsInTheLast}
         value={30}
         disabled={true}
         onChange={jest.fn()}
@@ -422,7 +422,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Date}
-        verb={TargetingFilterVerb.IsInTheLast}
+        verb={SegmentationFilterVerb.IsInTheLast}
         value={30}
         onChange={jest.fn()}
       />,
@@ -439,7 +439,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Location}
-        verb={TargetingFilterVerb.Is}
+        verb={SegmentationFilterVerb.Is}
         value={'CR'}
         disabled={true}
         onChange={jest.fn()}
@@ -455,7 +455,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Location}
-        verb={TargetingFilterVerb.Is}
+        verb={SegmentationFilterVerb.Is}
         value={'CR'}
         onChange={jest.fn()}
       />,
@@ -470,7 +470,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Product}
-        verb={TargetingFilterVerb.HasBought}
+        verb={SegmentationFilterVerb.HasBought}
         value={[]}
         disabled={true}
         onChange={jest.fn()}
@@ -486,7 +486,7 @@ describe('TargetingFilterValue', () => {
     render(
       <TargetingFilterValue
         subject={TargetingFilterSubjectEnum.Product}
-        verb={TargetingFilterVerb.HasBought}
+        verb={SegmentationFilterVerb.HasBought}
         value={[]}
         onChange={jest.fn()}
       />,

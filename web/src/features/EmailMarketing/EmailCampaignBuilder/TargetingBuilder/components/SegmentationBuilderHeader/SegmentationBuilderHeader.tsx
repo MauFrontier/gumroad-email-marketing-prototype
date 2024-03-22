@@ -6,14 +6,14 @@ import GenerateWithAIForm from './components/GenerateWithAIForm/GenerateWithAIFo
 import './SegmentationBuilderHeader.scss';
 import {IconType} from '../../../../../shared/ui/components/Icon/iconLibrary';
 import {useEffect, useState} from 'react';
-import {Targeting} from '../../../emailMarketingTypes';
+import {Segmentation} from '../../../emailMarketingTypes';
 
 const SegmentationBuilderHeader = () => {
   const {state, dispatch} = useEmailMarketingState();
   const {showGenerateWithAIPanel} = state;
 
   const generateFakeRecipientCount = (
-    targeting: Targeting,
+    targeting: Segmentation,
     totalSubscribers: number,
   ) => {
     let currentCount = totalSubscribers;
@@ -37,13 +37,16 @@ const SegmentationBuilderHeader = () => {
   const subscribers = 5000;
 
   const [recipientCount, setRecipientCount] = useState(() =>
-    generateFakeRecipientCount(state.targeting, subscribers),
+    generateFakeRecipientCount(state.segmentation, subscribers),
   );
 
   useEffect(() => {
-    const newCount = generateFakeRecipientCount(state.targeting, subscribers);
+    const newCount = generateFakeRecipientCount(
+      state.segmentation,
+      subscribers,
+    );
     setRecipientCount(newCount);
-  }, [state.targeting, subscribers]);
+  }, [state.segmentation, subscribers]);
 
   const openGenerateWithAIPanel = () => {
     dispatch({type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel});

@@ -1,8 +1,8 @@
 import {
-  TargetingFilterSubject as TargetingFilterSubjectEnum,
-  TargetingFilterVerbQualifier as VerbQualifierEnum,
+  SegmentationFilterSubject as TargetingFilterSubjectEnum,
+  SegmentationFilterVerbQualifier as VerbQualifierEnum,
 } from '../../../../../../../emailMarketingTypes';
-import {getVerbQualifierOptions} from '../../../../../../../targetingUtils';
+import {getVerbQualifierOptions} from '../../../../../../../segmentationUtils';
 import './TargetingFilterVerbQualifier.scss';
 import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 

@@ -28,7 +28,7 @@ describe('TargetingBuilder', () => {
   it('displays every filter group', () => {
     renderComponentWithState(<TargetingBuilder />, emailMarketingInitialState);
     expect(screen.getAllByRole('group')).toHaveLength(
-      emailMarketingInitialState.targeting.filterGroups.length,
+      emailMarketingInitialState.segmentation.filterGroups.length,
     );
   });
 

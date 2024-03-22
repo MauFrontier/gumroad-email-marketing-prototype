@@ -53,7 +53,7 @@ describe('SegmentationBuilderHeader', () => {
   it('should default to 5000 recipients if segmentation is empty', () => {
     renderComponentWithState(<SegmentationBuilderHeader />, {
       ...emailMarketingInitialState,
-      targeting: {
+      segmentation: {
         filterGroups: [],
       },
     });

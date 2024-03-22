@@ -1,9 +1,9 @@
 import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 import {
-  TargetingFilterSubject as TargetingFilterSubjectEnum,
-  TargetingFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
+  SegmentationFilterSubject as TargetingFilterSubjectEnum,
+  SegmentationFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
 } from '../../../../../../../emailMarketingTypes';
-import {getSubjectQualifierOptions} from '../../../../../../../targetingUtils';
+import {getSubjectQualifierOptions} from '../../../../../../../segmentationUtils';
 
 interface Props {
   subject: TargetingFilterSubjectEnum;

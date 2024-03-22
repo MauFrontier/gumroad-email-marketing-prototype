@@ -1,9 +1,9 @@
 import {
   Operand,
-  TargetingFilterSubject,
-  TargetingFilterSubjectQualifier,
-  TargetingFilterVerb,
-  TargetingFilterVerbQualifier,
+  SegmentationFilterSubject,
+  SegmentationFilterSubjectQualifier,
+  SegmentationFilterVerb,
+  SegmentationFilterVerbQualifier,
   AudienceType,
   Channels,
 } from '../EmailCampaignBuilder/emailMarketingTypes';
@@ -12,7 +12,7 @@ import {
   emailMarketingStateForTests as initialState,
   newDateFilterForTests,
   newFilterGroupForTests1,
-  newTargetingForTests,
+  newSegmentationForTests,
 } from './emailMarketingMockStateForTests';
 import {
   EmailMarketingAction,
@@ -21,20 +21,20 @@ import {
 import {KeyValuePair} from '../../shared/sharedTypes';
 
 describe('emailMarketingReducer', () => {
-  it('handles SetTargeting action', () => {
-    expect(initialState.targeting).not.toEqual(newTargetingForTests);
+  it('handles SetSegmentation action', () => {
+    expect(initialState.segmentation).not.toEqual(newSegmentationForTests);
 
     const action: EmailMarketingAction = {
-      type: EmailMarketingActionType.SetTargeting,
-      payload: newTargetingForTests,
+      type: EmailMarketingActionType.SetSegmentation,
+      payload: newSegmentationForTests,
     };
 
     const state = emailMarketingReducer(initialState, action);
-    expect(state.targeting).toEqual(action.payload);
+    expect(state.segmentation).toEqual(action.payload);
   });
 
   it('handles AddFilterGroup action', () => {
-    expect(initialState.targeting.filterGroups).not.toContainEqual(
+    expect(initialState.segmentation.filterGroups).not.toContainEqual(
       newFilterGroupForTests1,
     );
 
@@ -44,15 +44,15 @@ describe('emailMarketingReducer', () => {
     };
 
     const state = emailMarketingReducer(initialState, action);
-    expect(state.targeting.filterGroups).toContainEqual(
+    expect(state.segmentation.filterGroups).toContainEqual(
       newFilterGroupForTests1,
     );
   });
 
   it('handles DeleteFilterGroup action', () => {
-    const filterGroupToBeDeleted = initialState.targeting.filterGroups[0];
+    const filterGroupToBeDeleted = initialState.segmentation.filterGroups[0];
 
-    expect(initialState.targeting.filterGroups).toContainEqual(
+    expect(initialState.segmentation.filterGroups).toContainEqual(
       filterGroupToBeDeleted,
     );
 
@@ -62,12 +62,12 @@ describe('emailMarketingReducer', () => {
     };
 
     const state = emailMarketingReducer(initialState, action);
-    const updatedFilterGroups = state.targeting.filterGroups;
+    const updatedFilterGroups = state.segmentation.filterGroups;
     expect(updatedFilterGroups).not.toContainEqual(filterGroupToBeDeleted);
   });
 
   it('handles SetFilterGroupOperand action', () => {
-    const filterGroupToBeUpdated = initialState.targeting.filterGroups[0];
+    const filterGroupToBeUpdated = initialState.segmentation.filterGroups[0];
     const newOperand = Operand.Or;
 
     expect(filterGroupToBeUpdated.operand).not.toEqual(newOperand);
@@ -81,34 +81,35 @@ describe('emailMarketingReducer', () => {
     };
 
     const state = emailMarketingReducer(initialState, action);
-    const updatedFilterGroup = state.targeting.filterGroups.find(
+    const updatedFilterGroup = state.segmentation.filterGroups.find(
       filterGroup => filterGroup.id === filterGroupToBeUpdated.id,
     );
     expect(updatedFilterGroup?.operand).toEqual(newOperand);
   });
 
   it('handles AddFilter action', () => {
-    expect(initialState.targeting.filterGroups[0].filters).not.toContainEqual(
-      newDateFilterForTests,
-    );
+    expect(
+      initialState.segmentation.filterGroups[0].filters,
+    ).not.toContainEqual(newDateFilterForTests);
 
     const action: EmailMarketingAction = {
       type: EmailMarketingActionType.AddFilter,
       payload: {
-        filterGroupId: initialState.targeting.filterGroups[0].id,
+        filterGroupId: initialState.segmentation.filterGroups[0].id,
         filter: newDateFilterForTests,
       },
     };
 
     const state = emailMarketingReducer(initialState, action);
-    const updatedFilters = state.targeting.filterGroups[0].filters;
+    const updatedFilters = state.segmentation.filterGroups[0].filters;
     expect(updatedFilters).toContainEqual(newDateFilterForTests);
   });
 
   it('handles DeleteFilter action', () => {
-    const filterToBeDeleted = initialState.targeting.filterGroups[0].filters[0];
+    const filterToBeDeleted =
+      initialState.segmentation.filterGroups[0].filters[0];
 
-    expect(initialState.targeting.filterGroups[0].filters).toContainEqual(
+    expect(initialState.segmentation.filterGroups[0].filters).toContainEqual(
       filterToBeDeleted,
     );
 
@@ -118,12 +119,13 @@ describe('emailMarketingReducer', () => {
     };
 
     const state = emailMarketingReducer(initialState, action);
-    const updatedFilters = state.targeting.filterGroups[0].filters;
+    const updatedFilters = state.segmentation.filterGroups[0].filters;
     expect(updatedFilters).not.toContainEqual(filterToBeDeleted);
   });
 
   it('handles SetFilterOperand action', () => {
-    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[1];
+    const filterToBeUpdated =
+      initialState.segmentation.filterGroups[0].filters[1];
     const newOperand = Operand.Or;
 
     expect(filterToBeUpdated.operand).not.toEqual(newOperand);
@@ -138,15 +140,16 @@ describe('emailMarketingReducer', () => {
 
     const state = emailMarketingReducer(initialState, action);
 
-    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+    const updatedFilter = state.segmentation.filterGroups[0].filters.find(
       filter => filter.id === filterToBeUpdated.id,
     );
     expect(updatedFilter?.operand).toEqual(newOperand);
   });
 
   it('handles SetFilterSubject action', () => {
-    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[0];
-    const newSubject = TargetingFilterSubject.Location;
+    const filterToBeUpdated =
+      initialState.segmentation.filterGroups[0].filters[0];
+    const newSubject = SegmentationFilterSubject.Location;
 
     expect(filterToBeUpdated.subject).not.toEqual(newSubject);
 
@@ -159,15 +162,16 @@ describe('emailMarketingReducer', () => {
     };
 
     const state = emailMarketingReducer(initialState, action);
-    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+    const updatedFilter = state.segmentation.filterGroups[0].filters.find(
       filter => filter.id === filterToBeUpdated.id,
     );
     expect(updatedFilter?.subject).toEqual(newSubject);
   });
 
   it('keeps the operand when updating the subject', () => {
-    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[0];
-    const newSubject = TargetingFilterSubject.Location;
+    const filterToBeUpdated =
+      initialState.segmentation.filterGroups[0].filters[0];
+    const newSubject = SegmentationFilterSubject.Location;
 
     expect(filterToBeUpdated.subject).not.toEqual(newSubject);
 
@@ -180,19 +184,20 @@ describe('emailMarketingReducer', () => {
     };
 
     const state = emailMarketingReducer(initialState, action);
-    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+    const updatedFilter = state.segmentation.filterGroups[0].filters.find(
       filter => filter.id === filterToBeUpdated.id,
     );
     expect(updatedFilter?.operand).toEqual(filterToBeUpdated.operand);
   });
 
   it('handles SetFilterSubjectQualifier action', () => {
-    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[0];
-    const newSubjectQualifier = TargetingFilterSubjectQualifier.Purchased;
+    const filterToBeUpdated =
+      initialState.segmentation.filterGroups[0].filters[0];
+    const newSubjectQualifier = SegmentationFilterSubjectQualifier.Purchased;
 
-    expect(filterToBeUpdated.subject).toEqual(TargetingFilterSubject.Date);
+    expect(filterToBeUpdated.subject).toEqual(SegmentationFilterSubject.Date);
 
-    if (filterToBeUpdated.subject === TargetingFilterSubject.Date) {
+    if (filterToBeUpdated.subject === SegmentationFilterSubject.Date) {
       expect(filterToBeUpdated.subjectQualifier).not.toEqual(
         newSubjectQualifier,
       );
@@ -207,17 +212,18 @@ describe('emailMarketingReducer', () => {
     };
 
     const state = emailMarketingReducer(initialState, action);
-    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+    const updatedFilter = state.segmentation.filterGroups[0].filters.find(
       filter => filter.id === filterToBeUpdated.id,
     );
-    if (updatedFilter?.subject === TargetingFilterSubject.Date) {
+    if (updatedFilter?.subject === SegmentationFilterSubject.Date) {
       expect(updatedFilter?.subjectQualifier).toEqual(newSubjectQualifier);
     }
   });
 
   it('handles SetFilterVerb action', () => {
-    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[0];
-    const newVerb = TargetingFilterVerb.IsInTheLast;
+    const filterToBeUpdated =
+      initialState.segmentation.filterGroups[0].filters[0];
+    const newVerb = SegmentationFilterVerb.IsInTheLast;
 
     expect(filterToBeUpdated.verb).not.toEqual(newVerb);
 
@@ -230,19 +236,22 @@ describe('emailMarketingReducer', () => {
     };
 
     const state = emailMarketingReducer(initialState, action);
-    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+    const updatedFilter = state.segmentation.filterGroups[0].filters.find(
       filter => filter.id === filterToBeUpdated.id,
     );
     expect(updatedFilter?.verb).toEqual(newVerb);
   });
 
   it('handles SetFilterVerbQualifier action', () => {
-    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[1];
-    const newVerbQualifier = TargetingFilterVerbQualifier.Any;
+    const filterToBeUpdated =
+      initialState.segmentation.filterGroups[0].filters[1];
+    const newVerbQualifier = SegmentationFilterVerbQualifier.Any;
 
-    expect(filterToBeUpdated.subject).toEqual(TargetingFilterSubject.Product);
+    expect(filterToBeUpdated.subject).toEqual(
+      SegmentationFilterSubject.Product,
+    );
 
-    if (filterToBeUpdated.subject === TargetingFilterSubject.Product) {
+    if (filterToBeUpdated.subject === SegmentationFilterSubject.Product) {
       expect(filterToBeUpdated.verbQualifier).not.toEqual(newVerbQualifier);
     }
     const action: EmailMarketingAction = {
@@ -255,17 +264,18 @@ describe('emailMarketingReducer', () => {
 
     const state = emailMarketingReducer(initialState, action);
 
-    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+    const updatedFilter = state.segmentation.filterGroups[0].filters.find(
       filter => filter.id === filterToBeUpdated.id,
     );
 
-    if (updatedFilter?.subject === TargetingFilterSubject.Product) {
+    if (updatedFilter?.subject === SegmentationFilterSubject.Product) {
       expect(updatedFilter?.verbQualifier).toEqual(newVerbQualifier);
     }
   });
 
   it('handles SetFilterValue action', () => {
-    const filterToBeUpdated = initialState.targeting.filterGroups[0].filters[0];
+    const filterToBeUpdated =
+      initialState.segmentation.filterGroups[0].filters[0];
     const newValue = '2020-01-01';
 
     expect(filterToBeUpdated.value).not.toEqual(newValue);
@@ -279,7 +289,7 @@ describe('emailMarketingReducer', () => {
     };
 
     const state = emailMarketingReducer(initialState, action);
-    const updatedFilter = state.targeting.filterGroups[0].filters.find(
+    const updatedFilter = state.segmentation.filterGroups[0].filters.find(
       filter => filter.id === filterToBeUpdated.id,
     );
     expect(updatedFilter?.value).toEqual(newValue);

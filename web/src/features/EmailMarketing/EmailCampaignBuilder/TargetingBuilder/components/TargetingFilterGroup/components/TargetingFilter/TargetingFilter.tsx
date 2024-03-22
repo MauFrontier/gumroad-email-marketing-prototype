@@ -1,11 +1,11 @@
 import {
   Operand as OperandEnum,
-  TargetingFilter as TargetingFilterType,
-  TargetingFilterSubject as TargetingFilterSubjectEnum,
-  TargetingFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
-  TargetingFilterVerbQualifier as TargetingFilterVerbQualifierEnum,
-  TargetingFilterVerb as TargetingFilterVerbEnum,
-  TargetingFilterValueType,
+  SegmentationFilter as TargetingFilterType,
+  SegmentationFilterSubject as TargetingFilterSubjectEnum,
+  SegmentationFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
+  SegmentationFilterVerbQualifier as TargetingFilterVerbQualifierEnum,
+  SegmentationFilterVerb as TargetingFilterVerbEnum,
+  SegmentationFilterValueType,
 } from '../../../../../emailMarketingTypes';
 
 import Operand from '../Operand/Operand';
@@ -19,7 +19,7 @@ import TargetingFilterValue from './components/TargetingFilterValue/TargetingFil
 import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
 import {EmailMarketingActionType} from '../../../../../../store/emailMarketingActionTypes';
 import {getDefaultValueForVerb} from '../../../../../emailMarketingDefaults';
-import {shouldResetValue} from '../../../../../targetingUtils';
+import {shouldResetValue} from '../../../../../segmentationUtils';
 
 type TargetingFilterProps = {
   targetingFilter: TargetingFilterType;
@@ -99,7 +99,7 @@ const TargetingFilter = ({
     });
   };
 
-  const handleValueChange = (newValue: TargetingFilterValueType) => {
+  const handleValueChange = (newValue: SegmentationFilterValueType) => {
     dispatch({
       type: EmailMarketingActionType.SetFilterValue,
       payload: {

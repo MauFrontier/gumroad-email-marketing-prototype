@@ -106,7 +106,7 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
 
         if (result === 'success' || result === 'success with errors') {
           dispatch({
-            type: EmailMarketingActionType.SetTargeting,
+            type: EmailMarketingActionType.SetSegmentation,
             payload: payload,
           });
         } else {
