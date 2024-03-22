@@ -1,6 +1,5 @@
 import axios from 'axios';
-const BASE_URL =
-  'https://gumroad-email-segmentation-f38164d5c41f.herokuapp.com';
+import {apiURL} from '../../../../utils/apiConfig';
 
 export async function generateSegmentationAPIRequest(
   prompt: string,
@@ -9,7 +8,7 @@ export async function generateSegmentationAPIRequest(
   const now = new Date().toISOString();
   const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   try {
-    const response = await axios.post(`${BASE_URL}/generate-segmentation`, {
+    const response = await axios.post(`${apiURL}/generate-segmentation`, {
       user_prompt: prompt,
       products: productsString,
       current_date: now,
