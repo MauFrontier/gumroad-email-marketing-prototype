@@ -21,7 +21,7 @@ const ExamplePrompt = ({
   const {state, dispatch} = useEmailMarketingState();
 
   const scrollToTop = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({top: 350, behavior: 'smooth'});
   };
 
   const usePromptTemplate = (newPrompt: string) => {
