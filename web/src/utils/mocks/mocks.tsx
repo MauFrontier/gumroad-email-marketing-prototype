@@ -3,28 +3,22 @@ import {EmailMarketingState} from '../../features/EmailMarketing/store/emailMark
 
 import defaultSegmentation from '../../features/EmailMarketing/store/defaultSegmentation.json';
 
-jest.mock('axios', () => ({
-  post: () =>
-    Promise.resolve({
-      data: {
-        choices: [
-          {
-            message: {
-              content: JSON.stringify({
-                result: 'success with errors',
-                payload: {
-                  defaultSegmentation,
-                },
-                errors: [
-                  "Products 'motorcycle' and 'app' were not recognized. They've been excluded from your criteria.",
-                ],
-              }),
-            },
-          },
-        ],
+jest.mock('../../features/EmailMarketing/api/ai/ChatGPT', () => {
+  return {
+    ...jest.requireActual('../../features/EmailMarketing/api/ai/ChatGPT'),
+    generateSegmentationAPIRequest: () => ({
+      result: 'success with errors',
+      payload: {
+        defaultSegmentation: defaultSegmentation,
       },
+      errors: [
+        "Products 'motorcycle' and 'app' were not recognized. They've been excluded from your criteria.",
+      ],
     }),
-}));
+  };
+});
+
+global.alert = jest.fn();
 
 jest.mock('@/constants', () => ({
   VITE_OPENAI_API_KEY: 'EXAMPLE_OPENAI_API_KEY',
