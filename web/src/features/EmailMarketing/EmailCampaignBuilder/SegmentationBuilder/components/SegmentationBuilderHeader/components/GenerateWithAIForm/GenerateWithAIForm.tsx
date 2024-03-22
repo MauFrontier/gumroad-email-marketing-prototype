@@ -93,16 +93,14 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
       );
 
       if (apiResponse !== null) {
-        const parsedResponse: AIResponse = JSON.parse(apiResponse);
-
         dispatch({
           type: EmailMarketingActionType.SetLatestAIResponse,
-          payload: parsedResponse,
+          payload: apiResponse,
         });
 
-        const result = parsedResponse.result;
-        const payload = parsedResponse.payload;
-        const errors = parsedResponse.errors;
+        const result = apiResponse.result;
+        const payload = apiResponse.payload;
+        const errors = apiResponse.errors;
 
         if (result === 'success' || result === 'success with errors') {
           dispatch({

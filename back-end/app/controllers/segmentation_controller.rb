@@ -1,11 +1,19 @@
 require 'openai'
 
 class SegmentationController < ActionController::API
+  include ActionController::Live
+
   def generate
     client = OpenAI::Client.new
     system_prompt = SegmentationService.generate_system_prompt(params[:current_date], params[:user_timezone], params[:products])
 
-    response = client.chat(
+    response.headers['Content-Type'] = 'text/event-stream'
+
+    stream_proc = proc do |chunk|
+      response.stream.write(chunk.dig("choices", 0, "delta", "content"))
+    end
+
+    client.chat(
       parameters: {
         model: "gpt-4-0125-preview",
         response_format: {type: "json_object"},
@@ -17,13 +25,17 @@ class SegmentationController < ActionController::API
         {
           role: "user",
           content: params[:user_prompt]
-        }]
+        }],
+        stream: stream_proc
       }
     )
-    
-    render json: response
+
+  rescue IOError
+    # Client Disconnected
+  ensure
+    # Close the stream properly
+    response.stream.close
   end
 
   private
-  
 end
