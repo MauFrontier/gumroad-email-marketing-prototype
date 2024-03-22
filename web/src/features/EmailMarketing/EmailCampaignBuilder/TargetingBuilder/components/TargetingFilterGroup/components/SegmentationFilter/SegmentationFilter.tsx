@@ -1,17 +1,17 @@
 import {
   Operand as OperandEnum,
-  SegmentationFilter as TargetingFilterType,
-  SegmentationFilterSubject as TargetingFilterSubjectEnum,
-  SegmentationFilterSubjectQualifier as TargetingFilterSubjectQualifierEnum,
-  SegmentationFilterVerbQualifier as TargetingFilterVerbQualifierEnum,
-  SegmentationFilterVerb as TargetingFilterVerbEnum,
+  SegmentationFilter as SegmentationFilterType,
+  SegmentationFilterSubject as SegmentationFilterSubjectEnum,
+  SegmentationFilterSubjectQualifier as SegmentationFilterSubjectQualifierEnum,
+  SegmentationFilterVerbQualifier as SegmentationFilterVerbQualifierEnum,
+  SegmentationFilterVerb as SegmentationFilterVerbEnum,
   SegmentationFilterValueType,
 } from '../../../../../emailMarketingTypes';
 
 import Operand from '../Operand/Operand';
 import SegmentationFilterSubject from './components/SegmentationFilterSubject/SegmentationFilterSubject';
 import SegmentationFilterSubjectQualifier from './components/SegmentationFilterSubjectQualifier/SegmentationFilterSubjectQualifier';
-import './TargetingFilter.scss';
+import './SegmentationFilter.scss';
 import SegmentationFilterVerb from './components/SegmentationFilterVerb/SegmentationFilterVerb';
 import SegmentationFilterVerbQualifier from './components/SegmentationFilterVerbQualifier/SegmentationFilterVerbQualifier';
 import DeleteFilterButton from './components/DeleteFilterButton/DeleteFilterButton';
@@ -21,56 +21,56 @@ import {EmailMarketingActionType} from '../../../../../../store/emailMarketingAc
 import {getDefaultValueForVerb} from '../../../../../emailMarketingDefaults';
 import {shouldResetValue} from '../../../../../segmentationUtils';
 
-type TargetingFilterProps = {
-  targetingFilter: TargetingFilterType;
+type SegmentationFilterProps = {
+  segmentationFilter: SegmentationFilterType;
   disabled?: boolean;
 };
 
-const TargetingFilter = ({
-  targetingFilter,
+const SegmentationFilter = ({
+  segmentationFilter,
   disabled = false,
-}: TargetingFilterProps) => {
+}: SegmentationFilterProps) => {
   const {dispatch} = useEmailMarketingState();
 
   const handleOperandChange = (newOperand: OperandEnum) => {
     dispatch({
       type: EmailMarketingActionType.SetFilterOperand,
       payload: {
-        filterId: targetingFilter.id,
+        filterId: segmentationFilter.id,
         operand: newOperand,
       },
     });
   };
 
-  const handleSubjectChange = (newValue: TargetingFilterSubjectEnum) => {
+  const handleSubjectChange = (newValue: SegmentationFilterSubjectEnum) => {
     dispatch({
       type: EmailMarketingActionType.SetFilterSubject,
       payload: {
-        filterId: targetingFilter.id,
+        filterId: segmentationFilter.id,
         subject: newValue,
       },
     });
   };
 
   const handleSubjectQualifierChange = (
-    newValue: TargetingFilterSubjectQualifierEnum,
+    newValue: SegmentationFilterSubjectQualifierEnum,
   ) => {
     dispatch({
       type: EmailMarketingActionType.SetFilterSubjectQualifier,
       payload: {
-        filterId: targetingFilter.id,
+        filterId: segmentationFilter.id,
         subjectQualifier: newValue,
       },
     });
   };
 
-  const handleVerbChange = (newVerb: TargetingFilterVerbEnum) => {
-    const oldVerb = targetingFilter.verb;
+  const handleVerbChange = (newVerb: SegmentationFilterVerbEnum) => {
+    const oldVerb = segmentationFilter.verb;
 
     dispatch({
       type: EmailMarketingActionType.SetFilterVerb,
       payload: {
-        filterId: targetingFilter.id,
+        filterId: segmentationFilter.id,
         verb: newVerb,
       },
     });
@@ -80,7 +80,7 @@ const TargetingFilter = ({
       dispatch({
         type: EmailMarketingActionType.SetFilterValue,
         payload: {
-          filterId: targetingFilter.id,
+          filterId: segmentationFilter.id,
           value: newValue,
         },
       });
@@ -88,12 +88,12 @@ const TargetingFilter = ({
   };
 
   const handleVerbQualifierChange = (
-    newValue: TargetingFilterVerbQualifierEnum,
+    newValue: SegmentationFilterVerbQualifierEnum,
   ) => {
     dispatch({
       type: EmailMarketingActionType.SetFilterVerbQualifier,
       payload: {
-        filterId: targetingFilter.id,
+        filterId: segmentationFilter.id,
         verbQualifier: newValue,
       },
     });
@@ -103,7 +103,7 @@ const TargetingFilter = ({
     dispatch({
       type: EmailMarketingActionType.SetFilterValue,
       payload: {
-        filterId: targetingFilter.id,
+        filterId: segmentationFilter.id,
         value: newValue,
       },
     });
@@ -112,7 +112,7 @@ const TargetingFilter = ({
   const handleDeleteFilter = () => {
     dispatch({
       type: EmailMarketingActionType.DeleteFilter,
-      payload: targetingFilter.id,
+      payload: segmentationFilter.id,
     });
   };
 
@@ -120,43 +120,43 @@ const TargetingFilter = ({
     <div aria-label="Filter">
       <div className="filter-row">
         <Operand
-          value={targetingFilter.operand || OperandEnum.Initial}
+          value={segmentationFilter.operand || OperandEnum.Initial}
           onChange={handleOperandChange}
           label="Filter operand"
           disabled={disabled}
         />
         <div className="filter-row-content">
           <SegmentationFilterSubject
-            value={targetingFilter.subject}
+            value={segmentationFilter.subject}
             onChange={handleSubjectChange}
             disabled={disabled}
           />
-          {'subjectQualifier' in targetingFilter && (
+          {'subjectQualifier' in segmentationFilter && (
             <SegmentationFilterSubjectQualifier
-              subject={targetingFilter.subject}
+              subject={segmentationFilter.subject}
               onChange={handleSubjectQualifierChange}
-              value={targetingFilter.subjectQualifier}
+              value={segmentationFilter.subjectQualifier}
               disabled={disabled}
             />
           )}
           <SegmentationFilterVerb
-            subject={targetingFilter.subject}
-            value={targetingFilter.verb}
+            subject={segmentationFilter.subject}
+            value={segmentationFilter.verb}
             onChange={handleVerbChange}
             disabled={disabled}
           />
-          {'verbQualifier' in targetingFilter && (
+          {'verbQualifier' in segmentationFilter && (
             <SegmentationFilterVerbQualifier
-              subject={targetingFilter.subject}
+              subject={segmentationFilter.subject}
               onChange={handleVerbQualifierChange}
-              value={targetingFilter.verbQualifier}
+              value={segmentationFilter.verbQualifier}
               disabled={disabled}
             />
           )}
           <SegmentationFilterValue
-            subject={targetingFilter.subject}
-            verb={targetingFilter.verb}
-            value={targetingFilter.value}
+            subject={segmentationFilter.subject}
+            verb={segmentationFilter.verb}
+            value={segmentationFilter.value}
             onChange={handleValueChange}
             disabled={disabled}
           />
@@ -170,4 +170,4 @@ const TargetingFilter = ({
   );
 };
 
-export default TargetingFilter;
+export default SegmentationFilter;

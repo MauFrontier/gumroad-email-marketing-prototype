@@ -3,7 +3,7 @@ import {
   Operand as OperandEnum,
 } from '../../../emailMarketingTypes';
 import AddFilterButton from './components/AddFilterButton/AddFilterButton';
-import TargetingFilter from './components/TargetingFilter/TargetingFilter';
+import SegmentationFilter from './components/SegmentationFilter/SegmentationFilter';
 import Operand from './components/Operand/Operand';
 import './TargetingFilterGroup.scss';
 import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
@@ -77,7 +77,10 @@ const TargetingFilterGroup = ({
       <div aria-label="Filter group filters">
         {targetingFilterGroup.filters.map((filter, index) => (
           <div key={index}>
-            <TargetingFilter disabled={disabled} targetingFilter={filter} />
+            <SegmentationFilter
+              disabled={disabled}
+              segmentationFilter={filter}
+            />
           </div>
         ))}
         <AddFilterButton
