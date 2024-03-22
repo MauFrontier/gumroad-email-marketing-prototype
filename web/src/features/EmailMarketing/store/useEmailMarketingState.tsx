@@ -1,4 +1,3 @@
-// useTargetingState.ts
 import {useContext} from 'react';
 import {EmailMarketingStateContext} from './emailMarketingStore';
 

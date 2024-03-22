@@ -92,8 +92,8 @@ describe('ProductEditor', () => {
     });
   });
 
-  it('should remove from current targeting state any previously selected products that no longer exist in the product list', async () => {
-    const previousTargeting = {
+  it('should remove from current segmentation state any previously selected products that no longer exist in the product list', async () => {
+    const previousSegmentation = {
       filterGroups: [
         {
           id: '1',
@@ -110,7 +110,7 @@ describe('ProductEditor', () => {
     renderComponentWithState(<ProductEditor />, {
       ...emailMarketingInitialState,
       products: exampleCustomProducts,
-      targeting: previousTargeting,
+      segmentation: previousSegmentation,
     });
 
     const productsField = screen.getByLabelText('Custom products');
@@ -127,10 +127,10 @@ describe('ProductEditor', () => {
     });
 
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: EmailMarketingActionType.SetTargeting,
+      type: EmailMarketingActionType.SetSegmentation,
       payload: {
-        ...previousTargeting,
-        filterGroups: previousTargeting.filterGroups.map(group => ({
+        ...previousSegmentation,
+        filterGroups: previousSegmentation.filterGroups.map(group => ({
           ...group,
           filters: group.filters.map(filter => ({
             ...filter,

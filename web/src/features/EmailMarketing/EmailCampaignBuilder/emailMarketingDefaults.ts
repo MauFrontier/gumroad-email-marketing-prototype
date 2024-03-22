@@ -5,16 +5,16 @@ import {
   Operand,
   PaymentFilter,
   ProductFilter,
-  TargetingFilter,
-  TargetingFilterGroup,
-  TargetingFilterSubject,
-  TargetingFilterSubjectQualifier,
-  TargetingFilterValueType,
-  TargetingFilterVerb,
-  TargetingFilterVerbQualifier,
+  SegmentationFilter,
+  SegmentationFilterGroup,
+  SegmentationFilterSubject,
+  SegmentationFilterSubjectQualifier,
+  SegmentationFilterValueType,
+  SegmentationFilterVerb,
+  SegmentationFilterVerbQualifier,
 } from './emailMarketingTypes';
 
-export const defaultFilterGroup: TargetingFilterGroup = {
+export const defaultFilterGroup: SegmentationFilterGroup = {
   id: uuid(),
   operand: Operand.And,
   filters: [],
@@ -23,52 +23,52 @@ export const defaultFilterGroup: TargetingFilterGroup = {
 export const defaultDateFilter: DateFilter = {
   id: uuid(),
   operand: Operand.And,
-  subject: TargetingFilterSubject.Date,
-  subjectQualifier: TargetingFilterSubjectQualifier.Purchased,
-  verb: TargetingFilterVerb.IsBefore,
+  subject: SegmentationFilterSubject.Date,
+  subjectQualifier: SegmentationFilterSubjectQualifier.Purchased,
+  verb: SegmentationFilterVerb.IsBefore,
   value: new Date().toISOString(),
 };
 
 export const defaultProductFilter: ProductFilter = {
   id: uuid(),
   operand: Operand.And,
-  subject: TargetingFilterSubject.Product,
-  verb: TargetingFilterVerb.HasBought,
-  verbQualifier: TargetingFilterVerbQualifier.Any,
+  subject: SegmentationFilterSubject.Product,
+  verb: SegmentationFilterVerb.HasBought,
+  verbQualifier: SegmentationFilterVerbQualifier.Any,
   value: [],
 };
 
 export const defaultPaymentFilter: PaymentFilter = {
   id: uuid(),
   operand: Operand.And,
-  subject: TargetingFilterSubject.Payment,
-  verb: TargetingFilterVerb.IsMoreThan,
+  subject: SegmentationFilterSubject.Payment,
+  verb: SegmentationFilterVerb.IsMoreThan,
   value: 0,
 };
 
 export const defaultLocationFilter: LocationFilter = {
   id: uuid(),
   operand: Operand.And,
-  subject: TargetingFilterSubject.Location,
-  verb: TargetingFilterVerb.Is,
+  subject: SegmentationFilterSubject.Location,
+  verb: SegmentationFilterVerb.Is,
   value: 'US',
 };
 
-export const defaultFilter: TargetingFilter = {
+export const defaultFilter: SegmentationFilter = {
   ...defaultDateFilter,
 };
 
 export const getDefaultFilterForSubject = (
-  subject: TargetingFilterSubject,
-): TargetingFilter => {
+  subject: SegmentationFilterSubject,
+): SegmentationFilter => {
   switch (subject) {
-    case TargetingFilterSubject.Date:
+    case SegmentationFilterSubject.Date:
       return {...defaultDateFilter};
-    case TargetingFilterSubject.Product:
+    case SegmentationFilterSubject.Product:
       return {...defaultProductFilter};
-    case TargetingFilterSubject.Payment:
+    case SegmentationFilterSubject.Payment:
       return {...defaultPaymentFilter};
-    case TargetingFilterSubject.Location:
+    case SegmentationFilterSubject.Location:
       return {...defaultLocationFilter};
     default:
       return {...defaultFilter};
@@ -76,16 +76,16 @@ export const getDefaultFilterForSubject = (
 };
 
 type VerbDefaults = {
-  [K in TargetingFilterVerb]?: TargetingFilterValueType;
+  [K in SegmentationFilterVerb]?: SegmentationFilterValueType;
 };
 
 export const getDefaultValueForVerb = (
-  verb: TargetingFilterVerb,
-): TargetingFilterValueType => {
+  verb: SegmentationFilterVerb,
+): SegmentationFilterValueType => {
   const defaults: VerbDefaults = {
-    [TargetingFilterVerb.IsInTheLast]: 30,
-    [TargetingFilterVerb.IsBefore]: new Date().toISOString(),
-    [TargetingFilterVerb.IsAfter]: new Date().toISOString(),
+    [SegmentationFilterVerb.IsInTheLast]: 30,
+    [SegmentationFilterVerb.IsBefore]: new Date().toISOString(),
+    [SegmentationFilterVerb.IsAfter]: new Date().toISOString(),
   };
 
   return defaults[verb] ?? '';

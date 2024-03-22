@@ -3,19 +3,19 @@ import {
   AIResponse,
   ErrorWarning,
   Operand,
-  Targeting,
-  TargetingFilter,
-  TargetingFilterGroup,
-  TargetingFilterSubject,
-  TargetingFilterSubjectQualifier,
-  TargetingFilterVerb,
-  TargetingFilterVerbQualifier,
+  Segmentation,
+  SegmentationFilter,
+  SegmentationFilterGroup,
+  SegmentationFilterSubject,
+  SegmentationFilterSubjectQualifier,
+  SegmentationFilterVerb,
+  SegmentationFilterVerbQualifier,
   AudienceType,
   Channels,
 } from '../EmailCampaignBuilder/emailMarketingTypes';
 
 export interface EmailMarketingState {
-  targeting: Targeting;
+  segmentation: Segmentation;
   selectedAudience: AudienceType;
   products: KeyValuePair[];
   showGenerateWithAIPanel: boolean;
@@ -32,7 +32,7 @@ export interface EmailMarketingState {
 }
 
 export enum EmailMarketingActionType {
-  SetTargeting = 'SetTargeting',
+  SetSegmentation = 'SetSegmentation',
   AddFilterGroup = 'AddFilterGroup',
   DeleteFilterGroup = 'DeleteFilterGroup',
   SetFilterGroupOperand = 'SetFilterGroupOperand',
@@ -61,10 +61,10 @@ export enum EmailMarketingActionType {
 }
 
 export type EmailMarketingAction =
-  | {type: EmailMarketingActionType.SetTargeting; payload: Targeting}
+  | {type: EmailMarketingActionType.SetSegmentation; payload: Segmentation}
   | {
       type: EmailMarketingActionType.AddFilterGroup;
-      payload: TargetingFilterGroup;
+      payload: SegmentationFilterGroup;
     }
   | {type: EmailMarketingActionType.DeleteFilterGroup; payload: string}
   | {
@@ -76,7 +76,7 @@ export type EmailMarketingAction =
     }
   | {
       type: EmailMarketingActionType.AddFilter;
-      payload: {filterGroupId: string; filter: TargetingFilter};
+      payload: {filterGroupId: string; filter: SegmentationFilter};
     }
   | {type: EmailMarketingActionType.DeleteFilter; payload: string}
   | {
@@ -90,28 +90,28 @@ export type EmailMarketingAction =
       type: EmailMarketingActionType.SetFilterSubject;
       payload: {
         filterId: string;
-        subject: TargetingFilterSubject;
+        subject: SegmentationFilterSubject;
       };
     }
   | {
       type: EmailMarketingActionType.SetFilterSubjectQualifier;
       payload: {
         filterId: string;
-        subjectQualifier: TargetingFilterSubjectQualifier;
+        subjectQualifier: SegmentationFilterSubjectQualifier;
       };
     }
   | {
       type: EmailMarketingActionType.SetFilterVerb;
       payload: {
         filterId: string;
-        verb: TargetingFilterVerb;
+        verb: SegmentationFilterVerb;
       };
     }
   | {
       type: EmailMarketingActionType.SetFilterVerbQualifier;
       payload: {
         filterId: string;
-        verbQualifier: TargetingFilterVerbQualifier;
+        verbQualifier: SegmentationFilterVerbQualifier;
       };
     }
   | {

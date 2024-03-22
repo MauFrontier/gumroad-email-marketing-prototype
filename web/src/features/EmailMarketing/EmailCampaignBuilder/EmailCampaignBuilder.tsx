@@ -1,6 +1,6 @@
 import TextInput from '../../shared/ui/components/TextInput/TextInput';
 import InternalTools from './InternalTools/InternalTools';
-import TargetingBuilder from './TargetingBuilder/TargetingBuilder';
+import SegmentationBuilder from './SegmentationBuilder/SegmentationBuilder';
 import AudienceSelection from './AudienceSelection/AudienceSelection';
 import './EmailCampaignBuilder.scss';
 import {Channels} from './emailMarketingTypes';
@@ -33,7 +33,7 @@ const EmailCampaignBuilder = () => {
         <TextInput placeholder="Title" />
       </label>
       <AudienceSelection />
-      <TargetingBuilder />
+      <SegmentationBuilder />
       <label aria-label="Select channel">
         Channel
         <select onChange={handleChangeChannel} value={state.channel}>

@@ -1,0 +1,10 @@
+@import './src/features/shared/ui/designSystemStyles.scss';
+
+section[aria-label='Segmentation builder'] {
+  margin-top: $spacer-4;
+  margin-bottom: $spacer-2;
+
+  .loading {
+    opacity: $opacity-disabled;
+  }
+}

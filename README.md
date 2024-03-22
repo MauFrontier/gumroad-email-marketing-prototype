@@ -41,7 +41,7 @@ The segmentation builder is at the heart of this demo, and it's what the demo in
 
 ### 🤖 Generate with AI
 
-The real star of this show is the "Generate with AI" feature, and it's run by [a contract written in Markdown](). I leveraged the Typescript types and enums and clever prompt engineering to guide the AI to give us very consistent results in generating the targeting automatically.
+The real star of this show is the "Generate with AI" feature, and it's run by [a contract written in Markdown](). I leveraged the Typescript types and enums and clever prompt engineering to guide the AI to give us very consistent results in generating the segmentation automatically.
 
 I am __*all in*__ on AI. I've been honing my prompt engineering skills daily since I got access to Github Copilot in October 2021. That's what now allows me to quickly implement a complex feature like this one. I've developed a great sense of how to get what I want from AI.
 

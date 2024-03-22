@@ -1,14 +1,14 @@
 import {
-  Targeting,
+  Segmentation as Segmentation,
   AudienceType,
   Channels,
 } from '../EmailCampaignBuilder/emailMarketingTypes';
 import {EmailMarketingState} from './emailMarketingActionTypes';
-import defaultData_targeting from './defaultTargeting.json';
+import defaultData_segmentation from './defaultSegmentation.json';
 import productsFromServer from '../api/productsFromServer';
 
 export const emailMarketingInitialState: EmailMarketingState = {
-  targeting: defaultData_targeting as Targeting,
+  segmentation: defaultData_segmentation as Segmentation,
   selectedAudience: AudienceType.Everyone,
   products: productsFromServer,
   showGenerateWithAIPanel: false,

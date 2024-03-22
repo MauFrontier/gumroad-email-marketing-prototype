@@ -4,42 +4,42 @@ import {
   Operand,
   PaymentFilter,
   ProductFilter,
-  Targeting,
-  TargetingFilterSubject,
-  TargetingFilterSubjectQualifier,
-  TargetingFilterVerb,
-  TargetingFilterVerbQualifier,
+  Segmentation,
+  SegmentationFilterSubject,
+  SegmentationFilterSubjectQualifier,
+  SegmentationFilterVerb,
+  SegmentationFilterVerbQualifier,
 } from '../EmailCampaignBuilder/emailMarketingTypes';
 import {emailMarketingInitialState} from './emailMarketingInitialState';
 import {EmailMarketingState} from './emailMarketingActionTypes';
 
 export const dateFilterForTests: DateFilter = {
   id: 'id_initialDateFilter',
-  subject: TargetingFilterSubject.Date,
-  subjectQualifier: TargetingFilterSubjectQualifier.Joined,
-  verb: TargetingFilterVerb.IsAfter,
+  subject: SegmentationFilterSubject.Date,
+  subjectQualifier: SegmentationFilterSubjectQualifier.Joined,
+  verb: SegmentationFilterVerb.IsAfter,
   value: '2022-01-01T00:00:00.000Z',
 };
 
 export const paymentFilterForTests: PaymentFilter = {
   id: 'id_initialPaymentFilter',
-  subject: TargetingFilterSubject.Payment,
-  verb: TargetingFilterVerb.IsLessThan,
+  subject: SegmentationFilterSubject.Payment,
+  verb: SegmentationFilterVerb.IsLessThan,
   value: 10,
 };
 
 export const productFilterForTests: ProductFilter = {
   id: 'id_initialProductFilter',
-  subject: TargetingFilterSubject.Product,
-  verb: TargetingFilterVerb.HasBought,
-  verbQualifier: TargetingFilterVerbQualifier.All,
+  subject: SegmentationFilterSubject.Product,
+  verb: SegmentationFilterVerb.HasBought,
+  verbQualifier: SegmentationFilterVerbQualifier.All,
   value: ['Christmas bundle'],
 };
 
 export const locationFilterForTests: LocationFilter = {
   id: 'id_initialLocationFilter',
-  subject: TargetingFilterSubject.Location,
-  verb: TargetingFilterVerb.IsNot,
+  subject: SegmentationFilterSubject.Location,
+  verb: SegmentationFilterVerb.IsNot,
   value: 'US',
 };
 
@@ -59,7 +59,7 @@ export const filterGroupForTests2 = {
   ],
 };
 
-export const targetingForTests: Targeting = {
+export const segmentationForTests: Segmentation = {
   filterGroups: [
     filterGroupForTests1,
     {...filterGroupForTests2, operand: Operand.Or},
@@ -68,36 +68,36 @@ export const targetingForTests: Targeting = {
 
 export const emailMarketingStateForTests: EmailMarketingState = {
   ...emailMarketingInitialState,
-  targeting: targetingForTests,
+  segmentation: segmentationForTests,
 };
 
 export const newDateFilterForTests: DateFilter = {
   id: 'id_dateFilter',
-  subject: TargetingFilterSubject.Date,
-  subjectQualifier: TargetingFilterSubjectQualifier.Purchased,
-  verb: TargetingFilterVerb.IsBefore,
+  subject: SegmentationFilterSubject.Date,
+  subjectQualifier: SegmentationFilterSubjectQualifier.Purchased,
+  verb: SegmentationFilterVerb.IsBefore,
   value: '2021-01-01T00:00:00.000Z',
 };
 
 export const newPaymentFilterForTests: PaymentFilter = {
   id: 'id_paymentFilter',
-  subject: TargetingFilterSubject.Payment,
-  verb: TargetingFilterVerb.IsMoreThan,
+  subject: SegmentationFilterSubject.Payment,
+  verb: SegmentationFilterVerb.IsMoreThan,
   value: 50,
 };
 
 export const newProductFilterForTests: ProductFilter = {
   id: 'id_productFilter',
-  subject: TargetingFilterSubject.Product,
-  verb: TargetingFilterVerb.HasBought,
-  verbQualifier: TargetingFilterVerbQualifier.Any,
+  subject: SegmentationFilterSubject.Product,
+  verb: SegmentationFilterVerb.HasBought,
+  verbQualifier: SegmentationFilterVerbQualifier.Any,
   value: ['New tutorial', 'Pro video course'],
 };
 
 export const newLocationFilterForTests: LocationFilter = {
   id: 'id_locationFilter',
-  subject: TargetingFilterSubject.Location,
-  verb: TargetingFilterVerb.Is,
+  subject: SegmentationFilterSubject.Location,
+  verb: SegmentationFilterVerb.Is,
   value: 'CR',
 };
 
@@ -117,7 +117,7 @@ export const newFilterGroupForTests2 = {
   ],
 };
 
-export const newTargetingForTests: Targeting = {
+export const newSegmentationForTests: Segmentation = {
   filterGroups: [
     newFilterGroupForTests1,
     {...newFilterGroupForTests2, operand: Operand.Or},

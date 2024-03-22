@@ -1,7 +1,7 @@
 import {emailMarketingInitialState} from '../../features/EmailMarketing/store/emailMarketingInitialState';
 import {EmailMarketingState} from '../../features/EmailMarketing/store/emailMarketingActionTypes';
 
-import defaultTargeting from '../../features/EmailMarketing/store/defaultTargeting.json';
+import defaultSegmentation from '../../features/EmailMarketing/store/defaultSegmentation.json';
 
 jest.mock('axios', () => ({
   post: () =>
@@ -13,7 +13,7 @@ jest.mock('axios', () => ({
               content: JSON.stringify({
                 result: 'success with errors',
                 payload: {
-                  defaultTargeting,
+                  defaultSegmentation,
                 },
                 errors: [
                   "Products 'motorcycle' and 'app' were not recognized. They've been excluded from your criteria.",

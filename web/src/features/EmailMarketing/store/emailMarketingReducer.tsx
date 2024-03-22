@@ -8,31 +8,31 @@ import {getDefaultFilterForSubject} from '../EmailCampaignBuilder/emailMarketing
 import {
   updateFilterValue,
   updateFilterVerb,
-} from '../EmailCampaignBuilder/targetingUtils';
+} from '../EmailCampaignBuilder/segmentationUtils';
 
 export const emailMarketingReducer = (
   state: EmailMarketingState,
   action: EmailMarketingAction,
 ): EmailMarketingState => {
   switch (action.type) {
-    case EmailMarketingActionType.SetTargeting:
-      return {...state, targeting: action.payload};
+    case EmailMarketingActionType.SetSegmentation:
+      return {...state, segmentation: action.payload};
       break;
     case EmailMarketingActionType.AddFilterGroup:
       return {
         ...state,
-        targeting: {
-          ...state.targeting,
-          filterGroups: [...state.targeting.filterGroups, action.payload],
+        segmentation: {
+          ...state.segmentation,
+          filterGroups: [...state.segmentation.filterGroups, action.payload],
         },
       };
       break;
     case EmailMarketingActionType.DeleteFilterGroup:
       return {
         ...state,
-        targeting: {
-          ...state.targeting,
-          filterGroups: state.targeting.filterGroups.filter(
+        segmentation: {
+          ...state.segmentation,
+          filterGroups: state.segmentation.filterGroups.filter(
             group => group.id !== action.payload,
           ),
         },
@@ -41,9 +41,9 @@ export const emailMarketingReducer = (
     case EmailMarketingActionType.SetFilterGroupOperand:
       return {
         ...state,
-        targeting: {
-          ...state.targeting,
-          filterGroups: state.targeting.filterGroups.map(group =>
+        segmentation: {
+          ...state.segmentation,
+          filterGroups: state.segmentation.filterGroups.map(group =>
             group.id === action.payload.filterGroupId
               ? {...group, operand: action.payload.operand}
               : group,
@@ -54,9 +54,9 @@ export const emailMarketingReducer = (
     case EmailMarketingActionType.AddFilter:
       return {
         ...state,
-        targeting: {
-          ...state.targeting,
-          filterGroups: state.targeting.filterGroups.map(group =>
+        segmentation: {
+          ...state.segmentation,
+          filterGroups: state.segmentation.filterGroups.map(group =>
             group.id === action.payload.filterGroupId
               ? {...group, filters: [...group.filters, action.payload.filter]}
               : group,
@@ -67,9 +67,9 @@ export const emailMarketingReducer = (
     case EmailMarketingActionType.DeleteFilter:
       return {
         ...state,
-        targeting: {
-          ...state.targeting,
-          filterGroups: state.targeting.filterGroups.map(group => ({
+        segmentation: {
+          ...state.segmentation,
+          filterGroups: state.segmentation.filterGroups.map(group => ({
             ...group,
             filters: group.filters.filter((filter, index) => {
               const isTargetFilter = filter.id === action.payload;
@@ -89,9 +89,9 @@ export const emailMarketingReducer = (
     case EmailMarketingActionType.SetFilterOperand:
       return {
         ...state,
-        targeting: {
-          ...state.targeting,
-          filterGroups: state.targeting.filterGroups.map(filterGroup => ({
+        segmentation: {
+          ...state.segmentation,
+          filterGroups: state.segmentation.filterGroups.map(filterGroup => ({
             ...filterGroup,
             filters: filterGroup.filters.map(filter =>
               filter.id === action.payload.filterId
@@ -105,9 +105,9 @@ export const emailMarketingReducer = (
     case EmailMarketingActionType.SetFilterSubject:
       return {
         ...state,
-        targeting: {
-          ...state.targeting,
-          filterGroups: state.targeting.filterGroups.map(filterGroup => ({
+        segmentation: {
+          ...state.segmentation,
+          filterGroups: state.segmentation.filterGroups.map(filterGroup => ({
             ...filterGroup,
             filters: filterGroup.filters.map(filter =>
               filter.id === action.payload.filterId
@@ -126,9 +126,9 @@ export const emailMarketingReducer = (
     case EmailMarketingActionType.SetFilterSubjectQualifier:
       return {
         ...state,
-        targeting: {
-          ...state.targeting,
-          filterGroups: state.targeting.filterGroups.map(filterGroup => ({
+        segmentation: {
+          ...state.segmentation,
+          filterGroups: state.segmentation.filterGroups.map(filterGroup => ({
             ...filterGroup,
             filters: filterGroup.filters.map(filter =>
               filter.id === action.payload.filterId
@@ -146,9 +146,9 @@ export const emailMarketingReducer = (
       {
         return {
           ...state,
-          targeting: {
-            ...state.targeting,
-            filterGroups: state.targeting.filterGroups.map(filterGroup => ({
+          segmentation: {
+            ...state.segmentation,
+            filterGroups: state.segmentation.filterGroups.map(filterGroup => ({
               ...filterGroup,
               filters: filterGroup.filters.map(filter =>
                 filter.id === action.payload.filterId
@@ -163,9 +163,9 @@ export const emailMarketingReducer = (
     case EmailMarketingActionType.SetFilterVerbQualifier:
       return {
         ...state,
-        targeting: {
-          ...state.targeting,
-          filterGroups: state.targeting.filterGroups.map(filterGroup => ({
+        segmentation: {
+          ...state.segmentation,
+          filterGroups: state.segmentation.filterGroups.map(filterGroup => ({
             ...filterGroup,
             filters: filterGroup.filters.map(filter =>
               filter.id === action.payload.filterId
@@ -180,9 +180,9 @@ export const emailMarketingReducer = (
       {
         return {
           ...state,
-          targeting: {
-            ...state.targeting,
-            filterGroups: state.targeting.filterGroups.map(filterGroup => ({
+          segmentation: {
+            ...state.segmentation,
+            filterGroups: state.segmentation.filterGroups.map(filterGroup => ({
               ...filterGroup,
               filters: filterGroup.filters.map(filter =>
                 filter.id === action.payload.filterId
