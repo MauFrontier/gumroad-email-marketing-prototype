@@ -46,6 +46,10 @@
       width: auto;
       min-width: $dimension-11;
     }
+
+    @media (max-width: 40rem) {
+      padding: $spacer-4;
+    }
   }
 
   [role='listbox'] {
