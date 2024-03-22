@@ -3,7 +3,7 @@ require 'openai'
 class SegmentationController < ActionController::API
   def generate
     client = OpenAI::Client.new
-    system_prompt = SegmentationService.system_prompt
+    system_prompt = SegmentationService.generate_system_prompt(params[:current_date], params[:user_timezone], params[:products])
 
     response = client.chat(
       parameters: {
