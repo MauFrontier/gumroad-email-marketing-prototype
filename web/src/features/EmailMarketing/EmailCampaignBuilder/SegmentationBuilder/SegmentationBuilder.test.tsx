@@ -1,19 +1,22 @@
 import {fireEvent, render, screen, within} from '@testing-library/react';
-import TargetingBuilder from './TargetingBuilder';
+import SegmentationBuilder from './SegmentationBuilder';
 import {renderComponentWithState} from '../../store/emailMarketingStoreUtils';
 import {emailMarketingInitialState} from '../../store/emailMarketingInitialState';
 import {EmailMarketingActionType} from '../../store/emailMarketingActionTypes';
 import {mockDispatch} from '../../../../utils/mocks/mocks';
 import {Operand} from '../emailMarketingTypes';
 
-describe('TargetingBuilder', () => {
+describe('SegmentationBuilder', () => {
   it('renders component', () => {
-    render(<TargetingBuilder />);
-    expect(screen.getByLabelText('Targeting builder')).toBeInTheDocument();
+    render(<SegmentationBuilder />);
+    expect(screen.getByLabelText('Segmentation builder')).toBeInTheDocument();
   });
 
   it('renders segmentation builder header, filter groups, and Add filter group button', () => {
-    renderComponentWithState(<TargetingBuilder />, emailMarketingInitialState);
+    renderComponentWithState(
+      <SegmentationBuilder />,
+      emailMarketingInitialState,
+    );
 
     expect(
       screen.getByLabelText('Segmentation builder header'),
@@ -26,14 +29,17 @@ describe('TargetingBuilder', () => {
   });
 
   it('displays every filter group', () => {
-    renderComponentWithState(<TargetingBuilder />, emailMarketingInitialState);
+    renderComponentWithState(
+      <SegmentationBuilder />,
+      emailMarketingInitialState,
+    );
     expect(screen.getAllByRole('group')).toHaveLength(
       emailMarketingInitialState.segmentation.filterGroups.length,
     );
   });
 
   it('disables AddFilterGroupButton and the filter groups while AI is loading', () => {
-    renderComponentWithState(<TargetingBuilder />, {
+    renderComponentWithState(<SegmentationBuilder />, {
       ...emailMarketingInitialState,
       isAILoading: true,
     });
@@ -46,7 +52,10 @@ describe('TargetingBuilder', () => {
   });
 
   it('does not disable AddFilterGroupButton and the filter groups while AI is not loading', () => {
-    renderComponentWithState(<TargetingBuilder />, emailMarketingInitialState);
+    renderComponentWithState(
+      <SegmentationBuilder />,
+      emailMarketingInitialState,
+    );
 
     expect(screen.getByLabelText('Add filter group button')).not.toBeDisabled();
 
@@ -56,7 +65,10 @@ describe('TargetingBuilder', () => {
   });
 
   it('adds a new filter group when AddFilterGroupButton is clicked', () => {
-    renderComponentWithState(<TargetingBuilder />, emailMarketingInitialState);
+    renderComponentWithState(
+      <SegmentationBuilder />,
+      emailMarketingInitialState,
+    );
 
     const button = screen.getByLabelText('Add filter group button');
     fireEvent.click(button);
@@ -72,7 +84,7 @@ describe('TargetingBuilder', () => {
   });
 
   it('displays the error warnings when any are present', () => {
-    renderComponentWithState(<TargetingBuilder />, {
+    renderComponentWithState(<SegmentationBuilder />, {
       ...emailMarketingInitialState,
       aiErrors: [
         {id: 'test-id-1', isVisible: true, error: 'test error 1'},
@@ -86,13 +98,16 @@ describe('TargetingBuilder', () => {
   });
 
   it('does not display the error warnings when none are present', () => {
-    renderComponentWithState(<TargetingBuilder />, emailMarketingInitialState);
+    renderComponentWithState(
+      <SegmentationBuilder />,
+      emailMarketingInitialState,
+    );
 
     expect(screen.queryByLabelText('AI error warning')).not.toBeInTheDocument();
   });
 
   it('displays the AI accuracy warning when it is visible', () => {
-    renderComponentWithState(<TargetingBuilder />, {
+    renderComponentWithState(<SegmentationBuilder />, {
       ...emailMarketingInitialState,
       showAIAccuracyWarning: true,
     });
@@ -101,7 +116,7 @@ describe('TargetingBuilder', () => {
   });
 
   it('does not display the AI accuracy warning when it is not visible', () => {
-    renderComponentWithState(<TargetingBuilder />, {
+    renderComponentWithState(<SegmentationBuilder />, {
       ...emailMarketingInitialState,
       showAIAccuracyWarning: false,
     });

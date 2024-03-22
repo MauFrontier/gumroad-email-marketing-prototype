@@ -1,4 +1,4 @@
-import './TargetingBuilder.scss';
+import './SegmentationBuilder.scss';
 import SegmentationFilterGroup from './components/SegmentationFilterGroup/SegmentationFilterGroup';
 import {useEmailMarketingState} from '../../store/useEmailMarketingState';
 import {defaultFilterGroup} from '../emailMarketingDefaults';
@@ -9,9 +9,9 @@ import AddFilterGroupButton from './components/AddFilterGroupButton/AddFilterGro
 import AIAccuracyWarning from './components/SegmentationBuilderHeader/components/AIAccuracyWarning/AIAccuracyWarning';
 import AIErrorWarnings from './components/SegmentationBuilderHeader/components/AIErrorWarnings/AIErrorWarnings';
 
-const TargetingBuilder = () => {
+const SegmentationBuilder = () => {
   const {state, dispatch} = useEmailMarketingState();
-  const {segmentation: targeting} = state;
+  const {segmentation} = state;
 
   const handleAddFilterGroup = () => {
     const newFilterGroup = {...defaultFilterGroup};
@@ -29,12 +29,12 @@ const TargetingBuilder = () => {
 
   return (
     <>
-      <section role="region" aria-label="Targeting builder">
+      <section role="region" aria-label="Segmentation builder">
         <SegmentationBuilderHeader />
         {aiErrors && aiErrors.some(error => error.isVisible) && (
           <AIErrorWarnings />
         )}
-        {targeting.filterGroups.map((filterGroup, index) => (
+        {segmentation.filterGroups.map((filterGroup, index) => (
           <div
             key={filterGroup.id}
             role="group"
@@ -56,4 +56,4 @@ const TargetingBuilder = () => {
   );
 };
 
-export default TargetingBuilder;
+export default SegmentationBuilder;

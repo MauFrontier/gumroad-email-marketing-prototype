@@ -21,9 +21,9 @@ describe('EmailCampaignBuilder', () => {
     expect(screen.getByLabelText('Audience selection')).toBeInTheDocument();
   });
 
-  it('renders targeting builder', () => {
+  it('renders segmentation builder', () => {
     render(<EmailCampaignBuilder />);
-    expect(screen.getByLabelText('Targeting builder')).toBeInTheDocument();
+    expect(screen.getByLabelText('Segmentation builder')).toBeInTheDocument();
   });
 
   it('renders internal tools container', () => {
