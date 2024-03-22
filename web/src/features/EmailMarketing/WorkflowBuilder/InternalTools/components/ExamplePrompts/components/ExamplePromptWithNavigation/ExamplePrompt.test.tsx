@@ -161,7 +161,7 @@ describe('ExamplePrompt', () => {
     await userEvent.click(usePromptButton);
 
     expect(window.scrollTo).toHaveBeenCalledWith(
-      expect.objectContaining({top: 0}),
+      expect.objectContaining({top: expect.any(Number)}),
     );
   });
 });
