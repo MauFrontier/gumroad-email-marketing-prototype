@@ -124,7 +124,7 @@ describe('CurrencyInput', () => {
     const input = screen.getByLabelText('Currency amount input');
     await userEvent.clear(input);
     await userEvent.type(input, '200');
-    await input.blur();
+    await userEvent.tab();
 
     expect(handleChange).toHaveBeenCalledWith(200);
   });
@@ -142,7 +142,7 @@ describe('CurrencyInput', () => {
     const input = screen.getByLabelText('Currency amount input');
     await userEvent.clear(input);
     await userEvent.type(input, '200.5.');
-    await input.blur();
+    await userEvent.tab();
 
     expect(handleChange).toHaveBeenCalledWith(200.5);
   });
@@ -160,7 +160,7 @@ describe('CurrencyInput', () => {
     const input = screen.getByLabelText('Currency amount input');
     await userEvent.clear(input);
     await userEvent.type(input, 'invalid');
-    await input.blur();
+    await userEvent.tab();
 
     expect(input).toHaveValue('100');
   });
