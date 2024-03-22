@@ -11,6 +11,7 @@ import {
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
   AudienceType,
+  Channels,
 } from '../WorkflowBuilder/emailMarketingTypes';
 
 export interface EmailMarketingState {
@@ -26,6 +27,8 @@ export interface EmailMarketingState {
   aiErrors: ErrorWarning[];
   latestAIPrompt: string;
   latestAIResponse: AIResponse | string;
+  channel: Channels;
+  allowComments: boolean;
 }
 
 export enum EmailMarketingActionType {
@@ -53,6 +56,8 @@ export enum EmailMarketingActionType {
   SetErrorVisibility = 'SetErrorVisibility',
   SetLatestAIPrompt = 'SetLatestAIPrompt',
   SetLatestAIResponse = 'SetLatestAIResponse',
+  SetChannel = 'SetChannel',
+  SetAllowComments = 'SetAllowComments',
 }
 
 export type EmailMarketingAction =
@@ -136,4 +141,6 @@ export type EmailMarketingAction =
   | {
       type: EmailMarketingActionType.SetLatestAIResponse;
       payload: AIResponse | string;
-    };
+    }
+  | {type: EmailMarketingActionType.SetChannel; payload: Channels}
+  | {type: EmailMarketingActionType.SetAllowComments; payload: boolean};

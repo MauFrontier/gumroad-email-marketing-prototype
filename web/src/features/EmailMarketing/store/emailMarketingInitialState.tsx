@@ -1,4 +1,8 @@
-import {Targeting, AudienceType} from '../WorkflowBuilder/emailMarketingTypes';
+import {
+  Targeting,
+  AudienceType,
+  Channels,
+} from '../WorkflowBuilder/emailMarketingTypes';
 import {EmailMarketingState} from './emailMarketingActionTypes';
 import defaultData_targeting from './defaultTargeting.json';
 import productsFromServer from '../api/productsFromServer';
@@ -16,4 +20,6 @@ export const emailMarketingInitialState: EmailMarketingState = {
   aiErrors: [],
   latestAIPrompt: '',
   latestAIResponse: '',
+  channel: Channels.EmailAndProfile,
+  allowComments: true,
 };

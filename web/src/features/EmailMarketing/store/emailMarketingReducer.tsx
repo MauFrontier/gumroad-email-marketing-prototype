@@ -265,7 +265,16 @@ export const emailMarketingReducer = (
         ...state,
         products: action.payload,
       };
-
+    case EmailMarketingActionType.SetChannel:
+      return {
+        ...state,
+        channel: action.payload,
+      };
+    case EmailMarketingActionType.SetAllowComments:
+      return {
+        ...state,
+        allowComments: action.payload,
+      };
     default:
       return state;
       break;

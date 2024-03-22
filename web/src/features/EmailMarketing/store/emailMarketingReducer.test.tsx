@@ -5,6 +5,7 @@ import {
   TargetingFilterVerb,
   TargetingFilterVerbQualifier,
   AudienceType,
+  Channels,
 } from '../WorkflowBuilder/emailMarketingTypes';
 import {emailMarketingReducer} from './emailMarketingReducer';
 import {
@@ -448,5 +449,32 @@ describe('emailMarketingReducer', () => {
 
     const state = emailMarketingReducer(initialState, action);
     expect(state.latestAIResponse).toBe(response);
+  });
+
+  it('handles SetChannel action', () => {
+    const initialChannel = initialState.channel;
+    expect(initialChannel).toBe(Channels.EmailAndProfile);
+
+    const newChannel = Channels.Email;
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetChannel,
+      payload: newChannel,
+    };
+    const state = emailMarketingReducer(initialState, action);
+
+    expect(state.channel).toBe(newChannel);
+  });
+
+  it('handles SetAllowComments action', () => {
+    const initialAllowComments = initialState.allowComments;
+    expect(initialAllowComments).toBe(true);
+
+    const action: EmailMarketingAction = {
+      type: EmailMarketingActionType.SetAllowComments,
+      payload: false,
+    };
+
+    const state = emailMarketingReducer(initialState, action);
+    expect(state.allowComments).toBe(false);
   });
 });
