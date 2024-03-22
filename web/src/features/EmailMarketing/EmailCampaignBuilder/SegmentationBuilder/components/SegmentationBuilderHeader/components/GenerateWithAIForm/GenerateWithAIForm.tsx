@@ -160,10 +160,9 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
       <div role="dialog">
         <fieldset>
           <legend className="visually-hidden">
-            Describe your targeting to generate with AI
+            Describe your segmentation to generate with AI
           </legend>
           <textarea
-            id="targeting-prompt"
             value={prompt}
             ref={textareaRef}
             aria-label="Prompt to generate with AI"
@@ -171,7 +170,7 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
             onKeyDown={handleKeyDown}
             className={shouldHighlightPromptError ? 'error' : ''}
             disabled={isAILoading}
-            placeholder="Describe the targeting in your own words..."></textarea>
+            placeholder="Describe the segmentation in your own words..."></textarea>
           <Button
             onClick={handleSendPrompt}
             label="Generate with AI button"

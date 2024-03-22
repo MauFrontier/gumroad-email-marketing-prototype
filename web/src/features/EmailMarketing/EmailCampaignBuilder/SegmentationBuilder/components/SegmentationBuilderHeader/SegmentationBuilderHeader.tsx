@@ -13,12 +13,12 @@ const SegmentationBuilderHeader = () => {
   const {showGenerateWithAIPanel} = state;
 
   const generateFakeRecipientCount = (
-    targeting: Segmentation,
+    segmentation: Segmentation,
     totalSubscribers: number,
   ) => {
     let currentCount = totalSubscribers;
 
-    targeting.filterGroups.forEach(filterGroup => {
+    segmentation.filterGroups.forEach(filterGroup => {
       for (let i = 0; i < filterGroup.filters.length; i++) {
         currentCount = currentCount - Math.floor(currentCount / 4);
       }

@@ -28,11 +28,11 @@ const ProductEditor = () => {
     setCustomProducts(event.target.value);
   };
 
-  const removeTargetingProductsThatAreNotInProductsList = (
+  const removeSegmentationProductsThatAreNotInProductsList = (
     updatedProducts: KeyValuePair[],
   ) => {
-    const updatedTargeting = {...state.segmentation};
-    updatedTargeting.filterGroups.forEach(filterGroup => {
+    const updatedSegmentation = {...state.segmentation};
+    updatedSegmentation.filterGroups.forEach(filterGroup => {
       filterGroup.filters.forEach(filter => {
         if (filter.subject === 'Product') {
           const oldSelectedProducts: string[] = filter.value;
@@ -48,7 +48,7 @@ const ProductEditor = () => {
 
     dispatch({
       type: EmailMarketingActionType.SetSegmentation,
-      payload: updatedTargeting,
+      payload: updatedSegmentation,
     });
   };
 
@@ -60,7 +60,7 @@ const ProductEditor = () => {
 
     setCustomProducts(JSON.stringify(productsFromServer, null, 2));
 
-    removeTargetingProductsThatAreNotInProductsList(productsFromServer);
+    removeSegmentationProductsThatAreNotInProductsList(productsFromServer);
   };
 
   const signalSuccess = () => {
@@ -87,7 +87,7 @@ const ProductEditor = () => {
         payload: parsedProducts,
       });
 
-      removeTargetingProductsThatAreNotInProductsList(parsedProducts);
+      removeSegmentationProductsThatAreNotInProductsList(parsedProducts);
 
       signalSuccess();
     } catch (error) {

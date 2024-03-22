@@ -214,7 +214,7 @@ describe('GenerateWithAIForm', () => {
     });
   });
 
-  it('should set targeting state when api returns success or success with errors', async () => {
+  it('should set segmentation state when api returns success or success with errors', async () => {
     renderComponentWithState(<GenerateWithAIForm visible={true} />, {
       ...emailMarketingInitialState,
       prompt: 'test prompt',
