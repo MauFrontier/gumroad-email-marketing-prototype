@@ -1,17 +1,17 @@
 import {render, screen, within} from '@testing-library/react';
-import TargetingFilterVerbQualifier from './TargetingFilterVerbQualifier';
+import SegmentationFilterVerbQualifier from './SegmentationFilterVerbQualifier';
 import {
-  SegmentationFilterSubject as TargetingFilterSubjectEnum,
-  SegmentationFilterVerbQualifier as TargetingFilterVerbQualifierEnum,
+  SegmentationFilterSubject as SegmentationFilterSubjectEnum,
+  SegmentationFilterVerbQualifier as SegmentationFilterVerbQualifierEnum,
 } from '../../../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 
-describe('TargetingFilterVerbQualifier', () => {
+describe('SegmentationFilterVerbQualifier', () => {
   it('renders component', () => {
     render(
-      <TargetingFilterVerbQualifier
-        subject={TargetingFilterSubjectEnum.Product}
-        value={TargetingFilterVerbQualifierEnum.Any}
+      <SegmentationFilterVerbQualifier
+        subject={SegmentationFilterSubjectEnum.Product}
+        value={SegmentationFilterVerbQualifierEnum.Any}
         onChange={jest.fn()}
       />,
     );
@@ -20,9 +20,9 @@ describe('TargetingFilterVerbQualifier', () => {
 
   it("Won't display if it's not product", () => {
     render(
-      <TargetingFilterVerbQualifier
-        subject={TargetingFilterSubjectEnum.Date}
-        value={TargetingFilterVerbQualifierEnum.Any}
+      <SegmentationFilterVerbQualifier
+        subject={SegmentationFilterSubjectEnum.Date}
+        value={SegmentationFilterVerbQualifierEnum.Any}
         onChange={jest.fn()}
       />,
     );
@@ -34,81 +34,85 @@ describe('TargetingFilterVerbQualifier', () => {
 
   it("show options all and any when it's product.", () => {
     render(
-      <TargetingFilterVerbQualifier
-        subject={TargetingFilterSubjectEnum.Product}
-        value={TargetingFilterVerbQualifierEnum.Any}
+      <SegmentationFilterVerbQualifier
+        subject={SegmentationFilterSubjectEnum.Product}
+        value={SegmentationFilterVerbQualifierEnum.Any}
         onChange={jest.fn()}
       />,
     );
 
     const selectElement = screen.getByLabelText('Filter verb qualifier');
     const anyOption = selectElement.querySelector(
-      `option[value="${TargetingFilterVerbQualifierEnum.Any}"]`,
+      `option[value="${SegmentationFilterVerbQualifierEnum.Any}"]`,
     );
     expect(anyOption).toBeInTheDocument();
     expect(
-      screen.getByText(TargetingFilterVerbQualifierEnum.All),
+      screen.getByText(SegmentationFilterVerbQualifierEnum.All),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(TargetingFilterVerbQualifierEnum.Any),
+      screen.getByText(SegmentationFilterVerbQualifierEnum.Any),
     ).toBeInTheDocument();
   });
 
   it('selects the passed value', async () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterVerbQualifier
-        subject={TargetingFilterSubjectEnum.Product}
-        value={TargetingFilterVerbQualifierEnum.Any}
+      <SegmentationFilterVerbQualifier
+        subject={SegmentationFilterSubjectEnum.Product}
+        value={SegmentationFilterVerbQualifierEnum.Any}
         onChange={onChange}
       />,
     );
 
     const verbQualifier = screen.getByLabelText('Filter verb qualifier');
     const selectElement = within(verbQualifier).getByRole('combobox');
-    const option = screen.getByText(TargetingFilterVerbQualifierEnum.All);
+    const option = screen.getByText(SegmentationFilterVerbQualifierEnum.All);
 
     await userEvent.selectOptions(selectElement, option);
 
-    expect(onChange).toHaveBeenCalledWith(TargetingFilterVerbQualifierEnum.All);
+    expect(onChange).toHaveBeenCalledWith(
+      SegmentationFilterVerbQualifierEnum.All,
+    );
   });
 
   it('calls onChange with new value when selection changes', async () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterVerbQualifier
-        subject={TargetingFilterSubjectEnum.Product}
-        value={TargetingFilterVerbQualifierEnum.Any}
+      <SegmentationFilterVerbQualifier
+        subject={SegmentationFilterSubjectEnum.Product}
+        value={SegmentationFilterVerbQualifierEnum.Any}
         onChange={onChange}
       />,
     );
 
     const verbQualifier = screen.getByLabelText('Filter verb qualifier');
     const selectElement = within(verbQualifier).getByRole('combobox');
-    const option = screen.getByText(TargetingFilterVerbQualifierEnum.All);
+    const option = screen.getByText(SegmentationFilterVerbQualifierEnum.All);
 
     await userEvent.selectOptions(selectElement, option);
 
-    expect(onChange).toHaveBeenCalledWith(TargetingFilterVerbQualifierEnum.All);
+    expect(onChange).toHaveBeenCalledWith(
+      SegmentationFilterVerbQualifierEnum.All,
+    );
   });
 
   it('uses Any if value is not provided', () => {
     render(
-      <TargetingFilterVerbQualifier
-        subject={TargetingFilterSubjectEnum.Product}
+      <SegmentationFilterVerbQualifier
+        subject={SegmentationFilterSubjectEnum.Product}
         onChange={jest.fn()}
       />,
     );
 
-    const option = screen.getByText(TargetingFilterVerbQualifierEnum.Any);
+    const option = screen.getByText(SegmentationFilterVerbQualifierEnum.Any);
 
     expect(option).toBeInTheDocument();
   });
 
   it('disables the select if the disabled prop is true', () => {
     render(
-      <TargetingFilterVerbQualifier
-        subject={TargetingFilterSubjectEnum.Product}
+      <SegmentationFilterVerbQualifier
+        subject={SegmentationFilterSubjectEnum.Product}
         disabled
         onChange={jest.fn()}
       />,
@@ -121,8 +125,8 @@ describe('TargetingFilterVerbQualifier', () => {
 
   it('does not disable the select by default if the disabled prop is not present', () => {
     render(
-      <TargetingFilterVerbQualifier
-        subject={TargetingFilterSubjectEnum.Product}
+      <SegmentationFilterVerbQualifier
+        subject={SegmentationFilterSubjectEnum.Product}
         onChange={jest.fn()}
       />,
     );

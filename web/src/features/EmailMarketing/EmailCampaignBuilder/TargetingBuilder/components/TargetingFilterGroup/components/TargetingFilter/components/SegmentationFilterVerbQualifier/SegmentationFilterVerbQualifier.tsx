@@ -1,19 +1,19 @@
 import {
-  SegmentationFilterSubject as TargetingFilterSubjectEnum,
+  SegmentationFilterSubject as SegmentationFilterSubjectEnum,
   SegmentationFilterVerbQualifier as VerbQualifierEnum,
 } from '../../../../../../../emailMarketingTypes';
 import {getVerbQualifierOptions} from '../../../../../../../segmentationUtils';
-import './TargetingFilterVerbQualifier.scss';
+import './SegmentationFilterVerbQualifier.scss';
 import Select from '../../../../../../../../../shared/ui/components/Select/Select';
 
 interface Props {
-  subject: TargetingFilterSubjectEnum;
+  subject: SegmentationFilterSubjectEnum;
   value?: VerbQualifierEnum;
   onChange?: (value: VerbQualifierEnum) => void;
   disabled?: boolean;
 }
 
-const TargetingFilterVerbQualifier = ({
+const SegmentationFilterVerbQualifier = ({
   subject,
   value,
   onChange,
@@ -43,4 +43,4 @@ const TargetingFilterVerbQualifier = ({
   );
 };
 
-export default TargetingFilterVerbQualifier;
+export default SegmentationFilterVerbQualifier;

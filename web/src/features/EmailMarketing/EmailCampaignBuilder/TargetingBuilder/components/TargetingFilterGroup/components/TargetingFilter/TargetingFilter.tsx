@@ -13,7 +13,7 @@ import SegmentationFilterSubject from './components/SegmentationFilterSubject/Se
 import SegmentationFilterSubjectQualifier from './components/SegmentationFilterSubjectQualifier/SegmentationFilterSubjectQualifier';
 import './TargetingFilter.scss';
 import SegmentationFilterVerb from './components/SegmentationFilterVerb/SegmentationFilterVerb';
-import TargetingFilterVerbQualifier from './components/TargetingFilterVerbQualifier/TargetingFilterVerbQualifier';
+import SegmentationFilterVerbQualifier from './components/SegmentationFilterVerbQualifier/SegmentationFilterVerbQualifier';
 import DeleteFilterButton from './components/DeleteFilterButton/DeleteFilterButton';
 import SegmentationFilterValue from './components/SegmentationFilterValue/SegmentationFilterValue';
 import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
@@ -146,7 +146,7 @@ const TargetingFilter = ({
             disabled={disabled}
           />
           {'verbQualifier' in targetingFilter && (
-            <TargetingFilterVerbQualifier
+            <SegmentationFilterVerbQualifier
               subject={targetingFilter.subject}
               onChange={handleVerbQualifierChange}
               value={targetingFilter.verbQualifier}
