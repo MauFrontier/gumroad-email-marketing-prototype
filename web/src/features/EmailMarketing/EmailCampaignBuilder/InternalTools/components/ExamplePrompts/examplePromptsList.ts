@@ -110,6 +110,12 @@ const examplePrompts: ExamplePrompt[] = [
       'How do we handle relative dates in weeks or months? (In the last X days)',
     prompt: 'Joined in the last 3 weeks, or bought in the last 3 months',
   },
+  {
+    description:
+      'Yet another complex prompt resulting in multiple filter groups (can take a while to process)',
+    prompt:
+      'People in the US who have purchased more than $100 and joined in 2023, or people in Canada who have spent more than $20 and joined in 2024.',
+  },
 ];
 
 export default examplePrompts;
