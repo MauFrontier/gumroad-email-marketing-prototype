@@ -67,4 +67,34 @@ describe('NumberInputWithLabel', () => {
 
     expect(screen.getByLabelText('Number input')).not.toBeDisabled();
   });
+
+  it("Won't call onChange when input is invalid", async () => {
+    const onChange = jest.fn();
+    render(
+      <NumberInputWithLabel
+        label="Number input"
+        value={10}
+        onChange={onChange}
+      />,
+    );
+
+    await userEvent.type(screen.getByLabelText('Number input'), 'a');
+    expect(onChange).not.toHaveBeenCalled();
+    expect(screen.getByDisplayValue('10')).toBeInTheDocument();
+  });
+
+  it('won\t call onChange when input is negative and allowNegative is false', async () => {
+    const onChange = jest.fn();
+    render(
+      <NumberInputWithLabel
+        label="Number input"
+        value={10}
+        onChange={onChange}
+      />,
+    );
+
+    await userEvent.type(screen.getByLabelText('Number input'), '-');
+    expect(onChange).not.toHaveBeenCalled();
+    expect(screen.getByDisplayValue('10')).toBeInTheDocument();
+  });
 });

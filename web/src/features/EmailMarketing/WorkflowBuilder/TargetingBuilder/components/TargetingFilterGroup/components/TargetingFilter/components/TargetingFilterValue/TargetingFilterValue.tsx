@@ -62,6 +62,7 @@ const TargetingFilterValue = ({
             }
             onChange={handleOnChange}
             disabled={disabled}
+            allowNegative={false}
             label="days"
           />
         ) : (
