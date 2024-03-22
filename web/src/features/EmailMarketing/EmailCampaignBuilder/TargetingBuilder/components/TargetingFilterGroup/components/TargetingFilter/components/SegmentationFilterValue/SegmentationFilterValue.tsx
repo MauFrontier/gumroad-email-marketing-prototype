@@ -1,9 +1,9 @@
 import {
-  SegmentationFilterSubject as TargetingFilterSubjectEnum,
-  SegmentationFilterVerb as TargetingFilterVerbEnum,
+  SegmentationFilterSubject as SegmentationFilterSubjectEnum,
+  SegmentationFilterVerb as SegmentationFilterVerbEnum,
   SegmentationFilterValueType,
 } from '../../../../../../../emailMarketingTypes';
-import './TargetingFilterValue.scss';
+import './SegmentationFilterValue.scss';
 import DateInput from '../../../../../../../../../shared/ui/components/DateInput/DateInput';
 import ComboBox from '../../../../../../../../../shared/ui/components/ComboBox/ComboBox';
 import {formatDateForDisplay} from '../../../../../../../../../../utils/formats/formatUtils';
@@ -14,14 +14,14 @@ import {getCountriesArray} from '../../../../../../../../../../utils/formats/cou
 import {useEmailMarketingState} from '../../../../../../../../store/useEmailMarketingState';
 
 interface Props {
-  subject: TargetingFilterSubjectEnum;
-  verb: TargetingFilterVerbEnum;
+  subject: SegmentationFilterSubjectEnum;
+  verb: SegmentationFilterVerbEnum;
   value: SegmentationFilterValueType;
   onChange: (value: SegmentationFilterValueType) => void;
   disabled?: boolean;
 }
 
-const TargetingFilterValue = ({
+const SegmentationFilterValue = ({
   subject,
   verb,
   value,
@@ -31,14 +31,14 @@ const TargetingFilterValue = ({
   const {state} = useEmailMarketingState();
 
   const options =
-    subject === TargetingFilterSubjectEnum.Location
+    subject === SegmentationFilterSubjectEnum.Location
       ? getCountriesArray()
-      : subject === TargetingFilterSubjectEnum.Product
+      : subject === SegmentationFilterSubjectEnum.Product
         ? state.products
         : null;
 
   const stringValue = value !== undefined ? value.toString() : '';
-  const shouldExpand = subject === TargetingFilterSubjectEnum.Product;
+  const shouldExpand = subject === SegmentationFilterSubjectEnum.Product;
 
   const handleOnChange = (newValue: SegmentationFilterValueType) => {
     if (onChange) {
@@ -50,8 +50,8 @@ const TargetingFilterValue = ({
     <div
       aria-label="Filter value"
       className={`${shouldExpand ? 'expanded' : ''}`}>
-      {subject === TargetingFilterSubjectEnum.Date ? (
-        verb === TargetingFilterVerbEnum.IsInTheLast ? (
+      {subject === SegmentationFilterSubjectEnum.Date ? (
+        verb === SegmentationFilterVerbEnum.IsInTheLast ? (
           <NumberInputWithLabel
             value={
               typeof value === 'number'
@@ -72,14 +72,14 @@ const TargetingFilterValue = ({
             disabled={disabled}
           />
         )
-      ) : subject === TargetingFilterSubjectEnum.Location ? (
+      ) : subject === SegmentationFilterSubjectEnum.Location ? (
         <Select
           value={stringValue}
           onChange={handleOnChange}
           options={options ?? []}
           disabled={disabled}
         />
-      ) : subject === TargetingFilterSubjectEnum.Product ? (
+      ) : subject === SegmentationFilterSubjectEnum.Product ? (
         <ComboBox
           selectedValues={value as string[]}
           onValuesChange={handleOnChange}
@@ -87,7 +87,7 @@ const TargetingFilterValue = ({
           suggestions={options ?? []}
           disabled={disabled}
         />
-      ) : subject === TargetingFilterSubjectEnum.Payment ? (
+      ) : subject === SegmentationFilterSubjectEnum.Payment ? (
         <CurrencyInput
           value={typeof value === 'number' ? value : parseFloat(stringValue)}
           onChange={newValue => handleOnChange(newValue as number)}
@@ -98,4 +98,4 @@ const TargetingFilterValue = ({
   );
 };
 
-export default TargetingFilterValue;
+export default SegmentationFilterValue;

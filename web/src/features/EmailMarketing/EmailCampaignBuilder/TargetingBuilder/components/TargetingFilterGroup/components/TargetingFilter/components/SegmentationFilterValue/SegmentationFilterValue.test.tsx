@@ -1,17 +1,17 @@
 import {fireEvent, render, screen, within} from '@testing-library/react';
-import TargetingFilterValue from './TargetingFilterValue';
+import SegmentationFilterValue from './SegmentationFilterValue';
 import {
-  SegmentationFilterSubject as TargetingFilterSubjectEnum,
+  SegmentationFilterSubject as SegmentationFilterSubjectEnum,
   SegmentationFilterVerb,
 } from '../../../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 import productsFromServer from '../../../../../../../../api/productsFromServer';
 
-describe('TargetingFilterValue', () => {
+describe('SegmentationFilterValue', () => {
   it('renders component', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsBefore}
         value={'2021-01-01T00:00:00.000Z'}
         onChange={jest.fn()}
@@ -22,8 +22,8 @@ describe('TargetingFilterValue', () => {
 
   it('shows a currency input field when the subject is Payment', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Payment}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Payment}
         verb={SegmentationFilterVerb.IsMoreThan}
         value={300}
         onChange={jest.fn()}
@@ -35,8 +35,8 @@ describe('TargetingFilterValue', () => {
 
   it('shows a date input field when the subject is Date and the verb is IsBefore, IsAfter, Is, and IsNot', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsBefore}
         value={'2021-01-01T00:00:00.000Z'}
         onChange={jest.fn()}
@@ -51,8 +51,8 @@ describe('TargetingFilterValue', () => {
 
   it('shows a text input field when the subject is Date and the verb is IsInTheLast', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsInTheLast}
         value={30}
         onChange={jest.fn()}
@@ -68,8 +68,8 @@ describe('TargetingFilterValue', () => {
 
   it('shows a select field when the subject is Location', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Location}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Location}
         verb={SegmentationFilterVerb.Is}
         value={'CR'}
         onChange={jest.fn()}
@@ -84,8 +84,8 @@ describe('TargetingFilterValue', () => {
 
   it('shows a ComboBox field when the subject is Product', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Product}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Product}
         verb={SegmentationFilterVerb.HasBought}
         value={[]}
         onChange={jest.fn()}
@@ -97,8 +97,8 @@ describe('TargetingFilterValue', () => {
   it('calls onChange with new value when the subject is Payment', async () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Payment}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Payment}
         verb={SegmentationFilterVerb.IsMoreThan}
         value={300}
         onChange={onChange}
@@ -114,8 +114,8 @@ describe('TargetingFilterValue', () => {
   it('calls onChange with new value when the subject is Date and the verb is IsBefore, IsAfter, Is, and IsNot', async () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsBefore}
         value={'2021-01-01T00:00:00.000Z'}
         onChange={onChange}
@@ -136,8 +136,8 @@ describe('TargetingFilterValue', () => {
   it('calls onChange with new value when the subject is Date and the verb is IsInTheLast', async () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsInTheLast}
         value={30}
         onChange={onChange}
@@ -158,8 +158,8 @@ describe('TargetingFilterValue', () => {
   it('calls onChange with new value when the subject is Location', async () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Location}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Location}
         verb={SegmentationFilterVerb.Is}
         value={'CR'}
         onChange={onChange}
@@ -176,8 +176,8 @@ describe('TargetingFilterValue', () => {
   it('calls onChange with new value when the subject is Product', async () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Product}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Product}
         verb={SegmentationFilterVerb.HasBought}
         value={[]}
         onChange={onChange}
@@ -196,8 +196,8 @@ describe('TargetingFilterValue', () => {
 
   it('uses the passed value when the subject is Payment', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Payment}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Payment}
         verb={SegmentationFilterVerb.IsMoreThan}
         value={300}
         onChange={jest.fn()}
@@ -213,8 +213,8 @@ describe('TargetingFilterValue', () => {
 
   it('uses the passed value when the subject is Date and the verb is IsBefore, IsAfter, Is, or IsNot', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsBefore}
         value={'2021-02-03T00:00:00.000Z'}
         onChange={jest.fn()}
@@ -230,8 +230,8 @@ describe('TargetingFilterValue', () => {
 
   it('uses the passed value when the subject is Date and the verb is IsInTheLast', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsInTheLast}
         value={30}
         onChange={jest.fn()}
@@ -247,8 +247,8 @@ describe('TargetingFilterValue', () => {
 
   it('uses the passed value when the subject is Location', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Location}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Location}
         verb={SegmentationFilterVerb.Is}
         value={'CR'}
         onChange={jest.fn()}
@@ -263,8 +263,8 @@ describe('TargetingFilterValue', () => {
 
   it('uses the passed value when the subject is Product', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Product}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Product}
         verb={SegmentationFilterVerb.HasBought}
         value={[productsFromServer[0].value]}
         onChange={jest.fn()}
@@ -277,8 +277,8 @@ describe('TargetingFilterValue', () => {
 
   it('formats date for display in the date field', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsBefore}
         value={'2021-01-01T00:00:00.000Z'}
         onChange={jest.fn()}
@@ -294,8 +294,8 @@ describe('TargetingFilterValue', () => {
 
   it('shows Location options when the subject is Location', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Location}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Location}
         verb={SegmentationFilterVerb.Is}
         value={'CR'}
         onChange={jest.fn()}
@@ -310,8 +310,8 @@ describe('TargetingFilterValue', () => {
 
   it('shows Product options when the subject is Product', async () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Product}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Product}
         verb={SegmentationFilterVerb.HasBought}
         value={[]}
         onChange={jest.fn()}
@@ -332,8 +332,8 @@ describe('TargetingFilterValue', () => {
 
   it('disables the input when the subject is Payment and the disabled prop is included', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Payment}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Payment}
         verb={SegmentationFilterVerb.IsMoreThan}
         value={300}
         disabled={true}
@@ -350,8 +350,8 @@ describe('TargetingFilterValue', () => {
 
   it('is not disabled by default when the subject is Payment and the disabled prop is not included', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Payment}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Payment}
         verb={SegmentationFilterVerb.IsMoreThan}
         value={300}
         onChange={jest.fn()}
@@ -367,8 +367,8 @@ describe('TargetingFilterValue', () => {
 
   it('disables the input when the subject is Date and the verb is IsBefore, IsAfter, Is, or IsNot and the disabled prop is included', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsBefore}
         value={'2021-02-03T00:00:00.000Z'}
         disabled={true}
@@ -385,8 +385,8 @@ describe('TargetingFilterValue', () => {
 
   it('is not disabled by default when the subject is Date and the verb is IsBefore, IsAfter, Is, or IsNot and the disabled prop is not included', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsBefore}
         value={'2021-02-03T00:00:00.000Z'}
         onChange={jest.fn()}
@@ -402,8 +402,8 @@ describe('TargetingFilterValue', () => {
 
   it('disables the input when the subject is Date and the verb is IsInTheLast and the disabled prop is included', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsInTheLast}
         value={30}
         disabled={true}
@@ -420,8 +420,8 @@ describe('TargetingFilterValue', () => {
 
   it('is not disabled by default when the subject is Date and the verb is IsInTheLast and the disabled prop is not included', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Date}
         verb={SegmentationFilterVerb.IsInTheLast}
         value={30}
         onChange={jest.fn()}
@@ -437,8 +437,8 @@ describe('TargetingFilterValue', () => {
 
   it('disables the input when the subject is Location and the disabled prop is included', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Location}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Location}
         verb={SegmentationFilterVerb.Is}
         value={'CR'}
         disabled={true}
@@ -453,8 +453,8 @@ describe('TargetingFilterValue', () => {
 
   it('is not disabled by default when the subject is Location and the disabled prop is not included', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Location}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Location}
         verb={SegmentationFilterVerb.Is}
         value={'CR'}
         onChange={jest.fn()}
@@ -468,8 +468,8 @@ describe('TargetingFilterValue', () => {
 
   it('disables the input when the subject is Product and the disabled prop is included', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Product}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Product}
         verb={SegmentationFilterVerb.HasBought}
         value={[]}
         disabled={true}
@@ -484,8 +484,8 @@ describe('TargetingFilterValue', () => {
 
   it('is not disabled by default when the subject is Product and the disabled prop is not included', () => {
     render(
-      <TargetingFilterValue
-        subject={TargetingFilterSubjectEnum.Product}
+      <SegmentationFilterValue
+        subject={SegmentationFilterSubjectEnum.Product}
         verb={SegmentationFilterVerb.HasBought}
         value={[]}
         onChange={jest.fn()}

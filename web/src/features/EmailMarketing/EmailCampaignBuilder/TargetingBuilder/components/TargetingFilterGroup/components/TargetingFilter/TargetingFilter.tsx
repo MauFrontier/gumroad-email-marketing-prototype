@@ -15,7 +15,7 @@ import './TargetingFilter.scss';
 import TargetingFilterVerb from './components/TargetingFilterVerb/TargetingFilterVerb';
 import TargetingFilterVerbQualifier from './components/TargetingFilterVerbQualifier/TargetingFilterVerbQualifier';
 import DeleteFilterButton from './components/DeleteFilterButton/DeleteFilterButton';
-import TargetingFilterValue from './components/TargetingFilterValue/TargetingFilterValue';
+import SegmentationFilterValue from './components/SegmentationFilterValue/SegmentationFilterValue';
 import {useEmailMarketingState} from '../../../../../../store/useEmailMarketingState';
 import {EmailMarketingActionType} from '../../../../../../store/emailMarketingActionTypes';
 import {getDefaultValueForVerb} from '../../../../../emailMarketingDefaults';
@@ -153,7 +153,7 @@ const TargetingFilter = ({
               disabled={disabled}
             />
           )}
-          <TargetingFilterValue
+          <SegmentationFilterValue
             subject={targetingFilter.subject}
             verb={targetingFilter.verb}
             value={targetingFilter.value}
