@@ -1,13 +1,13 @@
 import {render, screen, within} from '@testing-library/react';
-import TargetingFilterSubject from './TargetingFilterSubject';
-import {SegmentationFilterSubject as TargetingFilterSubjectEnum} from '../../../../../../../emailMarketingTypes';
+import SegmentationFilterSubject from './SegmentationFilterSubject';
+import {SegmentationFilterSubject as SegmentationFilterSubjectEnum} from '../../../../../../../emailMarketingTypes';
 import userEvent from '@testing-library/user-event';
 
-describe('TargetingFilterSubject', () => {
+describe('SegmentationFilterSubject', () => {
   it('renders component', () => {
     render(
-      <TargetingFilterSubject
-        value={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterSubject
+        value={SegmentationFilterSubjectEnum.Date}
         onChange={jest.fn()}
       />,
     );
@@ -16,8 +16,8 @@ describe('TargetingFilterSubject', () => {
 
   it('shows subject options', () => {
     render(
-      <TargetingFilterSubject
-        value={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterSubject
+        value={SegmentationFilterSubjectEnum.Date}
         onChange={jest.fn()}
       />,
     );
@@ -30,41 +30,43 @@ describe('TargetingFilterSubject', () => {
   it('selects the passed value', async () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterSubject
-        value={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterSubject
+        value={SegmentationFilterSubjectEnum.Date}
         onChange={onChange}
       />,
     );
     const subject = screen.getByLabelText('Filter subject');
     const selectElement = within(subject).getByRole('combobox');
-    const option = screen.getByText(TargetingFilterSubjectEnum.Date);
+    const option = screen.getByText(SegmentationFilterSubjectEnum.Date);
 
     await userEvent.selectOptions(selectElement, option);
 
-    expect(onChange).toHaveBeenCalledWith(TargetingFilterSubjectEnum.Date);
+    expect(onChange).toHaveBeenCalledWith(SegmentationFilterSubjectEnum.Date);
   });
 
   it('calls onChange with new value when selection changes', async () => {
     const onChange = jest.fn();
     render(
-      <TargetingFilterSubject
-        value={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterSubject
+        value={SegmentationFilterSubjectEnum.Date}
         onChange={onChange}
       />,
     );
     const subject = screen.getByLabelText('Filter subject');
     const selectElement = within(subject).getByRole('combobox');
-    const option = screen.getByText(TargetingFilterSubjectEnum.Payment);
+    const option = screen.getByText(SegmentationFilterSubjectEnum.Payment);
 
     await userEvent.selectOptions(selectElement, option);
 
-    expect(onChange).toHaveBeenCalledWith(TargetingFilterSubjectEnum.Payment);
+    expect(onChange).toHaveBeenCalledWith(
+      SegmentationFilterSubjectEnum.Payment,
+    );
   });
 
   it('disables Select component when disabled prop is true', () => {
     render(
-      <TargetingFilterSubject
-        value={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterSubject
+        value={SegmentationFilterSubjectEnum.Date}
         onChange={jest.fn()}
         disabled={true}
       />,
@@ -77,8 +79,8 @@ describe('TargetingFilterSubject', () => {
 
   it('is not disabled by default', () => {
     render(
-      <TargetingFilterSubject
-        value={TargetingFilterSubjectEnum.Date}
+      <SegmentationFilterSubject
+        value={SegmentationFilterSubjectEnum.Date}
         onChange={jest.fn()}
       />,
     );

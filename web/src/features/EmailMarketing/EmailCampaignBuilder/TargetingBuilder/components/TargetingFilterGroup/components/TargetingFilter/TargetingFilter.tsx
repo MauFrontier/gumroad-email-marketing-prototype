@@ -9,7 +9,7 @@ import {
 } from '../../../../../emailMarketingTypes';
 
 import Operand from '../Operand/Operand';
-import TargetingFilterSubject from './components/TargetingFilterSubject/TargetingFilterSubject';
+import SegmentationFilterSubject from './components/SegmentationFilterSubject/SegmentationFilterSubject';
 import TargetingFilterSubjectQualifier from './components/TargetingFilterSubjectQualifier/TargetingFilterSubjectQualifier';
 import './TargetingFilter.scss';
 import TargetingFilterVerb from './components/TargetingFilterVerb/TargetingFilterVerb';
@@ -126,7 +126,7 @@ const TargetingFilter = ({
           disabled={disabled}
         />
         <div className="filter-row-content">
-          <TargetingFilterSubject
+          <SegmentationFilterSubject
             value={targetingFilter.subject}
             onChange={handleSubjectChange}
             disabled={disabled}
