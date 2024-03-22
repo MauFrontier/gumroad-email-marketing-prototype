@@ -4,10 +4,10 @@ import {useEmailMarketingState} from '../../store/useEmailMarketingState';
 import {defaultFilterGroup} from '../emailMarketingDefaults';
 import {v4 as uuid} from 'uuid';
 import {EmailMarketingActionType} from '../../store/emailMarketingActionTypes';
-import TargetingBuilderHeader from './components/TargetingBuilderHeader/TargetingBuilderHeader';
+import SegmentationBuilderHeader from './components/SegmentationBuilderHeader/SegmentationBuilderHeader';
 import AddFilterGroupButton from './components/AddFilterGroupButton/AddFilterGroupButton';
-import AIAccuracyWarning from './components/TargetingBuilderHeader/components/AIAccuracyWarning/AIAccuracyWarning';
-import AIErrorWarnings from './components/TargetingBuilderHeader/components/AIErrorWarnings/AIErrorWarnings';
+import AIAccuracyWarning from './components/SegmentationBuilderHeader/components/AIAccuracyWarning/AIAccuracyWarning';
+import AIErrorWarnings from './components/SegmentationBuilderHeader/components/AIErrorWarnings/AIErrorWarnings';
 
 const TargetingBuilder = () => {
   const {state, dispatch} = useEmailMarketingState();
@@ -30,7 +30,7 @@ const TargetingBuilder = () => {
   return (
     <>
       <section role="region" aria-label="Targeting builder">
-        <TargetingBuilderHeader />
+        <SegmentationBuilderHeader />
         {aiErrors && aiErrors.some(error => error.isVisible) && (
           <AIErrorWarnings />
         )}

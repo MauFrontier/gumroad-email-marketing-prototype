@@ -1,30 +1,30 @@
 import {fireEvent, render, screen} from '@testing-library/react';
-import TargetingBuilderHeader from './TargetingBuilderHeader';
+import SegmentationBuilderHeader from './SegmentationBuilderHeader';
 import {mockDispatch} from '../../../../../../utils/mocks/mocks';
 import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTypes';
 import {renderComponentWithState} from '../../../../store/emailMarketingStoreUtils';
 import {emailMarketingInitialState} from '../../../../store/emailMarketingInitialState';
 
-describe('TargetingBuilderHeader', () => {
+describe('SegmentationBuilderHeader', () => {
   it('renders component', () => {
-    render(<TargetingBuilderHeader />);
+    render(<SegmentationBuilderHeader />);
     expect(
-      screen.getByLabelText('Targeting builder header'),
+      screen.getByLabelText('Segmentation builder header'),
     ).toBeInTheDocument();
   });
 
   it('renders recipients count', () => {
-    render(<TargetingBuilderHeader />);
+    render(<SegmentationBuilderHeader />);
     expect(screen.getByText(/Recipients/)).toBeInTheDocument();
   });
 
   it('renders Generate with AI button', () => {
-    render(<TargetingBuilderHeader />);
+    render(<SegmentationBuilderHeader />);
     expect(screen.getByText(/Generate with AI/)).toBeInTheDocument();
   });
 
   it('shows Generate with AI dialog when Generate with AI button is clicked', () => {
-    render(<TargetingBuilderHeader />);
+    render(<SegmentationBuilderHeader />);
     const button = screen.getByText(/Generate with AI/);
 
     fireEvent.click(button);
@@ -34,9 +34,9 @@ describe('TargetingBuilderHeader', () => {
     });
   });
 
-  it('should generate a (fake) recipient count based on the targeting', () => {
+  it('should generate a (fake) recipient count based on the segmentation', () => {
     renderComponentWithState(
-      <TargetingBuilderHeader />,
+      <SegmentationBuilderHeader />,
       emailMarketingInitialState,
     );
 
@@ -50,8 +50,8 @@ describe('TargetingBuilderHeader', () => {
     expect(countNumber).toBeLessThan(5000);
   });
 
-  it('should default to 5000 recipients if targeting is empty', () => {
-    renderComponentWithState(<TargetingBuilderHeader />, {
+  it('should default to 5000 recipients if segmentation is empty', () => {
+    renderComponentWithState(<SegmentationBuilderHeader />, {
       ...emailMarketingInitialState,
       targeting: {
         filterGroups: [],

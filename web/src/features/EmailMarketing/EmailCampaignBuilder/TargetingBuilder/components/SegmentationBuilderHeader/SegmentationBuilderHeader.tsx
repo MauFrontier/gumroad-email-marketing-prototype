@@ -3,12 +3,12 @@ import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
 import Button from '../../../../../shared/ui/components/Button/Button';
 import Icon from '../../../../../shared/ui/components/Icon/Icon';
 import GenerateWithAIForm from './components/GenerateWithAIForm/GenerateWithAIForm';
-import './TargetingBuilderHeader.scss';
+import './SegmentationBuilderHeader.scss';
 import {IconType} from '../../../../../shared/ui/components/Icon/iconLibrary';
 import {useEffect, useState} from 'react';
 import {Targeting} from '../../../emailMarketingTypes';
 
-const TargetingBuilderHeader = () => {
+const SegmentationBuilderHeader = () => {
   const {state, dispatch} = useEmailMarketingState();
   const {showGenerateWithAIPanel} = state;
 
@@ -50,7 +50,7 @@ const TargetingBuilderHeader = () => {
   };
 
   return (
-    <header aria-label="Targeting builder header">
+    <header aria-label="Segmentation builder header">
       <div role="toolbar" aria-label="Recipient and AI generation tools">
         <h4>
           Recipients:{' '}
@@ -84,4 +84,4 @@ const TargetingBuilderHeader = () => {
   );
 };
 
-export default TargetingBuilderHeader;
+export default SegmentationBuilderHeader;

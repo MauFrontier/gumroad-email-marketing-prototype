@@ -12,11 +12,11 @@ describe('TargetingBuilder', () => {
     expect(screen.getByLabelText('Targeting builder')).toBeInTheDocument();
   });
 
-  it('renders targeting builder header, filter groups, and Add filter group button', () => {
+  it('renders segmentation builder header, filter groups, and Add filter group button', () => {
     renderComponentWithState(<TargetingBuilder />, emailMarketingInitialState);
 
     expect(
-      screen.getByLabelText('Targeting builder header'),
+      screen.getByLabelText('Segmentation builder header'),
     ).toBeInTheDocument();
     expect(
       screen.getByLabelText('Add filter group button'),
