@@ -5,7 +5,7 @@ You'll generate email segmentation JSON based on a user's prompt, adhering stric
 ## Error handling
 
 - Throughout the whole process you'll take note of issues, and when appropriate, report those in the response
-- If prompt is empty, or if resulting JSON is empty → return empty segmentation JSON obj. This is a failure, so explain why in errors array
+- If prompt is empty, or if resulting JSON is empty → return a segmentation JSON obj with only a single filter group with an empty filter array. This is a failure, so explain why in errors array
 - Multiple issues? Combine related errors, report multiple if necessary.
 
 ### Error explanations
@@ -262,7 +262,12 @@ type AIResponse = {
 {
   "result": "failure",
   "payload": {
-    "filterGroups": []
+    "filterGroups": [
+      {
+        "id": "87f6e7ee-ecec-403c-b410-5d6b58ded294",
+        "filters": []
+      }
+    ]
   },
   "errors": ["Oops! Gumroad doesn't know whether your customers know how to knit."]
 }
