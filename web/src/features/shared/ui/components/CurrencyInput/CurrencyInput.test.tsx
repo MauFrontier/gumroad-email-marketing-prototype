@@ -110,4 +110,58 @@ describe('CurrencyInput', () => {
     const input = screen.getByLabelText('Currency amount input');
     expect(input).not.toBeDisabled();
   });
+
+  it('calls onChange with the updated value on blur', async () => {
+    const handleChange = jest.fn();
+    render(
+      <CurrencyInput
+        value={100}
+        onChange={handleChange}
+        label="Currency amount"
+      />,
+    );
+
+    const input = screen.getByLabelText('Currency amount input');
+    await userEvent.clear(input);
+    await userEvent.type(input, '200');
+    await input.blur();
+
+    expect(handleChange).toHaveBeenCalledWith(200);
+  });
+
+  it('parses the value as Foat on blur', async () => {
+    const handleChange = jest.fn();
+    render(
+      <CurrencyInput
+        value={100}
+        onChange={handleChange}
+        label="Currency amount"
+      />,
+    );
+
+    const input = screen.getByLabelText('Currency amount input');
+    await userEvent.clear(input);
+    await userEvent.type(input, '200.5.');
+    await input.blur();
+
+    expect(handleChange).toHaveBeenCalledWith(200.5);
+  });
+
+  it('returns to the state value if the local value is invalid on blur', async () => {
+    const handleChange = jest.fn();
+    render(
+      <CurrencyInput
+        value={100}
+        onChange={handleChange}
+        label="Currency amount"
+      />,
+    );
+
+    const input = screen.getByLabelText('Currency amount input');
+    await userEvent.clear(input);
+    await userEvent.type(input, 'invalid');
+    await input.blur();
+
+    expect(input).toHaveValue('100');
+  });
 });

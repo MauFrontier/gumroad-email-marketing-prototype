@@ -14,7 +14,7 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
   label,
   disabled = false,
 }) => {
-  const [localValue, setInputValue] = useState(value.toString());
+  const [localValue, setLocalValue] = useState(value.toString());
   const [isValid, setIsValid] = useState(true);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,12 +22,23 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
     const processedValue =
       originalValue === '' ? 0 : parseFloat(event.target.value);
 
-    setInputValue(event.target.value);
+    setLocalValue(event.target.value);
+
     if (isNaN(processedValue)) {
       setIsValid(false);
     } else {
       setIsValid(true);
       onChange(processedValue);
+    }
+  };
+
+  const handleBlur = () => {
+    const parsedValue = parseFloat(localValue);
+    if (isNaN(parsedValue)) {
+      setLocalValue(value.toString());
+    } else {
+      setLocalValue(parsedValue.toString());
+      onChange(parsedValue);
     }
   };
 
@@ -44,6 +55,7 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
         aria-invalid={!isValid}
         aria-label="Currency amount input"
         onChange={handleChange}
+        onBlur={handleBlur}
       />
       <span className="currency-label">$</span>
     </div>
