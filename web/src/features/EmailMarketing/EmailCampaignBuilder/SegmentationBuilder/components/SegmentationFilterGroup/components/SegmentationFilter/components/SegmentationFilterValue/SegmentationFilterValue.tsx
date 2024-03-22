@@ -69,6 +69,7 @@ const SegmentationFilterValue = ({
           <DateInput
             value={formatDateForDisplay(value as string)}
             onChange={handleOnChange}
+            label="Pick a date"
             disabled={disabled}
           />
         )
@@ -77,6 +78,7 @@ const SegmentationFilterValue = ({
           value={stringValue}
           onChange={handleOnChange}
           options={options ?? []}
+          label="Select a country"
           disabled={disabled}
         />
       ) : subject === SegmentationFilterSubjectEnum.Product ? (
