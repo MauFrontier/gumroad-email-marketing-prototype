@@ -68,7 +68,11 @@ To install front-end dependencies, run this command from the `./web/` directory:
 npm install
 ```
 
-To enable the "Generate with AI" feature, you'll need to set an environment variable in the back-end with your OpenAI API key. I've included a `.sample.env` file so just rename that file to `.env` and enter your API key there.
+Other considerations:
+
+* To enable the "Generate with AI" feature, you'll need to set an environment variable in the back-end with your OpenAI API key. I've included a `.sample.env` file so just rename that file to `.env` and enter your API key there.
+* You'll need to replace the `API_URL` variable in the `./web/src/utils/apiURL.tsx` file with the URL of your back-end API.
+* You might need to edit the cors policy in the back-end under `config/initializers/cors.rb` to allow your front-end to talk to the back-end.
 
 ## ▶️ Usage
 
