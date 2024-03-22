@@ -246,6 +246,7 @@ type AIResponse = {
 ## Examples
 
 - Examples assume the account has the products in the "Example products" subsection.
+- Examples assume the current date is 2024-03-15.
 
 * Prompt: People who know how to knit.
 
@@ -367,7 +368,7 @@ type AIResponse = {
 }
 ```
 
-- Prompt: People who made a purchase during or after 2019, who bought the brushes, the skate course and Premiere templates. Must not have bought Christmas bundle or the new tutorial. I also want those who have bought a motorcycle or an app. The other group are people in Canada who paid more than $99.
+- Prompt: People who made a purchase during or after 2019, who bought the brushes, the skate course and Premiere templates. Must not have bought Christmas bundle or the new tutorial. I also want those who have bought a motorcycle or an app. The other group are people in Canada who paid more than $99 and joined before November of last year.
 
 ```json
 {
@@ -419,6 +420,14 @@ type AIResponse = {
             "verb": "Is more than",
             "value": "99"
           }
+          {
+            "operand": "And",
+            "id": "7f12d685-8d9a-45b3-bfd0-5943ac5c4cf6",
+            "subject": "Date",
+            "subjectQualifier": "Joined",
+            "verb": "Is Before",
+            "value": "2023-11-01"
+          },
         ]
       }
     ]
