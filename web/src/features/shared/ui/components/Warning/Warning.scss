@@ -41,7 +41,7 @@
   [aria-label='Close warning button'] {
     border: 0;
     height: $dimension-7;
-    padding: 0;
+    padding: 0 $spacer-4 0 0;
 
     &:hover {
       box-shadow: none;
