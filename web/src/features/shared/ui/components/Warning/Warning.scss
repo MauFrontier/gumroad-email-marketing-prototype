@@ -21,6 +21,12 @@
     }
   }
 
+  @media (max-width: 40rem) {
+    flex-direction: column;
+    padding: $spacer-4;
+    text-align: center;
+  }
+
   .warning-icon-and-message {
     display: flex;
     flex-direction: row;
@@ -30,6 +36,10 @@
     p {
       margin: 0;
       flex: 1 1 auto;
+    }
+
+    @media (max-width: 40rem) {
+      flex-direction: column;
     }
   }
 
@@ -47,6 +57,10 @@
     &:hover {
       box-shadow: none;
       transform: none;
+    }
+
+    @media (max-width: 40rem) {
+      padding: 0;
     }
   }
 }
