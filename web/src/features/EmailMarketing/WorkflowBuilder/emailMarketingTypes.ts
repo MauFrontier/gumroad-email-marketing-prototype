@@ -112,3 +112,8 @@ export type AIResponse = {
   payload: Targeting;
   errors: string[];
 };
+
+export enum Channels {
+  Email = 'Email',
+  EmailAndProfile = 'Email and Profile',
+}
