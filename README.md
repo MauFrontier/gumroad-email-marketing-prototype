@@ -36,8 +36,6 @@ Infrastructure:
 
 The segmentation builder is at the heard of this demo, and it's what the demo in the [board meeting](https://youtu.be/qUYSTvJnIXA?t=753) centered around.
 
-It's only a sample of the possible fields that could be used to segment the audience, but it's got all the core functionality there, and it allows you to build pretty advanced segmentation.
-
 ### 🤖 Generate with AI
 
 The real star of this show is the "Generate with AI" feature, and it's run by [a contract written in Markdown](). I leveraged the Typescript types and enums and clever prompt engineering to guide the AI to give us very consistent results in generating the targeting automatically.
@@ -49,6 +47,12 @@ I used Github Copilot, ChatGPT, and Cody heavily to help me build this project q
 ### 🤫 Internal tools
 
 Make sure to also check out the Internal Tools section at the bottom of the page, which includes a ton of sample prompts and allows you to customize the products in the account (since this small demo isn't connected to a database).
+
+### ℹ️ Notes
+
+* The AI does take the product list into consideration, so make changes to it and see how it affects the results!
+* The recipient count is totally fake, I just wanted some type of visual feedback there. It does react to increased or decreased filtering, but it doesn't follow real logic.
+* I didn't implement filtering options centered around affiliates or followers to reduce the scope. I am applying for a job that might not be there soon, after all! 😅
 
 ## 🔨 Installation
 
