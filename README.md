@@ -36,13 +36,13 @@ Infrastructure:
 
 ### 📬 Segmentation builder
 
-The segmentation builder is at the heard of this demo, and it's what the demo in the [board meeting](https://youtu.be/qUYSTvJnIXA?t=753) centered around.
+The segmentation builder is at the heart of this demo, and it's what the demo in the [board meeting](https://youtu.be/qUYSTvJnIXA?t=753) centered around.
 
 ### 🤖 Generate with AI
 
 The real star of this show is the "Generate with AI" feature, and it's run by [a contract written in Markdown](). I leveraged the Typescript types and enums and clever prompt engineering to guide the AI to give us very consistent results in generating the targeting automatically.
 
-I am __*all in*__ on AI. I've been honing my prompt engineering skills daily since I got access to Github Copilot on October 2021. That's what now allows me to quickly implement a complex feature like this one. I've developed a great sense of how to get what I want from AI.
+I am __*all in*__ on AI. I've been honing my prompt engineering skills daily since I got access to Github Copilot in October 2021. That's what now allows me to quickly implement a complex feature like this one. I've developed a great sense of how to get what I want from AI.
 
 I used Github Copilot, ChatGPT, and Cody heavily to help me build this project quickly in my spare time. Every engineer should be diving deep into AI at this point, and those are the engineers that are needed to enter this new stage in tech.
 
@@ -52,7 +52,7 @@ Make sure to also check out the Internal Tools section at the bottom of the page
 
 ### ℹ️ Notes
 
-* The AI does take the product list into consideration, so make changes to it and see how it affects the results!
+* The AI does monitor the product list, so make changes to it and see how it affects the results!
 * The recipient count is totally fake, I just wanted some type of visual feedback there. It does react to increased or decreased filtering, but it doesn't follow real logic.
 * I didn't implement filtering options centered around affiliates or followers to reduce the scope. I am applying for a job that might not be there soon, after all! 😅
 
