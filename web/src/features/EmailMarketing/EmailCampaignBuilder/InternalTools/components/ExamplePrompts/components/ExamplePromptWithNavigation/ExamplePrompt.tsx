@@ -21,7 +21,7 @@ const ExamplePrompt = ({
   const {state, dispatch} = useEmailMarketingState();
 
   const scrollToTop = () => {
-    window.scrollTo({top: 200, behavior: 'smooth'});
+    window.scrollTo({top: 225});
   };
 
   const usePromptTemplate = (newPrompt: string) => {
@@ -33,11 +33,9 @@ const ExamplePrompt = ({
     scrollToTop();
 
     if (!state.showGenerateWithAIPanel) {
-      setTimeout(() => {
-        dispatch({
-          type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel,
-        });
-      }, 350);
+      dispatch({
+        type: EmailMarketingActionType.ToggleShowGenerateWithAIPanel,
+      });
     }
   };
 
