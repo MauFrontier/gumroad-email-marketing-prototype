@@ -452,7 +452,7 @@ type AIResponse = {
             "id": "b1a3250e-4277-470f-b2ff-352a759a05a0",
             "subject": "Product",
             "verb": "Has not yet bought",
-            "verbQualifier": "All",
+            "verbQualifier": "Any",
             "value": [
               "brush-pack-1",
               "christmas-bundle",
