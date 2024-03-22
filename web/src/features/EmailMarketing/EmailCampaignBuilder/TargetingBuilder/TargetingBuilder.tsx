@@ -1,5 +1,5 @@
 import './TargetingBuilder.scss';
-import TargetingFilterGroup from './components/TargetingFilterGroup/TargetingFilterGroup';
+import SegmentationFilterGroup from './components/SegmentationFilterGroup/SegmentationFilterGroup';
 import {useEmailMarketingState} from '../../store/useEmailMarketingState';
 import {defaultFilterGroup} from '../emailMarketingDefaults';
 import {v4 as uuid} from 'uuid';
@@ -40,8 +40,8 @@ const TargetingBuilder = () => {
             role="group"
             className={state.isAILoading ? 'loading' : ''}
             aria-label={`Filter group ${index + 1}`}>
-            <TargetingFilterGroup
-              targetingFilterGroup={filterGroup}
+            <SegmentationFilterGroup
+              segmentationFilterGroup={filterGroup}
               disabled={state.isAILoading}
             />
           </div>

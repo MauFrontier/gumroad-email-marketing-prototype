@@ -1,11 +1,11 @@
 import {
-  SegmentationFilterGroup as TargetingFilterGroupType,
+  SegmentationFilterGroup as SegmentationFilterGroupType,
   Operand as OperandEnum,
 } from '../../../emailMarketingTypes';
 import AddFilterButton from './components/AddFilterButton/AddFilterButton';
 import SegmentationFilter from './components/SegmentationFilter/SegmentationFilter';
 import Operand from './components/Operand/Operand';
-import './TargetingFilterGroup.scss';
+import './SegmentationFilterGroup.scss';
 import {useEmailMarketingState} from '../../../../store/useEmailMarketingState';
 import {v4 as uuid} from 'uuid';
 import DeleteFilterGroupButton from './components/DeleteFilterGroupButton/DeleteFilterGroupButton';
@@ -13,22 +13,22 @@ import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTy
 import {defaultFilter} from '../../../emailMarketingDefaults';
 
 type Props = {
-  targetingFilterGroup: TargetingFilterGroupType;
+  segmentationFilterGroup: SegmentationFilterGroupType;
   disabled?: boolean;
 };
 
-const TargetingFilterGroup = ({
-  targetingFilterGroup,
+const SegmentationFilterGroup = ({
+  segmentationFilterGroup,
   disabled = false,
 }: Props) => {
   const {dispatch} = useEmailMarketingState();
 
-  const operand = targetingFilterGroup.operand;
+  const operand = segmentationFilterGroup.operand;
 
   const handleAddFilter = (filterGroupId: string) => {
     const newFilter = {...defaultFilter, id: uuid()};
 
-    if (targetingFilterGroup.filters.length === 0) {
+    if (segmentationFilterGroup.filters.length === 0) {
       delete newFilter.operand;
     }
 
@@ -45,7 +45,7 @@ const TargetingFilterGroup = ({
     dispatch({
       type: EmailMarketingActionType.SetFilterGroupOperand,
       payload: {
-        filterGroupId: targetingFilterGroup.id,
+        filterGroupId: segmentationFilterGroup.id,
         operand: newOperand,
       },
     });
@@ -54,7 +54,7 @@ const TargetingFilterGroup = ({
   const handleDeleteFilterGroup = () => {
     dispatch({
       type: EmailMarketingActionType.DeleteFilterGroup,
-      payload: targetingFilterGroup.id,
+      payload: segmentationFilterGroup.id,
     });
   };
 
@@ -75,7 +75,7 @@ const TargetingFilterGroup = ({
         </div>
       )}
       <div aria-label="Filter group filters">
-        {targetingFilterGroup.filters.map((filter, index) => (
+        {segmentationFilterGroup.filters.map((filter, index) => (
           <div key={index}>
             <SegmentationFilter
               disabled={disabled}
@@ -85,11 +85,11 @@ const TargetingFilterGroup = ({
         ))}
         <AddFilterButton
           disabled={disabled}
-          onPress={() => handleAddFilter(targetingFilterGroup.id)}
+          onPress={() => handleAddFilter(segmentationFilterGroup.id)}
         />
       </div>
     </div>
   );
 };
 
-export default TargetingFilterGroup;
+export default SegmentationFilterGroup;

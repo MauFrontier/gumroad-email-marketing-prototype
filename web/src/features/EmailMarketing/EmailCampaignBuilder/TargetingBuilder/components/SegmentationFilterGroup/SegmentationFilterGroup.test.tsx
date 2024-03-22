@@ -1,6 +1,6 @@
 import {render, screen, within} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import TargetingFilterGroup from './TargetingFilterGroup';
+import SegmentationFilterGroup from './SegmentationFilterGroup';
 import {Operand as OperandEnum} from '../../../emailMarketingTypes';
 import {defaultDateFilter} from '../../../emailMarketingDefaults';
 import {mockDispatch} from '../../../../../../utils/mocks/mocks';
@@ -8,9 +8,9 @@ import {EmailMarketingActionType} from '../../../../store/emailMarketingActionTy
 
 jest.mock('../../../../store/useEmailMarketingState');
 
-describe('TargetingFilterGroup', () => {
+describe('SegmentationFilterGroup', () => {
   const baseProps = {
-    targetingFilterGroup: {
+    segmentationFilterGroup: {
       id: 'group-id',
       operand: OperandEnum.And,
       filters: [],
@@ -18,7 +18,7 @@ describe('TargetingFilterGroup', () => {
   };
 
   it('renders without filters', () => {
-    render(<TargetingFilterGroup {...baseProps} />);
+    render(<SegmentationFilterGroup {...baseProps} />);
     expect(screen.getByLabelText('Filter group')).toBeInTheDocument();
     expect(screen.queryByLabelText('Filter group filters')).toBeInTheDocument();
     expect(screen.queryAllByLabelText('Filter')).toHaveLength(0);
@@ -27,13 +27,13 @@ describe('TargetingFilterGroup', () => {
   it('renders with filters', () => {
     const propsWithFilters = {
       ...baseProps,
-      targetingFilterGroup: {
-        ...baseProps.targetingFilterGroup,
+      segmentationFilterGroup: {
+        ...baseProps.segmentationFilterGroup,
         filters: [defaultDateFilter],
       },
     };
 
-    render(<TargetingFilterGroup {...propsWithFilters} />);
+    render(<SegmentationFilterGroup {...propsWithFilters} />);
     expect(screen.getByLabelText('Filter group')).toBeInTheDocument();
     expect(screen.getByLabelText('Filter group filters')).toBeInTheDocument();
     expect(screen.getAllByLabelText('Filter')).toHaveLength(1);
@@ -42,11 +42,11 @@ describe('TargetingFilterGroup', () => {
 
   it("does not display Operand field if the filter group's operand is undefined or Initial", () => {
     render(
-      <TargetingFilterGroup
+      <SegmentationFilterGroup
         {...{
           ...baseProps,
-          targetingFilterGroup: {
-            ...baseProps.targetingFilterGroup,
+          segmentationFilterGroup: {
+            ...baseProps.segmentationFilterGroup,
             operand: undefined,
           },
         }}
@@ -56,11 +56,11 @@ describe('TargetingFilterGroup', () => {
     expect(screen.queryAllByLabelText('Filter group operand')).toHaveLength(0);
 
     render(
-      <TargetingFilterGroup
+      <SegmentationFilterGroup
         {...{
           ...baseProps,
-          targetingFilterGroup: {
-            ...baseProps.targetingFilterGroup,
+          segmentationFilterGroup: {
+            ...baseProps.segmentationFilterGroup,
             operand: OperandEnum.Initial,
           },
         }}
@@ -71,7 +71,7 @@ describe('TargetingFilterGroup', () => {
   });
 
   it('displays operand selector with correct value when one is provided', () => {
-    render(<TargetingFilterGroup {...baseProps} />);
+    render(<SegmentationFilterGroup {...baseProps} />);
     expect(screen.getByLabelText('Filter group operand')).toBeInTheDocument();
 
     const operandContainer = screen.getByLabelText('Filter group operand');
@@ -81,12 +81,12 @@ describe('TargetingFilterGroup', () => {
   });
 
   it('displays add filter button', () => {
-    render(<TargetingFilterGroup {...baseProps} />);
+    render(<SegmentationFilterGroup {...baseProps} />);
     expect(screen.getByLabelText('Add filter button')).toBeInTheDocument();
   });
 
   it('displays delete filter group button', () => {
-    render(<TargetingFilterGroup {...baseProps} />);
+    render(<SegmentationFilterGroup {...baseProps} />);
     expect(
       screen.getByLabelText('Delete filter group button'),
     ).toBeInTheDocument();
@@ -96,13 +96,13 @@ describe('TargetingFilterGroup', () => {
     const user = userEvent.setup();
     const propsWithFilters = {
       ...baseProps,
-      targetingFilterGroup: {
-        ...baseProps.targetingFilterGroup,
+      segmentationFilterGroup: {
+        ...baseProps.segmentationFilterGroup,
         filters: [],
       },
     };
 
-    render(<TargetingFilterGroup {...propsWithFilters} />);
+    render(<SegmentationFilterGroup {...propsWithFilters} />);
     expect(screen.getByLabelText('Filter group filters')).toBeInTheDocument();
     expect(screen.queryAllByLabelText('Filter')).toHaveLength(0);
 
@@ -114,14 +114,14 @@ describe('TargetingFilterGroup', () => {
     expect(mockDispatch).toHaveBeenCalledWith({
       type: EmailMarketingActionType.AddFilter,
       payload: {
-        filterGroupId: propsWithFilters.targetingFilterGroup.id,
+        filterGroupId: propsWithFilters.segmentationFilterGroup.id,
         filter: filterWithoutOperand,
       },
     });
   });
 
   it('deletes the filter group', async () => {
-    render(<TargetingFilterGroup {...baseProps} />);
+    render(<SegmentationFilterGroup {...baseProps} />);
     expect(
       screen.getByLabelText('Delete filter group button'),
     ).toBeInTheDocument();
@@ -130,12 +130,12 @@ describe('TargetingFilterGroup', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: EmailMarketingActionType.DeleteFilterGroup,
-      payload: baseProps.targetingFilterGroup.id,
+      payload: baseProps.segmentationFilterGroup.id,
     });
   });
 
   it("sets the filter group's operand", async () => {
-    render(<TargetingFilterGroup {...baseProps} />);
+    render(<SegmentationFilterGroup {...baseProps} />);
     expect(screen.getByLabelText('Filter group operand')).toBeInTheDocument();
 
     const operandContainer = screen.getByLabelText('Filter group operand');
@@ -146,7 +146,7 @@ describe('TargetingFilterGroup', () => {
     expect(mockDispatch).toHaveBeenCalledWith({
       type: EmailMarketingActionType.SetFilterGroupOperand,
       payload: {
-        filterGroupId: baseProps.targetingFilterGroup.id,
+        filterGroupId: baseProps.segmentationFilterGroup.id,
         operand: OperandEnum.Or,
       },
     });
@@ -157,10 +157,10 @@ describe('TargetingFilterGroup', () => {
     //and they're each getting tested on getting disabled, so we can let
     //integration tests handle that and not test all of them here.
     render(
-      <TargetingFilterGroup
+      <SegmentationFilterGroup
         {...baseProps}
-        targetingFilterGroup={{
-          ...baseProps.targetingFilterGroup,
+        segmentationFilterGroup={{
+          ...baseProps.segmentationFilterGroup,
           filters: [defaultDateFilter],
         }}
         disabled={true}
