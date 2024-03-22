@@ -87,7 +87,10 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
         payload: prompt,
       });
 
-      const apiResponse = await generateSegmentationAPIRequest(prompt, '');
+      const apiResponse = await generateSegmentationAPIRequest(
+        prompt,
+        JSON.stringify(state.products),
+      );
 
       if (apiResponse !== null) {
         const parsedResponse: AIResponse = JSON.parse(apiResponse);
