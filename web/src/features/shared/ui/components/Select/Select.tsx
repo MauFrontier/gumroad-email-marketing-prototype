@@ -8,13 +8,7 @@ type Props = {
   disabled?: boolean;
 };
 
-const NumberInputWithLabel = ({
-  value,
-  onChange,
-  label,
-  options,
-  disabled = false,
-}: Props) => {
+const Select = ({value, onChange, label, options, disabled = false}: Props) => {
   return (
     <select
       value={value}
@@ -30,4 +24,4 @@ const NumberInputWithLabel = ({
   );
 };
 
-export default NumberInputWithLabel;
+export default Select;
