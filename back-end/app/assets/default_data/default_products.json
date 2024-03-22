@@ -1,42 +1,42 @@
 [
   {
     "key":"brush-pack-1",
-    "name":"Brush pack 1"
+    "value":"Brush pack 1"
   },
   {
     "key":"christmas-bundle",
-    "name":"Christmas bundle"
+    "value":"Christmas bundle"
   },
   {
     "key":"illustration-tutorial",
-    "name":"Illustration Tutorial"
+    "value":"Illustration Tutorial"
   },
   {
     "key":"pro-video-course",
-    "name":"Pro video course"
+    "value":"Pro video course"
   },
   {
     "key":"tutorial-painting-101",
-    "name":"Tutorial: Painting 101"
+    "value":"Tutorial: Painting 101"
   },
   {
     "key":"premiere-pro-templates",
-    "name":"Premiere Pro templates"
+    "value":"Premiere Pro templates"
   },
   {
     "key":"skateboarding-course",
-    "name":"Skateboarding course"
+    "value":"Skateboarding course"
   },
   {
     "key":"tutorial-2024",
-    "name":"Tutorial 2024"
+    "value":"Tutorial 2024"
   },
   {
     "key":"brush-pack-2024",
-    "name":"Brush pack 2024"
+    "value":"Brush pack 2024"
   },
   {
     "key":"lut-pack-2023",
-    "name":"LUT pack 2023"
+    "value":"LUT pack 2023"
   }
 ]
