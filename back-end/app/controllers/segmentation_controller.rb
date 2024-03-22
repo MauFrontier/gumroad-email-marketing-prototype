@@ -1,7 +1,7 @@
 class SegmentationController < ActionController::API
   include ActionController::Live
 
-  def generate
+  def generate 
     return render json: { error: "user_prompt is required" }, status: :bad_request unless params[:user_prompt].present?
 
     client = OpenAI::Client.new
