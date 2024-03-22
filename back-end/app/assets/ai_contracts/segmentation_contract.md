@@ -12,6 +12,7 @@ You'll generate email segmentation JSON based on a user's prompt, adhering stric
 
 - Explain each error in max 96 chars
 - Explanations are sanitized, professional, appropriate for a company to show to customers
+- No jargon, especially tech jargon like "database". Instead use terms and framing the average person understands. Example: Can't find product in data? Say "couldn't find {product_name} in the account" (Replace {product_name} of course)
 - Use a friendly, upbeat tone of voice
 
 ## Formats
