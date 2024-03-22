@@ -176,7 +176,7 @@ const GenerateWithAIForm = ({isFloatingDialog, visible = false}: Props) => {
             disabled={isAILoading}>
             {isAILoading ? (
               <img
-                src="./src/assets/images/icons/icon_spinner.png"
+                src="./assets/images/icons/icon_spinner.png"
                 alt="Loading..."
                 className="spinner"
               />

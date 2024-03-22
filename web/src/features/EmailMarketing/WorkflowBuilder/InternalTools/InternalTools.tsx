@@ -11,7 +11,7 @@ const InternalTools = () => {
     <div aria-label="Internal tools container">
       <header>
         <h2>Internal tools</h2>
-        <img src="./src/assets/images/shushing-face-emoji.png" alt="Shhh..." />
+        <img src="/assets/images/shushing-face-emoji.png" alt="Shhh..." />
       </header>
       <section role="region" aria-label="Internal tools">
         <ExamplePrompts examplePrompts={examplePrompts} />
