@@ -15,12 +15,20 @@ section[aria-label='Trigger selection'] {
     legend {
       margin-bottom: $spacer-2;
     }
+
+    @media (max-width: 40rem) {
+    }
   }
 
   img {
     width: $dimension-8;
     height: $dimension-8;
     margin-bottom: $spacer-4;
+
+    @media (max-width: 40rem) {
+      margin-bottom: $spacer-3;
+      margin-left: $spacer-2;
+    }
   }
 
   button {
@@ -31,11 +39,19 @@ section[aria-label='Trigger selection'] {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
+    font-size: $font-size-sm;
 
     &[aria-pressed='true'] {
       background-color: $White;
       box-shadow: $shadow-regular;
       transform: translate(-#{$spacer-2}, -#{$spacer-2});
+    }
+
+    @media (max-width: 40rem) {
+      width: calc(50% - 0.75rem);
+      max-width: calc(50% - 0.75rem);
+      flex: 0 0 calc(50% - 0.75rem);
+      padding: $spacer-4 $spacer-3;
     }
   }
 

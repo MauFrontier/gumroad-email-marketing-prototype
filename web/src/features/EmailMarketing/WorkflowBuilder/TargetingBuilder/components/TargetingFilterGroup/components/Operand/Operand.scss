@@ -17,5 +17,16 @@
     margin: 0;
     width: $dimension-12;
     text-align: right;
+
+    @media (max-width: 40rem) {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    flex: 1 1 40%;
+    font-size: $font-size-lg;
+    order: 0;
+    height: auto;
   }
 }

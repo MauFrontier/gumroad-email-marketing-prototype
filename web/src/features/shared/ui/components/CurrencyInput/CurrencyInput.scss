@@ -17,6 +17,7 @@
     padding: $spacer-4 0 $spacer-4 $spacer-9;
     flex-grow: 1;
     background-color: transparent;
+    font-size: $font-size-base;
   }
 
   &:focus-within {

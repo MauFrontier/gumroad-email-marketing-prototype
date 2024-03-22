@@ -22,6 +22,7 @@ button {
   background-color: transparent;
   transition: $transition-regular;
   color: $Black;
+  font-size: $font-size-base;
 
   padding: $spacer-4;
   display: flex;
@@ -158,6 +159,7 @@ textarea {
   box-sizing: border-box;
   min-height: $dimension-14;
   border-radius: $border-radius-2;
+  font-size: $font-size-base;
   &:focus {
     outline: $border-2;
     outline-color: $Gum;
@@ -173,7 +175,6 @@ fieldset {
 pre.code-block {
   padding: $spacer-4;
   background-color: $White;
-  font-size: $font-size-xs;
   border-radius: $border-radius-2;
   border: $border-1;
   max-height: $dimension-20;

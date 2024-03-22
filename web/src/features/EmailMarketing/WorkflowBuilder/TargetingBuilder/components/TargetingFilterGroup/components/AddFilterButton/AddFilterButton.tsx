@@ -11,7 +11,7 @@ interface Props {
 const AddFilterButton = ({onPress, disabled}: Props) => {
   return (
     <Button disabled={disabled} label="Add filter button" onClick={onPress}>
-      <Icon type={IconType.PlusCircleClear} /> Add filter
+      <Icon type={IconType.PlusCircleClear} size={7} /> Add filter
     </Button>
   );
 };

@@ -5,4 +5,8 @@
   height: $dimension-9;
   min-width: $dimension-9;
   padding: 0;
+
+  @media (max-width: 40rem) {
+    order: 0;
+  }
 }

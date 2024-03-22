@@ -6,6 +6,11 @@
     gap: $spacer-4;
     align-items: start;
     width: 100%;
+
+    @media (max-width: 40rem) {
+      flex-wrap: wrap;
+      align-items: end;
+    }
   }
 
   .filter-row-content {
@@ -19,6 +24,10 @@
     > * {
       flex: 1 1 auto;
       min-width: 0;
+    }
+    @media (max-width: 40rem) {
+      flex: 1 1 100%;
+      order: 1;
     }
   }
 }

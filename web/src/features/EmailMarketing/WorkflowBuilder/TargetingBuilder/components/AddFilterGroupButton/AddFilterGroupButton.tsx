@@ -14,7 +14,7 @@ const AddFilterGroupButton = ({onPress, disabled = false}: Props) => {
       disabled={disabled || false}
       onClick={onPress}
       label="Add filter group button">
-      <Icon type={IconType.PlusCircleClear} />
+      <Icon type={IconType.PlusCircleClear} size={7} />
       Add Filter Group
     </Button>
   );
