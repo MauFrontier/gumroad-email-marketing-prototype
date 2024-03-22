@@ -2,7 +2,6 @@ require 'json'
 
 class SegmentationService
   def self.generate_system_prompt(current_date=nil, user_timezone=nil, products_str = nil)
-  puts "[Debug] Starting generate_system_prompt with products_str: #{products_str}"
     markdown_path = Rails.root.join('app', 'assets', 'ai_contracts', 'segmentation_contract.md')
     default_products_path = Rails.root.join('app', 'assets', 'default_data', 'default_products.json')
 
