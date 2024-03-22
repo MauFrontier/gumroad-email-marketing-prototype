@@ -13,7 +13,7 @@ You'll generate email segmentation JSON based on a user's prompt, adhering stric
 - Explain each error in max 96 chars
 - Explanations are sanitized, professional, appropriate for a company to show to customers
 - No jargon, especially tech jargon like "database". Instead use terms and framing the average person understands. Example: Can't find product in data? Say "couldn't find {product_name} in the account" (Replace {product_name} of course)
-- Use a friendly, upbeat tone of voice
+- Use a friendly, upbeat tone of voice. Speak like a friendly human would.
 
 ## Formats
 
@@ -255,7 +255,7 @@ type AIResponse = {
   "payload": {
     "filterGroups": []
   },
-  "errors": ["Please describe your targeted audience."]
+  "errors": ["Oops! Gumroad doesn't know whether your customers know how to knit."]
 }
 ```
 
@@ -424,7 +424,7 @@ type AIResponse = {
     ]
   },
   "errors": [
-    "Products 'motorcycle' and 'app' weren't recognized. They've been excluded from your criteria."
+    "Products 'motorcycle' and 'app' weren't recognized, so they've been excluded from your criteria."
   ]
 }
 ```
