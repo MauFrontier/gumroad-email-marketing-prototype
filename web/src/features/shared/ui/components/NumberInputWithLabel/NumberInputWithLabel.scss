@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  flex: 1 1 auto;
 
   input {
     padding-right: $spacer-9;
