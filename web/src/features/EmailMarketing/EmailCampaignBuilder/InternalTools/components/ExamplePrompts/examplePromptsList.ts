@@ -6,7 +6,7 @@ export type ExamplePrompt = {
 const examplePrompts: ExamplePrompt[] = [
   {
     description:
-      'Can we match products even if the user got their names wrong or even just described them in their own words?',
+      "Can we match products if the user doesn't name them but describes them in natural language?",
     prompt: `They've bought any of these: X-Mas pack, this year's tutorial, the painting one, or the video thingie`,
   },
   {
