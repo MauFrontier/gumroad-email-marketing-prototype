@@ -72,7 +72,7 @@ const examplePrompts: ExamplePrompt[] = [
     prompt: 'Hi',
   },
   {
-    description: 'Can we dodge unrelated questions to the AI?',
+    description: 'Can we dodge unrelated questions?',
     prompt: 'Who is Einstein?',
   },
   {
@@ -115,6 +115,10 @@ const examplePrompts: ExamplePrompt[] = [
       'Yet another complex prompt resulting in multiple filter groups (can take a while to process)',
     prompt:
       'People in the US who have purchased more than $100 and joined in 2023, or people in Canada who have spent more than $20 and joined in 2024.',
+  },
+  {
+    description: 'How do we react to a prompt for people who have paid < $0?',
+    prompt: 'has paid less than 0',
   },
 ];
 
