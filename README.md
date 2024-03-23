@@ -24,8 +24,7 @@ Back-end:
 
 Front-end:
 * Typescript
-* React (via Vite)
-* Axios
+* React (via Vite) with Context API
 * SCSS (following [Gumroad's design system principles](https://gumroad.notion.site/Design-System-Principles-3c47ff13facb47d49b7f1d1ebf30eb2a))
 * Built to be accessible and responsive
 
