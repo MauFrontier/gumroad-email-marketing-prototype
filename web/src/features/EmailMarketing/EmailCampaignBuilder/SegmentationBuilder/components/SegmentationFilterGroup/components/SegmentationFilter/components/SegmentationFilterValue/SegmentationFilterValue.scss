@@ -27,5 +27,10 @@
     .number-input-with-label {
       width: 100%;
     }
+
+    &.date {
+      flex: 1 0 auto;
+      min-width: 0;
+    }
   }
 }
