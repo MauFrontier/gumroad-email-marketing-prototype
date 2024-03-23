@@ -3,7 +3,7 @@ Author: [**Mau Fournier**](mailto:mau.fournier@gmail.com)
 Applying for the role of **Software engineer** at Gumroad.
 
 * [Open live demo](https://gumroad-email-segmentation-f38164d5c41f.herokuapp.com/)
-* [Visit GitHub Repository](https://github.com/MauFrontier/gumroad-email-marketing)
+* [Visit GitHub Repository](https://github.com/MauFrontier/gumroad-email-marketing-prototype)
 * [View Figma mockups](https://www.figma.com/file/brvBekodG186nNxzCUkKLu/Email-Marketing-Mockups)
 * [Sample help article](https://freezing-bed-4b4.notion.site/Help-article-Email-segmentation-d5471c351acb46348e17ef6e383351da?pvs=4)
 * [Sample support queries and my answers](https://freezing-bed-4b4.notion.site/Sample-support-queries-and-answers-530ae28d101841dea86579764c692100)
