@@ -47,7 +47,7 @@ The real star of this show is the "Generate with AI" feature, and it's run by [a
 
 I am __*all in*__ on AI. I've been honing my prompt engineering skills daily since I got access to Github Copilot in October 2021. That's what now allows me to quickly implement a complex feature like this one. I've developed a great sense of how to get what I want from AI.
 
-I used Github Copilot, ChatGPT, and Cody heavily to help me build this project quickly in my spare time. Every engineer should be diving deep into AI at this point, and those are the engineers that are needed to enter this new stage in tech.
+I used Github Copilot, ChatGPT, and Cody heavily to help me build this project relatively quickly in my spare time.
 
 ### 🤫 Internal tools
 
@@ -79,7 +79,7 @@ Final steps:
 * You'll need to replace the `API_URL` variable in the `./web/src/utils/apiURL.tsx` file with the URL of your back-end API.
 * You might need to edit the cors policy in the back-end under `config/initializers/cors.rb` to allow your front-end to talk to the back-end.
 
-## ▶️ Usage
+## ▶️ Run locally
 
 To run the back-end locally, run this command from the `./back-end/` directory:
 
@@ -93,9 +93,21 @@ To run the front-end locally, run this command from the `./web/` directory:
 npm run dev
 ```
 
+## 🔨 Build for production
+
+The static front-end can be served by the back-end (in addition to serving the back-end API). To do so, first build the front-end by running this command from the `./web/` directory:
+
+```
+npm run build
+```
+
+Then, copy the contents of the `./web/dist/` directory to the `./back-end/public/` directory.
+
+Finally, deploy the back-end to your favorite cloud! No database needed.
+
 ## 🧪 Testing
 
-There are over 300 tests in this project. I'm pragmatic, but I believe in staying as close to TDD as possible and documenting all behavior with tests.
+There are over 300 tests in this project. I'm ultimately pragmatic, but I believe in staying as close to TDD as possible and documenting all behavior with tests.
 
 To run the back-end tests, run this command from the `./back-end/` directory:
 
