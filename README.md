@@ -45,9 +45,11 @@ It's a very powerful segmentation builder, and I've only scratched the surface h
 
 The real star of this show is the "Generate with AI" feature, and it's run by [a contract written in Markdown](https://github.com/MauFrontier/gumroad-email-marketing-prototype/blob/main/back-end/app/assets/ai_contracts/segmentation_contract.md). I leveraged the Typescript types and enums and clever prompt engineering to guide the AI to give us very consistent results in generating the segmentation automatically.
 
+It's actually streaming the response, so in the future we could start building the targeting in real-time as we receive it to show progress to the user.
+
 I am __*all in*__ on AI. I've been honing my prompt engineering skills daily since I got access to Github Copilot in October 2021. That's what now allows me to quickly implement a complex feature like this one. I've developed a great sense of how to get what I want from AI.
 
-I used Github Copilot, ChatGPT, and Cody heavily to help me build this project relatively quickly in my spare time.
+I used Github Copilot, ChatGPT, and Cody heavily to help me build this project relatively quickly in my spare time. It's a new world!
 
 ### 🤫 Internal tools
 
