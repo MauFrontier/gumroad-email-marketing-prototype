@@ -1,6 +1,4 @@
 # Gumroad email segmentation prototype
-Author: [**Mau Fournier**](mailto:mau.fournier@gmail.com)
-Applying for the role of **Software engineer** at Gumroad.
 
 * [Open live demo](https://gumroad-email-segmentation-f38164d5c41f.herokuapp.com/)
 * [Visit GitHub Repository](https://github.com/MauFrontier/gumroad-email-marketing-prototype)
